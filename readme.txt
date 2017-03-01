@@ -1,9 +1,5 @@
-JPanel(boolean isDoubleBuffered) 
-          创建具有 FlowLayout 和指定缓冲策略的新 JPanel。
+Swing工程
 
-public JPanel(boolean isDoubleBuffered)创建具有 FlowLayout 和指定缓冲策略的新 JPanel。如果 isDoubleBuffered 为 true，则 JPanel 将使用双缓冲。 
+数据库同步，数据库间数据传输
 
-参数：
-isDoubleBuffered - 一个 boolean 值，为 true 表示双缓冲，使用更多内存空间实现快速、无闪烁的更新
-
-图标网址：http://designmodo.com/linecons-free/
+图标来源网址：http://designmodo.com/linecons-free/
