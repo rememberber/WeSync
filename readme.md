@@ -21,6 +21,40 @@ UI
 >支持失败快照回滚  
 >目前支持SqlServer->MySQL  
 >可扩展任意不同数据库间数据传输
+
+速览
+-----
+<p align="center">
+  <a href="https://github.com/rememberber/DataSync">
+   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20030.png?raw=true">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/rememberber/DataSync">
+   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20031.png?raw=true">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/rememberber/DataSync">
+   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20032.png?raw=true">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/rememberber/DataSync">
+   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20033.png?raw=true">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/rememberber/DataSync">
+   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20034.png?raw=true">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/rememberber/DataSync">
+   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20035.png?raw=true">
+  </a>
+</p>
+
   
 环境依赖
 ---------
