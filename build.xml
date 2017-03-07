@@ -4,7 +4,7 @@
 	<!--ANT 1.7 is required                                        -->
 	<!--define folder properties-->
 	<property name="dir.buildfile" value="D:/Release/DataSync" />
-	<property name="dir.workspace" value="D:/workspaceDataSync" />
+	<property name="dir.workspace" value="D:/IdeaProjects" />
 	<property name="dir.jarfile" value="${dir.buildfile}" />
 	<delete dir="${dir.buildfile}" />
 	<target name="create_run_jar">
@@ -13,7 +13,7 @@
 				<attribute name="Main-Class" value="UI.AppMainWindow" />
 				<attribute name="Class-Path" value="." />
 			</manifest>
-			<fileset dir="${dir.workspace}/dataSync/bin" />
+			<fileset dir="${dir.workspace}/dataSync/out/production/DataSync" />
 			<zipfileset excludes="META-INF/*.SF" src="${dir.workspace}/dataSync/lib/log4j-1.2.17.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${dir.workspace}/dataSync/lib/dom4j-1.6.1.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${dir.workspace}/dataSync/lib/sqljdbc4.jar" />
