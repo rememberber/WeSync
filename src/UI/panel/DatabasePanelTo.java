@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 
 /**
- * Ä¿±êÊı¾İ¿âÃæ°å
+ * ç›®æ ‡æ•°æ®åº“é¢æ¿
  *
  * @author Bob
  */
@@ -34,7 +34,7 @@ public class DatabasePanelTo extends JPanel {
     private static Logger logger = Logger.getLogger(DatabasePanelTo.class);
 
     /**
-     * ¹¹Ôì
+     * æ„é€ 
      */
     public DatabasePanelTo() {
         initialize();
@@ -44,7 +44,7 @@ public class DatabasePanelTo extends JPanel {
     }
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     private void initialize() {
         this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -52,7 +52,7 @@ public class DatabasePanelTo extends JPanel {
     }
 
     /**
-     * Ìí¼Ó×é¼ş
+     * æ·»åŠ ç»„ä»¶
      */
     private void addComponent() {
 
@@ -62,22 +62,22 @@ public class DatabasePanelTo extends JPanel {
     }
 
     /**
-     * ÖĞ²¿Ãæ°å
+     * ä¸­éƒ¨é¢æ¿
      *
      * @return
      */
     private JPanel getCenterPanel() {
-        // ÖĞ¼äÃæ°å
+        // ä¸­é—´é¢æ¿
         JPanel panelCenter = new JPanel();
         panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(2, 1));
 
-        // ÉèÖÃGrid
+        // è®¾ç½®Grid
         JPanel panelGridSetting = new JPanel();
         panelGridSetting.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelGridSetting.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
 
-        // ³õÊ¼»¯×é¼ş
+        // åˆå§‹åŒ–ç»„ä»¶
         JLabel labelDatabaseType = new JLabel(PropertyUtil.getProperty("ds.ui.database.type"));
         JLabel labelDatabaseHost = new JLabel(PropertyUtil.getProperty("ds.ui.database.host"));
         JLabel labelDatabaseName = new JLabel(PropertyUtil.getProperty("ds.ui.database.name"));
@@ -91,7 +91,7 @@ public class DatabasePanelTo extends JPanel {
         textFieldDatabaseUser = new JTextField();
         passwordFieldDatabasePassword = new JPasswordField();
 
-        // ×ÖÌå
+        // å­—ä½“
         labelDatabaseType.setFont(ConstantsUI.FONT_NORMAL);
         labelDatabaseHost.setFont(ConstantsUI.FONT_NORMAL);
         labelDatabaseName.setFont(ConstantsUI.FONT_NORMAL);
@@ -103,7 +103,7 @@ public class DatabasePanelTo extends JPanel {
         textFieldDatabaseUser.setFont(ConstantsUI.FONT_NORMAL);
         passwordFieldDatabasePassword.setFont(ConstantsUI.FONT_NORMAL);
 
-        // ´óĞ¡
+        // å¤§å°
         labelDatabaseType.setPreferredSize(ConstantsUI.LABLE_SIZE_ITEM);
         labelDatabaseHost.setPreferredSize(ConstantsUI.LABLE_SIZE_ITEM);
         labelDatabaseName.setPreferredSize(ConstantsUI.LABLE_SIZE_ITEM);
@@ -115,7 +115,7 @@ public class DatabasePanelTo extends JPanel {
         textFieldDatabaseUser.setPreferredSize(ConstantsUI.TEXT_FIELD_SIZE_ITEM);
         passwordFieldDatabasePassword.setPreferredSize(ConstantsUI.TEXT_FIELD_SIZE_ITEM);
 
-        // ×éºÏÔªËØ
+        // ç»„åˆå…ƒç´ 
         panelGridSetting.add(labelDatabaseType);
         panelGridSetting.add(comboxDatabaseType);
         panelGridSetting.add(labelDatabaseHost);
@@ -132,7 +132,7 @@ public class DatabasePanelTo extends JPanel {
     }
 
     /**
-     * µ×²¿Ãæ°å
+     * åº•éƒ¨é¢æ¿
      *
      * @return
      */
@@ -152,7 +152,7 @@ public class DatabasePanelTo extends JPanel {
     }
 
     /**
-     * ÉèÖÃÎÄ±¾ÇøÄÚÈİ
+     * è®¾ç½®æ–‡æœ¬åŒºå†…å®¹
      */
     public static void setContent() {
         textFieldDatabaseHost.setText(ConstantsTools.CONFIGER.getHostTo());
@@ -174,7 +174,7 @@ public class DatabasePanelTo extends JPanel {
     }
 
     /**
-     * ÎªÏà¹Ø×é¼şÌí¼ÓÊÂ¼ş¼àÌı
+     * ä¸ºç›¸å…³ç»„ä»¶æ·»åŠ äº‹ä»¶ç›‘å¬
      */
     private void addListener() {
         buttonSave.addActionListener(new ActionListener() {

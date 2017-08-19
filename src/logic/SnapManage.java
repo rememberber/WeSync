@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 /**
- * ¿ìÕÕ¹ÜÀíÀà
+ * å¿«ç…§ç®¡ç†ç±»
  * 
  * @author Bob
  *
@@ -26,15 +26,15 @@ public class SnapManage {
 	public static ArrayList<String> sqlList;
 
 	/**
-	 * ´´½¨¿ìÕÕ
+	 * åˆ›å»ºå¿«ç…§
 	 * 
-	 * @param tableMap£ºÀ´Ô´±íMap
+	 * @param tableMapï¼šæ¥æºè¡¨Map
 	 * @return
 	 */
 	public static boolean createSnap(Map<String, Table> tableMap) {
 		boolean isSuccess = true;
 
-		// Èç¹û¿ìÕÕÎÄ¼ş¼Ğ²»´æÔÚ£¬Ôò½øĞĞ³õÊ¼»¯
+		// å¦‚æœå¿«ç…§æ–‡ä»¶å¤¹ä¸å­˜åœ¨ï¼Œåˆ™è¿›è¡Œåˆå§‹åŒ–
 		File snapsDir = new File(ConstantsLogic.SNAPS_DIR);
 		File snapsBakDir = new File(ConstantsLogic.SNAPS_BAK_DIR);
 		if (!snapsDir.exists()) {
@@ -46,11 +46,11 @@ public class SnapManage {
 		if (!snapsBakDir.exists()) {
 			snapsBakDir.mkdirs();
 		}
-		// ±¸·İµ±Ç°¿ìÕÕÎÄ¼ş¼Ğ£¬ÒÔ±ãºóĞø¹ı³ÌÊ§°ÜÊ±»Ö¸´
+		// å¤‡ä»½å½“å‰å¿«ç…§æ–‡ä»¶å¤¹ï¼Œä»¥ä¾¿åç»­è¿‡ç¨‹å¤±è´¥æ—¶æ¢å¤
 		try {
-			// Çå¿Õ¿ìÕÕ±¸·İÎÄ¼ş¼Ğ
+			// æ¸…ç©ºå¿«ç…§å¤‡ä»½æ–‡ä»¶å¤¹
 			FileUtils.clearDirectiory(ConstantsLogic.SNAPS_BAK_DIR);
-			// ¿½±´µ½¿ìÕÕ±¸·İÎÄ¼ş¼Ğ
+			// æ‹·è´åˆ°å¿«ç…§å¤‡ä»½æ–‡ä»¶å¤¹
 			FileUtils.copyDirectiory(ConstantsLogic.SNAPS_DIR, ConstantsLogic.SNAPS_BAK_DIR);
 		} catch (IOException e1) {
 			isSuccess = false;
@@ -63,16 +63,16 @@ public class SnapManage {
 		int progressValue = 0;
 		StatusPanel.progressCurrent.setValue(progressValue);
 
-		// ±éÀúÀ´Ô´±íMap£¬½¨Á¢¿ìÕÕ
+		// éå†æ¥æºè¡¨Mapï¼Œå»ºç«‹å¿«ç…§
 		for (String snapName : tableMap.keySet()) {
 			if (!"".equals(snapName.trim())) {
 
-				// ÉÏÒ»´Î¿ìÕÕ
+				// ä¸Šä¸€æ¬¡å¿«ç…§
 				File snapBefore = new File(ConstantsLogic.SNAPS_DIR + File.separator + snapName + "_before.csv");
-				// µ±Ç°¿ìÕÕ
+				// å½“å‰å¿«ç…§
 				File snapNow = new File(ConstantsLogic.SNAPS_DIR + File.separator + snapName + ".csv");
 
-				// ÅĞ¶ÏÉÏÒ»´ÎµÄ¿ìÕÕÊÇ·ñ´æÔÚ£¬Èç¹û²»´æÔÚ£¬ÔòĞÂ½¨Ò»¸ö¿ÕµÄ
+				// åˆ¤æ–­ä¸Šä¸€æ¬¡çš„å¿«ç…§æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœä¸å­˜åœ¨ï¼Œåˆ™æ–°å»ºä¸€ä¸ªç©ºçš„
 				if (!snapBefore.exists()) {
 					try {
 						snapBefore.createNewFile();
@@ -81,12 +81,12 @@ public class SnapManage {
 						e.printStackTrace();
 					}
 				} else {
-					// É¾³ıÔ­¿ìÕÕ£¬½«µ±Ç°¿ìÕÕ±ä³ÉÔ­¿ìÕÕ
+					// åˆ é™¤åŸå¿«ç…§ï¼Œå°†å½“å‰å¿«ç…§å˜æˆåŸå¿«ç…§
 					snapBefore.delete();
 					snapNow.renameTo(new File(ConstantsLogic.SNAPS_DIR + File.separator + snapName + "_before.csv"));
 				}
-				// ½¨Á¢µ±Ç°¿ìÕÕ£¬ÒÔ±ãÓëÔ­¿ìÕÕ¶Ô±È
-				// ĞÂ¿ìÕÕÎÄ¼ş
+				// å»ºç«‹å½“å‰å¿«ç…§ï¼Œä»¥ä¾¿ä¸åŸå¿«ç…§å¯¹æ¯”
+				// æ–°å¿«ç…§æ–‡ä»¶
 				CSVWriter csvWriter = null;
 				DbUtilSQLServer sqlServer = null;
 				try {
@@ -94,21 +94,21 @@ public class SnapManage {
 					Writer writer = new FileWriter(snapNow);
 					csvWriter = new CSVWriter(writer, ',');
 
-					sqlServer = DbUtilSQLServer.getInstance();// »ñÈ¡SQLServerÁ¬½ÓÊµÀı
+					sqlServer = DbUtilSQLServer.getInstance();// è·å–SQLServerè¿æ¥å®ä¾‹
 
 					String querySql = "SELECT " + tableMap.get(snapName).getFields() + " FROM "
 							+ tableMap.get(snapName).getTableName();
 					if (tableMap.get(snapName).getOther() != null) {
 						querySql += (" " + tableMap.get(snapName).getOther());
 					}
-					ResultSet rs = sqlServer.executeQuery(querySql);// ±í²éÑ¯
-					ResultSetMetaData m = null;// »ñÈ¡ÁĞĞÅÏ¢
+					ResultSet rs = sqlServer.executeQuery(querySql);// è¡¨æŸ¥è¯¢
+					ResultSetMetaData m = null;// è·å–åˆ—ä¿¡æ¯
 					m = rs.getMetaData();
 
 					List<String> list = new ArrayList<String>();
 
 					int columns = m.getColumnCount();
-					// ±íµÄ±íÍ·
+					// è¡¨çš„è¡¨å¤´
 					for (int i = 1; i <= columns; i++) {
 						list.add(m.getColumnName(i));
 					}
@@ -116,7 +116,7 @@ public class SnapManage {
 					int size = list.size();
 					String[] arr = (String[]) list.toArray(new String[size]);
 					csvWriter.writeNext(arr);
-					// ±íµÄÄÚÈİ
+					// è¡¨çš„å†…å®¹
 					while (rs.next()) {
 						list.clear();
 						for (int i = 1; i <= columns; i++) {
@@ -163,9 +163,9 @@ public class SnapManage {
 	}
 
 	/**
-	 * ¶Ô±È¿ìÕÕ
+	 * å¯¹æ¯”å¿«ç…§
 	 * 
-	 * @param tableMap£ºÀ´Ô´±íMap
+	 * @param tableMapï¼šæ¥æºè¡¨Map
 	 * @return
 	 */
 	public static boolean diffSnap(Map<String, Table> tableMap) {
@@ -174,16 +174,16 @@ public class SnapManage {
 		int progressValue = 0;
 		StatusPanel.progressCurrent.setValue(progressValue);
 		boolean isSuccess = true;
-		// ³õÊ¼»¯Ä¿±êsqlList
+		// åˆå§‹åŒ–ç›®æ ‡sqlList
 		sqlList = new ArrayList<String>();
-		// ±éÀúÀ´Ô´±íMap£¬¶Ô±È¿ìÕÕ
+		// éå†æ¥æºè¡¨Mapï¼Œå¯¹æ¯”å¿«ç…§
 		for (String snapName : tableMap.keySet()) {
 			if (!"".equals(snapName.trim())) {
-				// ÉÏÒ»´Î¿ìÕÕ
+				// ä¸Šä¸€æ¬¡å¿«ç…§
 				File snapBefore = new File(ConstantsLogic.SNAPS_DIR + File.separator + snapName + "_before.csv");
-				// µ±Ç°¿ìÕÕ
+				// å½“å‰å¿«ç…§
 				File snapNow = new File(ConstantsLogic.SNAPS_DIR + File.separator + snapName + ".csv");
-				// MD5±È¶ÔÁ½¸öÎÄ¼ş
+				// MD5æ¯”å¯¹ä¸¤ä¸ªæ–‡ä»¶
 				String snapMD5Before = FileUtils.getFileMD5(snapBefore);
 				String snapMD5Now = FileUtils.getFileMD5(snapNow);
 				if (snapMD5Before == null) {
@@ -225,13 +225,13 @@ public class SnapManage {
 	}
 
 	/**
-	 * »Ö¸´¿ìÕÕ±¸·İ
+	 * æ¢å¤å¿«ç…§å¤‡ä»½
 	 */
 	public static void recoverSnapBak() {
 
-		// Çå¿Õ¿ìÕÕÎÄ¼ş¼Ğ
+		// æ¸…ç©ºå¿«ç…§æ–‡ä»¶å¤¹
 		FileUtils.clearDirectiory(ConstantsLogic.SNAPS_DIR);
-		// ¿½±´¿ìÕÕ±¸·İµ½¿ìÕÕÎÄ¼ş¼Ğ
+		// æ‹·è´å¿«ç…§å¤‡ä»½åˆ°å¿«ç…§æ–‡ä»¶å¤¹
 		try {
 			FileUtils.copyDirectiory(ConstantsLogic.SNAPS_BAK_DIR, ConstantsLogic.SNAPS_DIR);
 		} catch (IOException e) {
@@ -241,7 +241,7 @@ public class SnapManage {
 	}
 
 	/**
-	 * ÖğĞĞ¶Ô±ÈcsvÎÄ¼ş
+	 * é€è¡Œå¯¹æ¯”csvæ–‡ä»¶
 	 * 
 	 * @param snapBefore
 	 * @param snapNow
@@ -254,7 +254,7 @@ public class SnapManage {
 		ArrayList<String[]> snapBeforeList = FileUtils.getCsvFileContentList(snapBefore);
 		ArrayList<String[]> snapNowList = FileUtils.getCsvFileContentList(snapNow);
 
-		// È¥µôÄ©Î²¿ÕĞĞ£¬Èç¹ûÓĞµÄ»°
+		// å»æ‰æœ«å°¾ç©ºè¡Œï¼Œå¦‚æœæœ‰çš„è¯
 		// if (snapBeforeList.get(snapBeforeList.size() - 1)[0] == null) {
 		// snapBeforeList.remove(snapBeforeList.size() - 1);
 		// }
@@ -263,20 +263,20 @@ public class SnapManage {
 		// snapNowList.remove(snapNowList.size() - 1);
 		// }
 
-		// »ñÈ¡¸Ã¿ìÕÕÃû
+		// è·å–è¯¥å¿«ç…§å
 		String snapName = snapNow.getName().substring(0, snapNow.getName().indexOf(".csv"));
 
-		// »ñÈ¡±íÍ·
+		// è·å–è¡¨å¤´
 		String headerBefore[];
 		String headerNow[] = snapNowList.get(0);
 		if (snapBeforeList.size() == 0) {
-			// Èç¹ûÔ­¿ìÕÕÊÇ¿ÕµÄ£¬ËµÃ÷ÊÇµÚÒ»´Î½øĞĞ¿ìÕÕ£¬ËùÒÔ½«Ô­¿ìÕÕ¼ÓÒ»¸öĞÂ¿ìÕÕ±íÍ·¼´¿É
+			// å¦‚æœåŸå¿«ç…§æ˜¯ç©ºçš„ï¼Œè¯´æ˜æ˜¯ç¬¬ä¸€æ¬¡è¿›è¡Œå¿«ç…§ï¼Œæ‰€ä»¥å°†åŸå¿«ç…§åŠ ä¸€ä¸ªæ–°å¿«ç…§è¡¨å¤´å³å¯
 			headerBefore = headerNow;
 		} else {
 			headerBefore = snapBeforeList.get(0);
 		}
 
-		// ¶Ô±È±íÍ·£¬¿´±í½á¹¹ÊÇ·ñÓĞ±ä
+		// å¯¹æ¯”è¡¨å¤´ï¼Œçœ‹è¡¨ç»“æ„æ˜¯å¦æœ‰å˜
 		// Arrays.sort(headerBefore);
 		// Arrays.sort(headerNow);
 		if (!Arrays.equals(headerBefore, headerNow)) {
@@ -284,19 +284,19 @@ public class SnapManage {
 			return false;
 		}
 
-		// »ñÈ¡Ö÷¼ü
+		// è·å–ä¸»é”®
 		String primKeys = ExecuteThread.originalTablesMap.get(snapName).getPrimKey();
 		String primKeysArr[] = primKeys.split(",");
 
-		// »ñÈ¡Ö÷¼üindex
+		// è·å–ä¸»é”®index
 		int prinKeyIndex[] = new int[primKeysArr.length];
 		for (int i = 0; i < primKeysArr.length; i++) {
 			prinKeyIndex[i] = Utils.getStrArrIndex(headerNow, primKeysArr[i]);
 		}
 
-		// Ö÷¼ü±È½Ï+Ö÷¼ü²éÕÒ+ÓÎ±ê¿ØÖÆ·¨
+		// ä¸»é”®æ¯”è¾ƒ+ä¸»é”®æŸ¥æ‰¾+æ¸¸æ ‡æ§åˆ¶æ³•
 
-		// »ñÈ¡Ô­¿ìÕÕºÍĞÂ¿ìÕÕÖ÷¼üµÄÖµSet,¶à¸öÖ÷¼üÖµÓÃ¶ººÅ·Ö¸ô
+		// è·å–åŸå¿«ç…§å’Œæ–°å¿«ç…§ä¸»é”®çš„å€¼Set,å¤šä¸ªä¸»é”®å€¼ç”¨é€—å·åˆ†éš”
 		LinkedHashSet<String> primKeyValuesSetBefore = new LinkedHashSet<String>();
 		LinkedHashSet<String> primKeyValuesSetNow = new LinkedHashSet<String>();
 		for (int i = 0; i < snapBeforeList.size(); i++) {
@@ -332,10 +332,10 @@ public class SnapManage {
 		for (int flagBefore = 1, flagNow = 1; flagBefore < snapBeforeList.size() || flagNow < snapNowList.size();) {
 
 			if (!(snapNowList.size() > flagNow)) {
-				// ËµÃ÷ĞÂ¿ìÕÕµ½ÁË½áÎ²£¬ºóÃæÃ»ÓĞÄÚÈİÁË
+				// è¯´æ˜æ–°å¿«ç…§åˆ°äº†ç»“å°¾ï¼Œåé¢æ²¡æœ‰å†…å®¹äº†
 				String recordsLineBefore[] = snapBeforeList.get(flagBefore);
 
-				// Éú³ÉÔ­¿ìÕÕ¸ÃÌõ¼ÇÂ¼Ö÷¼ümap£¬key:Ö÷¼üÃû£¬value:Ö÷¼üÖµ
+				// ç”ŸæˆåŸå¿«ç…§è¯¥æ¡è®°å½•ä¸»é”®mapï¼Œkey:ä¸»é”®åï¼Œvalue:ä¸»é”®å€¼
 				Map<String, String> primKeyAndValueMapBefore = new LinkedHashMap<>();
 				for (int j = 0; j < primKeysArr.length; j++) {
 					primKeyAndValueMapBefore.put(primKeysArr[j], recordsLineBefore[prinKeyIndex[j]]);
@@ -354,7 +354,7 @@ public class SnapManage {
 				boolean isNowContainsBefore = primKeyValuesSetNow.contains(primKeyValuesBefore.toString());
 
 				if (!isNowContainsBefore) {
-					// Éú³ÉÖ÷¼ümap£¬key:Ö÷¼üÃû£¬value:Ö÷¼üÖµ
+					// ç”Ÿæˆä¸»é”®mapï¼Œkey:ä¸»é”®åï¼Œvalue:ä¸»é”®å€¼
 					Map<String, String> primKeyAndValueMap = new HashMap<>();
 
 					for (k = 0; k < primKeysArr.length; k++) {
@@ -368,15 +368,15 @@ public class SnapManage {
 
 				flagBefore++;
 			} else if (!(snapBeforeList.size() > flagBefore)) {
-				// ËµÃ÷Ô­¿ìÕÕµ½ÁË½áÎ²£¬ºóÃæÃ»ÓĞÄÚÈİÁË
+				// è¯´æ˜åŸå¿«ç…§åˆ°äº†ç»“å°¾ï¼Œåé¢æ²¡æœ‰å†…å®¹äº†
 				String recordsLineNow[] = snapNowList.get(flagNow);
-				// Éú³ÉĞÂ¿ìÕÕ¸ÃÌõ¼ÇÂ¼Ö÷¼ümap£¬key:Ö÷¼üÃû£¬value:Ö÷¼üÖµ
+				// ç”Ÿæˆæ–°å¿«ç…§è¯¥æ¡è®°å½•ä¸»é”®mapï¼Œkey:ä¸»é”®åï¼Œvalue:ä¸»é”®å€¼
 				Map<String, String> primKeyAndValueMapNow = new LinkedHashMap<>();
 				for (int j = 0; j < primKeysArr.length; j++) {
 					primKeyAndValueMapNow.put(primKeysArr[j], recordsLineNow[prinKeyIndex[j]]);
 				}
 
-				// ¿´ĞÂ¼ÇÂ¼Ö÷¼üµÄÖµÔÚÔ­¿ìÕÕÖ÷¼üÖµsetÖĞÊÇ·ñ´æÔÚ
+				// çœ‹æ–°è®°å½•ä¸»é”®çš„å€¼åœ¨åŸå¿«ç…§ä¸»é”®å€¼setä¸­æ˜¯å¦å­˜åœ¨
 				StringBuffer primKeyValuesNow = new StringBuffer();
 				int k = 0;
 				for (String key : primKeyAndValueMapNow.keySet()) {
@@ -388,7 +388,7 @@ public class SnapManage {
 				}
 				boolean isBeforeContainsNow = primKeyValuesSetBefore.contains(primKeyValuesNow.toString());
 				if (!isBeforeContainsNow) {
-					// Éú³ÉÖ÷¼ümap£¬key:Ö÷¼üÃû£¬value:Ö÷¼üÖµ
+					// ç”Ÿæˆä¸»é”®mapï¼Œkey:ä¸»é”®åï¼Œvalue:ä¸»é”®å€¼
 					Map<String, String> primKeyAndValueMap = new HashMap<>();
 					for (k = 0; k < primKeysArr.length; k++) {
 						primKeyAndValueMap.put(primKeysArr[k], recordsLineNow[prinKeyIndex[k]]);
@@ -405,36 +405,36 @@ public class SnapManage {
 				String recordsLineBefore[] = snapBeforeList.get(flagBefore);
 				String recordsLineNow[] = snapNowList.get(flagNow);
 
-				// Éú³ÉÔ­¿ìÕÕ¸ÃÌõ¼ÇÂ¼Ö÷¼ümap£¬key:Ö÷¼üÃû£¬value:Ö÷¼üÖµ
+				// ç”ŸæˆåŸå¿«ç…§è¯¥æ¡è®°å½•ä¸»é”®mapï¼Œkey:ä¸»é”®åï¼Œvalue:ä¸»é”®å€¼
 				Map<String, String> primKeyAndValueMapBefore = new LinkedHashMap<>();
 				for (int j = 0; j < primKeysArr.length; j++) {
 					primKeyAndValueMapBefore.put(primKeysArr[j], recordsLineBefore[prinKeyIndex[j]]);
 				}
-				// Éú³ÉĞÂ¿ìÕÕ¸ÃÌõ¼ÇÂ¼Ö÷¼ümap£¬key:Ö÷¼üÃû£¬value:Ö÷¼üÖµ
+				// ç”Ÿæˆæ–°å¿«ç…§è¯¥æ¡è®°å½•ä¸»é”®mapï¼Œkey:ä¸»é”®åï¼Œvalue:ä¸»é”®å€¼
 				Map<String, String> primKeyAndValueMapNow = new LinkedHashMap<>();
 				for (int j = 0; j < primKeysArr.length; j++) {
 					primKeyAndValueMapNow.put(primKeysArr[j], recordsLineNow[prinKeyIndex[j]]);
 				}
 
 				if (Arrays.equals(recordsLineNow, recordsLineBefore)) {
-					// ÈôÍêÈ«Ò»ÖÂ£¬Ôò¼ÌĞøÏÂÒ»ĞĞ
+					// è‹¥å®Œå…¨ä¸€è‡´ï¼Œåˆ™ç»§ç»­ä¸‹ä¸€è¡Œ
 					flagBefore++;
 					flagNow++;
 					continue;
 				} else {
-					// ÏÈ¿´Ô­¿ìÕÕ¸ÃÌõ¼ÇÂ¼ºÍĞÂ¿ìÕÕ¸ÃÌõ¼ÇÂ¼Ö÷¼üÊÇ·ñÒ»ÖÂ
+					// å…ˆçœ‹åŸå¿«ç…§è¯¥æ¡è®°å½•å’Œæ–°å¿«ç…§è¯¥æ¡è®°å½•ä¸»é”®æ˜¯å¦ä¸€è‡´
 					boolean isPrimKeyTheSame = Utils.mapCompare4PrimKey(primKeyAndValueMapBefore,
 							primKeyAndValueMapNow);
 
 					if (isPrimKeyTheSame) {
-						// ÈôÒ»ÖÂ£¬ËµÃ÷¸ÃÌõ¼ÇÂ¼ÄÚÈİÓĞĞŞ¸Ä£¬ĞèÒª´¥·¢Update
-						// Í¨¹ıTriggerÉú³ÉUpdateSQL
+						// è‹¥ä¸€è‡´ï¼Œè¯´æ˜è¯¥æ¡è®°å½•å†…å®¹æœ‰ä¿®æ”¹ï¼Œéœ€è¦è§¦å‘Update
+						// é€šè¿‡Triggerç”ŸæˆUpdateSQL
 						String sql = TriggerManage.getSqlUpdate(snapName, primKeyAndValueMapNow, headerNow,
 								recordsLineBefore, recordsLineNow);
 						sqlList.add(sql);
 						StatusLog.setStatusDetail(sql, LogLevel.DEBUG);
 					} else {
-						// Èô²»Ò»ÖÂ£¬¿´Ô­¼ÇÂ¼Ö÷¼üµÄÖµÔÚĞÂ¿ìÕÕÖ÷¼üÖµsetÖĞÊÇ·ñ´æÔÚ
+						// è‹¥ä¸ä¸€è‡´ï¼Œçœ‹åŸè®°å½•ä¸»é”®çš„å€¼åœ¨æ–°å¿«ç…§ä¸»é”®å€¼setä¸­æ˜¯å¦å­˜åœ¨
 						StringBuffer primKeyValuesBefore = new StringBuffer();
 						int k = 0;
 						for (String key : primKeyAndValueMapBefore.keySet()) {
@@ -445,7 +445,7 @@ public class SnapManage {
 							k++;
 						}
 
-						// ¿´ĞÂ¼ÇÂ¼Ö÷¼üµÄÖµÔÚÔ­¿ìÕÕÖ÷¼üÖµsetÖĞÊÇ·ñ´æÔÚ
+						// çœ‹æ–°è®°å½•ä¸»é”®çš„å€¼åœ¨åŸå¿«ç…§ä¸»é”®å€¼setä¸­æ˜¯å¦å­˜åœ¨
 						StringBuffer primKeyValuesNow = new StringBuffer();
 						k = 0;
 						for (String key : primKeyAndValueMapNow.keySet()) {
@@ -459,18 +459,18 @@ public class SnapManage {
 						boolean isBeforeContainsNow = primKeyValuesSetBefore.contains(primKeyValuesNow.toString());
 
 						if (isNowContainsBefore && !isBeforeContainsNow) {
-							// ËµÃ÷ĞÂÔöÁË¼ÇÂ¼£¬Ôò´¥·¢Insert
-							// Í¨¹ıTriggerÉú³ÉInsertSQL
+							// è¯´æ˜æ–°å¢äº†è®°å½•ï¼Œåˆ™è§¦å‘Insert
+							// é€šè¿‡Triggerç”ŸæˆInsertSQL
 							String sql = TriggerManage.getSqlInsert(snapName, primKeyAndValueMapNow, headerNow,
 									recordsLineNow);
 							sqlList.add(sql);
 							StatusLog.setStatusDetail(sql, LogLevel.DEBUG);
 
-							// ×ó±ß
+							// å·¦è¾¹
 							String recordsLineNowTemp[] = snapNowList.get(
 									Utils.getIndexInLinkedHashSet(primKeyValuesSetNow, primKeyValuesBefore.toString()));
 							if (!Arrays.equals(recordsLineNowTemp, recordsLineBefore)) {
-								// Èô²»ÍêÈ«Ò»ÖÂ£¬ÔòUpdate
+								// è‹¥ä¸å®Œå…¨ä¸€è‡´ï¼Œåˆ™Update
 								sql = TriggerManage.getSqlUpdate(snapName, primKeyAndValueMapBefore, headerNow,
 										recordsLineBefore, recordsLineNowTemp);
 								sqlList.add(sql);
@@ -479,18 +479,18 @@ public class SnapManage {
 								StatusLog.setStatusDetail(sql, LogLevel.DEBUG);
 							}
 						} else if (!isNowContainsBefore && isBeforeContainsNow) {
-							// ËµÃ÷Ô­¼ÇÂ¼±»É¾³ıÁË£¬Ôò´¥·¢Delete
-							// Í¨¹ıTriggerÉú³ÉDeleteSQL
+							// è¯´æ˜åŸè®°å½•è¢«åˆ é™¤äº†ï¼Œåˆ™è§¦å‘Delete
+							// é€šè¿‡Triggerç”ŸæˆDeleteSQL
 							String sql = TriggerManage.getSqlDelete(snapName, primKeyAndValueMapBefore, headerNow,
 									recordsLineBefore);
 							sqlList.add(sql);
 							StatusLog.setStatusDetail(sql, LogLevel.DEBUG);
 
-							// ÓÒ±ß
+							// å³è¾¹
 							String recordsLineBeforeTemp[] = snapBeforeList.get(
 									Utils.getIndexInLinkedHashSet(primKeyValuesSetBefore, primKeyValuesNow.toString()));
 							if (!Arrays.equals(recordsLineNow, recordsLineBeforeTemp)) {
-								// Èô²»ÍêÈ«Ò»ÖÂ£¬ÔòUpdate
+								// è‹¥ä¸å®Œå…¨ä¸€è‡´ï¼Œåˆ™Update
 								sql = TriggerManage.getSqlUpdate(snapName, primKeyAndValueMapNow, headerNow,
 										recordsLineBeforeTemp, recordsLineNow);
 								sqlList.add(sql);
@@ -499,13 +499,13 @@ public class SnapManage {
 								StatusLog.setStatusDetail(sql, LogLevel.DEBUG);
 							}
 						} else if (isNowContainsBefore && isBeforeContainsNow) {
-							// ËµÃ÷¸ÃÁ½Ìõ¼ÇÂ¼¶¼ÓĞ¿ÉÄÜ±»¸üĞÂÁË£¬»¹Òª¼ÌĞøÄÃ³öÀ´±È½ÏÒ»ÏÂ
+							// è¯´æ˜è¯¥ä¸¤æ¡è®°å½•éƒ½æœ‰å¯èƒ½è¢«æ›´æ–°äº†ï¼Œè¿˜è¦ç»§ç»­æ‹¿å‡ºæ¥æ¯”è¾ƒä¸€ä¸‹
 
-							// ×ó±ß
+							// å·¦è¾¹
 							String recordsLineNowTemp[] = snapNowList.get(
 									Utils.getIndexInLinkedHashSet(primKeyValuesSetNow, primKeyValuesBefore.toString()));
 							if (!Arrays.equals(recordsLineNowTemp, recordsLineBefore)) {
-								// Èô²»ÍêÈ«Ò»ÖÂ£¬ÔòUpdate
+								// è‹¥ä¸å®Œå…¨ä¸€è‡´ï¼Œåˆ™Update
 								String sql = TriggerManage.getSqlUpdate(snapName, primKeyAndValueMapBefore, headerNow,
 										recordsLineBefore, recordsLineNowTemp);
 								sqlList.add(sql);
@@ -515,11 +515,11 @@ public class SnapManage {
 								StatusLog.setStatusDetail(sql, LogLevel.DEBUG);
 							}
 
-							// ÓÒ±ß
+							// å³è¾¹
 							String recordsLineBeforeTemp[] = snapBeforeList.get(
 									Utils.getIndexInLinkedHashSet(primKeyValuesSetBefore, primKeyValuesNow.toString()));
 							if (!Arrays.equals(recordsLineNow, recordsLineBeforeTemp)) {
-								// Èô²»ÍêÈ«Ò»ÖÂ£¬ÔòUpdate
+								// è‹¥ä¸å®Œå…¨ä¸€è‡´ï¼Œåˆ™Update
 								String sql = TriggerManage.getSqlUpdate(snapName, primKeyAndValueMapNow, headerNow,
 										recordsLineBeforeTemp, recordsLineNow);
 								sqlList.add(sql);
@@ -530,9 +530,9 @@ public class SnapManage {
 							}
 
 						} else if (!isNowContainsBefore && !isBeforeContainsNow) {
-							// ¼ÈËµÃ÷Ô­¼ÇÂ¼±»É¾³ıÁË£¬Ôò´¥·¢Delete
-							// ÓÖËµÃ÷ĞÂ¼ÍÂ¼±»²åÈëÁË£¬Ôò´¥·¢Insert
-							// Í¨¹ıTriggerÉú³ÉSQL
+							// æ—¢è¯´æ˜åŸè®°å½•è¢«åˆ é™¤äº†ï¼Œåˆ™è§¦å‘Delete
+							// åˆè¯´æ˜æ–°çºªå½•è¢«æ’å…¥äº†ï¼Œåˆ™è§¦å‘Insert
+							// é€šè¿‡Triggerç”ŸæˆSQL
 							String sql = TriggerManage.getSqlDelete(snapName, primKeyAndValueMapBefore, headerNow,
 									recordsLineBefore);
 							sqlList.add(sql);

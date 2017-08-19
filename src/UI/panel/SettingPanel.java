@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * ÉèÖÃÃæ°å
+ * è®¾ç½®é¢æ¿
  * 
  * @author Bob
  *
@@ -26,7 +26,7 @@ public class SettingPanel extends JPanel {
 	private static JPanel settingPanelAbout;
 
 	/**
-	 * ¹¹Ôì
+	 * æ„é€ 
 	 */
 	public SettingPanel() {
 		initialize();
@@ -35,7 +35,7 @@ public class SettingPanel extends JPanel {
 	}
 
 	/**
-	 * ³õÊ¼»¯
+	 * åˆå§‹åŒ–
 	 */
 	private void initialize() {
 		this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -45,7 +45,7 @@ public class SettingPanel extends JPanel {
 	}
 
 	/**
-	 * Ìí¼Ó×é¼ş
+	 * æ·»åŠ ç»„ä»¶
 	 */
 	private void addComponent() {
 
@@ -55,7 +55,7 @@ public class SettingPanel extends JPanel {
 	}
 
 	/**
-	 * ÉÏ²¿Ãæ°å
+	 * ä¸Šéƒ¨é¢æ¿
 	 * 
 	 * @return
 	 */
@@ -73,17 +73,17 @@ public class SettingPanel extends JPanel {
 	}
 
 	/**
-	 * ÖĞ²¿Ãæ°å
+	 * ä¸­éƒ¨é¢æ¿
 	 * 
 	 * @return
 	 */
 	private JPanel getCenterPanel() {
-		// ÖĞ¼äÃæ°å
+		// ä¸­é—´é¢æ¿
 		JPanel panelCenter = new JPanel();
 		panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
 		panelCenter.setLayout(new BorderLayout());
 
-		// ÁĞ±íPanel
+		// åˆ—è¡¨Panel
 		JPanel panelList = new JPanel();
 		Dimension preferredSize = new Dimension(245, ConstantsUI.MAIN_WINDOW_HEIGHT);
 		panelList.setPreferredSize(preferredSize);
@@ -113,7 +113,7 @@ public class SettingPanel extends JPanel {
 		panelList.add(panelOption);
 		panelList.add(panelAbout);
 
-		// ÉèÖÃPanel
+		// è®¾ç½®Panel
 		settingPanelMain = new JPanel();
 		settingPanelMain.setBackground(ConstantsUI.MAIN_BACK_COLOR);
 		settingPanelMain.setLayout(new BorderLayout());
@@ -126,7 +126,7 @@ public class SettingPanel extends JPanel {
 	}
 
 	/**
-	 * ÎªÏà¹Ø×é¼şÌí¼ÓÊÂ¼ş¼àÌı
+	 * ä¸ºç›¸å…³ç»„ä»¶æ·»åŠ äº‹ä»¶ç›‘å¬
 	 */
 	private void addListener() {
 		panelOption.addMouseListener(new MouseListener() {

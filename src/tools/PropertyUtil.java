@@ -12,7 +12,7 @@ import java.util.Properties;
 public class PropertyUtil {
 
     /**
-     * »ñÈ¡property
+     * è·å–property
      * @param key
      * @return
      */

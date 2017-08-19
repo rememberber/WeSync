@@ -5,7 +5,7 @@ import java.io.File;
 import UI.ConstantsUI;
 
 /**
- * Logic²ãµÄ³£Á¿Àà
+ * Logicå±‚çš„å¸¸é‡ç±»
  * 
  * @author Bob
  *
@@ -13,48 +13,48 @@ import UI.ConstantsUI;
 public class ConstantsLogic {
 
 	/**
-	 * ¸÷ÅäÖÃÎÄ¼şÂ·¾¶
+	 * å„é…ç½®æ–‡ä»¶è·¯å¾„
 	 */
-	// ±í-×Ö¶ÎÅäÖÃÎÄ¼ş Â·¾¶
+	// è¡¨-å­—æ®µé…ç½®æ–‡ä»¶ è·¯å¾„
 	public final static String TABLE_FIELD_DIR = ConstantsUI.CURRENT_DIR + File.separator + "TableField";
-	// ±í-×Ö¶ÎÅäÖÃÎÄ¼ş Â·¾¶
+	// è¡¨-å­—æ®µé…ç½®æ–‡ä»¶ è·¯å¾„
 	public final static String TABLE_FIELD_INIT_DIR = ConstantsUI.CURRENT_DIR + File.separator + "TableField"
 			+ File.separator + "init";
-	// TriggerÅäÖÃÎÄ¼ş
+	// Triggeré…ç½®æ–‡ä»¶
 	public final static String TRIGGER_FILE = ConstantsUI.CURRENT_DIR + File.separator + "Trigger" + File.separator
 			+ "Trigger.txt";
-	// ±í¿ìÕÕÎÄ¼ş Â·¾¶
+	// è¡¨å¿«ç…§æ–‡ä»¶ è·¯å¾„
 	public final static String SNAPS_DIR = ConstantsUI.CURRENT_DIR + File.separator + "snaps";
-	// ±í¿ìÕÕÎÄ¼ş±¸·İ Â·¾¶
+	// è¡¨å¿«ç…§æ–‡ä»¶å¤‡ä»½ è·¯å¾„
 	public final static String SNAPS_BAK_DIR = ConstantsUI.CURRENT_DIR + File.separator + "snaps_bak";
-	// sqlÈÕÖ¾ÎÄ¼şÂ·¾¶
+	// sqlæ—¥å¿—æ–‡ä»¶è·¯å¾„
 	public final static String LOG_SQL_DIR = ConstantsUI.CURRENT_DIR + File.separator + "log_SQL";
-	// sqlÈÕÖ¾ÎÄ¼ş
+	// sqlæ—¥å¿—æ–‡ä»¶
 	public final static String LOG_SQL = ConstantsUI.CURRENT_DIR + File.separator + "log_SQL" + File.separator
 			+ "log_sql.csv";
 
-	// mysqlÕû¿â±¸·İbatÎÄ¼şÂ·¾¶
+	// mysqlæ•´åº“å¤‡ä»½batæ–‡ä»¶è·¯å¾„
 	public final static String BAT_DIR_MYSQL = ConstantsUI.CURRENT_DIR + File.separator + "DB_Backup" + File.separator
 			+ "mysql_backup.bat";
 
-	// mysql±í±¸·İsqlÎÄ¼şÂ·¾¶
+	// mysqlè¡¨å¤‡ä»½sqlæ–‡ä»¶è·¯å¾„
 	public final static String MYSQL_TABLE_BACKUP_SQL_FILE = ConstantsUI.CURRENT_DIR + File.separator + "DB_Backup"
 			+ File.separator + "mysql_table_backup.sql";
 
-	// mysql±¸·İsqlÎÄ¼şÂ·¾¶
+	// mysqlå¤‡ä»½sqlæ–‡ä»¶è·¯å¾„
 	public final static String PATH_MYSQL_BAK = ConstantsUI.CURRENT_DIR + File.separator + "DB_Backup" + File.separator
 			+ "Target";
 
 	/**
-	 * ÕıÔò±í´ïÊ½
+	 * æ­£åˆ™è¡¨è¾¾å¼
 	 */
-	// triggerÅäÖÃÎÄ¼ş£¬½âÎö±íÃûµÄÕıÔò
+	// triggeré…ç½®æ–‡ä»¶ï¼Œè§£æè¡¨åçš„æ­£åˆ™
 	public final static String REGEX_TRIGGER_TABLE = "<([^<>]+)>";
-	// triggerÅäÖÃÎÄ¼ş£¬½âÎö±íÖ÷¼üµÄÕıÔò
+	// triggeré…ç½®æ–‡ä»¶ï¼Œè§£æè¡¨ä¸»é”®çš„æ­£åˆ™
 	public final static String REGEX_TRIGGER_PRIM_KEY = "\\(([^()]+)\\)";
-	// triggerÅäÖÃÎÄ¼ş£¬½âÎö±í×Ö¶ÎµÄÕıÔò
+	// triggeré…ç½®æ–‡ä»¶ï¼Œè§£æè¡¨å­—æ®µçš„æ­£åˆ™
 	public final static String REGEX_TRIGGER_FIELDS = "\\{([^{}]+)\\}";
-	// triggerÅäÖÃÎÄ¼ş£¬½âÎö¡°ÆäËûÌõ¼ş»ò±£Áô¡±µÄÕıÔò
+	// triggeré…ç½®æ–‡ä»¶ï¼Œè§£æâ€œå…¶ä»–æ¡ä»¶æˆ–ä¿ç•™â€çš„æ­£åˆ™
 	public final static String REGEX_TRIGGER_OTHER = "\\[([^\\[\\]]+)\\]";
 
 }

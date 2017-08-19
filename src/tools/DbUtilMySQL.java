@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 
 /**
- * MySQLÊı¾İ¿â¹¤¾ß£¬µ¥Àı£¬³Ö¾ÃÁ¬½Ó
+ * MySQLæ•°æ®åº“å·¥å…·ï¼Œå•ä¾‹ï¼ŒæŒä¹…è¿æ¥
  *
  * @author Bob
  */
@@ -24,14 +24,14 @@ public class DbUtilMySQL {
     private static Logger logger = Logger.getLogger(DbUtilMySQL.class);
 
     /**
-     * Ë½ÓĞµÄ¹¹Ôì
+     * ç§æœ‰çš„æ„é€ 
      */
     private DbUtilMySQL() {
         loadConfig();
     }
 
     /**
-     * »ñÈ¡ÊµÀı£¬Ïß³Ì°²È«
+     * è·å–å®ä¾‹ï¼Œçº¿ç¨‹å®‰å…¨
      *
      * @return
      */
@@ -44,7 +44,7 @@ public class DbUtilMySQL {
     }
 
     /**
-     * ´ÓÅäÖÃÎÄ¼ş¼ÓÔØÉèÖÃÊı¾İ¿âĞÅÏ¢
+     * ä»é…ç½®æ–‡ä»¶åŠ è½½è®¾ç½®æ•°æ®åº“ä¿¡æ¯
      */
     private void loadConfig() {
         try {
@@ -63,7 +63,7 @@ public class DbUtilMySQL {
     }
 
     /**
-     * »ñÈ¡Á¬½Ó£¬Ïß³Ì°²È«
+     * è·å–è¿æ¥ï¼Œçº¿ç¨‹å®‰å…¨
      *
      * @return
      * @throws SQLException
@@ -79,7 +79,7 @@ public class DbUtilMySQL {
             logger.error(PropertyUtil.getProperty("ds.ui.database.to.err.decode") + e.toString());
             e.printStackTrace();
         }
-        // µ±DBÅäÖÃ±ä¸üÊ±ÖØĞÂ»ñÈ¡
+        // å½“DBé…ç½®å˜æ›´æ—¶é‡æ–°è·å–
         if (!ConstantsTools.CONFIGER.getHostTo().equals(DBUrl) || !ConstantsTools.CONFIGER.getNameTo().equals(DBName)
                 || !ConstantsTools.CONFIGER.getUserTo().equals(DBUser)
                 || !ConstantsTools.CONFIGER.getPasswordTo().equals(DBPassword)) {
@@ -87,16 +87,16 @@ public class DbUtilMySQL {
             // "jdbc:mysql://localhost/pxp2p_branch"
             connection = DriverManager.getConnection(
                     "jdbc:mysql://" + DBUrl + "/" + DBName + "?useUnicode=true&characterEncoding=utf8", user, password);
-            // °ÑÊÂÎñÌá½»·½Ê½¸ÄÎªÊÖ¹¤Ìá½»
+            // æŠŠäº‹åŠ¡æäº¤æ–¹å¼æ”¹ä¸ºæ‰‹å·¥æäº¤
             connection.setAutoCommit(false);
         }
 
-        // µ±connectionÊ§Ğ§Ê±ÖØĞÂ»ñÈ¡
+        // å½“connectionå¤±æ•ˆæ—¶é‡æ–°è·å–
         if (connection == null || connection.isValid(10) == false) {
             // "jdbc:mysql://localhost/pxp2p_branch"
             connection = DriverManager.getConnection(
                     "jdbc:mysql://" + DBUrl + "/" + DBName + "?useUnicode=true&characterEncoding=utf8", user, password);
-            // °ÑÊÂÎñÌá½»·½Ê½¸ÄÎªÊÖ¹¤Ìá½»
+            // æŠŠäº‹åŠ¡æäº¤æ–¹å¼æ”¹ä¸ºæ‰‹å·¥æäº¤
             connection.setAutoCommit(false);
         }
 
@@ -107,7 +107,7 @@ public class DbUtilMySQL {
     }
 
     /**
-     * ²âÊÔÁ¬½Ó£¬Ïß³Ì°²È« ²ÎÊı´ÓÅäÖÃÎÄ¼ş»ñÈ¡
+     * æµ‹è¯•è¿æ¥ï¼Œçº¿ç¨‹å®‰å…¨ å‚æ•°ä»é…ç½®æ–‡ä»¶è·å–
      *
      * @return
      * @throws SQLException
@@ -126,7 +126,7 @@ public class DbUtilMySQL {
             e.printStackTrace();
         }
         connection = DriverManager.getConnection("jdbc:mysql://" + DBUrl + "/" + DBName, user, password);
-        // °ÑÊÂÎñÌá½»·½Ê½¸ÄÎªÊÖ¹¤Ìá½»
+        // æŠŠäº‹åŠ¡æäº¤æ–¹å¼æ”¹ä¸ºæ‰‹å·¥æäº¤
         connection.setAutoCommit(false);
 
         if (connection == null) {
@@ -136,7 +136,7 @@ public class DbUtilMySQL {
     }
 
     /**
-     * ²âÊÔÁ¬½Ó£¬Ïß³Ì°²È« ²ÎÊı´ÓÈë²Î»ñÈ¡
+     * æµ‹è¯•è¿æ¥ï¼Œçº¿ç¨‹å®‰å…¨ å‚æ•°ä»å…¥å‚è·å–
      *
      * @return
      * @throws SQLException
@@ -146,7 +146,7 @@ public class DbUtilMySQL {
         loadConfig();
         // "jdbc:mysql://localhost/pxp2p_branch"
         connection = DriverManager.getConnection("jdbc:mysql://" + DBUrl + "/" + DBName, DBUser, DBPassword);
-        // °ÑÊÂÎñÌá½»·½Ê½¸ÄÎªÊÖ¹¤Ìá½»
+        // æŠŠäº‹åŠ¡æäº¤æ–¹å¼æ”¹ä¸ºæ‰‹å·¥æäº¤
         connection.setAutoCommit(false);
 
         if (connection == null) {
@@ -156,20 +156,20 @@ public class DbUtilMySQL {
     }
 
     /**
-     * »ñÈ¡Êı¾İ¿âÉùÃ÷£¬Ë½ÓĞ£¬Ïß³Ì°²È«
+     * è·å–æ•°æ®åº“å£°æ˜ï¼Œç§æœ‰ï¼Œçº¿ç¨‹å®‰å…¨
      *
      * @throws SQLException
      */
     private synchronized void getStatement() throws SQLException {
         getConnection();
-        // ½öµ±statementÊ§Ğ§Ê±²ÅÖØĞÂ´´½¨
+        // ä»…å½“statementå¤±æ•ˆæ—¶æ‰é‡æ–°åˆ›å»º
         if (statement == null || statement.isClosed() == true) {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         }
     }
 
     /**
-     * ¹Ø±Õ£¨½á¹û¼¯¡¢ÉùÃ÷¡¢Á¬½Ó£©£¬Ïß³Ì°²È«
+     * å…³é—­ï¼ˆç»“æœé›†ã€å£°æ˜ã€è¿æ¥ï¼‰ï¼Œçº¿ç¨‹å®‰å…¨
      *
      * @throws SQLException
      */
@@ -189,7 +189,7 @@ public class DbUtilMySQL {
     }
 
     /**
-     * Ö´ĞĞ²éÑ¯£¬Ïß³Ì°²È«
+     * æ‰§è¡ŒæŸ¥è¯¢ï¼Œçº¿ç¨‹å®‰å…¨
      *
      * @param sql
      * @return
@@ -206,7 +206,7 @@ public class DbUtilMySQL {
     }
 
     /**
-     * Ö´ĞĞ¸üĞÂ£¬Ïß³Ì°²È«
+     * æ‰§è¡Œæ›´æ–°ï¼Œçº¿ç¨‹å®‰å…¨
      *
      * @param sql
      * @return

@@ -18,38 +18,38 @@ import java.util.ArrayList;
 import com.opencsv.CSVReader;
 
 /**
- * ÎÄ¼ş¹¤¾ßÀà
+ * æ–‡ä»¶å·¥å…·ç±»
  * 
  * @author Bob
  *
  */
 public class FileUtils {
 	/**
-	 * ¸´ÖÆÎÄ¼ş
+	 * å¤åˆ¶æ–‡ä»¶
 	 * 
 	 * @param sourceFile
 	 * @param targetFile
 	 * @throws IOException
 	 */
 	public static void copyFile(File sourceFile, File targetFile) throws IOException {
-		// ĞÂ½¨ÎÄ¼şÊäÈëÁ÷²¢¶ÔËü½øĞĞ»º³å
+		// æ–°å»ºæ–‡ä»¶è¾“å…¥æµå¹¶å¯¹å®ƒè¿›è¡Œç¼“å†²
 		FileInputStream input = new FileInputStream(sourceFile);
 		BufferedInputStream inBuff = new BufferedInputStream(input);
 
-		// ĞÂ½¨ÎÄ¼şÊä³öÁ÷²¢¶ÔËü½øĞĞ»º³å
+		// æ–°å»ºæ–‡ä»¶è¾“å‡ºæµå¹¶å¯¹å®ƒè¿›è¡Œç¼“å†²
 		FileOutputStream output = new FileOutputStream(targetFile);
 		BufferedOutputStream outBuff = new BufferedOutputStream(output);
 
-		// »º³åÊı×é
+		// ç¼“å†²æ•°ç»„
 		byte[] b = new byte[1024 * 5];
 		int len;
 		while ((len = inBuff.read(b)) != -1) {
 			outBuff.write(b, 0, len);
 		}
-		// Ë¢ĞÂ´Ë»º³åµÄÊä³öÁ÷
+		// åˆ·æ–°æ­¤ç¼“å†²çš„è¾“å‡ºæµ
 		outBuff.flush();
 
-		// ¹Ø±ÕÁ÷
+		// å…³é—­æµ
 		inBuff.close();
 		outBuff.close();
 		output.close();
@@ -57,29 +57,29 @@ public class FileUtils {
 	}
 
 	/**
-	 * ¸´ÖÆÎÄ¼ş¼Ğ
+	 * å¤åˆ¶æ–‡ä»¶å¤¹
 	 * 
 	 * @param sourceDir
 	 * @param targetDir
 	 * @throws IOException
 	 */
 	public static void copyDirectiory(String sourceDir, String targetDir) throws IOException {
-		// ĞÂ½¨Ä¿±êÄ¿Â¼
+		// æ–°å»ºç›®æ ‡ç›®å½•
 		(new File(targetDir)).mkdirs();
-		// »ñÈ¡Ô´ÎÄ¼ş¼Ğµ±Ç°ÏÂµÄÎÄ¼ş»òÄ¿Â¼
+		// è·å–æºæ–‡ä»¶å¤¹å½“å‰ä¸‹çš„æ–‡ä»¶æˆ–ç›®å½•
 		File[] file = (new File(sourceDir)).listFiles();
 		for (int i = 0; i < file.length; i++) {
 			if (file[i].isFile()) {
-				// Ô´ÎÄ¼ş
+				// æºæ–‡ä»¶
 				File sourceFile = file[i];
-				// Ä¿±êÎÄ¼ş
+				// ç›®æ ‡æ–‡ä»¶
 				File targetFile = new File(new File(targetDir).getAbsolutePath() + File.separator + file[i].getName());
 				copyFile(sourceFile, targetFile);
 			}
 			if (file[i].isDirectory()) {
-				// ×¼±¸¸´ÖÆµÄÔ´ÎÄ¼ş¼Ğ
+				// å‡†å¤‡å¤åˆ¶çš„æºæ–‡ä»¶å¤¹
 				String dir1 = sourceDir + "/" + file[i].getName();
-				// ×¼±¸¸´ÖÆµÄÄ¿±êÎÄ¼ş¼Ğ
+				// å‡†å¤‡å¤åˆ¶çš„ç›®æ ‡æ–‡ä»¶å¤¹
 				String dir2 = targetDir + "/" + file[i].getName();
 				copyDirectiory(dir1, dir2);
 			}
@@ -87,7 +87,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * ¼ÆËãÎÄ¼şµÄ MD5 Öµ
+	 * è®¡ç®—æ–‡ä»¶çš„ MD5 å€¼
 	 * 
 	 * @param file
 	 * @return
@@ -122,7 +122,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * ¼ÆËãÎÄ¼şµÄSHA-1Öµ
+	 * è®¡ç®—æ–‡ä»¶çš„SHA-1å€¼
 	 * 
 	 * @param file
 	 * @return
@@ -156,7 +156,7 @@ public class FileUtils {
 	}
 
 	/***
-	 * Çå¿ÕÎÄ¼ş¼Ğ
+	 * æ¸…ç©ºæ–‡ä»¶å¤¹
 	 * 
 	 * @param dir
 	 */
@@ -169,10 +169,10 @@ public class FileUtils {
 	}
 
 	/**
-	 * ¶ÁÈ¡csvÎÄ¼şµ½List
+	 * è¯»å–csvæ–‡ä»¶åˆ°List
 	 * 
 	 * @param csvFile
-	 * @return ÄÚÈİList£¨Ã¿ĞĞµÄ×Ö·û´®Êı×é£©
+	 * @return å†…å®¹Listï¼ˆæ¯è¡Œçš„å­—ç¬¦ä¸²æ•°ç»„ï¼‰
 	 * @throws IOException
 	 */
 	public static ArrayList<String[]> getCsvFileContentList(File csvFile) throws IOException {
@@ -181,10 +181,10 @@ public class FileUtils {
 		ArrayList<String[]> list = new ArrayList<String[]>();
 
 		try {
-			// ³õÊ¼»¯reader
+			// åˆå§‹åŒ–reader
 			fReader = new FileReader(csvFile);
 			csvReader = new CSVReader(fReader);
-			// ¶ÁÈ¡½âÎöcsvÎÄ¼ş
+			// è¯»å–è§£æcsvæ–‡ä»¶
 			list = (ArrayList<String[]>) csvReader.readAll();
 			return list;
 
@@ -211,10 +211,10 @@ public class FileUtils {
 	}
 
 	/**
-	 * ¶ÁÈ¡sqlÎÄ¼şµ½List
+	 * è¯»å–sqlæ–‡ä»¶åˆ°List
 	 * 
 	 * @param sqlFile
-	 * @return ÄÚÈİList£¨Ã¿ĞĞµÄ×Ö·û´®£©
+	 * @return å†…å®¹Listï¼ˆæ¯è¡Œçš„å­—ç¬¦ä¸²ï¼‰
 	 * @throws IOException
 	 */
 	public static ArrayList<String> getSqlFileContentList(File sqlFile) throws IOException {
@@ -222,17 +222,17 @@ public class FileUtils {
 
 		BufferedReader br = null;
 		try {
-			// ³õÊ¼»¯reader
+			// åˆå§‹åŒ–reader
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(sqlFile), "UTF-8"));
 			String lineTxt = null;
 			while ((lineTxt = br.readLine()) != null) {
 				lineTxt = lineTxt.trim();
 				if ("".equals(lineTxt) || lineTxt.startsWith("//")) {
-					// Ìø¹ı×¢ÊÍºÍ¿ÕĞĞ
+					// è·³è¿‡æ³¨é‡Šå’Œç©ºè¡Œ
 					continue;
 				} else {
 					if (lineTxt.contains("//")) {
-						// È¥µô×¢ÊÍ
+						// å»æ‰æ³¨é‡Š
 						lineTxt = lineTxt.substring(0, lineTxt.indexOf("//")).trim();
 					}
 					list.add(lineTxt);
@@ -256,7 +256,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * ×ª»»ÎÄ¼ş´óĞ¡
+	 * è½¬æ¢æ–‡ä»¶å¤§å°
 	 * 
 	 * @param fileS
 	 * @return

@@ -4,7 +4,7 @@ import UI.panel.StatusPanel;
 import tools.*;
 
 /**
- * ¶¨Ê±ÈÎÎñÖ´ĞĞÆ÷£¬¼Ì³ĞÓÚÖ´ĞĞÆ÷Ïß³ÌÀà
+ * å®šæ—¶ä»»åŠ¡æ‰§è¡Œå™¨ï¼Œç»§æ‰¿äºæ‰§è¡Œå™¨çº¿ç¨‹ç±»
  *
  * @author Bob
  */
@@ -15,48 +15,48 @@ public class ScheduleExecuteThread extends ExecuteThread {
             StatusPanel.isRunning = true;
             this.setName("ScheduleExecuteThread");
             StatusPanel.buttonStartNow.setEnabled(false);
-            long enterTime = System.currentTimeMillis(); // ºÁÃëÊı
+            long enterTime = System.currentTimeMillis(); // æ¯«ç§’æ•°
             StatusPanel.progressTotal.setMaximum(6);
-            // ³õÊ¼»¯±äÁ¿
+            // åˆå§‹åŒ–å˜é‡
             init();
-            // ²âÊÔÁ¬½Ó
+            // æµ‹è¯•è¿æ¥
             boolean isLinked = testLink();
 
             if (isLinked) {
                 StatusPanel.progressTotal.setValue(1);
-                // ·ÖÎöÅäÖÃÎÄ¼ş
+                // åˆ†æé…ç½®æ–‡ä»¶
                 boolean isAnalyseSuccess = analyseConfigFile();
                 if (isAnalyseSuccess) {
                     StatusPanel.progressTotal.setValue(2);
-                    // ±¸·İ
+                    // å¤‡ä»½
                     if ("true".equals(ConstantsTools.CONFIGER.getAutoBak())) {
                         backUp();
                     }
                     StatusPanel.progressTotal.setValue(3);
-                    // ½¨Á¢ĞÂ¿ìÕÕ
+                    // å»ºç«‹æ–°å¿«ç…§
                     boolean isSnapSuccess = newSnap();
                     if (isSnapSuccess) {
                         StatusPanel.progressTotal.setValue(4);
-                        // ¶Ô±È¿ìÕÕ,²¢¸ù¾İ¶Ô±È½á¹ûÉú³ÉSQL
+                        // å¯¹æ¯”å¿«ç…§,å¹¶æ ¹æ®å¯¹æ¯”ç»“æœç”ŸæˆSQL
                         boolean isDiffSuccess = diffSnap();
                         if (isDiffSuccess) {
                             StatusPanel.progressTotal.setValue(5);
-                            // Ö´ĞĞSQL
+                            // æ‰§è¡ŒSQL
                             boolean isExecuteSuccess = executeSQL();
                             if (isExecuteSuccess) {
                                 StatusPanel.progressTotal.setValue(6);
 
-                                // ÉèÖÃ³ÖĞøÊ±¼ä
-                                long leaveTime = System.currentTimeMillis(); // ºÁÃëÊı
-                                float minutes = (float) (leaveTime - enterTime) / 1000; // ÃëÊı
+                                // è®¾ç½®æŒç»­æ—¶é—´
+                                long leaveTime = System.currentTimeMillis(); // æ¯«ç§’æ•°
+                                float minutes = (float) (leaveTime - enterTime) / 1000; // ç§’æ•°
                                 StatusLog.setKeepTime(String.valueOf(minutes));
-                                // ÉèÖÃ³É¹¦´ÎÊı+1
+                                // è®¾ç½®æˆåŠŸæ¬¡æ•°+1
                                 String success = String
                                         .valueOf((Long.parseLong(ConstantsTools.CONFIGER.getSuccessTime()) + 1));
                                 StatusLog.setSuccess(success);
                                 StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.currentSyncFinish"), LogLevel.INFO);
                             } else {
-                                // »Ö¸´¿ìÕÕ±¸·İ
+                                // æ¢å¤å¿«ç…§å¤‡ä»½
                                 SnapManage.recoverSnapBak();
 
                                 String fail = String
@@ -65,7 +65,7 @@ public class ScheduleExecuteThread extends ExecuteThread {
                             }
 
                         } else {
-                            // »Ö¸´¿ìÕÕ±¸·İ
+                            // æ¢å¤å¿«ç…§å¤‡ä»½
                             SnapManage.recoverSnapBak();
 
                             String fail = String.valueOf((Long.parseLong(ConstantsTools.CONFIGER.getFailTime()) + 1));
@@ -73,7 +73,7 @@ public class ScheduleExecuteThread extends ExecuteThread {
                         }
 
                     } else {
-                        // »Ö¸´¿ìÕÕ±¸·İ
+                        // æ¢å¤å¿«ç…§å¤‡ä»½
                         SnapManage.recoverSnapBak();
 
                         String fail = String.valueOf((Long.parseLong(ConstantsTools.CONFIGER.getFailTime()) + 1));
@@ -89,7 +89,7 @@ public class ScheduleExecuteThread extends ExecuteThread {
                 String fail = String.valueOf((Long.parseLong(ConstantsTools.CONFIGER.getFailTime()) + 1));
                 StatusLog.setFail(fail);
             }
-            // ÉèÖÃÏÔÊ¾ÏÂÒ»´ÎÖ´ĞĞÊ±¼ä
+            // è®¾ç½®æ˜¾ç¤ºä¸‹ä¸€æ¬¡æ‰§è¡Œæ—¶é—´
             StatusPanel.labelNextTime.setText(PropertyUtil.getProperty("ds.ui.schedule.nextTime") + Utils.getNextSyncTime());
             StatusPanel.isRunning = false;
         }

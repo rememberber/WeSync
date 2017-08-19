@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
- * ×Ô¶¨Òå°´Å¥Àà£¬Ö§³Ö×Ô¶¨ÒåÄ¬ÈÏÍ¼±ê¡¢¼¤»îÍ¼±ê¡¢Ê§Ğ§Í¼±êºÍtipÌáÊ¾
+ * è‡ªå®šä¹‰æŒ‰é’®ç±»ï¼Œæ”¯æŒè‡ªå®šä¹‰é»˜è®¤å›¾æ ‡ã€æ¿€æ´»å›¾æ ‡ã€å¤±æ•ˆå›¾æ ‡å’Œtipæç¤º
  * 
  * @author Bob
  *
@@ -18,16 +18,16 @@ public class MyIconButton extends JButton {
 	private String tip;
 
 	/**
-	 * ¹¹Ôì
+	 * æ„é€ 
 	 * 
 	 * @param iconNormal
-	 *            Ä¬ÈÏÍ¼±ê
+	 *            é»˜è®¤å›¾æ ‡
 	 * @param iconEnable
-	 *            ¼¤»îÍ¼±ê
+	 *            æ¿€æ´»å›¾æ ‡
 	 * @param iconDisable
-	 *            Ê§Ğ§Í¼±ê
+	 *            å¤±æ•ˆå›¾æ ‡
 	 * @param tip
-	 *            ÌáÊ¾
+	 *            æç¤º
 	 */
 	public MyIconButton(ImageIcon iconNormal, ImageIcon iconEnable, ImageIcon iconDisable, String tip) {
 		super(iconNormal);
@@ -41,7 +41,7 @@ public class MyIconButton extends JButton {
 	}
 
 	/**
-	 * ³õÊ¼»¯£¬ÉèÖÃ°´Å¥ÊôĞÔ£ºÎŞ±ß£¬ÎŞ½¹µãäÖÈ¾£¬ÎŞÄÚÈİÇø£¬¸÷±ß¾à0
+	 * åˆå§‹åŒ–ï¼Œè®¾ç½®æŒ‰é’®å±æ€§ï¼šæ— è¾¹ï¼Œæ— ç„¦ç‚¹æ¸²æŸ“ï¼Œæ— å†…å®¹åŒºï¼Œå„è¾¹è·0
 	 */
 	private void initialize() {
 		this.setBorderPainted(false);
@@ -52,7 +52,7 @@ public class MyIconButton extends JButton {
 	}
 
 	/**
-	 * ÉèÖÃ°´Å¥Í¼±ê£ºÊó±êÒÆ¹ı¡¢°´Ñ¹¡¢Ê§Ğ§µÄÍ¼±ê ºÍÉèÖÃ°´Å¥ÌáÊ¾
+	 * è®¾ç½®æŒ‰é’®å›¾æ ‡ï¼šé¼ æ ‡ç§»è¿‡ã€æŒ‰å‹ã€å¤±æ•ˆçš„å›¾æ ‡ å’Œè®¾ç½®æŒ‰é’®æç¤º
 	 */
 	private void setUp() {
 		this.setRolloverIcon(iconEnable);

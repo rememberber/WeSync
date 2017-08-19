@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import UI.panel.StatusPanel;
 
 /**
- * ÈÕÖ¾·â×°Àà£¬¿ØÖÆÏµÍ³ĞÅÏ¢£¨½çÃæºÍlogÎÄ¼ş£©µÄ¼ÇÂ¼
+ * æ—¥å¿—å°è£…ç±»ï¼Œæ§åˆ¶ç³»ç»Ÿä¿¡æ¯ï¼ˆç•Œé¢å’Œlogæ–‡ä»¶ï¼‰çš„è®°å½•
  *
  * @author Bob
  */
@@ -13,7 +13,7 @@ public class StatusLog {
     private static Logger logger = Logger.getLogger(StatusLog.class);
 
     /**
-     * ÉèÖÃ×´Ì¬Ãæ°å×´Ì¬ĞÅÏ¢
+     * è®¾ç½®çŠ¶æ€é¢æ¿çŠ¶æ€ä¿¡æ¯
      *
      * @param status
      */
@@ -22,7 +22,7 @@ public class StatusLog {
     }
 
     /**
-     * ÉèÖÃ×´Ì¬Ãæ°å×´Ì¬µÄÏêÏ¸ĞÅÏ¢+Ğ´ÈëÈÕÖ¾ÎÄ¼ş£¨DebugÄ£Ê½ÏÂ£©
+     * è®¾ç½®çŠ¶æ€é¢æ¿çŠ¶æ€çš„è¯¦ç»†ä¿¡æ¯+å†™å…¥æ—¥å¿—æ–‡ä»¶ï¼ˆDebugæ¨¡å¼ä¸‹ï¼‰
      *
      * @param statusDetail
      * @param level
@@ -48,7 +48,7 @@ public class StatusLog {
     }
 
     /**
-     * ÉèÖÃ×´Ì¬Ãæ°åÖĞÉÏÒ»´ÎÍ¬²½Ê±¼ä£¬²¢Ğ´Èëconf
+     * è®¾ç½®çŠ¶æ€é¢æ¿ä¸­ä¸Šä¸€æ¬¡åŒæ­¥æ—¶é—´ï¼Œå¹¶å†™å…¥conf
      *
      * @param lastTime
      */
@@ -63,7 +63,7 @@ public class StatusLog {
     }
 
     /**
-     * ÉèÖÃ×´Ì¬Ãæ°åÖĞµÄ³ÖĞøÊ±¼ä£¬²¢Ğ´Èëconf
+     * è®¾ç½®çŠ¶æ€é¢æ¿ä¸­çš„æŒç»­æ—¶é—´ï¼Œå¹¶å†™å…¥conf
      *
      * @param keepTime
      */
@@ -79,7 +79,7 @@ public class StatusLog {
     }
 
     /**
-     * ÉèÖÃ×´Ì¬Ãæ°åÖĞÏÂÒ»´ÎÍ¬²½Ê±¼ä
+     * è®¾ç½®çŠ¶æ€é¢æ¿ä¸­ä¸‹ä¸€æ¬¡åŒæ­¥æ—¶é—´
      *
      * @param nextTime
      */
@@ -88,7 +88,7 @@ public class StatusLog {
     }
 
     /**
-     * ÉèÖÃ×´Ì¬Ãæ°åÖĞµÄ³É¹¦×Ü´ÎÊı£¬²¢Ğ´Èëconf
+     * è®¾ç½®çŠ¶æ€é¢æ¿ä¸­çš„æˆåŠŸæ€»æ¬¡æ•°ï¼Œå¹¶å†™å…¥conf
      *
      * @param success
      */
@@ -103,7 +103,7 @@ public class StatusLog {
     }
 
     /**
-     * ÉèÖÃ×´Ì¬Ãæ°åÖĞµÄÊ§°Ü×Ü´ÎÊı£¬²¢Ğ´Èëconf
+     * è®¾ç½®çŠ¶æ€é¢æ¿ä¸­çš„å¤±è´¥æ€»æ¬¡æ•°ï¼Œå¹¶å†™å…¥conf
      *
      * @param fail
      */

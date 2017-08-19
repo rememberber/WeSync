@@ -23,19 +23,19 @@ public class TriggerManage {
 
         StringBuffer sql = new StringBuffer();
 
-        // µ±Ç°record,Key:ÁĞÃûValue:ÁĞÖµ
+        // å½“å‰record,Key:åˆ—åValue:åˆ—å€¼
         Map<String, String> recordNowMap = new HashMap<>();
         for (int i = 0; i < headerNow.length; i++) {
             recordNowMap.put(headerNow[i], recordsLineNow[i]);
         }
 
-        // Ô­record,Key:ÁĞÃûValue:ÁĞÖµ
+        // åŸrecord,Key:åˆ—åValue:åˆ—å€¼
         Map<String, String> recordBeforeMap = new HashMap<>();
         for (int i = 0; i < headerNow.length; i++) {
             recordBeforeMap.put(headerNow[i], recordsLineBefore[i]);
         }
 
-        // ´¥·¢µÄÄ¿±ê±í
+        // è§¦å‘çš„ç›®æ ‡è¡¨
         String targetTables[] = ExecuteThread.triggerMap.get(snapName);
         for (String targetTable : targetTables) {
             ArrayList<String> list = ExecuteThread.tableFieldMap.get(targetTable + ".UPDATE");
@@ -58,13 +58,13 @@ public class TriggerManage {
                                       String[] recordsLineNow) throws SQLException {
         StringBuffer sql = new StringBuffer();
 
-        // µ±Ç°record,Key:ÁĞÃûValue:ÁĞÖµ
+        // å½“å‰record,Key:åˆ—åValue:åˆ—å€¼
         Map<String, String> recordNowMap = new HashMap<>();
         for (int i = 0; i < headerNow.length; i++) {
             recordNowMap.put(headerNow[i], recordsLineNow[i]);
         }
 
-        // ´¥·¢µÄÄ¿±ê±í
+        // è§¦å‘çš„ç›®æ ‡è¡¨
         String targetTables[] = ExecuteThread.triggerMap.get(snapName);
         for (String targetTable : targetTables) {
             ArrayList<String> list = null;
@@ -80,12 +80,12 @@ public class TriggerManage {
     public static String getSqlDelete(String snapName, Map<String, String> primKeyAndValueMap, String[] headerNow,
                                       String[] recordsLineBefore) throws SQLException {
         StringBuffer sql = new StringBuffer();
-        // Ô­record,Key:ÁĞÃûValue:ÁĞÖµ
+        // åŸrecord,Key:åˆ—åValue:åˆ—å€¼
         Map<String, String> recordBeforeMap = new HashMap<>();
         for (int i = 0; i < headerNow.length; i++) {
             recordBeforeMap.put(headerNow[i], recordsLineBefore[i]);
         }
-        // ´¥·¢µÄÄ¿±ê±í
+        // è§¦å‘çš„ç›®æ ‡è¡¨
         String targetTables[] = ExecuteThread.triggerMap.get(snapName);
         for (String targetTable : targetTables) {
             ArrayList<String> list = ExecuteThread.tableFieldMap.get(targetTable + ".DELETE");
@@ -98,7 +98,7 @@ public class TriggerManage {
     }
 
     /**
-     * ½âÎösqlÖĞµÄ¹«Ê½
+     * è§£æsqlä¸­çš„å…¬å¼
      *
      * @param string
      * @param recordNowMap
@@ -111,9 +111,9 @@ public class TriggerManage {
         SQLServer = DbUtilSQLServer.getInstance();
 
         if (string.contains("this.")) {
-            // µÚÒ»¼¶±ğ¹«Ê½£ºÌæ»»this.µÄÄÚÈİ
-            // this.***£ºÈ¡µ±Ç°¿ìÕÕ¸ÃÌõ¼ÇÂ¼µÄÄ³×Ö¶ÎÖµ
-            // before.***£ºÈ¡Ô­¿ìÕÕ¸ÃÌõ¼ÇÂ¼µÄÄ³×Ö¶ÎÖµ£¨½öUPDATEºÍDELETEÊ±»áÓÃµ½£©
+            // ç¬¬ä¸€çº§åˆ«å…¬å¼ï¼šæ›¿æ¢this.çš„å†…å®¹
+            // this.***ï¼šå–å½“å‰å¿«ç…§è¯¥æ¡è®°å½•çš„æŸå­—æ®µå€¼
+            // before.***ï¼šå–åŸå¿«ç…§è¯¥æ¡è®°å½•çš„æŸå­—æ®µå€¼ï¼ˆä»…UPDATEå’ŒDELETEæ—¶ä¼šç”¨åˆ°ï¼‰
             Pattern p = Pattern.compile("this\\.[.\\w]+");
             Matcher matcher = p.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
@@ -128,9 +128,9 @@ public class TriggerManage {
             }
         }
         if (string.contains("before.")) {
-            // µÚÒ»¼¶±ğ¹«Ê½£ºÌæ»»before.µÄÄÚÈİ
-            // this.***£ºÈ¡µ±Ç°¿ìÕÕ¸ÃÌõ¼ÇÂ¼µÄÄ³×Ö¶ÎÖµ
-            // before.***£ºÈ¡Ô­¿ìÕÕ¸ÃÌõ¼ÇÂ¼µÄÄ³×Ö¶ÎÖµ£¨½öUPDATEºÍDELETEÊ±»áÓÃµ½£©
+            // ç¬¬ä¸€çº§åˆ«å…¬å¼ï¼šæ›¿æ¢before.çš„å†…å®¹
+            // this.***ï¼šå–å½“å‰å¿«ç…§è¯¥æ¡è®°å½•çš„æŸå­—æ®µå€¼
+            // before.***ï¼šå–åŸå¿«ç…§è¯¥æ¡è®°å½•çš„æŸå­—æ®µå€¼ï¼ˆä»…UPDATEå’ŒDELETEæ—¶ä¼šç”¨åˆ°ï¼‰
             Pattern p = Pattern.compile("before\\.[.\\w]+");
             Matcher matcher = p.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
@@ -145,11 +145,11 @@ public class TriggerManage {
             }
         }
         if (string.contains("$")) {
-            // µÚ¶ş¼¶±ğ¹«Ê½£º
-            // $INCREASE{POSITION_CODE}$£º½«´óÀ¨ºÅÄÚµÄ³Ö¾Ã»¯±äÁ¿µİÔö£¨*ÔÚconfigÎÄ¼şÖĞÉèÖÃ³Ö¾Ã»¯±äÁ¿£©
-            // $PINYIN{}$£º½«´óÀ¨ºÅÄÚµÄºº×Ö×ªÎªÆ´Òô
-            // $SYS_DATE_TIME$£ºÏµÍ³ÈÕÆÚ+Ê±¼ä£¨2016-01-19 17:57:49£©
-            // $SQL{}$£ºÖ´ĞĞ´óÀ¨ºÅÄÚµÄ×Ó²éÑ¯sql£¬·µ»Ø¶ÔÓ¦µÄ²éÑ¯½á¹û£¨½öÏŞÒ»¸ö£©
+            // ç¬¬äºŒçº§åˆ«å…¬å¼ï¼š
+            // $INCREASE{POSITION_CODE}$ï¼šå°†å¤§æ‹¬å·å†…çš„æŒä¹…åŒ–å˜é‡é€’å¢ï¼ˆ*åœ¨configæ–‡ä»¶ä¸­è®¾ç½®æŒä¹…åŒ–å˜é‡ï¼‰
+            // $PINYIN{}$ï¼šå°†å¤§æ‹¬å·å†…çš„æ±‰å­—è½¬ä¸ºæ‹¼éŸ³
+            // $SYS_DATE_TIME$ï¼šç³»ç»Ÿæ—¥æœŸ+æ—¶é—´ï¼ˆ2016-01-19 17:57:49ï¼‰
+            // $SQL{}$ï¼šæ‰§è¡Œå¤§æ‹¬å·å†…çš„å­æŸ¥è¯¢sqlï¼Œè¿”å›å¯¹åº”çš„æŸ¥è¯¢ç»“æœï¼ˆä»…é™ä¸€ä¸ªï¼‰
             Pattern p = Pattern.compile("\\$([^$]+)\\$");
             Matcher matcher = p.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
@@ -191,11 +191,11 @@ public class TriggerManage {
                         para = matcher.group(1);
                     }
                     if ("POSITION_CODE".equals(para)) {
-                        String position_code = ConstantsTools.CONFIGER.getPositionCode();// ´ÓconfigÎÄ¼şÈ¡³ö³Ö¾Ã»¯µÄ²ÎÊıÖµ
+                        String position_code = ConstantsTools.CONFIGER.getPositionCode();// ä»configæ–‡ä»¶å–å‡ºæŒä¹…åŒ–çš„å‚æ•°å€¼
 
-                        string = string.replace(str, String.format("%04d", Integer.parseInt(position_code))); // ²»×ã4Î»ÔÚÇ°Ãæ²¹0
+                        string = string.replace(str, String.format("%04d", Integer.parseInt(position_code))); // ä¸è¶³4ä½åœ¨å‰é¢è¡¥0
 
-                        int p_code = Integer.parseInt(position_code) + 1;// ¼Ó1Ö®ºó½øĞĞ³Ö¾Ã»¯
+                        int p_code = Integer.parseInt(position_code) + 1;// åŠ 1ä¹‹åè¿›è¡ŒæŒä¹…åŒ–
                         try {
                             ConstantsTools.CONFIGER.setPositionCode(String.valueOf(p_code));
                         } catch (Exception e) {
@@ -211,11 +211,11 @@ public class TriggerManage {
         }
 
         if (string.contains("@")) {
-            // µÚÈı¼¶±ğ¹«Ê½£º
-            // @SUB(5,8){}@£º½«´óÀ¨ºÅÄÚµÄ×Ö·û´®´ÓµÚ5¸ö×Ö·û½ØÈ¡µ½µÚ8¸ö×Ö·û
-            // @SUB(5,END){}@£º½«´óÀ¨ºÅÄÚµÄ×Ö·û´®´ÓµÚ5¸ö×Ö·û½ØÈ¡µ½×îºó
-            // @SUB(0,LAST"."){}@£º½«´óÀ¨ºÅÄÚµÄ×Ö·û´®´ÓµÚ0¸ö×Ö·û½ØÈ¡µ½×îºóÒ»¸ö"."
-            // @SUB("a",LAST"a"){}@£º½«´óÀ¨ºÅÄÚµÄ×Ö·û´®´ÓµÚ1¸ö"a"½ØÈ¡µ½×îºóÒ»¸ö"a"£¨²»º¬×ó,²»º¬ÓÒ£©
+            // ç¬¬ä¸‰çº§åˆ«å…¬å¼ï¼š
+            // @SUB(5,8){}@ï¼šå°†å¤§æ‹¬å·å†…çš„å­—ç¬¦ä¸²ä»ç¬¬5ä¸ªå­—ç¬¦æˆªå–åˆ°ç¬¬8ä¸ªå­—ç¬¦
+            // @SUB(5,END){}@ï¼šå°†å¤§æ‹¬å·å†…çš„å­—ç¬¦ä¸²ä»ç¬¬5ä¸ªå­—ç¬¦æˆªå–åˆ°æœ€å
+            // @SUB(0,LAST"."){}@ï¼šå°†å¤§æ‹¬å·å†…çš„å­—ç¬¦ä¸²ä»ç¬¬0ä¸ªå­—ç¬¦æˆªå–åˆ°æœ€åä¸€ä¸ª"."
+            // @SUB("a",LAST"a"){}@ï¼šå°†å¤§æ‹¬å·å†…çš„å­—ç¬¦ä¸²ä»ç¬¬1ä¸ª"a"æˆªå–åˆ°æœ€åä¸€ä¸ª"a"ï¼ˆä¸å«å·¦,ä¸å«å³ï¼‰
             Pattern p = Pattern.compile("\\@([^@]+)\\@");
             Matcher matcher = p.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
@@ -224,7 +224,7 @@ public class TriggerManage {
             }
             for (String str : strs) {
                 if (str.startsWith("@SUB")) {
-                    // ÏÈ»ñÈ¡Òª½ØÈ¡µÄindexºÍ×Ö·û´®ÄÚÈİ
+                    // å…ˆè·å–è¦æˆªå–çš„indexå’Œå­—ç¬¦ä¸²å†…å®¹
                     String indexs[] = null;
                     String strContent = "";
                     p = Pattern.compile("\\(([^()]+)\\)");
@@ -265,9 +265,9 @@ public class TriggerManage {
         }
 
         if (string.contains("#")) {
-            // µÚËÄ¼¶±ğ¹«Ê½£º
-            // #REPLACE("a","b"){}#½«´óÀ¨ºÅÄÚÈİÖĞËùÓĞµÄ"a"Ìæ»»Îª"b"
-            // #CASE(a=b,c=d,e=f){}#£ºÈç¹û´óÀ¨ºÅÀï±ßµÄÄÚÈİÊÇa£¬ÔòÌæ»»Îªb£»Èç¹ûÎªc£¬ÔòÌæ»»Îªd...
+            // ç¬¬å››çº§åˆ«å…¬å¼ï¼š
+            // #REPLACE("a","b"){}#å°†å¤§æ‹¬å·å†…å®¹ä¸­æ‰€æœ‰çš„"a"æ›¿æ¢ä¸º"b"
+            // #CASE(a=b,c=d,e=f){}#ï¼šå¦‚æœå¤§æ‹¬å·é‡Œè¾¹çš„å†…å®¹æ˜¯aï¼Œåˆ™æ›¿æ¢ä¸ºbï¼›å¦‚æœä¸ºcï¼Œåˆ™æ›¿æ¢ä¸ºd...
             Pattern p = Pattern.compile("\\#([^#]+)\\#");
             Matcher matcher = p.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
@@ -276,7 +276,7 @@ public class TriggerManage {
             }
             for (String str : strs) {
                 if (str.startsWith("#REPLACE")) {
-                    // ÏÈ»ñÈ¡ÒªÌæ»»µÄĞÂ¾É×Ö·û´®ºÍÄÚÈİ
+                    // å…ˆè·å–è¦æ›¿æ¢çš„æ–°æ—§å­—ç¬¦ä¸²å’Œå†…å®¹
                     String indexs[] = null;
                     String strContent = "";
                     p = Pattern.compile("\\(([^()]+)\\)");

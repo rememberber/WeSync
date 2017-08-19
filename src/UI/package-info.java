@@ -1,5 +1,5 @@
 /**
- * UI显示层，入口为AppMainWindow，ConstantsUI中包含了涉及主题和语言的常量， panel包为各子面板
+ * UI鏄剧ず灞傦紝鍏ュ彛涓篈ppMainWindow锛孋onstantsUI涓寘鍚簡娑夊強涓婚鍜岃瑷�鐨勫父閲忥紝 panel鍖呬负鍚勫瓙闈㈡澘
  */
 /**
  * @author zhouy

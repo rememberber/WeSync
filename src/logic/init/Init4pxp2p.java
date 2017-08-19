@@ -12,7 +12,7 @@ import java.io.File;
 public class Init4pxp2p {
 
     public static boolean init() {
-        StatusLog.setStatusDetail("¿ªÊ¼³õÊ¼»¯µÚÒ»´Î¿ìÕÕ£¬ÇëÄÍĞÄµÈ´ı¡­¡­", LogLevel.INFO);
+        StatusLog.setStatusDetail("å¼€å§‹åˆå§‹åŒ–ç¬¬ä¸€æ¬¡å¿«ç…§ï¼Œè¯·è€å¿ƒç­‰å¾…â€¦â€¦", LogLevel.INFO);
 
         boolean isSuccess = true;
         DbUtilMySQL mySql = DbUtilMySQL.getInstance();

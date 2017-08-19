@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
- * ±¸·İÃæ°å
+ * å¤‡ä»½é¢æ¿
  *
  * @author Bob
  */
@@ -29,7 +29,7 @@ public class BackupPanel extends JPanel {
     private static Object[][] tableDatas;
 
     /**
-     * ¹¹Ôì
+     * æ„é€ 
      */
     public BackupPanel() {
         initialize();
@@ -39,7 +39,7 @@ public class BackupPanel extends JPanel {
     }
 
     /**
-     * ³õÊ¼»¯Ãæ°å
+     * åˆå§‹åŒ–é¢æ¿
      */
     private void initialize() {
         this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -47,7 +47,7 @@ public class BackupPanel extends JPanel {
     }
 
     /**
-     * ÎªÃæ°åÌí¼Ó×é¼ş
+     * ä¸ºé¢æ¿æ·»åŠ ç»„ä»¶
      */
     private void addComponent() {
 
@@ -56,7 +56,7 @@ public class BackupPanel extends JPanel {
     }
 
     /**
-     * Ãæ°åÉÏ²¿
+     * é¢æ¿ä¸Šéƒ¨
      *
      * @return
      */
@@ -74,12 +74,12 @@ public class BackupPanel extends JPanel {
     }
 
     /**
-     * Ãæ°åÖĞ²¿
+     * é¢æ¿ä¸­éƒ¨
      *
      * @return
      */
     private JPanel getCenterPanel() {
-        // ÖĞ¼äÃæ°å
+        // ä¸­é—´é¢æ¿
         JPanel panelCenter = new JPanel();
         panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(1, 1));
@@ -90,12 +90,12 @@ public class BackupPanel extends JPanel {
     }
 
     /**
-     * Êı¾İ¿âÀ´Ô´GridÃæ°å
+     * æ•°æ®åº“æ¥æºGridé¢æ¿
      *
      * @return
      */
     private JPanel getPanelGridBakFrom() {
-        // À´Ô´±¸·İGrid
+        // æ¥æºå¤‡ä»½Grid
         JPanel panelGridBakFrom = new JPanel();
         panelGridBakFrom.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelGridBakFrom.setLayout(new BorderLayout());
@@ -105,7 +105,7 @@ public class BackupPanel extends JPanel {
         JPanel panelFromTable = new JPanel();
         panelFromTable.setLayout(new BorderLayout());
 
-        // ³õÊ¼»¯¿ØÖÆ×é¼ş
+        // åˆå§‹åŒ–æ§åˆ¶ç»„ä»¶
         JPanel panelFromControlLeft = new JPanel();
         panelFromControlLeft.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 5));
         panelFromControlLeft.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -133,7 +133,7 @@ public class BackupPanel extends JPanel {
 
         panelGridBakFrom.add(panelFromControl, BorderLayout.NORTH);
 
-        // ³õÊ¼»¯±í¸ñ×é¼ş
+        // åˆå§‹åŒ–è¡¨æ ¼ç»„ä»¶
 
         tableFrom = new JTable(tableDatas, new String[]{PropertyUtil.getProperty("ds.ui.backup.table.head0"), PropertyUtil.getProperty("ds.ui.backup.table.head1"), PropertyUtil.getProperty("ds.ui.backup.table.head2")});
         tableFrom.setFont(ConstantsUI.FONT_NORMAL);
@@ -142,7 +142,7 @@ public class BackupPanel extends JPanel {
         tableFrom.setRowHeight(31);
         tableFrom.setGridColor(ConstantsUI.TABLE_LINE_COLOR);
         tableFrom.setSelectionBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
-        // ÉèÖÃÁĞ¿í
+        // è®¾ç½®åˆ—å®½
         tableFrom.getColumnModel().getColumn(0).setPreferredWidth(50);
         tableFrom.getColumnModel().getColumn(0).setMaxWidth(50);
         tableFrom.getColumnModel().getColumn(2).setPreferredWidth(150);

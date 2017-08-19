@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * ¹ØÓÚÃæ°å
+ * å…³äºé¢æ¿
  * 
  * @author Bob
  *
@@ -18,7 +18,7 @@ public class SettingPanelAbout extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * ¹¹Ôì
+	 * æ„é€ 
 	 */
 	public SettingPanelAbout() {
 		initialize();
@@ -26,7 +26,7 @@ public class SettingPanelAbout extends JPanel {
 	}
 
 	/**
-	 * ³õÊ¼»¯
+	 * åˆå§‹åŒ–
 	 */
 	private void initialize() {
 		this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -34,7 +34,7 @@ public class SettingPanelAbout extends JPanel {
 	}
 
 	/**
-	 * Ìí¼Ó×é¼ş
+	 * æ·»åŠ ç»„ä»¶
 	 */
 	private void addComponent() {
 
@@ -44,59 +44,59 @@ public class SettingPanelAbout extends JPanel {
 	}
 
 	/**
-	 * ÖĞ²¿Ãæ°å
+	 * ä¸­éƒ¨é¢æ¿
 	 * 
 	 * @return
 	 */
 	private JPanel getCenterPanel() {
-		// ÖĞ¼äÃæ°å
+		// ä¸­é—´é¢æ¿
 		JPanel panelCenter = new JPanel();
 		panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
 		panelCenter.setLayout(new GridLayout(3, 1));
 
-		// Í¼±ê¡¢°æ±¾Grid
+		// å›¾æ ‡ã€ç‰ˆæœ¬Grid
 		JPanel panelGridIcon = new JPanel();
 		panelGridIcon.setBackground(ConstantsUI.MAIN_BACK_COLOR);
 		panelGridIcon.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
 
-		// ³õÊ¼»¯×é¼ş
+		// åˆå§‹åŒ–ç»„ä»¶
 		MyIconButton icon = new MyIconButton(ConstantsUI.ICON_DATA_SYNC, ConstantsUI.ICON_DATA_SYNC,
 				ConstantsUI.ICON_DATA_SYNC, "");
 		JLabel labelName = new JLabel(ConstantsUI.APP_NAME);
 		JLabel labelVersion = new JLabel(ConstantsUI.APP_VERSION);
 
-		// ×ÖÌå
+		// å­—ä½“
 		labelName.setFont(ConstantsUI.FONT_NORMAL);
 		labelVersion.setFont(ConstantsUI.FONT_NORMAL);
 
-		// ´óĞ¡
+		// å¤§å°
 		Dimension size = new Dimension(200, 30);
 		labelName.setPreferredSize(size);
 		labelVersion.setPreferredSize(size);
 
-		// ×éºÏÔªËØ
+		// ç»„åˆå…ƒç´ 
 		panelGridIcon.add(icon);
 		panelGridIcon.add(labelName);
 		panelGridIcon.add(labelVersion);
 
-		// ½¨Òé°ïÖú Grid
+		// å»ºè®®å¸®åŠ© Grid
 		JPanel panelGridHelp = new JPanel();
 		panelGridHelp.setBackground(ConstantsUI.MAIN_BACK_COLOR);
 		panelGridHelp.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
 
-		// ³õÊ¼»¯×é¼ş
+		// åˆå§‹åŒ–ç»„ä»¶
 		JLabel labelAdvice = new JLabel(PropertyUtil.getProperty("ds.ui.app.advice"));
 		JLabel labelHelp = new JLabel(PropertyUtil.getProperty("ds.ui.app.help"));
 
-		// ×ÖÌå
+		// å­—ä½“
 		labelAdvice.setFont(ConstantsUI.FONT_NORMAL);
 		labelHelp.setFont(ConstantsUI.FONT_NORMAL);
 
-		// ´óĞ¡
+		// å¤§å°
 		labelAdvice.setPreferredSize(ConstantsUI.LABLE_SIZE);
 		labelHelp.setPreferredSize(ConstantsUI.LABLE_SIZE);
 
-		// ×éºÏÔªËØ
+		// ç»„åˆå…ƒç´ 
 		panelGridHelp.add(labelAdvice);
 		panelGridHelp.add(labelHelp);
 
@@ -106,7 +106,7 @@ public class SettingPanelAbout extends JPanel {
 	}
 
 	/**
-	 * µ×²¿Ãæ°å
+	 * åº•éƒ¨é¢æ¿
 	 * 
 	 * @return
 	 */

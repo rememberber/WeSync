@@ -5,7 +5,7 @@ import UI.ConstantsUI;
 import java.io.File;
 
 /**
- * 工具层相关的常量
+ * 宸ュ叿灞傜浉鍏崇殑甯搁噺
  * 
  * @author Bob
  *
@@ -13,18 +13,18 @@ import java.io.File;
 public class ConstantsTools {
 
 	/**
-	 * 配置文件
+	 * 閰嶇疆鏂囦欢
 	 */
-	// 配置文件 路径
+	// 閰嶇疆鏂囦欢 璺緞
 	public final static String PATH_CONFIG = ConstantsUI.CURRENT_DIR + File.separator + "config" + File.separator
 			+ "config.xml";
 
 	/**
-	 * properties路径
+	 * properties璺緞
 	 */
 	public final static String PATH_PROPERTY = ConstantsUI.CURRENT_DIR + File.separator + "config" + File.separator
 			+ "zh-cn.properties";
-	// 配置文件dom实例
+	// 閰嶇疆鏂囦欢dom瀹炰緥
 	public final static ConfigManager CONFIGER = ConfigManager.getConfigManager();
 	// xpath
 	public final static String XPATH_LAST_SYNC_TIME = "//dataSync/status/lastSyncTime";
@@ -55,6 +55,6 @@ public class ConstantsTools {
 
 	public final static String XPATH_POSITION_CODE = "//dataSync/increase/POSITION_CODE";
 
-	// 日志文件 路径
+	// 鏃ュ織鏂囦欢 璺緞
 	public final static String PATH_LOG = ConstantsUI.CURRENT_DIR + File.separator + "log" + File.separator + "log.log";
 }

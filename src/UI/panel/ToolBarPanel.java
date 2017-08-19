@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * ¹¤¾ßÀ¸Ãæ°å
+ * å·¥å…·æ é¢æ¿
  * 
  * @author Bob
  *
@@ -27,7 +27,7 @@ public class ToolBarPanel extends JPanel {
 	private static MyIconButton buttonSetting;
 
 	/**
-	 * ¹¹Ôì
+	 * æ„é€ 
 	 */
 	public ToolBarPanel() {
 		initialize();
@@ -36,7 +36,7 @@ public class ToolBarPanel extends JPanel {
 	}
 
 	/**
-	 * ³õÊ¼»¯
+	 * åˆå§‹åŒ–
 	 */
 	private void initialize() {
 		Dimension preferredSize = new Dimension(48, ConstantsUI.MAIN_WINDOW_HEIGHT);
@@ -48,7 +48,7 @@ public class ToolBarPanel extends JPanel {
 	}
 
 	/**
-	 * Ìí¼Ó¹¤¾ß°´Å¥
+	 * æ·»åŠ å·¥å…·æŒ‰é’®
 	 */
 	private void addButtion() {
 
@@ -82,7 +82,7 @@ public class ToolBarPanel extends JPanel {
 	}
 
 	/**
-	 * Îª¸÷°´Å¥Ìí¼ÓÊÂ¼ş¶¯×÷¼àÌı
+	 * ä¸ºå„æŒ‰é’®æ·»åŠ äº‹ä»¶åŠ¨ä½œç›‘å¬
 	 */
 	private void addListener() {
 		buttonStatus.addActionListener(new ActionListener() {

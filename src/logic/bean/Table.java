@@ -1,20 +1,20 @@
 package logic.bean;
 
 /**
- * ±íobjectÀà
+ * è¡¨objectç±»
  * 
  * @author Bob
  *
  */
 public class Table {
-	// ±íÃû
+	// è¡¨å
 	private String tableName;
-	// Ö÷¼ü
+	// ä¸»é”®
 	private String primKey;
-	// ×Ö¶Î
+	// å­—æ®µ
 	private String fields;
 
-	// ÆäËûÌõ¼ş/±£Áô
+	// å…¶ä»–æ¡ä»¶/ä¿ç•™
 	private String other;
 
 	public String getTableName() {

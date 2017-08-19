@@ -14,7 +14,7 @@ import java.awt.event.WindowListener;
 import java.io.File;
 
 /**
- * 程序入口，主窗口Frame
+ * 绋嬪簭鍏ュ彛锛屼富绐楀彛Frame
  *
  * @author Bob
  */
@@ -31,11 +31,11 @@ public class AppMainWindow {
     public static SchedulePanel schedulePanel;
     public static BackupPanel backupPanel;
     public static SettingPanel settingPanel;
-    // 新建备份dialog
+    // 鏂板缓澶囦唤dialog
     public static JDialog dialog;
 
     /**
-     * 程序入口main
+     * 绋嬪簭鍏ュ彛main
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -51,7 +51,7 @@ public class AppMainWindow {
     }
 
     /**
-     * 构造，创建APP
+     * 鏋勯�狅紝鍒涘缓APP
      */
     public AppMainWindow() {
         initialize();
@@ -59,13 +59,13 @@ public class AppMainWindow {
     }
 
     /**
-     * 初始化frame内容
+     * 鍒濆鍖杅rame鍐呭
      */
     private void initialize() {
         PropertyConfigurator
                 .configure(ConstantsUI.CURRENT_DIR + File.separator + "config" + File.separator + "log4j.properties");
         logger.info("==================AppInitStart");
-        // 设置系统默认样式
+        // 璁剧疆绯荤粺榛樿鏍峰紡
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -74,7 +74,7 @@ public class AppMainWindow {
             e.printStackTrace();
         }
 
-        // 初始化主窗口
+        // 鍒濆鍖栦富绐楀彛
         frame = new JFrame();
         frame.setBounds(ConstantsUI.MAIN_WINDOW_X, ConstantsUI.MAIN_WINDOW_Y, ConstantsUI.MAIN_WINDOW_WIDTH,
                 ConstantsUI.MAIN_WINDOW_HEIGHT);
@@ -100,7 +100,7 @@ public class AppMainWindow {
 
         mainPanel.add(mainPanelCenter, BorderLayout.CENTER);
 
-        // 添加数据库备份对话框
+        // 娣诲姞鏁版嵁搴撳浠藉璇濇
         addDialog();
 
         frame.add(mainPanel);
@@ -157,10 +157,10 @@ public class AppMainWindow {
     }
 
     /**
-     * 数据库备份对话框
+     * 鏁版嵁搴撳浠藉璇濇
      */
     private void addDialog() {
-        // 数据库备份对话框
+        // 鏁版嵁搴撳浠藉璇濇
         dialog = new JDialog(frame, PropertyUtil.getProperty("ds.ui.mainwindow.dialog.newBackUp"), true);
         dialog.setBounds(460, 220, 400, 250);
         JPanel panelDialog = new JPanel(new BorderLayout());

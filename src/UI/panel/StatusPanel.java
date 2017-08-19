@@ -26,7 +26,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * ×´Ì¬Ãæ°å
+ * çŠ¶æ€é¢æ¿
  *
  * @author Bob
  */
@@ -58,7 +58,7 @@ public class StatusPanel extends JPanel {
     public static boolean isRunning = false;
 
     /**
-     * ¹¹Ôì
+     * æ„é€ 
      */
     public StatusPanel() {
         super(true);
@@ -69,7 +69,7 @@ public class StatusPanel extends JPanel {
     }
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     private void initialize() {
         this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -77,7 +77,7 @@ public class StatusPanel extends JPanel {
     }
 
     /**
-     * Ìí¼Ó×é¼ş
+     * æ·»åŠ ç»„ä»¶
      */
     private void addComponent() {
 
@@ -88,7 +88,7 @@ public class StatusPanel extends JPanel {
     }
 
     /**
-     * ÉÏ²¿Ãæ°å
+     * ä¸Šéƒ¨é¢æ¿
      *
      * @return
      */
@@ -106,17 +106,17 @@ public class StatusPanel extends JPanel {
     }
 
     /**
-     * ÖĞ²¿Ãæ°å
+     * ä¸­éƒ¨é¢æ¿
      *
      * @return
      */
     private JPanel getCenterPanel() {
-        // ÖĞ¼äÃæ°å
+        // ä¸­é—´é¢æ¿
         JPanel panelCenter = new JPanel();
         panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(4, 1));
 
-        // ×´Ì¬Grid
+        // çŠ¶æ€Grid
         JPanel panelGridStatus = new JPanel();
         panelGridStatus.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelGridStatus.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
@@ -132,7 +132,7 @@ public class StatusPanel extends JPanel {
         panelGridStatus.add(labelStatus);
         panelGridStatus.add(labelStatusDetail);
 
-        // À´Ô´/Ä¿±ê Grid
+        // æ¥æº/ç›®æ ‡ Grid
         JPanel panelGridFromTo = new JPanel();
         panelGridFromTo.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelGridFromTo.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
@@ -147,7 +147,7 @@ public class StatusPanel extends JPanel {
         panelGridFromTo.add(labelFrom);
         panelGridFromTo.add(labelTo);
 
-        // ÏêÇéGrid
+        // è¯¦æƒ…Grid
         JPanel panelGridDetail = new JPanel();
         panelGridDetail.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelGridDetail.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
@@ -181,7 +181,7 @@ public class StatusPanel extends JPanel {
         panelGridDetail.add(labelFail);
         panelGridDetail.add(labelLog);
 
-        // ½ø¶ÈGrid
+        // è¿›åº¦Grid
         JPanel panelGridProgress = new JPanel();
         panelGridProgress.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelGridProgress.setLayout(new GridLayout(2, 1, ConstantsUI.MAIN_H_GAP, 0));
@@ -223,7 +223,7 @@ public class StatusPanel extends JPanel {
     }
 
     /**
-     * µ×²¿Ãæ°å
+     * åº•éƒ¨é¢æ¿
      *
      * @return
      */
@@ -255,7 +255,7 @@ public class StatusPanel extends JPanel {
     }
 
     /**
-     * ÉèÖÃ×´Ì¬Ãæ°å×é¼şÄÚÈİ
+     * è®¾ç½®çŠ¶æ€é¢æ¿ç»„ä»¶å†…å®¹
      */
     public static void setContent() {
 
@@ -271,7 +271,7 @@ public class StatusPanel extends JPanel {
     }
 
     /**
-     * Îª¸÷×é¼şÌí¼ÓÊÂ¼ş¼àÌı
+     * ä¸ºå„ç»„ä»¶æ·»åŠ äº‹ä»¶ç›‘å¬
      */
     private void addListener() {
         buttonStartNow.addActionListener(new ActionListener() {
@@ -304,7 +304,7 @@ public class StatusPanel extends JPanel {
                 labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.scheduledRunning"));
                 ScheduleExecuteThread syncThread = new ScheduleExecuteThread();
                 service = Executors.newSingleThreadScheduledExecutor();
-                // µÚ¶ş¸ö²ÎÊıÎªÊ×´ÎÖ´ĞĞµÄÑÓÊ±Ê±¼ä£¬µÚÈı¸ö²ÎÊıÎª¶¨Ê±Ö´ĞĞµÄ¼ä¸ôÊ±¼ä
+                // ç¬¬äºŒä¸ªå‚æ•°ä¸ºé¦–æ¬¡æ‰§è¡Œçš„å»¶æ—¶æ—¶é—´ï¼Œç¬¬ä¸‰ä¸ªå‚æ•°ä¸ºå®šæ—¶æ‰§è¡Œçš„é—´éš”æ—¶é—´
                 String scheduleConf = ConstantsTools.CONFIGER.getSchedule();
                 if (scheduleConf.equals("true,false,false,false,false,false,false")) {
                     service.scheduleAtFixedRate(syncThread, 0, 5, TimeUnit.MINUTES);
@@ -384,7 +384,7 @@ public class StatusPanel extends JPanel {
     }
 
     /**
-     * »ñÈ¡Ö¸¶¨Ê±¼ä¶ÔÓ¦µÄºÁÃëÊı
+     * è·å–æŒ‡å®šæ—¶é—´å¯¹åº”çš„æ¯«ç§’æ•°
      *
      * @param time "HH:mm:ss"
      * @return

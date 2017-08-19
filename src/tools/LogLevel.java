@@ -1,7 +1,7 @@
 package tools;
 
 /**
- * 日志级别枚举
+ * 鏃ュ織绾у埆鏋氫妇
  * 
  * @author Bob
  *

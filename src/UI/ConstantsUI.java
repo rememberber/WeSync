@@ -7,20 +7,20 @@ import java.awt.*;
 import java.io.File;
 
 /**
- * UIÏà¹ØµÄ³£Á¿
+ * UIç›¸å…³çš„å¸¸é‡
  *
  * @author Bob
  */
 public class ConstantsUI {
 
     /**
-     * Èí¼şÃû³Æ,°æ±¾
+     * è½¯ä»¶åç§°,ç‰ˆæœ¬
      */
     public final static String APP_NAME = "Data Sync";
     public final static String APP_VERSION = "v_1.60_160511";
 
     /**
-     * Ö÷´°¿Ú´óĞ¡
+     * ä¸»çª—å£å¤§å°
      */
     public final static int MAIN_WINDOW_X = 240;
     public final static int MAIN_WINDOW_Y = 100;
@@ -28,198 +28,198 @@ public class ConstantsUI {
     public final static int MAIN_WINDOW_HEIGHT = 636;
 
     /**
-     * ÏµÍ³µ±Ç°Â·¾¶
+     * ç³»ç»Ÿå½“å‰è·¯å¾„
      */
     public final static String CURRENT_DIR = System.getProperty("user.dir");
 
     /**
-     * Ö÷´°¿ÚÍ¼±ê
+     * ä¸»çª—å£å›¾æ ‡
      */
     public final static Image IMAGE_ICON = Toolkit.getDefaultToolkit()
             .getImage(CURRENT_DIR + File.separator + "icon" + File.separator + "DataSync.png");
 
     /**
-     * Ö÷´°¿Ú±³¾°É«
+     * ä¸»çª—å£èƒŒæ™¯è‰²
      */
     public final static Color MAIN_BACK_COLOR = Color.WHITE;
 
     /**
-     * ¹¤¾ßÀ¸±³¾°É«
+     * å·¥å…·æ èƒŒæ™¯è‰²
      */
     public final static Color TOOL_BAR_BACK_COLOR = new Color(37, 174, 96);
     /**
-     * ±í¸ñÏßÌõ±³¾°É«
+     * è¡¨æ ¼çº¿æ¡èƒŒæ™¯è‰²
      */
     public final static Color TABLE_LINE_COLOR = new Color(229, 229, 229);
 
     /**
-     * ×ÖÌå
+     * å­—ä½“
      */
-    // ±êÌâ×ÖÌå
+    // æ ‡é¢˜å­—ä½“
     public final static Font FONT_TITLE = new Font(PropertyUtil.getProperty("ds.ui.font.family"), 0, 27);
-    // ÆÕÍ¨×ÖÌå
+    // æ™®é€šå­—ä½“
     public final static Font FONT_NORMAL = new Font(PropertyUtil.getProperty("ds.ui.font.family"), 0, 13);
-    // radio×ÖÌå
+    // radioå­—ä½“
     public final static Font FONT_RADIO = new Font(PropertyUtil.getProperty("ds.ui.font.family"), 0, 15);
 
     /**
-     * Ö÷Í¼±ê
+     * ä¸»å›¾æ ‡
      */
     public final static ImageIcon ICON_DATA_SYNC = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "DataSync.png");
     /**
-     * ¹¤¾ßÀ¸Í¼±ê
+     * å·¥å…·æ å›¾æ ‡
      */
-    // ×´Ì¬ Ä¬ÈÏ
+    // çŠ¶æ€ é»˜è®¤
     public final static ImageIcon ICON_STATUS = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "status.png");
-    // ×´Ì¬ ¼¤»î
+    // çŠ¶æ€ æ¿€æ´»
     public final static ImageIcon ICON_STATUS_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "statusEnable.png");
-    // Êı¾İ¿â Ä¬ÈÏ
+    // æ•°æ®åº“ é»˜è®¤
     public final static ImageIcon ICON_DATABASE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "database.png");
-    // Êı¾İ¿â ¼¤»î
+    // æ•°æ®åº“ æ¿€æ´»
     public final static ImageIcon ICON_DATABASE_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "databaseEnable.png");
-    // Ö´ĞĞ¼Æ»® Ä¬ÈÏ
+    // æ‰§è¡Œè®¡åˆ’ é»˜è®¤
     public final static ImageIcon ICON_SCHEDULE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "schedule.png");
-    // Ö´ĞĞ¼Æ»® ¼¤»î
+    // æ‰§è¡Œè®¡åˆ’ æ¿€æ´»
     public final static ImageIcon ICON_SCHEDULE_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "scheduleEnable.png");
-    // ÉèÖÃ Ä¬ÈÏ
+    // è®¾ç½® é»˜è®¤
     public final static ImageIcon ICON_SETTING = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "setting.png");
-    // ÉèÖÃ ¼¤»î
+    // è®¾ç½® æ¿€æ´»
     public final static ImageIcon ICON_SETTING_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "settingEnable.png");
-    // ±¸·İ Ä¬ÈÏ
+    // å¤‡ä»½ é»˜è®¤
     public final static ImageIcon ICON_BACKUP = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "backup.png");
-    // ±¸·İ ¼¤»î
+    // å¤‡ä»½ æ¿€æ´»
     public final static ImageIcon ICON_BACKUP_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "backupEnable.png");
 
     /**
-     * °´Å¥ Í¼±ê
+     * æŒ‰é’® å›¾æ ‡
      */
-    // °´¼Æ»®Ö´ĞĞ Ä¬ÈÏ
+    // æŒ‰è®¡åˆ’æ‰§è¡Œ é»˜è®¤
     public final static ImageIcon ICON_START_SCHEDULE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "startSchedule.png");
-    // °´¼Æ»®Ö´ĞĞ ¼¤»î
+    // æŒ‰è®¡åˆ’æ‰§è¡Œ æ¿€æ´»
     public final static ImageIcon ICON_START_SCHEDULE_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "startScheduleEnable.png");
-    // °´¼Æ»®Ö´ĞĞ Ê§Ğ§
+    // æŒ‰è®¡åˆ’æ‰§è¡Œ å¤±æ•ˆ
     public final static ImageIcon ICON_START_SCHEDULE_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "startScheduleDisable.png");
-    // Í£Ö¹ Ä¬ÈÏ
+    // åœæ­¢ é»˜è®¤
     public final static ImageIcon ICON_STOP = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "stop.png");
-    // Í£Ö¹ ¼¤»î
+    // åœæ­¢ æ¿€æ´»
     public final static ImageIcon ICON_STOP_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "stopEnable.png");
-    // Í£Ö¹ Ê§Ğ§
+    // åœæ­¢ å¤±æ•ˆ
     public final static ImageIcon ICON_STOP_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "stopDisable.png");
-    // Á¢¼´Í¬²½ Ä¬ÈÏ
+    // ç«‹å³åŒæ­¥ é»˜è®¤
     public final static ImageIcon ICON_SYNC_NOW = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "syncNow.png");
-    // Á¢¼´Í¬²½ ¼¤»î
+    // ç«‹å³åŒæ­¥ æ¿€æ´»
     public final static ImageIcon ICON_SYNC_NOW_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "syncNowEnable.png");
-    // Á¢¼´Í¬²½ Ê§Ğ§
+    // ç«‹å³åŒæ­¥ å¤±æ•ˆ
     public final static ImageIcon ICON_SYNC_NOW_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "syncNowDisable.png");
-    // ²âÊÔÁ¬½Ó Ä¬ÈÏ
+    // æµ‹è¯•è¿æ¥ é»˜è®¤
     public final static ImageIcon ICON_TEST_LINK = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "testLinkButton.png");
-    // ²âÊÔÁ¬½Ó ¼¤»î
+    // æµ‹è¯•è¿æ¥ æ¿€æ´»
     public final static ImageIcon ICON_TEST_LINK_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "testLinkButtonEnable.png");
-    // ²âÊÔÁ¬½Ó Ê§Ğ§
+    // æµ‹è¯•è¿æ¥ å¤±æ•ˆ
     public final static ImageIcon ICON_TEST_LINK_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "testLinkButtonDisable.png");
-    // ±£´æ Ä¬ÈÏ
+    // ä¿å­˜ é»˜è®¤
     public final static ImageIcon ICON_SAVE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "saveButton.png");
-    // ±£´æ ¼¤»î
+    // ä¿å­˜ æ¿€æ´»
     public final static ImageIcon ICON_SAVE_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "saveButtonEnable.png");
-    // ±£´æ Ê§Ğ§
+    // ä¿å­˜ å¤±æ•ˆ
     public final static ImageIcon ICON_SAVE_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "saveButtonDisable.png");
-    // ĞÂ½¨±¸·İ Ä¬ÈÏ
+    // æ–°å»ºå¤‡ä»½ é»˜è®¤
     public final static ImageIcon ICON_NEW_BAK = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "newBak.png");
-    // ĞÂ½¨±¸·İ ¼¤»î
+    // æ–°å»ºå¤‡ä»½ æ¿€æ´»
     public final static ImageIcon ICON_NEW_BAK_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "newBakEnable.png");
-    // ĞÂ½¨±¸·İ Ê§Ğ§
+    // æ–°å»ºå¤‡ä»½ å¤±æ•ˆ
     public final static ImageIcon ICON_NEW_BAK_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "newBakDisable.png");
-    // É¾³ı±¸·İ Ä¬ÈÏ
+    // åˆ é™¤å¤‡ä»½ é»˜è®¤
     public final static ImageIcon ICON_DEL_BAK = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "deleteBak.png");
-    // É¾³ı±¸·İ ¼¤»î
+    // åˆ é™¤å¤‡ä»½ æ¿€æ´»
     public final static ImageIcon ICON_DEL_BAK_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "deleteBakEnable.png");
-    // É¾³ı±¸·İ Ê§Ğ§
+    // åˆ é™¤å¤‡ä»½ å¤±æ•ˆ
     public final static ImageIcon ICON_DEL_BAK_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "deleteBakDisable.png");
-    // »¹Ô­±¸·İ Ä¬ÈÏ
+    // è¿˜åŸå¤‡ä»½ é»˜è®¤
     public final static ImageIcon ICON_RECOVER_BAK = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "recoverBak.png");
-    // »¹Ô­±¸·İ ¼¤»î
+    // è¿˜åŸå¤‡ä»½ æ¿€æ´»
     public final static ImageIcon ICON_RECOVER_BAK_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "recoverBakEnable.png");
-    // »¹Ô­±¸·İ Ê§Ğ§
+    // è¿˜åŸå¤‡ä»½ å¤±æ•ˆ
     public final static ImageIcon ICON_RECOVER_BAK_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "recoverBakDisable.png");
 
-    // Çå¿ÕËùÓĞ±¸·İ Ä¬ÈÏ
+    // æ¸…ç©ºæ‰€æœ‰å¤‡ä»½ é»˜è®¤
     public final static ImageIcon ICON_CLEAR_ALL_BAKS = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "clearAllBaks.png");
-    // Çå¿ÕËùÓĞ±¸·İ ¼¤»î
+    // æ¸…ç©ºæ‰€æœ‰å¤‡ä»½ æ¿€æ´»
     public final static ImageIcon ICON_CLEAR_ALL_BAKS_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "clearAllBaksEnable.png");
-    // Çå¿ÕËùÓĞ±¸·İ Ê§Ğ§
+    // æ¸…ç©ºæ‰€æœ‰å¤‡ä»½ å¤±æ•ˆ
     public final static ImageIcon ICON_CLEAR_ALL_BAKS_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "clearAllBaksDisable.png");
 
-    // ±í×Ö¶Î¶ÔÓ¦¹ØÏµ Ä¬ÈÏ
+    // è¡¨å­—æ®µå¯¹åº”å…³ç³» é»˜è®¤
     public final static ImageIcon ICON_TABLE_FIELD = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "tableFiled.png");
-    // ±í×Ö¶Î¶ÔÓ¦¹ØÏµ ¼¤»î
+    // è¡¨å­—æ®µå¯¹åº”å…³ç³» æ¿€æ´»
     public final static ImageIcon ICON_TABLE_FIELD_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "tableFiledEnable.png");
-    // ±í×Ö¶Î¶ÔÓ¦¹ØÏµ Ê§Ğ§
+    // è¡¨å­—æ®µå¯¹åº”å…³ç³» å¤±æ•ˆ
     public final static ImageIcon ICON_TABLE_FIELD_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "tableFiledDisable.png");
-    // Çå¿ÕLog Ä¬ÈÏ
+    // æ¸…ç©ºLog é»˜è®¤
     public final static ImageIcon ICON_CLEAR_LOG = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "clearLog.png");
-    // Çå¿ÕLog ¼¤»î
+    // æ¸…ç©ºLog æ¿€æ´»
     public final static ImageIcon ICON_CLEAR_LOG_ENABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "clearLogEnable.png");
-    // Çå¿ÕLog Ê§Ğ§
+    // æ¸…ç©ºLog å¤±æ•ˆ
     public final static ImageIcon ICON_CLEAR_LOG_DISABLE = new ImageIcon(
             CURRENT_DIR + File.separator + "icon" + File.separator + "clearLogDisable.png");
 
     /**
-     * ÑùÊ½²¼¾ÖÏà¹Ø
+     * æ ·å¼å¸ƒå±€ç›¸å…³
      */
-    // Ö÷Ãæ°åË®Æ½¼ä¸ô
+    // ä¸»é¢æ¿æ°´å¹³é—´éš”
     public final static int MAIN_H_GAP = 25;
-    // Ö÷Ãæ°åLabel ´óĞ¡
+    // ä¸»é¢æ¿Label å¤§å°
     public final static Dimension LABLE_SIZE = new Dimension(1300, 30);
-    // Item Label ´óĞ¡
+    // Item Label å¤§å°
     public final static Dimension LABLE_SIZE_ITEM = new Dimension(78, 30);
-    // Item text field ´óĞ¡
+    // Item text field å¤§å°
     public final static Dimension TEXT_FIELD_SIZE_ITEM = new Dimension(400, 24);
-    // radio ´óĞ¡
+    // radio å¤§å°
     public final static Dimension RADIO_SIZE = new Dimension(1300, 60);
-    // ¸ß¼¶Ñ¡ÏîÃæ°åItem ´óĞ¡
+    // é«˜çº§é€‰é¡¹é¢æ¿Item å¤§å°
     public final static Dimension PANEL_ITEM_SIZE = new Dimension(1300, 40);
 
 }

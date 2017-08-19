@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * ¸ß¼¶Ñ¡ÏîÃæ°å
+ * é«˜çº§é€‰é¡¹é¢æ¿
  *
  * @author Bob
  */
@@ -44,7 +44,7 @@ public class SettingPanelOption extends JPanel {
     private static Logger logger = Logger.getLogger(SettingPanelOption.class);
 
     /**
-     * ¹¹Ôì
+     * æ„é€ 
      */
     public SettingPanelOption() {
         initialize();
@@ -54,7 +54,7 @@ public class SettingPanelOption extends JPanel {
     }
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     private void initialize() {
         this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -62,7 +62,7 @@ public class SettingPanelOption extends JPanel {
     }
 
     /**
-     * Ìí¼Ó×é¼ş
+     * æ·»åŠ ç»„ä»¶
      */
     private void addComponent() {
 
@@ -72,22 +72,22 @@ public class SettingPanelOption extends JPanel {
     }
 
     /**
-     * ÖĞ²¿Ãæ°å
+     * ä¸­éƒ¨é¢æ¿
      *
      * @return
      */
     private JPanel getCenterPanel() {
-        // ÖĞ¼äÃæ°å
+        // ä¸­é—´é¢æ¿
         JPanel panelCenter = new JPanel();
         panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(1, 1));
 
-        // ÉèÖÃGrid
+        // è®¾ç½®Grid
         JPanel panelGridOption = new JPanel();
         panelGridOption.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelGridOption.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
 
-        // ³õÊ¼»¯×é¼ş
+        // åˆå§‹åŒ–ç»„ä»¶
         JPanel panelItem1 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
         JPanel panelItem2 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
         JPanel panelItem3 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
@@ -112,7 +112,7 @@ public class SettingPanelOption extends JPanel {
         panelItem6.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
         panelItem7.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
 
-        // ¸÷Item
+        // å„Item
         buttionTableFiled = new MyIconButton(ConstantsUI.ICON_TABLE_FIELD, ConstantsUI.ICON_TABLE_FIELD_ENABLE,
                 ConstantsUI.ICON_TABLE_FIELD_DISABLE, "");
         panelItem1.add(buttionTableFiled);
@@ -150,7 +150,7 @@ public class SettingPanelOption extends JPanel {
         checkBoxDebug.setFont(ConstantsUI.FONT_RADIO);
         panelItem7.add(checkBoxDebug);
 
-        // ×éºÏÔªËØ
+        // ç»„åˆå…ƒç´ 
         panelGridOption.add(panelItem1);
         panelGridOption.add(panelItem2);
         panelGridOption.add(panelItem3);
@@ -164,7 +164,7 @@ public class SettingPanelOption extends JPanel {
     }
 
     /**
-     * µ×²¿Ãæ°å
+     * åº•éƒ¨é¢æ¿
      *
      * @return
      */
@@ -181,7 +181,7 @@ public class SettingPanelOption extends JPanel {
     }
 
     /**
-     * ÉèÖÃµ±Ç°comboxÑ¡Ïî×´Ì¬
+     * è®¾ç½®å½“å‰comboxé€‰é¡¹çŠ¶æ€
      */
     public static void setCurrentOption() {
         checkBoxAutoBak.setSelected(Boolean.parseBoolean(ConstantsTools.CONFIGER.getAutoBak()));
@@ -191,7 +191,7 @@ public class SettingPanelOption extends JPanel {
     }
 
     /**
-     * ÎªÏà¹Ø×é¼şÌí¼ÓÊÂ¼ş¼àÌı
+     * ä¸ºç›¸å…³ç»„ä»¶æ·»åŠ äº‹ä»¶ç›‘å¬
      */
     private void addListener() {
         buttonSave.addActionListener(new ActionListener() {

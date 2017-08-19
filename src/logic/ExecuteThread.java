@@ -15,24 +15,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Ö´ĞĞÆ÷Ïß³Ì
+ * æ‰§è¡Œå™¨çº¿ç¨‹
  *
  * @author Bob
  */
 public class ExecuteThread extends Thread implements ExecuteThreadInterface {
 
     private static Logger logger = Logger.getLogger(ExecuteThread.class);
-    // ±í-×Ö¶ÎÅäÖÃÎÄ¼şÄÚÈİMap,key:Ä¿±ê±íÃû,value:¶ÔÓ¦¹ØÏµÄÚÈİList
+    // è¡¨-å­—æ®µé…ç½®æ–‡ä»¶å†…å®¹Map,key:ç›®æ ‡è¡¨å,value:å¯¹åº”å…³ç³»å†…å®¹List
     public static LinkedHashMap<String, ArrayList<String>> tableFieldMap;
-    // TriggerMap,key:¿ìÕÕÃû,value:´¥·¢±í
+    // TriggerMap,key:å¿«ç…§å,value:è§¦å‘è¡¨
     public static LinkedHashMap<String, String[]> triggerMap;
-    // À´Ô´±íMap,key:¿ìÕÕÃû,value:Table
+    // æ¥æºè¡¨Map,key:å¿«ç…§å,value:Table
     public static LinkedHashMap<String, Table> originalTablesMap;
-    // Ä¿±ê±íMap,key:¿ìÕÕÃû,value:Table
+    // ç›®æ ‡è¡¨Map,key:å¿«ç…§å,value:Table
     public static LinkedHashMap<String, Table> targetTablesMap;
 
     /**
-     * ³õÊ¼»¯±äÁ¿
+     * åˆå§‹åŒ–å˜é‡
      */
     public void init() {
         tableFieldMap = new LinkedHashMap<String, ArrayList<String>>();
@@ -42,7 +42,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     }
 
     /**
-     * ²âÊÔÁ¬½Ó
+     * æµ‹è¯•è¿æ¥
      */
     public boolean testLink() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.testLinking"), LogLevel.INFO);
@@ -97,16 +97,16 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     }
 
     /**
-     * ½âÎöÅäÖÃÎÄ¼ş
+     * è§£æé…ç½®æ–‡ä»¶
      */
     public boolean analyseConfigFile() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startAnalyse"), LogLevel.INFO);
 
         boolean isAnalyseSuccess = true;
 
-        // ½âÎö±í-×Ö¶Î¶ÔÓ¦¹ØÏµÎÄ¼ş
+        // è§£æè¡¨-å­—æ®µå¯¹åº”å…³ç³»æ–‡ä»¶
         File tableFieldDir = null;
-        // Èç¹û¿ìÕÕÎÄ¼ş¼Ğ²»´æÔÚ£¬Ôò½âÎö³õÊ¼»¯±í×Ö¶Î¹ØÏµÅäÖÃ
+        // å¦‚æœå¿«ç…§æ–‡ä»¶å¤¹ä¸å­˜åœ¨ï¼Œåˆ™è§£æåˆå§‹åŒ–è¡¨å­—æ®µå…³ç³»é…ç½®
         File snapsDir = new File(ConstantsLogic.SNAPS_DIR);
         if (!snapsDir.exists()) {
             tableFieldDir = new File(ConstantsLogic.TABLE_FIELD_INIT_DIR);
@@ -131,12 +131,12 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
             } else {
                 list = new ArrayList<String>();
                 try {
-                    // ¶ÁÈ¡½âÎö±í-×Ö¶ÎÅäÖÃsqlÎÄ¼ş
+                    // è¯»å–è§£æè¡¨-å­—æ®µé…ç½®sqlæ–‡ä»¶
                     list = FileUtils.getSqlFileContentList(file);
 
                     String key = fileName.substring(0, fileName.lastIndexOf("."));
 
-                    // ½«±í-×Ö¶ÎÅäÖÃÎÄ¼şÄÚÈİ´æ·Åµ½Map,key:±íÃû,value:¶ÔÓ¦¹ØÏµÄÚÈİList
+                    // å°†è¡¨-å­—æ®µé…ç½®æ–‡ä»¶å†…å®¹å­˜æ”¾åˆ°Map,key:è¡¨å,value:å¯¹åº”å…³ç³»å†…å®¹List
                     tableFieldMap.put(key, list);
 
                 } catch (IOException e) {
@@ -149,7 +149,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
             }
         }
 
-        // ½âÎöTriggerÎÄ¼ş
+        // è§£æTriggeræ–‡ä»¶
         File triggerFile = new File(ConstantsLogic.TRIGGER_FILE);
         BufferedReader reader = null;
         try {
@@ -158,41 +158,41 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
             while ((lineTxt = reader.readLine()) != null) {
                 lineTxt = lineTxt.trim();
                 if ("".equals(lineTxt) || lineTxt.startsWith("//")) {
-                    // Ìø¹ı×¢ÊÍºÍ¿ÕĞĞ
+                    // è·³è¿‡æ³¨é‡Šå’Œç©ºè¡Œ
                     continue;
                 } else {
                     if (lineTxt.contains("//")) {
-                        // È¥µô×¢ÊÍ
+                        // å»æ‰æ³¨é‡Š
                         lineTxt = lineTxt.substring(0, lineTxt.indexOf("//")).trim();
                     }
-                    // ÓÃ]=<·Ö¸ô±ÈÓÃ=·Ö¸ô×¼È·£¬ÒòÎªÆäËûÌõ¼şÀïÒ²¿ÉÄÜ»áÓĞ=
+                    // ç”¨]=<åˆ†éš”æ¯”ç”¨=åˆ†éš”å‡†ç¡®ï¼Œå› ä¸ºå…¶ä»–æ¡ä»¶é‡Œä¹Ÿå¯èƒ½ä¼šæœ‰=
                     String arr[] = lineTxt.split("\\]=\\<");
-                    arr[0] = arr[0] + "]";// ²¹ÉÏ±»splitµôµÄ"]"
-                    // È¡À´Ô´±íÃûºÍÄ¿±ê±íÃû
+                    arr[0] = arr[0] + "]";// è¡¥ä¸Šè¢«splitæ‰çš„"]"
+                    // å–æ¥æºè¡¨åå’Œç›®æ ‡è¡¨å
                     String snapName = arr[0].substring(0, arr[0].indexOf(":"));
                     String tarTableNames[] = new String[arr.length - 1];
 
-                    // »ñÈ¡À´Ô´±ímap<¿ìÕÕÃû,(±íÃû,Ö÷¼ü,×Ö¶Î,ÆäËûÌõ¼ş»ò±£Áô)>
+                    // è·å–æ¥æºè¡¨map<å¿«ç…§å,(è¡¨å,ä¸»é”®,å­—æ®µ,å…¶ä»–æ¡ä»¶æˆ–ä¿ç•™)>
                     Table tableOri = new Table();
-                    // Æ¥Åä±íÃû
+                    // åŒ¹é…è¡¨å
                     Pattern p = Pattern.compile(ConstantsLogic.REGEX_TRIGGER_TABLE);
                     Matcher matcher = p.matcher(arr[0]);
                     while (matcher.find()) {
                         tableOri.setTableName(matcher.group(1));
                     }
-                    // Æ¥Åä±íÖ÷¼ü
+                    // åŒ¹é…è¡¨ä¸»é”®
                     p = Pattern.compile(ConstantsLogic.REGEX_TRIGGER_PRIM_KEY);
                     matcher = p.matcher(arr[0]);
                     while (matcher.find()) {
                         tableOri.setPrimKey(matcher.group(1));
                     }
-                    // Æ¥Åä±í×Ö¶Î
+                    // åŒ¹é…è¡¨å­—æ®µ
                     p = Pattern.compile(ConstantsLogic.REGEX_TRIGGER_FIELDS);
                     matcher = p.matcher(arr[0]);
                     while (matcher.find()) {
                         tableOri.setFields(matcher.group(1));
                     }
-                    // Æ¥ÅäÆäËûÌõ¼ş»ò±£Áô
+                    // åŒ¹é…å…¶ä»–æ¡ä»¶æˆ–ä¿ç•™
                     p = Pattern.compile(ConstantsLogic.REGEX_TRIGGER_OTHER);
                     matcher = p.matcher(arr[0]);
                     while (matcher.find()) {
@@ -201,10 +201,10 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                     originalTablesMap.put(snapName, tableOri);
 
                     for (int i = 1; i < arr.length; i++) {
-                        arr[i] = "<" + arr[i];// ²¹ÉÏ±»splitµôµÄ"<"
-                        // »ñÈ¡Ä¿±ê±ímap<¿ìÕÕÃû,(±íÃû,Ö÷¼ü,×Ö¶Î,ÆäËûÌõ¼ş»ò±£Áô)>
+                        arr[i] = "<" + arr[i];// è¡¥ä¸Šè¢«splitæ‰çš„"<"
+                        // è·å–ç›®æ ‡è¡¨map<å¿«ç…§å,(è¡¨å,ä¸»é”®,å­—æ®µ,å…¶ä»–æ¡ä»¶æˆ–ä¿ç•™)>
                         Table tableTar = new Table();
-                        // Æ¥Åä±íÃû
+                        // åŒ¹é…è¡¨å
                         p = Pattern.compile(ConstantsLogic.REGEX_TRIGGER_TABLE);
                         matcher = p.matcher(arr[i]);
                         while (matcher.find()) {
@@ -213,19 +213,19 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                             tarTableNames[i - 1] = temp;
                         }
 
-                        // Æ¥Åä±íÖ÷¼ü
+                        // åŒ¹é…è¡¨ä¸»é”®
                         p = Pattern.compile(ConstantsLogic.REGEX_TRIGGER_PRIM_KEY);
                         matcher = p.matcher(arr[i]);
                         while (matcher.find()) {
                             tableTar.setPrimKey(matcher.group(1));
                         }
-                        // Æ¥Åä±í×Ö¶Î
+                        // åŒ¹é…è¡¨å­—æ®µ
                         p = Pattern.compile(ConstantsLogic.REGEX_TRIGGER_FIELDS);
                         matcher = p.matcher(arr[i]);
                         while (matcher.find()) {
                             tableTar.setFields(matcher.group(1));
                         }
-                        // Æ¥ÅäÆäËûÌõ¼ş»ò±£Áô
+                        // åŒ¹é…å…¶ä»–æ¡ä»¶æˆ–ä¿ç•™
                         p = Pattern.compile(ConstantsLogic.REGEX_TRIGGER_OTHER);
                         matcher = p.matcher(arr[i]);
                         while (matcher.find()) {
@@ -267,7 +267,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     }
 
     /**
-     * ±¸·İ
+     * å¤‡ä»½
      */
     public void backUp() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startBackUp"), LogLevel.INFO);
@@ -290,7 +290,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     }
 
     /**
-     * ĞÂ½¨¿ìÕÕ
+     * æ–°å»ºå¿«ç…§
      */
     public boolean newSnap() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startNewSnap"), LogLevel.INFO);
@@ -305,7 +305,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     }
 
     /**
-     * ¶Ô±È¿ìÕÕ£¬²¢Éú³ÉSQL
+     * å¯¹æ¯”å¿«ç…§ï¼Œå¹¶ç”ŸæˆSQL
      */
     public boolean diffSnap() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startDiffSnap"), LogLevel.INFO);
@@ -323,7 +323,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     }
 
     /**
-     * Ö´ĞĞSQLÓï¾ä
+     * æ‰§è¡ŒSQLè¯­å¥
      *
      * @throws Exception
      */
@@ -332,13 +332,13 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
 
         boolean isSuccess = true;
         ArrayList<String> sqlList = SnapManage.sqlList;
-        File logSqlFileDir = new File(ConstantsLogic.LOG_SQL_DIR);// sqlÈÕÖ¾Ä¿Â¼
+        File logSqlFileDir = new File(ConstantsLogic.LOG_SQL_DIR);// sqlæ—¥å¿—ç›®å½•
         if (!logSqlFileDir.exists()) {
             logSqlFileDir.mkdirs();
         }
-        File logSqlFile = new File(ConstantsLogic.LOG_SQL);// sqlÈÕÖ¾ÎÄ¼ş
+        File logSqlFile = new File(ConstantsLogic.LOG_SQL);// sqlæ—¥å¿—æ–‡ä»¶
         CSVWriter csvWriter = null;
-        int totalSqls = 0;// ×ÜsqlÊı
+        int totalSqls = 0;// æ€»sqlæ•°
         if (sqlList.size() != 0) {
             if ("false".equals(ConstantsTools.CONFIGER.getDebugMode())) {
                 String sqlForLog = "";
@@ -347,7 +347,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                         logSqlFile.createNewFile();
                     }
 
-                    // ÕûÀí´¥·¢Æ÷ÖĞÉú³ÉµÄËùÓĞsql
+                    // æ•´ç†è§¦å‘å™¨ä¸­ç”Ÿæˆçš„æ‰€æœ‰sql
                     StringBuffer sqlBuff = new StringBuffer();
                     for (String string : sqlList) {
                         String tempArr[] = string.split(";");
@@ -362,8 +362,8 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
 
                     StatusPanel.progressCurrent.setMaximum(sqls.length);
 
-                    totalSqls = 0;// ×ÜsqlÊı
-                    int affectedRecords = 0;// ÊÜÓ°ÏìµÄ½á¹ûĞĞÊı
+                    totalSqls = 0;// æ€»sqlæ•°
+                    int affectedRecords = 0;// å—å½±å“çš„ç»“æœè¡Œæ•°
                     int progressValue = 0;
                     for (String string : sqls) {
                         if (!"".equals(string.trim())) {
@@ -378,27 +378,27 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                         StatusPanel.progressCurrent.setValue(progressValue);
                     }
 
-                    Writer writer = new FileWriter(logSqlFile, true);// µÚ¶ş¸ö²ÎÊı:true±íÊ¾ÔÚÎÄ¼ş½áÎ²×·¼Ó
+                    Writer writer = new FileWriter(logSqlFile, true);// ç¬¬äºŒä¸ªå‚æ•°:trueè¡¨ç¤ºåœ¨æ–‡ä»¶ç»“å°¾è¿½åŠ 
                     csvWriter = new CSVWriter(writer, ',');
-                    String logLine[] = new String[4];// log_sqlµÚÒ»ÁĞ:ÏµÍ³Ê±¼ä,µÚ¶şÁĞ:±¾´ÎËùÓĞÒªÖ´ĞĞµÄsql,µÚÈıÁĞ:Ö´ĞĞ½á¹ûÊÜÓ°ÏìµÄ×ÜĞĞÊı,µÚËÄÁĞ:ÊÇ·ñ³É¹¦
-                    logLine[0] = Utils.getCurrentTime(); // log_sqlµÚÒ»ÁĞ£¬ÏµÍ³Ê±¼ä
-                    logLine[1] = sqlBuff.toString();// log_sqlµÚ¶şÁĞ£¬±¾´ÎËùÓĞÒªÖ´ĞĞµÄsql
-                    logLine[2] = String.valueOf(affectedRecords);// log_sqlµÚÈıÁĞ£¬Ö´ĞĞ½á¹ûÊÜÓ°ÏìµÄ×ÜĞĞÊı
+                    String logLine[] = new String[4];// log_sqlç¬¬ä¸€åˆ—:ç³»ç»Ÿæ—¶é—´,ç¬¬äºŒåˆ—:æœ¬æ¬¡æ‰€æœ‰è¦æ‰§è¡Œçš„sql,ç¬¬ä¸‰åˆ—:æ‰§è¡Œç»“æœå—å½±å“çš„æ€»è¡Œæ•°,ç¬¬å››åˆ—:æ˜¯å¦æˆåŠŸ
+                    logLine[0] = Utils.getCurrentTime(); // log_sqlç¬¬ä¸€åˆ—ï¼Œç³»ç»Ÿæ—¶é—´
+                    logLine[1] = sqlBuff.toString();// log_sqlç¬¬äºŒåˆ—ï¼Œæœ¬æ¬¡æ‰€æœ‰è¦æ‰§è¡Œçš„sql
+                    logLine[2] = String.valueOf(affectedRecords);// log_sqlç¬¬ä¸‰åˆ—ï¼Œæ‰§è¡Œç»“æœå—å½±å“çš„æ€»è¡Œæ•°
 
                     if ("true".equals(ConstantsTools.CONFIGER.getStrictMode())) {
                         if (affectedRecords == totalSqls) {
                             DbUtilMySQL.getInstance().getConnection().commit();
-                            logLine[3] = "Success";// log_sqlµÚËÄÁĞ£¬Ö´ĞĞ½á¹û³É¹¦
+                            logLine[3] = "Success";// log_sqlç¬¬å››åˆ—ï¼Œæ‰§è¡Œç»“æœæˆåŠŸ
                         } else {
                             DbUtilMySQL.getInstance().getConnection().rollback();
-                            logLine[3] = "Fail";// log_sqlµÚËÄÁĞ£¬Ö´ĞĞ½á¹ûÊ§°Ü
+                            logLine[3] = "Fail";// log_sqlç¬¬å››åˆ—ï¼Œæ‰§è¡Œç»“æœå¤±è´¥
                             isSuccess = false;
                             StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.runSqlFail"), LogLevel.ERROR);
                             return false;
                         }
                     } else {
                         DbUtilMySQL.getInstance().getConnection().commit();
-                        logLine[3] = "Success";// log_sqlµÚËÄÁĞ£¬Ö´ĞĞ½á¹û³É¹¦
+                        logLine[3] = "Success";// log_sqlç¬¬å››åˆ—ï¼Œæ‰§è¡Œç»“æœæˆåŠŸ
                     }
                     if (!"".equals(logLine[1].trim())) {
                         csvWriter.writeNext(logLine);
@@ -461,53 +461,53 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     public void run() {
         StatusPanel.isRunning = true;
         this.setName("ExecuteThread");
-        long enterTime = System.currentTimeMillis(); // ºÁÃëÊı
+        long enterTime = System.currentTimeMillis(); // æ¯«ç§’æ•°
         StatusPanel.progressTotal.setMaximum(6);
-        // ³õÊ¼»¯±äÁ¿
+        // åˆå§‹åŒ–å˜é‡
         init();
-        // ²âÊÔÁ¬½Ó
+        // æµ‹è¯•è¿æ¥
         boolean isLinked = testLink();
         if (isLinked) {
             StatusPanel.progressTotal.setValue(1);
-            // ·ÖÎöÅäÖÃÎÄ¼ş
+            // åˆ†æé…ç½®æ–‡ä»¶
             boolean isAnalyseSuccess = analyseConfigFile();
             if (isAnalyseSuccess) {
                 StatusPanel.progressTotal.setValue(2);
-                // ±¸·İ
+                // å¤‡ä»½
                 if ("true".equals(ConstantsTools.CONFIGER.getAutoBak())) {
                     backUp();
                 }
                 StatusPanel.progressTotal.setValue(3);
-                // ½¨Á¢ĞÂ¿ìÕÕ
+                // å»ºç«‹æ–°å¿«ç…§
                 boolean isSnapSuccess = newSnap();
                 if (isSnapSuccess) {
                     StatusPanel.progressTotal.setValue(4);
-                    // ¶Ô±È¿ìÕÕ,²¢¸ù¾İ¶Ô±È½á¹ûÉú³ÉSQL
+                    // å¯¹æ¯”å¿«ç…§,å¹¶æ ¹æ®å¯¹æ¯”ç»“æœç”ŸæˆSQL
                     boolean isDiffSuccess = diffSnap();
                     if (isDiffSuccess) {
                         StatusPanel.progressTotal.setValue(5);
-                        // Ö´ĞĞSQL
+                        // æ‰§è¡ŒSQL
                         boolean isExecuteSuccess = executeSQL();
                         if (isExecuteSuccess) {
                             StatusPanel.progressTotal.setValue(6);
 
-                            // »Ö¸´°´Å¥×´Ì¬
+                            // æ¢å¤æŒ‰é’®çŠ¶æ€
                             if (!StatusPanel.buttonStartSchedule.isEnabled()) {
                                 StatusLog.setStatus(PropertyUtil.getProperty("ds.logic.runScheduleing"));
                             } else {
                                 StatusLog.setStatus(PropertyUtil.getProperty("ds.logic.manuSyncFinish"));
                             }
                             StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.currentManuSyncFinish"), LogLevel.INFO);
-                            // ÉèÖÃ³ÖĞøÊ±¼ä
-                            long leaveTime = System.currentTimeMillis(); // ºÁÃëÊı
-                            float minutes = (float) (leaveTime - enterTime) / 1000; // ÃëÊı
+                            // è®¾ç½®æŒç»­æ—¶é—´
+                            long leaveTime = System.currentTimeMillis(); // æ¯«ç§’æ•°
+                            float minutes = (float) (leaveTime - enterTime) / 1000; // ç§’æ•°
                             StatusLog.setKeepTime(String.valueOf(minutes));
-                            // ÉèÖÃ³É¹¦´ÎÊı+1
+                            // è®¾ç½®æˆåŠŸæ¬¡æ•°+1
                             String success = String
                                     .valueOf((Long.parseLong(ConstantsTools.CONFIGER.getSuccessTime()) + 1));
                             StatusLog.setSuccess(success);
                         } else {
-                            // »Ö¸´¿ìÕÕ±¸·İ
+                            // æ¢å¤å¿«ç…§å¤‡ä»½
                             SnapManage.recoverSnapBak();
 
                             String fail = String.valueOf((Long.parseLong(ConstantsTools.CONFIGER.getFailTime()) + 1));
@@ -515,7 +515,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                         }
 
                     } else {
-                        // »Ö¸´¿ìÕÕ±¸·İ
+                        // æ¢å¤å¿«ç…§å¤‡ä»½
                         SnapManage.recoverSnapBak();
 
                         String fail = String.valueOf((Long.parseLong(ConstantsTools.CONFIGER.getFailTime()) + 1));
@@ -523,7 +523,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                     }
 
                 } else {
-                    // »Ö¸´¿ìÕÕ±¸·İ
+                    // æ¢å¤å¿«ç…§å¤‡ä»½
                     SnapManage.recoverSnapBak();
 
                     String fail = String.valueOf((Long.parseLong(ConstantsTools.CONFIGER.getFailTime()) + 1));

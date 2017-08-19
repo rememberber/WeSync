@@ -14,7 +14,7 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 
 /**
- * Ğ¡¹¤¾ßÀà
+ * å°å·¥å…·ç±»
  * 
  * @author Bob
  *
@@ -22,35 +22,35 @@ import java.util.Map;
 public class Utils {
 
 	/**
-	 * »ñÈ¡ÏµÍ³µ±Ç°Ê±¼äyyyy-MM-dd HH:mm:ss
+	 * è·å–ç³»ç»Ÿå½“å‰æ—¶é—´yyyy-MM-dd HH:mm:ss
 	 * 
 	 * @return
 	 */
 	public static String getCurrentTime() {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// ÉèÖÃÈÕÆÚ¸ñÊ½
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// è®¾ç½®æ—¥æœŸæ ¼å¼
 		return df.format(new Date());
 	}
 
 	/**
-	 * »ñÈ¡±¸·İÎÄ¼şÃû(ÏµÍ³µ±Ç°Ê±¼äyyyy-MM-dd HHmmss)
+	 * è·å–å¤‡ä»½æ–‡ä»¶å(ç³»ç»Ÿå½“å‰æ—¶é—´yyyy-MM-dd HHmmss)
 	 * 
 	 * @return
 	 */
 	public static String getCurrentTimeForBakName() {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HHmmss");// ÉèÖÃÈÕÆÚ¸ñÊ½
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HHmmss");// è®¾ç½®æ—¥æœŸæ ¼å¼
 		return df.format(new Date());
 	}
 
 	/**
-	 * ¼ÆËãÏÂÒ»´ÎÍ¬²½Ê±¼ä
+	 * è®¡ç®—ä¸‹ä¸€æ¬¡åŒæ­¥æ—¶é—´
 	 * 
 	 * @return
 	 */
 	public static String getNextSyncTime() {
 
-		// 1¡¢»ñÈ¡µ±Ç°Ê±¼ä£¬»ñÈ¡µ½µÄÊ±¼äÀàĞÍÊÇlongÀàĞÍµÄ£¬µ¥Î»ÊÇºÁÃë
+		// 1ã€è·å–å½“å‰æ—¶é—´ï¼Œè·å–åˆ°çš„æ—¶é—´ç±»å‹æ˜¯longç±»å‹çš„ï¼Œå•ä½æ˜¯æ¯«ç§’
 		long currentTime = System.currentTimeMillis();
-		// 2¡¢ÔÚÕâ¸ö»ù´¡ÉÏ¼ÓÉÏ¶¨Ê±Ö´ĞĞÊ±¼ä£º
+		// 2ã€åœ¨è¿™ä¸ªåŸºç¡€ä¸ŠåŠ ä¸Šå®šæ—¶æ‰§è¡Œæ—¶é—´ï¼š
 		String schedule = ConstantsTools.CONFIGER.getSchedule();
 		if ("true,false,false,false,false,false,false".equals(schedule)) {
 			currentTime += 5 * 60 * 1000;
@@ -65,22 +65,22 @@ public class Utils {
 		} else if ("false,false,false,false,false,true,false".equals(schedule)) {
 			currentTime += 7 * 24 * 60 * 60 * 1000;
 		} else if ("false,false,false,false,false,false,true".equals(schedule)) {
-			return "Ã÷Ìì " + ConstantsTools.CONFIGER.getScheduleFixTime();
+			return "æ˜å¤© " + ConstantsTools.CONFIGER.getScheduleFixTime();
 		}
 
-		// 3¡¢¸ñÊ½»¯Ê±¼ä£¬»ñÈ¡µ½µÄ¾ÍÊÇµ±Ç°Ê±¼ä¼ÓÉÏ¶¨Ê±Ö´ĞĞÖ®ºóµÄÊ±¼ä
+		// 3ã€æ ¼å¼åŒ–æ—¶é—´ï¼Œè·å–åˆ°çš„å°±æ˜¯å½“å‰æ—¶é—´åŠ ä¸Šå®šæ—¶æ‰§è¡Œä¹‹åçš„æ—¶é—´
 		Date date = new Date(currentTime);
-		// 4¡¢½¨Á¢Ê±¼ä¸ñÊ½»¯¶ÔÏó£º
+		// 4ã€å»ºç«‹æ—¶é—´æ ¼å¼åŒ–å¯¹è±¡ï¼š
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return dateFormat.format(date);
 	}
 
 	/**
-	 * »ñÈ¡Ä³×Ö·û´®ÔÚ×Ö·û´®Êı×éÖĞµÄindex
+	 * è·å–æŸå­—ç¬¦ä¸²åœ¨å­—ç¬¦ä¸²æ•°ç»„ä¸­çš„index
 	 * 
 	 * @param arr
 	 * @param key
-	 * @return ·µ»ØÄ³×Ö·û´®ÔÚ×Ö·û´®Êı×éÖĞµÄindex£¬ÈôÕÒ²»µ½·µ»Ø-1
+	 * @return è¿”å›æŸå­—ç¬¦ä¸²åœ¨å­—ç¬¦ä¸²æ•°ç»„ä¸­çš„indexï¼Œè‹¥æ‰¾ä¸åˆ°è¿”å›-1
 	 */
 	public static int getStrArrIndex(String arr[], String key) {
 
@@ -93,7 +93,7 @@ public class Utils {
 	}
 
 	/**
-	 * ±È½ÏÁ½¸ökeyÍêÈ«ÏàÍ¬µÄmapÄÚÈİÊÇ·ñÍêÈ«Ò»ÖÂ
+	 * æ¯”è¾ƒä¸¤ä¸ªkeyå®Œå…¨ç›¸åŒçš„mapå†…å®¹æ˜¯å¦å®Œå…¨ä¸€è‡´
 	 * 
 	 * @param map1
 	 * @param map2
@@ -111,7 +111,7 @@ public class Utils {
 	}
 
 	/**
-	 * ½«ºº×Ö×ª»»ÎªÈ«Æ´
+	 * å°†æ±‰å­—è½¬æ¢ä¸ºå…¨æ‹¼
 	 * 
 	 * @param src
 	 * @return
@@ -130,7 +130,7 @@ public class Utils {
 		int t0 = t1.length;
 		try {
 			for (int i = 0; i < t0; i++) {
-				// ÅĞ¶ÏÊÇ·ñÎªºº×Ö×Ö·û
+				// åˆ¤æ–­æ˜¯å¦ä¸ºæ±‰å­—å­—ç¬¦
 				if (Character.toString(t1[i]).matches("[\\u4E00-\\u9FA5]+")) {
 					t2 = PinyinHelper.toHanyuPinyinStringArray(t1[i], t3);
 					t4 += t2[0];
@@ -146,7 +146,7 @@ public class Utils {
 	}
 
 	/**
-	 * »ñÈ¡linkedHashSetÖĞÔªËØµÄË÷ÒıÎ»ÖÃ
+	 * è·å–linkedHashSetä¸­å…ƒç´ çš„ç´¢å¼•ä½ç½®
 	 * 
 	 * @param linkedHashSet
 	 * @param string

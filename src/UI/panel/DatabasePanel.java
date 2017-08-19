@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Êı¾İ¿âÉèÖÃÃæ°å
+ * æ•°æ®åº“è®¾ç½®é¢æ¿
  * 
  * @author Bob
  *
@@ -26,7 +26,7 @@ public class DatabasePanel extends JPanel {
 	private static JPanel databaseSettingPanelTo;
 
 	/**
-	 * ¹¹Ôì
+	 * æ„é€ 
 	 */
 	public DatabasePanel() {
 		initialize();
@@ -35,7 +35,7 @@ public class DatabasePanel extends JPanel {
 	}
 
 	/**
-	 * ³õÊ¼»¯Ãæ°å
+	 * åˆå§‹åŒ–é¢æ¿
 	 */
 	private void initialize() {
 		this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -45,7 +45,7 @@ public class DatabasePanel extends JPanel {
 	}
 
 	/**
-	 * ÎªÃæ°åÌí¼Ó×é¼ş
+	 * ä¸ºé¢æ¿æ·»åŠ ç»„ä»¶
 	 */
 	private void addComponent() {
 
@@ -55,7 +55,7 @@ public class DatabasePanel extends JPanel {
 	}
 
 	/**
-	 * Ãæ°åÉÏ²¿
+	 * é¢æ¿ä¸Šéƒ¨
 	 * 
 	 * @return
 	 */
@@ -73,17 +73,17 @@ public class DatabasePanel extends JPanel {
 	}
 
 	/**
-	 * Ãæ°åÖĞ²¿
+	 * é¢æ¿ä¸­éƒ¨
 	 * 
 	 * @return
 	 */
 	private JPanel getCenterPanel() {
-		// ÖĞ¼äÃæ°å
+		// ä¸­é—´é¢æ¿
 		JPanel panelCenter = new JPanel();
 		panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
 		panelCenter.setLayout(new BorderLayout());
 
-		// Êı¾İ¿âÁĞ±íPanel
+		// æ•°æ®åº“åˆ—è¡¨Panel
 		JPanel panelList = new JPanel();
 		Dimension preferredSize = new Dimension(245, ConstantsUI.MAIN_WINDOW_HEIGHT);
 		panelList.setPreferredSize(preferredSize);
@@ -113,7 +113,7 @@ public class DatabasePanel extends JPanel {
 		panelList.add(panelFrom);
 		panelList.add(panelTo);
 
-		// Êı¾İ¿âÉèÖÃPanel
+		// æ•°æ®åº“è®¾ç½®Panel
 
 		databaseSettingPanel = new JPanel();
 		databaseSettingPanel.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -127,7 +127,7 @@ public class DatabasePanel extends JPanel {
 	}
 
 	/**
-	 * Ìí¼ÓÏà¹Ø×é¼şµÄÊÂ¼ş¼àÌı
+	 * æ·»åŠ ç›¸å…³ç»„ä»¶çš„äº‹ä»¶ç›‘å¬
 	 */
 	private void addListener() {
 		panelFrom.addMouseListener(new MouseListener() {

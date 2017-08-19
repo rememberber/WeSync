@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * ¼Æ»®ÈÎÎñÃæ°å
+ * è®¡åˆ’ä»»åŠ¡é¢æ¿
  *
  * @author Bob
  */
@@ -32,7 +32,7 @@ public class SchedulePanel extends JPanel {
     private static Logger logger = Logger.getLogger(SchedulePanel.class);
 
     /**
-     * ¹¹Ôì
+     * æ„é€ 
      */
     public SchedulePanel() {
         initialize();
@@ -42,7 +42,7 @@ public class SchedulePanel extends JPanel {
     }
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     private void initialize() {
         this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -50,7 +50,7 @@ public class SchedulePanel extends JPanel {
     }
 
     /**
-     * Ìí¼Ó×é¼ş
+     * æ·»åŠ ç»„ä»¶
      */
     private void addComponent() {
 
@@ -60,7 +60,7 @@ public class SchedulePanel extends JPanel {
     }
 
     /**
-     * ÉÏ²¿Ãæ°å
+     * ä¸Šéƒ¨é¢æ¿
      *
      * @return
      */
@@ -78,22 +78,22 @@ public class SchedulePanel extends JPanel {
     }
 
     /**
-     * ÖĞ²¿Ãæ°å
+     * ä¸­éƒ¨é¢æ¿
      *
      * @return
      */
     private JPanel getCenterPanel() {
-        // ÖĞ¼äÃæ°å
+        // ä¸­é—´é¢æ¿
         JPanel panelCenter = new JPanel();
         panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(1, 1));
 
-        // ¼Æ»®Ê±¼äGrid
+        // è®¡åˆ’æ—¶é—´Grid
         JPanel panelGridSchedule = new JPanel();
         panelGridSchedule.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelGridSchedule.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
 
-        // ³õÊ¼»¯×é¼ş
+        // åˆå§‹åŒ–ç»„ä»¶
         radio5Min = new JRadioButton(PropertyUtil.getProperty("ds.ui.schedule.radio1"));
         radio15Min = new JRadioButton(PropertyUtil.getProperty("ds.ui.schedule.radio2"));
         radio30Min = new JRadioButton(PropertyUtil.getProperty("ds.ui.schedule.radio3"));
@@ -103,7 +103,7 @@ public class SchedulePanel extends JPanel {
         radioEveryDay = new JRadioButton(PropertyUtil.getProperty("ds.ui.schedule.radio7"));
         fixedTime = new JTextField();
 
-        // ×ÖÌå
+        // å­—ä½“
         radio5Min.setFont(ConstantsUI.FONT_RADIO);
         radio15Min.setFont(ConstantsUI.FONT_RADIO);
         radio30Min.setFont(ConstantsUI.FONT_RADIO);
@@ -113,7 +113,7 @@ public class SchedulePanel extends JPanel {
         radioEveryDay.setFont(ConstantsUI.FONT_RADIO);
         fixedTime.setFont(ConstantsUI.FONT_RADIO);
 
-        // ÑÕÉ«
+        // é¢œè‰²
         radio5Min.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         radio15Min.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         radio30Min.setBackground(ConstantsUI.MAIN_BACK_COLOR);
@@ -123,7 +123,7 @@ public class SchedulePanel extends JPanel {
         radioEveryDay.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         fixedTime.setBackground(ConstantsUI.MAIN_BACK_COLOR);
 
-        // ´óĞ¡
+        // å¤§å°
         radio5Min.setMinimumSize(ConstantsUI.RADIO_SIZE);
         radio15Min.setPreferredSize(ConstantsUI.RADIO_SIZE);
         radio30Min.setMinimumSize(ConstantsUI.RADIO_SIZE);
@@ -134,7 +134,7 @@ public class SchedulePanel extends JPanel {
         Dimension preferredSize = new Dimension(130, 26);
         fixedTime.setPreferredSize(preferredSize);
 
-        // ×éºÏÔªËØ
+        // ç»„åˆå…ƒç´ 
         panelGridSchedule.add(radio5Min);
         panelGridSchedule.add(radio15Min);
         panelGridSchedule.add(radio30Min);
@@ -150,7 +150,7 @@ public class SchedulePanel extends JPanel {
     }
 
     /**
-     * ÏÂ²¿Ãæ°å
+     * ä¸‹éƒ¨é¢æ¿
      *
      * @return
      */
@@ -167,7 +167,7 @@ public class SchedulePanel extends JPanel {
     }
 
     /**
-     * ÉèÖÃµ±Ç°µÄradio×´Ì¬
+     * è®¾ç½®å½“å‰çš„radioçŠ¶æ€
      */
     public void setCurrentSchedule() {
 
@@ -183,7 +183,7 @@ public class SchedulePanel extends JPanel {
     }
 
     /**
-     * Îª¸÷×é¼şÌí¼ÓÊÂ¼ş¼àÌı
+     * ä¸ºå„ç»„ä»¶æ·»åŠ äº‹ä»¶ç›‘å¬
      */
     public void addListener() {
 
@@ -332,7 +332,7 @@ public class SchedulePanel extends JPanel {
                     ConstantsTools.CONFIGER.setScheduleFixTime(fixedTime.getText());
                     JOptionPane.showMessageDialog(AppMainWindow.schedulePanel,
                             PropertyUtil.getProperty("ds.ui.schedule.saveTips"), PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
-                    if (!StatusPanel.buttonStartSchedule.isEnabled()) {// ÉèÖÃÏÔÊ¾ÏÂÒ»´ÎÖ´ĞĞÊ±¼ä
+                    if (!StatusPanel.buttonStartSchedule.isEnabled()) {// è®¾ç½®æ˜¾ç¤ºä¸‹ä¸€æ¬¡æ‰§è¡Œæ—¶é—´
                         StatusPanel.labelNextTime.setText(PropertyUtil.getProperty("ds.ui.schedule.nextTime") + Utils.getNextSyncTime());
                     }
 
