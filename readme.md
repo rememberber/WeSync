@@ -12,17 +12,17 @@ UI
 >Java Swing  
 >some icons
 
-��������
+功能特性
 ---------
->���ݿ�ͬ�������ݿ�����ݴ���  
->֧�ֲ�ͬ���ݿ�䣬��ͬ���Ͳ�ͬ���ṹ������ͬ��  
->֧��ͬ�����������ݼӹ�������չ��  
->֧��ʧ������ع�  
->֧��ʧ�ܿ��ջع�  
->Ŀǰ֧��SqlServer->MySQL  
->����չ���ⲻͬ���ݿ�����ݴ���
+>数据库同步，数据库间数据传输  
+>支持不同数据库间，不同表和不同表结构间数据同步  
+>支持同步过程中数据加工（可扩展）  
+>支持失败事务回滚  
+>支持失败快照回滚  
+>目前支持SqlServer->MySQL  
+>可扩展任意不同数据库间数据传输
 
-����
+速览
 -----
 <p align="center">
   <a href="https://github.com/rememberber/DataSync">
@@ -56,33 +56,33 @@ UI
 </p>
 
   
-��������
+环境依赖
 ---------
 >Java 8
 
-Ŀ¼�ṹ����
+目录结构描述
 -------------
->config������
->>config.xml��UI���ò����ĳ־û�  
->>Re-initialization.sql����ԭ��ر�����ʼ��״̬��memo  
->>zh-cn.properties�����ԣ����ʻ�
+>config：配置
+>>config.xml：UI设置参数的持久化  
+>>Re-initialization.sql：还原相关表到初始化状态的memo  
+>>zh-cn.properties：语言，国际化
 
->DB_Backup���������
->>mysql_backup.bat�����ݽű�  
->>mysql_table_backup.sql������ʱִ�е�sql
+>DB_Backup：备份相关
+>>mysql_backup.bat：备份脚本  
+>>mysql_table_backup.sql：备份时执行的sql
 
->log_SQL����¼ÿ��ִ�е�sql��ˮ
+>log_SQL：记录每次执行的sql流水
 
->snaps��csv����  
->snaps_bak��csv���ձ���
+>snaps：csv快照  
+>snaps_bak：csv快照备份
 
->TableField����-�ֶ� ��Ӧ��ϵ����
+>TableField：表-字段 对应关系配置
 
->Trigger��ͬ��������������
+>Trigger：同步出发机制配置
 
-�汾���ݸ���
+版本内容更新
 -------------
 
-����
+声明
 -------
->ͼ����Դ��http://designmodo.com/linecons-free/
+>图标来源：http://designmodo.com/linecons-free/
