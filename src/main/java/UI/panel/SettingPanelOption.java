@@ -4,7 +4,8 @@ import UI.AppMainWindow;
 import UI.ConstantsUI;
 import UI.MyIconButton;
 import logic.ConstantsLogic;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tools.ConstantsTools;
 import tools.PropertyUtil;
 
@@ -41,7 +42,7 @@ public class SettingPanelOption extends JPanel {
 
     private static JTextField textField;
 
-    private static Logger logger = Logger.getLogger(SettingPanelOption.class);
+    private static final Logger logger = LoggerFactory.getLogger(SettingPanelOption.class);
 
     /**
      * 构造

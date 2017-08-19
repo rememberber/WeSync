@@ -1,4 +1,0 @@
-2017-03-01 17:26:07  [ AWT-EventQueue-0:0 ] - [ INFO ]  ==================AppInitStart
-2017-03-01 17:26:10  [ AWT-EventQueue-0:2587 ] - [ ERROR ]  来源数据库用户名或密码解密错误：javax.crypto.BadPaddingException: Given final block not properly padded
-2017-03-01 17:26:10  [ AWT-EventQueue-0:2612 ] - [ ERROR ]  目标数据库用户名或密码解密错误：javax.crypto.BadPaddingException: Given final block not properly padded
-2017-03-01 17:26:10  [ AWT-EventQueue-0:2812 ] - [ INFO ]  ==================AppInitEnd

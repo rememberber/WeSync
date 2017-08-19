@@ -1,8 +1,9 @@
 package tools;
 
-import org.apache.log4j.Logger;
 
 import UI.panel.StatusPanel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 日志封装类，控制系统信息（界面和log文件）的记录
@@ -10,7 +11,7 @@ import UI.panel.StatusPanel;
  * @author Bob
  */
 public class StatusLog {
-    private static Logger logger = Logger.getLogger(StatusLog.class);
+    private static final Logger logger = LoggerFactory.getLogger(StatusLog.class);
 
     /**
      * 设置状态面板状态信息
@@ -43,7 +44,7 @@ public class StatusLog {
         } else if (level.toString().equals("ERROR")) {
             logger.error(statusDetail);
         } else if (level.toString().equals("FATAL")) {
-            logger.fatal(statusDetail);
+            logger.error(statusDetail);
         }
     }
 

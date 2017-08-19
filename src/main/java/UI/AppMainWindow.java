@@ -1,8 +1,8 @@
 package UI;
 
 import UI.panel.*;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tools.PropertyUtil;
 
 import javax.swing.*;
@@ -19,7 +19,7 @@ import java.io.File;
  * @author Bob
  */
 public class AppMainWindow {
-    private static Logger logger = Logger.getLogger(AppMainWindow.class);
+    private static final Logger logger = LoggerFactory.getLogger(AppMainWindow.class);
 
     private JFrame frame;
 
@@ -62,8 +62,6 @@ public class AppMainWindow {
      * 初始化frame内容
      */
     private void initialize() {
-        PropertyConfigurator
-                .configure(ConstantsUI.CURRENT_DIR + File.separator + "config" + File.separator + "log4j.properties");
         logger.info("==================AppInitStart");
         // 设置系统默认样式
         try {

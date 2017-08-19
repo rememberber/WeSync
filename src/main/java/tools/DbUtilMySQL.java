@@ -1,6 +1,8 @@
 package tools;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
@@ -21,7 +23,7 @@ public class DbUtilMySQL {
 
     private static DbUtilMySQL instance = null;
 
-    private static Logger logger = Logger.getLogger(DbUtilMySQL.class);
+    private static final Logger logger = LoggerFactory.getLogger(DbUtilMySQL.class);
 
     /**
      * 私有的构造

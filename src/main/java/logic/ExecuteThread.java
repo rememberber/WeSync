@@ -3,7 +3,8 @@ package logic;
 import UI.panel.StatusPanel;
 import com.opencsv.CSVWriter;
 import logic.bean.Table;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tools.*;
 
 import java.io.*;
@@ -21,7 +22,7 @@ import java.util.regex.Pattern;
  */
 public class ExecuteThread extends Thread implements ExecuteThreadInterface {
 
-    private static Logger logger = Logger.getLogger(ExecuteThread.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExecuteThread.class);
     // 表-字段配置文件内容Map,key:目标表名,value:对应关系内容List
     public static LinkedHashMap<String, ArrayList<String>> tableFieldMap;
     // TriggerMap,key:快照名,value:触发表

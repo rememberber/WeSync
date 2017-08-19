@@ -3,7 +3,8 @@ package UI.panel;
 import UI.AppMainWindow;
 import UI.ConstantsUI;
 import UI.MyIconButton;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tools.ConstantsTools;
 import tools.DESPlus;
 import tools.DbUtilMySQL;
@@ -31,7 +32,7 @@ public class DatabasePanelTo extends JPanel {
     private static JTextField textFieldDatabaseUser;
     private static JPasswordField passwordFieldDatabasePassword;
 
-    private static Logger logger = Logger.getLogger(DatabasePanelTo.class);
+    private static final Logger logger = LoggerFactory.getLogger(DatabasePanelTo.class);
 
     /**
      * 构造

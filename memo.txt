@@ -1,7 +1,7 @@
 JPanel(boolean isDoubleBuffered)
-          ´´½¨¾ßÓĞ FlowLayout ºÍÖ¸¶¨»º³å²ßÂÔµÄĞÂ JPanel¡£
+          åˆ›å»ºå…·æœ‰ FlowLayout å’ŒæŒ‡å®šç¼“å†²ç­–ç•¥çš„æ–° JPanelã€‚
 
-public JPanel(boolean isDoubleBuffered)´´½¨¾ßÓĞ FlowLayout ºÍÖ¸¶¨»º³å²ßÂÔµÄĞÂ JPanel¡£Èç¹û isDoubleBuffered Îª true£¬Ôò JPanel ½«Ê¹ÓÃË«»º³å¡£
+public JPanel(boolean isDoubleBuffered)åˆ›å»ºå…·æœ‰ FlowLayout å’ŒæŒ‡å®šç¼“å†²ç­–ç•¥çš„æ–° JPanelã€‚å¦‚æœ isDoubleBuffered ä¸º trueï¼Œåˆ™ JPanel å°†ä½¿ç”¨åŒç¼“å†²ã€‚
 
-²ÎÊı£º
-isDoubleBuffered - Ò»¸ö boolean Öµ£¬Îª true ±íÊ¾Ë«»º³å£¬Ê¹ÓÃ¸ü¶àÄÚ´æ¿Õ¼äÊµÏÖ¿ìËÙ¡¢ÎŞÉÁË¸µÄ¸üĞÂ
+å‚æ•°ï¼š
+isDoubleBuffered - ä¸€ä¸ª boolean å€¼ï¼Œä¸º true è¡¨ç¤ºåŒç¼“å†²ï¼Œä½¿ç”¨æ›´å¤šå†…å­˜ç©ºé—´å®ç°å¿«é€Ÿã€æ— é—ªçƒçš„æ›´æ–°

@@ -3,7 +3,8 @@ package UI.panel;
 import UI.AppMainWindow;
 import UI.ConstantsUI;
 import UI.MyIconButton;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tools.ConstantsTools;
 import tools.PropertyUtil;
 import tools.Utils;
@@ -29,7 +30,7 @@ public class SchedulePanel extends JPanel {
 
     private static JTextField fixedTime;
 
-    private static Logger logger = Logger.getLogger(SchedulePanel.class);
+    private static final Logger logger = LoggerFactory.getLogger(SchedulePanel.class);
 
     /**
      * 构造

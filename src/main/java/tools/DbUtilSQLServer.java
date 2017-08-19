@@ -1,6 +1,8 @@
 package tools;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
@@ -22,7 +24,7 @@ public class DbUtilSQLServer {
 
 	private static DbUtilSQLServer instance = null;
 
-	private static Logger logger = Logger.getLogger(DbUtilSQLServer.class);
+	private static final Logger logger = LoggerFactory.getLogger(DbUtilSQLServer.class);
 
 	/**
 	 * 私有的构造

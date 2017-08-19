@@ -4,12 +4,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
-import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 配置文件管理 单例
@@ -19,7 +20,7 @@ import org.dom4j.io.XMLWriter;
  */
 public class ConfigManager {
 	private volatile static ConfigManager confManager;
-	private static Logger logger = Logger.getLogger(ConfigManager.class);
+	private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
 	public Document document;
 
 	/**

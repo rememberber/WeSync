@@ -4,7 +4,8 @@ import UI.ConstantsUI;
 import UI.MyIconButton;
 import logic.ExecuteThread;
 import logic.ScheduleExecuteThread;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tools.ConstantsTools;
 import tools.PropertyUtil;
 import tools.StatusLog;
@@ -33,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 public class StatusPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    private static Logger logger = Logger.getLogger(StatusPanel.class);
+    private static final Logger logger = LoggerFactory.getLogger(StatusPanel.class);
 
     public static MyIconButton buttonStartSchedule;
     public static MyIconButton buttonStop;
