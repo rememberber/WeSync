@@ -4,7 +4,7 @@
   </a>
 </p>
 
-Data Sync
+Data Sync  <img alt="travis-ci build" src="https://travis-ci.org/rememberber/DataSync.svg?branch=master">
 ============
 
 UI
