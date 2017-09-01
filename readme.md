@@ -4,10 +4,8 @@
   </a>
 </p>
 
-Data Sync
+Data Sync [![Build Status](https://travis-ci.org/rememberber/DataSync.svg?branch=master)](https://travis-ci.org/rememberber/DataSync)
 ============
-
-[![Build Status](https://travis-ci.org/rememberber/DataSync.svg?branch=master)](https://travis-ci.org/rememberber/DataSync)
 
 UI
 -------
