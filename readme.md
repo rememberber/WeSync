@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="https://github.com/rememberber/DataSync">
-   <img alt="DataSync-Logo" src="https://github.com/rememberber/DataSync/blob/master/src/main/resources/icon/DataSync.png?raw=true">
-  </a>
+  <a href="https://github.com/rememberber/DataSync"></a>
 </p>
 
-Data Sync  <img alt="travis-ci build" src="https://travis-ci.org/rememberber/DataSync.svg?branch=master">
+Data Sync  <img alt="travis-ci build" src="">
 ============
+
+[![Build Status](https://travis-ci.org/rememberber/DataSync.svg?branch=master)](https://travis-ci.org/rememberber/DataSync)
 
 UI
 -------
