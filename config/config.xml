@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dataSync> 
+<weSync>
   <status> 
     <lastSyncTime>2016-05-27 09:53:00</lastSyncTime>  
     <lastKeepTime>10.125</lastKeepTime>  
@@ -38,4 +38,4 @@
   <increase> 
     <POSITION_CODE>0</POSITION_CODE>
   </increase> 
-</dataSync>
+</weSync>

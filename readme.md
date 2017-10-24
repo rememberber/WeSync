@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="https://github.com/rememberber/DataSync">
-   <img alt="DataSync-Logo" src="https://github.com/rememberber/DataSync/blob/master/src/main/resources/icon/DataSync.png?raw=true">
+  <a href="https://github.com/rememberber/WeSync">
+   <img alt="WeSync-Logo" src="https://github.com/rememberber/WeSync/blob/master/src/main/resources/icon/WeSync.png?raw=true">
   </a>
 </p>
 
-Data Sync [![Build Status](https://travis-ci.org/rememberber/DataSync.svg?branch=master)](https://travis-ci.org/rememberber/DataSync)
+WeSync [![Build Status](https://travis-ci.org/rememberber/WeSync.svg?branch=master)](https://travis-ci.org/rememberber/WeSync)
 ============
 
 UI
@@ -25,33 +25,33 @@ UI
 速览
 -----
 <p align="center">
-  <a href="https://github.com/rememberber/DataSync">
-   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20030.png?raw=true">
+  <a href="https://github.com/rememberber/WeSync">
+   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20030.png?raw=true">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/DataSync">
-   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20031.png?raw=true">
+  <a href="https://github.com/rememberber/WeSync">
+   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20031.png?raw=true">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/DataSync">
-   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20032.png?raw=true">
+  <a href="https://github.com/rememberber/WeSync">
+   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20032.png?raw=true">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/DataSync">
-   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20033.png?raw=true">
+  <a href="https://github.com/rememberber/WeSync">
+   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20033.png?raw=true">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/DataSync">
-   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20034.png?raw=true">
+  <a href="https://github.com/rememberber/WeSync">
+   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20034.png?raw=true">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/DataSync">
-   <img alt="DataSync" src="https://github.com/rememberber/DataSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20035.png?raw=true">
+  <a href="https://github.com/rememberber/WeSync">
+   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20035.png?raw=true">
   </a>
 </p>
 

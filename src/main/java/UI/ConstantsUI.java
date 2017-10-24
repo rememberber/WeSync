@@ -16,7 +16,7 @@ public class ConstantsUI {
     /**
      * 软件名称,版本
      */
-    public final static String APP_NAME = "Data Sync";
+    public final static String APP_NAME = "WeSync";
     public final static String APP_VERSION = "v_1.60_160511";
 
     /**
@@ -36,7 +36,7 @@ public class ConstantsUI {
      * 主窗口图标
      */
     public final static Image IMAGE_ICON = Toolkit.getDefaultToolkit()
-            .getImage(AppMainWindow.class.getResource("/icon/DataSync.png"));
+            .getImage(AppMainWindow.class.getResource("/icon/WeSync.png"));
 
     /**
      * 主窗口背景色
@@ -66,7 +66,7 @@ public class ConstantsUI {
      * 主图标
      */
     public final static ImageIcon ICON_DATA_SYNC = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/DataSync.png"));
+            AppMainWindow.class.getResource("/icon/WeSync.png"));
     /**
      * 工具栏图标
      */

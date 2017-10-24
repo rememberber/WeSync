@@ -1,5 +1,5 @@
 @echo off & setlocal ENABLEEXTENSIONS
-set BACKUP_PATH=D:\workspaceDataSync\dataSync\DB_Backup\Target
+set BACKUP_PATH=D:\workspaceWeSync\weSync\DB_Backup\Target
 set DATABASES=TEST_2017_M
 set HOST=localhost
 set USERNAME=root
