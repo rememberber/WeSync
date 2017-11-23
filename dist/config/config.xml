@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<weSync>
+  <status> 
+    <lastSyncTime>2016-05-27 09:53:00</lastSyncTime>  
+    <lastKeepTime>10.125</lastKeepTime>  
+    <successTime>35</successTime>  
+    <failTime>9</failTime> 
+  </status>  
+  <database> 
+    <from> 
+      <type>SQL Server</type>  
+      <host>127.0.0.1</host>  
+      <name>TEST_2017</name>  
+      <user>97da459ae523ae80</user>  
+      <password>1ca6dbffc8f125b4</password> 
+    </from>  
+    <to> 
+      <type>MySQL</type>  
+      <host>localhost</host>  
+      <name>TEST_2017_M</name>  
+      <user>9bc42c9884cdbe3e</user>  
+      <password>1ca6dbffc8f125b4</password> 
+    </to> 
+  </database>  
+  <schedule> 
+    <radio>false,false,false,false,false,false,true</radio>  
+    <fixtime>23:45:00</fixtime> 
+  </schedule>  
+  <backup/>  
+  <setting> 
+    <autoBak>true</autoBak>  
+    <debugMode>false</debugMode>  
+    <strictMode>false</strictMode>  
+    <mysqlPath>D:\MySQL</mysqlPath>  
+    <productname>产品A,产品B</productname>
+  </setting>  
+  <increase> 
+    <POSITION_CODE>0</POSITION_CODE>
+  </increase> 
+</weSync>

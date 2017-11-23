@@ -1,0 +1,10 @@
+
+// 规则：快照名:<来源表>(主键){字段}[其他条件]=<目标表1>(主键){字段}[保留]=<目标表2>(主键){字段}[保留]...
+// 多个以英文逗号隔开
+// 注意：]=<等符号旁边不要有空格
+
+// 示例：Snap_tableA:<table_a_from>(id){id,name,other}[WHERE status = '1' ORDER BY id]=<table_a_to>(id){id,real_name,password}
+
+role:<position>(Name){Name}[WHERE IsDelete = 0 GROUP BY Name ORDER BY Name]=<my_role>(ID){ID,ROLE_NAME,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER,STATUS,REMARK}[]
+
+user:<user u LEFT Info i ON u.id = i.id>(id){u.id,u.Name,u.IDCardID,u.Telphone,u.Address,u.EMail,u.Status}[WHERE u.Status = 1 and u.IDCardID is not null and u.IDCardID != '' ORDER BY u.id]=<my_user>(ID){ID,LOGIN_NAME,PASSWORD,REAL_NAME,STATUS,ADDRESS,RMK,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER,LOGIN_IP,MOBILE,SYS_EMAIL,TELPHONE,LOGO_IMG,PROVINCE,CITY,sbc_id,EMP_CODE,ID_CARD,DEPT_CODE,POSITION_CODE,BANK_NUMBER}[]

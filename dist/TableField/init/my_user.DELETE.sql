@@ -1,0 +1,5 @@
+UPDATE my_user
+ SET STATUS = '1',
+ UPDATE_DATE = '$SYS_DATE_TIME$',
+ UPDATE_USER = 2
+WHERE ID_CARD = 'before.IDCardID' ;

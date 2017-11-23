@@ -1,0 +1,6 @@
+UPDATE my_role
+SET UPDATE_DATE = '$SYS_DATE_TIME$',
+ UPDATE_USER = 2,
+ STATUS = '1'
+WHERE
+	(ROLE_NAME = 'before.Name');
