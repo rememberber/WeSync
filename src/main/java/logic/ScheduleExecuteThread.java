@@ -10,12 +10,13 @@ import tools.*;
  */
 public class ScheduleExecuteThread extends ExecuteThread {
 
+    @Override
     public void run() {
         if (StatusPanel.isRunning == false) {
             StatusPanel.isRunning = true;
             this.setName("ScheduleExecuteThread");
             StatusPanel.buttonStartNow.setEnabled(false);
-            long enterTime = System.currentTimeMillis(); // 毫秒数
+            long enterTime = System.currentTimeMillis();
             StatusPanel.progressTotal.setMaximum(6);
             // 初始化变量
             init();
@@ -47,8 +48,8 @@ public class ScheduleExecuteThread extends ExecuteThread {
                                 StatusPanel.progressTotal.setValue(6);
 
                                 // 设置持续时间
-                                long leaveTime = System.currentTimeMillis(); // 毫秒数
-                                float minutes = (float) (leaveTime - enterTime) / 1000; // 秒数
+                                long leaveTime = System.currentTimeMillis();
+                                float minutes = (float) (leaveTime - enterTime) / 1000;
                                 StatusLog.setKeepTime(String.valueOf(minutes));
                                 // 设置成功次数+1
                                 String success = String

@@ -275,77 +275,65 @@ public class StatusPanel extends JPanel {
      * 为各组件添加事件监听
      */
     private void addListener() {
-        buttonStartNow.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (isRunning == false) {
-                    buttonStartNow.setEnabled(false);
-                    buttonStartSchedule.setEnabled(false);
-                    StatusPanel.setContent();
-                    StatusPanel.progressTotal.setValue(0);
-                    StatusPanel.progressCurrent.setValue(0);
-                    labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.manu"));
-                    ExecuteThread syncThread = new ExecuteThread();
-                    syncThread.start();
-                }
-            }
-        });
-        buttonStartSchedule.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+        buttonStartNow.addActionListener(e -> {
+            if (isRunning == false) {
+                buttonStartNow.setEnabled(false);
                 buttonStartSchedule.setEnabled(false);
-                buttonStop.setEnabled(true);
                 StatusPanel.setContent();
-
                 StatusPanel.progressTotal.setValue(0);
                 StatusPanel.progressCurrent.setValue(0);
-                labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.scheduledRunning"));
-                ScheduleExecuteThread syncThread = new ScheduleExecuteThread();
-                service = Executors.newSingleThreadScheduledExecutor();
-                // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
-                String scheduleConf = ConstantsTools.CONFIGER.getSchedule();
-                if (scheduleConf.equals("true,false,false,false,false,false,false")) {
-                    service.scheduleAtFixedRate(syncThread, 0, 5, TimeUnit.MINUTES);
-
-                } else if (scheduleConf.equals("false,true,false,false,false,false,false")) {
-                    service.scheduleAtFixedRate(syncThread, 0, 15, TimeUnit.MINUTES);
-
-                } else if (scheduleConf.equals("false,false,true,false,false,false,false")) {
-                    service.scheduleAtFixedRate(syncThread, 0, 30, TimeUnit.MINUTES);
-
-                } else if (scheduleConf.equals("false,false,false,true,false,false,false")) {
-                    service.scheduleAtFixedRate(syncThread, 0, 1, TimeUnit.HOURS);
-
-                } else if (scheduleConf.equals("false,false,false,false,true,false,false")) {
-                    service.scheduleAtFixedRate(syncThread, 0, 1, TimeUnit.DAYS);
-
-                } else if (scheduleConf.equals("false,false,false,false,false,true,false")) {
-                    service.scheduleAtFixedRate(syncThread, 0, 7, TimeUnit.DAYS);
-
-                } else if (scheduleConf.equals("false,false,false,false,false,false,true")) {
-                    long oneDay = 24 * 60 * 60 * 1000;
-                    long initDelay = getTimeMillis(ConstantsTools.CONFIGER.getScheduleFixTime().trim())
-                            - System.currentTimeMillis();
-                    initDelay = initDelay > 0 ? initDelay : oneDay + initDelay;
-                    service.scheduleAtFixedRate(syncThread, initDelay, oneDay, TimeUnit.MILLISECONDS);
-                }
-
+                labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.manu"));
+                ExecuteThread syncThread = new ExecuteThread();
+                syncThread.start();
             }
         });
-        buttonStop.addActionListener(new ActionListener() {
+        buttonStartSchedule.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                buttonStartSchedule.setEnabled(true);
-                StatusPanel.buttonStartNow.setEnabled(true);
-                service.shutdown();
-                StatusLog.setNextTime("");
-                labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.ready"));
-                buttonStop.setEnabled(false);
+            buttonStartSchedule.setEnabled(false);
+            buttonStop.setEnabled(true);
+            StatusPanel.setContent();
+
+            StatusPanel.progressTotal.setValue(0);
+            StatusPanel.progressCurrent.setValue(0);
+            labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.scheduledRunning"));
+            ScheduleExecuteThread syncThread = new ScheduleExecuteThread();
+            service = Executors.newSingleThreadScheduledExecutor();
+            // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
+            String scheduleConf = ConstantsTools.CONFIGER.getSchedule();
+            if (scheduleConf.equals("true,false,false,false,false,false,false")) {
+                service.scheduleAtFixedRate(syncThread, 0, 5, TimeUnit.MINUTES);
+
+            } else if (scheduleConf.equals("false,true,false,false,false,false,false")) {
+                service.scheduleAtFixedRate(syncThread, 0, 15, TimeUnit.MINUTES);
+
+            } else if (scheduleConf.equals("false,false,true,false,false,false,false")) {
+                service.scheduleAtFixedRate(syncThread, 0, 30, TimeUnit.MINUTES);
+
+            } else if (scheduleConf.equals("false,false,false,true,false,false,false")) {
+                service.scheduleAtFixedRate(syncThread, 0, 1, TimeUnit.HOURS);
+
+            } else if (scheduleConf.equals("false,false,false,false,true,false,false")) {
+                service.scheduleAtFixedRate(syncThread, 0, 1, TimeUnit.DAYS);
+
+            } else if (scheduleConf.equals("false,false,false,false,false,true,false")) {
+                service.scheduleAtFixedRate(syncThread, 0, 7, TimeUnit.DAYS);
+
+            } else if (scheduleConf.equals("false,false,false,false,false,false,true")) {
+                long oneDay = 24 * 60 * 60 * 1000;
+                long initDelay = getTimeMillis(ConstantsTools.CONFIGER.getScheduleFixTime().trim())
+                        - System.currentTimeMillis();
+                initDelay = initDelay > 0 ? initDelay : oneDay + initDelay;
+                service.scheduleAtFixedRate(syncThread, initDelay, oneDay, TimeUnit.MILLISECONDS);
             }
+
+        });
+        buttonStop.addActionListener(e -> {
+            buttonStartSchedule.setEnabled(true);
+            StatusPanel.buttonStartNow.setEnabled(true);
+            service.shutdown();
+            StatusLog.setNextTime("");
+            labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.ready"));
+            buttonStop.setEnabled(false);
         });
         labelLog.addMouseListener(new MouseListener() {
 

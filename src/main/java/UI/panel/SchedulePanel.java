@@ -188,162 +188,131 @@ public class SchedulePanel extends JPanel {
      */
     public void addListener() {
 
-        radio5Min.addActionListener(new ActionListener() {
+        radio5Min.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            radio5Min.setSelected(true);
+            radio15Min.setSelected(false);
+            radio30Min.setSelected(false);
+            radioPerHour.setSelected(false);
+            radioPerDay.setSelected(false);
+            radioPerWeek.setSelected(false);
+            radioEveryDay.setSelected(false);
 
-                radio5Min.setSelected(true);
-                radio15Min.setSelected(false);
-                radio30Min.setSelected(false);
-                radioPerHour.setSelected(false);
-                radioPerDay.setSelected(false);
-                radioPerWeek.setSelected(false);
-                radioEveryDay.setSelected(false);
+            AppMainWindow.schedulePanel.updateUI();
 
-                AppMainWindow.schedulePanel.updateUI();
-
-            }
         });
 
-        radio15Min.addActionListener(new ActionListener() {
+        radio15Min.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            radio5Min.setSelected(false);
+            radio15Min.setSelected(true);
+            radio30Min.setSelected(false);
+            radioPerHour.setSelected(false);
+            radioPerDay.setSelected(false);
+            radioPerWeek.setSelected(false);
+            radioEveryDay.setSelected(false);
 
-                radio5Min.setSelected(false);
-                radio15Min.setSelected(true);
-                radio30Min.setSelected(false);
-                radioPerHour.setSelected(false);
-                radioPerDay.setSelected(false);
-                radioPerWeek.setSelected(false);
-                radioEveryDay.setSelected(false);
+            AppMainWindow.schedulePanel.updateUI();
 
-                AppMainWindow.schedulePanel.updateUI();
-
-            }
         });
 
-        radio30Min.addActionListener(new ActionListener() {
+        radio30Min.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            radio5Min.setSelected(false);
+            radio15Min.setSelected(false);
+            radio30Min.setSelected(true);
+            radioPerHour.setSelected(false);
+            radioPerDay.setSelected(false);
+            radioPerWeek.setSelected(false);
+            radioEveryDay.setSelected(false);
 
-                radio5Min.setSelected(false);
-                radio15Min.setSelected(false);
-                radio30Min.setSelected(true);
-                radioPerHour.setSelected(false);
-                radioPerDay.setSelected(false);
-                radioPerWeek.setSelected(false);
-                radioEveryDay.setSelected(false);
+            AppMainWindow.schedulePanel.updateUI();
 
-                AppMainWindow.schedulePanel.updateUI();
-
-            }
         });
 
-        radioPerHour.addActionListener(new ActionListener() {
+        radioPerHour.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            radio5Min.setSelected(false);
+            radio15Min.setSelected(false);
+            radio30Min.setSelected(false);
+            radioPerHour.setSelected(true);
+            radioPerDay.setSelected(false);
+            radioPerWeek.setSelected(false);
+            radioEveryDay.setSelected(false);
 
-                radio5Min.setSelected(false);
-                radio15Min.setSelected(false);
-                radio30Min.setSelected(false);
-                radioPerHour.setSelected(true);
-                radioPerDay.setSelected(false);
-                radioPerWeek.setSelected(false);
-                radioEveryDay.setSelected(false);
+            AppMainWindow.schedulePanel.updateUI();
 
-                AppMainWindow.schedulePanel.updateUI();
-
-            }
         });
 
-        radioPerDay.addActionListener(new ActionListener() {
+        radioPerDay.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            radio5Min.setSelected(false);
+            radio15Min.setSelected(false);
+            radio30Min.setSelected(false);
+            radioPerHour.setSelected(false);
+            radioPerDay.setSelected(true);
+            radioPerWeek.setSelected(false);
+            radioEveryDay.setSelected(false);
 
-                radio5Min.setSelected(false);
-                radio15Min.setSelected(false);
-                radio30Min.setSelected(false);
-                radioPerHour.setSelected(false);
-                radioPerDay.setSelected(true);
-                radioPerWeek.setSelected(false);
-                radioEveryDay.setSelected(false);
+            AppMainWindow.schedulePanel.updateUI();
 
-                AppMainWindow.schedulePanel.updateUI();
-
-            }
         });
 
-        radioPerWeek.addActionListener(new ActionListener() {
+        radioPerWeek.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            radio5Min.setSelected(false);
+            radio15Min.setSelected(false);
+            radio30Min.setSelected(false);
+            radioPerHour.setSelected(false);
+            radioPerDay.setSelected(false);
+            radioPerWeek.setSelected(true);
+            radioEveryDay.setSelected(false);
 
-                radio5Min.setSelected(false);
-                radio15Min.setSelected(false);
-                radio30Min.setSelected(false);
-                radioPerHour.setSelected(false);
-                radioPerDay.setSelected(false);
-                radioPerWeek.setSelected(true);
-                radioEveryDay.setSelected(false);
+            AppMainWindow.schedulePanel.updateUI();
 
-                AppMainWindow.schedulePanel.updateUI();
-
-            }
         });
 
-        radioEveryDay.addActionListener(new ActionListener() {
+        radioEveryDay.addActionListener(e -> {
+            radio5Min.setSelected(false);
+            radio15Min.setSelected(false);
+            radio30Min.setSelected(false);
+            radioPerHour.setSelected(false);
+            radioPerDay.setSelected(false);
+            radioPerWeek.setSelected(false);
+            radioEveryDay.setSelected(true);
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                radio5Min.setSelected(false);
-                radio15Min.setSelected(false);
-                radio30Min.setSelected(false);
-                radioPerHour.setSelected(false);
-                radioPerDay.setSelected(false);
-                radioPerWeek.setSelected(false);
-                radioEveryDay.setSelected(true);
+            AppMainWindow.schedulePanel.updateUI();
 
-                AppMainWindow.schedulePanel.updateUI();
-
-            }
         });
 
-        buttonSave.addActionListener(new ActionListener() {
+        buttonSave.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            StringBuffer index = new StringBuffer();
+            // radio5Min, radioPerHour, radioPerDay, radioPerWeek;
+            index.append(radio5Min.isSelected()).append(",");
+            index.append(radio15Min.isSelected()).append(",");
+            index.append(radio30Min.isSelected()).append(",");
+            index.append(radioPerHour.isSelected()).append(",");
+            index.append(radioPerDay.isSelected()).append(",");
+            index.append(radioPerWeek.isSelected()).append(",");
+            index.append(radioEveryDay.isSelected());
 
-                StringBuffer index = new StringBuffer();
-                // radio5Min, radioPerHour, radioPerDay, radioPerWeek;
-                index.append(radio5Min.isSelected()).append(",");
-                index.append(radio15Min.isSelected()).append(",");
-                index.append(radio30Min.isSelected()).append(",");
-                index.append(radioPerHour.isSelected()).append(",");
-                index.append(radioPerDay.isSelected()).append(",");
-                index.append(radioPerWeek.isSelected()).append(",");
-                index.append(radioEveryDay.isSelected());
-
-                try {
-                    ConstantsTools.CONFIGER.setSchedule(index.toString());
-                    ConstantsTools.CONFIGER.setScheduleFixTime(fixedTime.getText());
-                    JOptionPane.showMessageDialog(AppMainWindow.schedulePanel,
-                            PropertyUtil.getProperty("ds.ui.schedule.saveTips"), PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
-                    if (!StatusPanel.buttonStartSchedule.isEnabled()) {// 设置显示下一次执行时间
-                        StatusPanel.labelNextTime.setText(PropertyUtil.getProperty("ds.ui.schedule.nextTime") + Utils.getNextSyncTime());
-                    }
-
-                } catch (Exception e1) {
-                    JOptionPane.showMessageDialog(AppMainWindow.schedulePanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
-                            JOptionPane.ERROR_MESSAGE);
-                    logger.error("Write to xml file error" + e1.toString());
+            try {
+                ConstantsTools.CONFIGER.setSchedule(index.toString());
+                ConstantsTools.CONFIGER.setScheduleFixTime(fixedTime.getText());
+                JOptionPane.showMessageDialog(AppMainWindow.schedulePanel,
+                        PropertyUtil.getProperty("ds.ui.schedule.saveTips"), PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
+                if (!StatusPanel.buttonStartSchedule.isEnabled()) {
+                    // 设置显示下一次执行时间
+                    StatusPanel.labelNextTime.setText(PropertyUtil.getProperty("ds.ui.schedule.nextTime") + Utils.getNextSyncTime());
                 }
 
+            } catch (Exception e1) {
+                JOptionPane.showMessageDialog(AppMainWindow.schedulePanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
+                        JOptionPane.ERROR_MESSAGE);
+                logger.error("Write to xml file error" + e1.toString());
             }
+
         });
     }
 }

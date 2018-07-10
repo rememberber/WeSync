@@ -2,54 +2,53 @@ package logic;
 
 /**
  * 执行器的接口
- * 
- * @author Bob
  *
+ * @author Bob
  */
 public interface ExecuteThreadInterface {
-	/**
-	 * 初始化变量
-	 */
-	public abstract void init();
+    /**
+     * 初始化变量
+     */
+    void init();
 
-	/**
-	 * 测试连接
-	 * 
-	 * @return
-	 */
-	public abstract boolean testLink();
+    /**
+     * 测试连接
+     *
+     * @return
+     */
+    boolean testLink();
 
-	/**
-	 * 解析配置文件
-	 * 
-	 * @return
-	 */
-	public abstract boolean analyseConfigFile();
+    /**
+     * 解析配置文件
+     *
+     * @return
+     */
+    boolean analyseConfigFile();
 
-	/**
-	 * 备份
-	 */
-	public abstract void backUp();
+    /**
+     * 备份
+     */
+    void backUp();
 
-	/**
-	 * 建立快照
-	 * 
-	 * @return
-	 */
-	public abstract boolean newSnap();
+    /**
+     * 建立快照
+     *
+     * @return
+     */
+    boolean newSnap();
 
-	/**
-	 * 对比快照，生成SQL
-	 * 
-	 * @return
-	 */
-	public abstract boolean diffSnap();
+    /**
+     * 对比快照，生成SQL
+     *
+     * @return
+     */
+    boolean diffSnap();
 
-	/**
-	 * 执行SQL
-	 * 
-	 * @return
-	 */
-	public abstract boolean executeSQL();
+    /**
+     * 执行SQL
+     *
+     * @return
+     */
+    boolean executeSQL();
 
 }

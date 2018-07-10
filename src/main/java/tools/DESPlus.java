@@ -9,110 +9,110 @@ import java.security.Key;
 import java.security.Security;
 
 public class DESPlus {
-	private static String strDefaultKey = "HELP";
+    private static String strDefaultKey = "HELP";
 
-	private Cipher encryptCipher = null;
+    private Cipher encryptCipher;
 
-	private Cipher decryptCipher = null;
+    private Cipher decryptCipher;
 
-	public static String byteArr2HexStr(byte[] arrB) throws Exception {
-		int iLen = arrB.length;
+    public static String byteArr2HexStr(byte[] arrB) {
+        int iLen = arrB.length;
 
-		StringBuffer sb = new StringBuffer(iLen * 2);
-		for (int i = 0; i < iLen; i++) {
-			int intTmp = arrB[i];
+        StringBuffer sb = new StringBuffer(iLen * 2);
+        for (int i = 0; i < iLen; i++) {
+            int intTmp = arrB[i];
 
-			while (intTmp < 0) {
-				intTmp += 256;
-			}
+            while (intTmp < 0) {
+                intTmp += 256;
+            }
 
-			if (intTmp < 16) {
-				sb.append("0");
-			}
-			sb.append(Integer.toString(intTmp, 16));
-		}
-		return sb.toString();
-	}
+            if (intTmp < 16) {
+                sb.append("0");
+            }
+            sb.append(Integer.toString(intTmp, 16));
+        }
+        return sb.toString();
+    }
 
-	public static byte[] hexStr2ByteArr(String strIn) throws Exception {
-		byte[] arrB = strIn.getBytes();
-		int iLen = arrB.length;
+    public static byte[] hexStr2ByteArr(String strIn) {
+        byte[] arrB = strIn.getBytes();
+        int iLen = arrB.length;
 
-		byte[] arrOut = new byte[iLen / 2];
-		for (int i = 0; i < iLen; i += 2) {
-			String strTmp = new String(arrB, i, 2);
-			arrOut[(i / 2)] = (byte) Integer.parseInt(strTmp, 16);
-		}
-		return arrOut;
-	}
+        byte[] arrOut = new byte[iLen / 2];
+        for (int i = 0; i < iLen; i += 2) {
+            String strTmp = new String(arrB, i, 2);
+            arrOut[(i / 2)] = (byte) Integer.parseInt(strTmp, 16);
+        }
+        return arrOut;
+    }
 
-	public DESPlus() throws Exception {
-		this(strDefaultKey);
-	}
+    public DESPlus() throws Exception {
+        this(strDefaultKey);
+    }
 
-	public DESPlus(String strKey) throws Exception {
-		Security.addProvider(new SunJCE());
-		Key key = getKey(strKey.getBytes());
+    public DESPlus(String strKey) throws Exception {
+        Security.addProvider(new SunJCE());
+        Key key = getKey(strKey.getBytes());
 
-		this.encryptCipher = Cipher.getInstance("DES");
-		this.encryptCipher.init(1, key);
+        this.encryptCipher = Cipher.getInstance("DES");
+        this.encryptCipher.init(1, key);
 
-		this.decryptCipher = Cipher.getInstance("DES");
-		this.decryptCipher.init(2, key);
-	}
+        this.decryptCipher = Cipher.getInstance("DES");
+        this.decryptCipher.init(2, key);
+    }
 
-	public byte[] encrypt(byte[] arrB) throws Exception {
-		return this.encryptCipher.doFinal(arrB);
-	}
+    public byte[] encrypt(byte[] arrB) throws Exception {
+        return this.encryptCipher.doFinal(arrB);
+    }
 
-	public String encrypt(String strIn) throws Exception {
-		return byteArr2HexStr(encrypt(strIn.getBytes()));
-	}
+    public String encrypt(String strIn) throws Exception {
+        return byteArr2HexStr(encrypt(strIn.getBytes()));
+    }
 
-	public byte[] decrypt(byte[] arrB) throws Exception {
-		return this.decryptCipher.doFinal(arrB);
-	}
+    public byte[] decrypt(byte[] arrB) throws Exception {
+        return this.decryptCipher.doFinal(arrB);
+    }
 
-	public String decrypt(String strIn) throws Exception {
-		return new String(decrypt(hexStr2ByteArr(strIn)));
-	}
+    public String decrypt(String strIn) throws Exception {
+        return new String(decrypt(hexStr2ByteArr(strIn)));
+    }
 
-	private Key getKey(byte[] arrBTmp) throws Exception {
-		byte[] arrB = new byte[8];
+    private Key getKey(byte[] arrBTmp) {
+        byte[] arrB = new byte[8];
 
-		for (int i = 0; (i < arrBTmp.length) && (i < arrB.length); i++) {
-			arrB[i] = arrBTmp[i];
-		}
+        for (int i = 0; (i < arrBTmp.length) && (i < arrB.length); i++) {
+            arrB[i] = arrBTmp[i];
+        }
 
-		Key key = new SecretKeySpec(arrB, "DES");
+        Key key = new SecretKeySpec(arrB, "DES");
 
-		return key;
-	}
+        return key;
+    }
 
-	public static void main(String[] args) {
-		String test = "asdf";
-		String password = "asdfasdf";
-		try {
-			DESPlus des = new DESPlus();
-			String miwen = des.encrypt(test);
-			System.out.println("加密后的字符：" + miwen);
+    public static void main(String[] args) {
+        String test = "asdf";
+        String password = "asdfasdf";
+        try {
+            DESPlus des = new DESPlus();
+            String miwen = des.encrypt(test);
+            System.out.println("加密后的字符：" + miwen);
 
-			DESPlus des1 = new DESPlus();
-			System.out.println("解密后的字符：" + des1.decrypt(miwen));
+            DESPlus des1 = new DESPlus();
+            System.out.println("解密后的字符：" + des1.decrypt(miwen));
 
-			String password_miwen = des.encrypt(password);
-			System.out.println("密码加密后的字符：" + password_miwen);
+            String password_miwen = des.encrypt(password);
+            System.out.println("密码加密后的字符：" + password_miwen);
 
-			DESPlus password_des1 = new DESPlus();
-			System.out.println("密码解密后的字符：" + password_des1.decrypt("asdfasdfasdf"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+            DESPlus password_des1 = new DESPlus();
+            System.out.println("密码解密后的字符：" + password_des1.decrypt("asdfasdfasdf"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		Md5PasswordEncoder mp = new Md5PasswordEncoder();
+        Md5PasswordEncoder mp = new Md5PasswordEncoder();
 
-		mp.encodePassword("000000", null);
-		System.out.println(mp.encodePassword("111111", null));
+        mp.encodePassword("000000", null);
+        System.out.println(mp.encodePassword("111111", null));
 
-	}
+    }
 }

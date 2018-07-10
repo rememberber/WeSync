@@ -24,7 +24,7 @@ public class Init4pxp2p {
         int progressValue = 0;
         StatusPanel.progressCurrent.setValue(progressValue);
 
-		/*Do Sth you need to init*/
+        /*Do Sth you need to init*/
         return isSuccess;
     }
 

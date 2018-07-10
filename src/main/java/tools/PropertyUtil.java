@@ -13,18 +13,19 @@ public class PropertyUtil {
 
     /**
      * 获取property
+     *
      * @param key
      * @return
      */
-    public static String getProperty(String key){
+    public static String getProperty(String key) {
         Properties pps = new Properties();
         try {
-            InputStream in = new BufferedInputStream (new FileInputStream(ConstantsTools.PATH_PROPERTY));
+            InputStream in = new BufferedInputStream(new FileInputStream(ConstantsTools.PATH_PROPERTY));
             pps.load(in);
             String value = pps.getProperty(key);
             return value;
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }

@@ -38,14 +38,12 @@ public class AppMainWindow {
      * 程序入口main
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    AppMainWindow window = new AppMainWindow();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                AppMainWindow window = new AppMainWindow();
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -210,14 +208,7 @@ public class AppMainWindow {
 
         dialog.add(panelDialog);
 
-        buttonCancel.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dialog.setVisible(false);
-
-            }
-        });
+        buttonCancel.addActionListener(e -> dialog.setVisible(false));
     }
 
 }

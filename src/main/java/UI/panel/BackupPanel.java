@@ -169,15 +169,7 @@ public class BackupPanel extends JPanel {
     }
 
     private void addListener() {
-        buttonNewBakFrom.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AppMainWindow.dialog.setVisible(true);
-
-            }
-        });
-
+        buttonNewBakFrom.addActionListener(e -> AppMainWindow.dialog.setVisible(true));
     }
 
 }

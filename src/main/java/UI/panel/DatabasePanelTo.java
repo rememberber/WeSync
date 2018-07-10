@@ -178,65 +178,57 @@ public class DatabasePanelTo extends JPanel {
      * 为相关组件添加事件监听
      */
     private void addListener() {
-        buttonSave.addActionListener(new ActionListener() {
+        buttonSave.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            try {
+                ConstantsTools.CONFIGER.setHostTo(textFieldDatabaseHost.getText());
+                ConstantsTools.CONFIGER.setNameTo(textFieldDatabaseName.getText());
 
+                String password = "";
+                String user = "";
                 try {
-                    ConstantsTools.CONFIGER.setHostTo(textFieldDatabaseHost.getText());
-                    ConstantsTools.CONFIGER.setNameTo(textFieldDatabaseName.getText());
-
-                    String password = "";
-                    String user = "";
-                    try {
-                        DESPlus des = new DESPlus();
-                        user = des.encrypt(textFieldDatabaseUser.getText());
-                        password = des.encrypt(new String(passwordFieldDatabasePassword.getPassword()));
-                    } catch (Exception e1) {
-                        logger.error(PropertyUtil.getProperty("ds.ui.database.to.err.encode") + e1.toString());
-                        e1.printStackTrace();
-                    }
-                    ConstantsTools.CONFIGER.setUserTo(user);
-                    ConstantsTools.CONFIGER.setPasswordTo(password);
-
-                    JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.save.success"), PropertyUtil.getProperty("ds.ui.tips"),
-                            JOptionPane.PLAIN_MESSAGE);
+                    DESPlus des = new DESPlus();
+                    user = des.encrypt(textFieldDatabaseUser.getText());
+                    password = des.encrypt(new String(passwordFieldDatabasePassword.getPassword()));
                 } catch (Exception e1) {
-                    JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
-                            JOptionPane.ERROR_MESSAGE);
-                    logger.error("Write to xml file error" + e1.toString());
+                    logger.error(PropertyUtil.getProperty("ds.ui.database.to.err.encode") + e1.toString());
+                    e1.printStackTrace();
                 }
+                ConstantsTools.CONFIGER.setUserTo(user);
+                ConstantsTools.CONFIGER.setPasswordTo(password);
 
+                JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.save.success"), PropertyUtil.getProperty("ds.ui.tips"),
+                        JOptionPane.PLAIN_MESSAGE);
+            } catch (Exception e1) {
+                JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
+                        JOptionPane.ERROR_MESSAGE);
+                logger.error("Write to xml file error" + e1.toString());
             }
+
         });
 
-        buttonTestLink.addActionListener(new ActionListener() {
+        buttonTestLink.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                try {
-                    DbUtilMySQL dbMySQL = DbUtilMySQL.getInstance();
-                    String DBUrl = textFieldDatabaseHost.getText();
-                    String DBName = textFieldDatabaseName.getText();
-                    String DBUser = textFieldDatabaseUser.getText();
-                    String DBPassword = new String(passwordFieldDatabasePassword.getPassword());
-                    Connection conn = dbMySQL.testConnection(DBUrl, DBName, DBUser, DBPassword);
-                    if (conn == null) {
-                        JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail"), PropertyUtil.getProperty("ds.ui.tips"),
-                                JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.success"), PropertyUtil.getProperty("ds.ui.tips"),
-                                JOptionPane.PLAIN_MESSAGE);
-                    }
-
-                } catch (Exception e1) {
-                    JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
+            try {
+                DbUtilMySQL dbMySQL = DbUtilMySQL.getInstance();
+                String DBUrl = textFieldDatabaseHost.getText();
+                String DBName = textFieldDatabaseName.getText();
+                String DBUser = textFieldDatabaseUser.getText();
+                String DBPassword = new String(passwordFieldDatabasePassword.getPassword());
+                Connection conn = dbMySQL.testConnection(DBUrl, DBName, DBUser, DBPassword);
+                if (conn == null) {
+                    JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail"), PropertyUtil.getProperty("ds.ui.tips"),
                             JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.success"), PropertyUtil.getProperty("ds.ui.tips"),
+                            JOptionPane.PLAIN_MESSAGE);
                 }
 
+            } catch (Exception e1) {
+                JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
+                        JOptionPane.ERROR_MESSAGE);
             }
+
         });
 
     }

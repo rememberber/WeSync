@@ -195,77 +195,65 @@ public class SettingPanelOption extends JPanel {
      * 为相关组件添加事件监听
      */
     private void addListener() {
-        buttonSave.addActionListener(new ActionListener() {
+        buttonSave.addActionListener(e -> {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            try {
+                ConstantsTools.CONFIGER.setAutoBak(String.valueOf(checkBoxAutoBak.isSelected()));
+                ConstantsTools.CONFIGER.setDebugMode(String.valueOf(checkBoxDebug.isSelected()));
+                ConstantsTools.CONFIGER.setStrictMode(String.valueOf(checkBoxStrict.isSelected()));
+                ConstantsTools.CONFIGER.setMysqlPath(textField.getText());
+                JOptionPane.showMessageDialog(AppMainWindow.settingPanel, PropertyUtil.getProperty("ds.ui.save.success"),
+                        PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
+            } catch (Exception e1) {
+                JOptionPane.showMessageDialog(AppMainWindow.settingPanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(),
+                        PropertyUtil.getProperty("ds.ui.tips"),
+                        JOptionPane.ERROR_MESSAGE);
+                logger.error("Write to xml file error" + e1.toString());
+            }
 
+        });
+
+        buttionTableFiled.addActionListener(e -> {
+            try {
+                Desktop.getDesktop().open(new File(ConstantsLogic.TABLE_FIELD_DIR));
+            } catch (IOException e1) {
+                logger.error("open table_field file fail:" + e1.toString());
+                e1.printStackTrace();
+            }
+
+        });
+
+        buttionClearLogs.addActionListener(e -> {
+
+            int answer = JOptionPane.showConfirmDialog(AppMainWindow.settingPanel,
+                    PropertyUtil.getProperty("ds.ui.setting.clean.makeSure"),
+                    PropertyUtil.getProperty("ds.ui.tips"), 2);
+
+            if (answer == 0) {
+                FileOutputStream testfile = null;
                 try {
-                    ConstantsTools.CONFIGER.setAutoBak(String.valueOf(checkBoxAutoBak.isSelected()));
-                    ConstantsTools.CONFIGER.setDebugMode(String.valueOf(checkBoxDebug.isSelected()));
-                    ConstantsTools.CONFIGER.setStrictMode(String.valueOf(checkBoxStrict.isSelected()));
-                    ConstantsTools.CONFIGER.setMysqlPath(textField.getText());
-                    JOptionPane.showMessageDialog(AppMainWindow.settingPanel, PropertyUtil.getProperty("ds.ui.save.success"),
-                            PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
-                } catch (Exception e1) {
-                    JOptionPane.showMessageDialog(AppMainWindow.settingPanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(),
+                    testfile = new FileOutputStream(ConstantsTools.PATH_LOG);
+                    testfile.write(new String("").getBytes());
+                    testfile.flush();
+                    JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
+                            PropertyUtil.getProperty("ds.ui.setting.clean.success"),
+                            PropertyUtil.getProperty("ds.ui.tips"),
+                            JOptionPane.PLAIN_MESSAGE);
+                } catch (IOException e1) {
+                    JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
+                            PropertyUtil.getProperty("ds.ui.setting.clean.fail") + e1.getMessage(),
                             PropertyUtil.getProperty("ds.ui.tips"),
                             JOptionPane.ERROR_MESSAGE);
-                    logger.error("Write to xml file error" + e1.toString());
-                }
-
-            }
-        });
-
-        buttionTableFiled.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Desktop.getDesktop().open(new File(ConstantsLogic.TABLE_FIELD_DIR));
-                } catch (IOException e1) {
-                    logger.error("open table_field file fail:" + e1.toString());
                     e1.printStackTrace();
-                }
-
-            }
-        });
-
-        buttionClearLogs.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                int answer = JOptionPane.showConfirmDialog(AppMainWindow.settingPanel,
-                        PropertyUtil.getProperty("ds.ui.setting.clean.makeSure"),
-                        PropertyUtil.getProperty("ds.ui.tips"), 2);
-
-                if (answer == 0) {
-                    FileOutputStream testfile = null;
-                    try {
-                        testfile = new FileOutputStream(ConstantsTools.PATH_LOG);
-                        testfile.write(new String("").getBytes());
-                        testfile.flush();
-                        JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
-                                PropertyUtil.getProperty("ds.ui.setting.clean.success"),
-                                PropertyUtil.getProperty("ds.ui.tips"),
-                                JOptionPane.PLAIN_MESSAGE);
-                    } catch (IOException e1) {
-                        JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
-                                PropertyUtil.getProperty("ds.ui.setting.clean.fail") + e1.getMessage(),
-                                PropertyUtil.getProperty("ds.ui.tips"),
-                                JOptionPane.ERROR_MESSAGE);
-                        e1.printStackTrace();
-                    } finally {
-                        if (testfile != null) {
-                            try {
-                                testfile.close();
-                            } catch (IOException e1) {
-                                JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
-                                        PropertyUtil.getProperty("ds.ui.setting.clean.fail") + e1.getMessage(),
-                                        PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.ERROR_MESSAGE);
-                                e1.printStackTrace();
-                            }
+                } finally {
+                    if (testfile != null) {
+                        try {
+                            testfile.close();
+                        } catch (IOException e1) {
+                            JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
+                                    PropertyUtil.getProperty("ds.ui.setting.clean.fail") + e1.getMessage(),
+                                    PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.ERROR_MESSAGE);
+                            e1.printStackTrace();
                         }
                     }
                 }

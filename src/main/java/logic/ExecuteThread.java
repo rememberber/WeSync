@@ -23,28 +23,38 @@ import java.util.regex.Pattern;
 public class ExecuteThread extends Thread implements ExecuteThreadInterface {
 
     private static final Logger logger = LoggerFactory.getLogger(ExecuteThread.class);
-    // 表-字段配置文件内容Map,key:目标表名,value:对应关系内容List
+    /**
+     * 表-字段配置文件内容Map,key:目标表名,value:对应关系内容List
+     */
     public static LinkedHashMap<String, ArrayList<String>> tableFieldMap;
-    // TriggerMap,key:快照名,value:触发表
+    /**
+     * TriggerMap,key:快照名,value:触发表
+     */
     public static LinkedHashMap<String, String[]> triggerMap;
-    // 来源表Map,key:快照名,value:Table
+    /**
+     * 来源表Map,key:快照名,value:Table
+     */
     public static LinkedHashMap<String, Table> originalTablesMap;
-    // 目标表Map,key:快照名,value:Table
+    /**
+     * 目标表Map,key:快照名,value:Table
+     */
     public static LinkedHashMap<String, Table> targetTablesMap;
 
     /**
      * 初始化变量
      */
+    @Override
     public void init() {
-        tableFieldMap = new LinkedHashMap<String, ArrayList<String>>();
-        triggerMap = new LinkedHashMap<String, String[]>();
-        originalTablesMap = new LinkedHashMap<String, Table>();
-        targetTablesMap = new LinkedHashMap<String, Table>();
+        tableFieldMap = new LinkedHashMap<>();
+        triggerMap = new LinkedHashMap<>();
+        originalTablesMap = new LinkedHashMap<>();
+        targetTablesMap = new LinkedHashMap<>();
     }
 
     /**
      * 测试连接
      */
+    @Override
     public boolean testLink() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.testLinking"), LogLevel.INFO);
         StatusPanel.progressCurrent.setMaximum(2);
@@ -100,6 +110,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     /**
      * 解析配置文件
      */
+    @Override
     public boolean analyseConfigFile() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startAnalyse"), LogLevel.INFO);
 
@@ -130,7 +141,6 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                 StatusPanel.progressCurrent.setValue(progressValue);
                 continue;
             } else {
-                list = new ArrayList<String>();
                 try {
                     // 读取解析表-字段配置sql文件
                     list = FileUtils.getSqlFileContentList(file);
@@ -168,7 +178,8 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                     }
                     // 用]=<分隔比用=分隔准确，因为其他条件里也可能会有=
                     String arr[] = lineTxt.split("\\]=\\<");
-                    arr[0] = arr[0] + "]";// 补上被split掉的"]"
+                    // 补上被split掉的"]"
+                    arr[0] = arr[0] + "]";
                     // 取来源表名和目标表名
                     String snapName = arr[0].substring(0, arr[0].indexOf(":"));
                     String tarTableNames[] = new String[arr.length - 1];
@@ -202,7 +213,8 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                     originalTablesMap.put(snapName, tableOri);
 
                     for (int i = 1; i < arr.length; i++) {
-                        arr[i] = "<" + arr[i];// 补上被split掉的"<"
+                        // 补上被split掉的"<"
+                        arr[i] = "<" + arr[i];
                         // 获取目标表map<快照名,(表名,主键,字段,其他条件或保留)>
                         Table tableTar = new Table();
                         // 匹配表名
@@ -270,6 +282,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     /**
      * 备份
      */
+    @Override
     public void backUp() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startBackUp"), LogLevel.INFO);
 
@@ -293,6 +306,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     /**
      * 新建快照
      */
+    @Override
     public boolean newSnap() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startNewSnap"), LogLevel.INFO);
         boolean isSuccess = true;
@@ -308,6 +322,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
     /**
      * 对比快照，并生成SQL
      */
+    @Override
     public boolean diffSnap() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startDiffSnap"), LogLevel.INFO);
         boolean isSuccess = true;
@@ -328,18 +343,22 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
      *
      * @throws Exception
      */
+    @Override
     public boolean executeSQL() {
         StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.startRunSql"), LogLevel.INFO);
 
         boolean isSuccess = true;
         ArrayList<String> sqlList = SnapManage.sqlList;
-        File logSqlFileDir = new File(ConstantsLogic.LOG_SQL_DIR);// sql日志目录
+        // sql日志目录
+        File logSqlFileDir = new File(ConstantsLogic.LOG_SQL_DIR);
         if (!logSqlFileDir.exists()) {
             logSqlFileDir.mkdirs();
         }
-        File logSqlFile = new File(ConstantsLogic.LOG_SQL);// sql日志文件
+        // sql日志文件
+        File logSqlFile = new File(ConstantsLogic.LOG_SQL);
         CSVWriter csvWriter = null;
-        int totalSqls = 0;// 总sql数
+        // 总sql数
+        int totalSqls = 0;
         if (sqlList.size() != 0) {
             if ("false".equals(ConstantsTools.CONFIGER.getDebugMode())) {
                 String sqlForLog = "";
@@ -363,8 +382,10 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
 
                     StatusPanel.progressCurrent.setMaximum(sqls.length);
 
-                    totalSqls = 0;// 总sql数
-                    int affectedRecords = 0;// 受影响的结果行数
+                    // 总sql数
+                    totalSqls = 0;
+                    // 受影响的结果行数
+                    int affectedRecords = 0;
                     int progressValue = 0;
                     for (String string : sqls) {
                         if (!"".equals(string.trim())) {
@@ -379,27 +400,34 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                         StatusPanel.progressCurrent.setValue(progressValue);
                     }
 
-                    Writer writer = new FileWriter(logSqlFile, true);// 第二个参数:true表示在文件结尾追加
+                    // 第二个参数:true表示在文件结尾追加
+                    Writer writer = new FileWriter(logSqlFile, true);
                     csvWriter = new CSVWriter(writer, ',');
-                    String logLine[] = new String[4];// log_sql第一列:系统时间,第二列:本次所有要执行的sql,第三列:执行结果受影响的总行数,第四列:是否成功
-                    logLine[0] = Utils.getCurrentTime(); // log_sql第一列，系统时间
-                    logLine[1] = sqlBuff.toString();// log_sql第二列，本次所有要执行的sql
-                    logLine[2] = String.valueOf(affectedRecords);// log_sql第三列，执行结果受影响的总行数
+                    // log_sql第一列:系统时间,第二列:本次所有要执行的sql,第三列:执行结果受影响的总行数,第四列:是否成功
+                    String logLine[] = new String[4];
+                    // log_sql第一列，系统时间
+                    logLine[0] = Utils.getCurrentTime();
+                    // log_sql第二列，本次所有要执行的sql
+                    logLine[1] = sqlBuff.toString();
+                    // log_sql第三列，执行结果受影响的总行数
+                    logLine[2] = String.valueOf(affectedRecords);
 
                     if ("true".equals(ConstantsTools.CONFIGER.getStrictMode())) {
                         if (affectedRecords == totalSqls) {
                             DbUtilMySQL.getInstance().getConnection().commit();
-                            logLine[3] = "Success";// log_sql第四列，执行结果成功
+                            // log_sql第四列，执行结果成功
+                            logLine[3] = "Success";
                         } else {
                             DbUtilMySQL.getInstance().getConnection().rollback();
-                            logLine[3] = "Fail";// log_sql第四列，执行结果失败
-                            isSuccess = false;
+                            // log_sql第四列，执行结果失败
+                            logLine[3] = "Fail";
                             StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.runSqlFail"), LogLevel.ERROR);
                             return false;
                         }
                     } else {
                         DbUtilMySQL.getInstance().getConnection().commit();
-                        logLine[3] = "Success";// log_sql第四列，执行结果成功
+                        // log_sql第四列，执行结果成功
+                        logLine[3] = "Success";
                     }
                     if (!"".equals(logLine[1].trim())) {
                         csvWriter.writeNext(logLine);
@@ -459,10 +487,11 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
 
     }
 
+    @Override
     public void run() {
         StatusPanel.isRunning = true;
         this.setName("ExecuteThread");
-        long enterTime = System.currentTimeMillis(); // 毫秒数
+        long enterTime = System.currentTimeMillis();
         StatusPanel.progressTotal.setMaximum(6);
         // 初始化变量
         init();
@@ -500,8 +529,8 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                             }
                             StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.currentManuSyncFinish"), LogLevel.INFO);
                             // 设置持续时间
-                            long leaveTime = System.currentTimeMillis(); // 毫秒数
-                            float minutes = (float) (leaveTime - enterTime) / 1000; // 秒数
+                            long leaveTime = System.currentTimeMillis();
+                            float minutes = (float) (leaveTime - enterTime) / 1000;
                             StatusLog.setKeepTime(String.valueOf(minutes));
                             // 设置成功次数+1
                             String success = String

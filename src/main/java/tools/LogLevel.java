@@ -2,11 +2,10 @@ package tools;
 
 /**
  * 日志级别枚举
- * 
- * @author Bob
  *
+ * @author Bob
  */
 public enum LogLevel {
 
-	INFO, DEBUG, WARN, ERROR, FATAL
+    INFO, DEBUG, WARN, ERROR, FATAL
 }
