@@ -15,7 +15,6 @@ public class DbUtilSQLServer {
     private Connection connection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
-    private static String DBClassName = null;
     private static String DBUrl = null;
     private static String DBName = null;
     private static String DBUser = null;
@@ -49,13 +48,13 @@ public class DbUtilSQLServer {
      */
     private void loadConfig() {
         try {
-            DBClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+            String dbclassname = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             DBUrl = ConstantsTools.CONFIGER.getHostFrom();
             DBName = ConstantsTools.CONFIGER.getNameFrom();
             DBUser = ConstantsTools.CONFIGER.getUserFrom();
             DBPassword = ConstantsTools.CONFIGER.getPasswordFrom();
 
-            Class.forName(DBClassName);
+            Class.forName(dbclassname);
         } catch (Exception e) {
 
             logger.error(e.toString());
@@ -145,12 +144,12 @@ public class DbUtilSQLServer {
      * @return
      * @throws SQLException
      */
-    public synchronized Connection testConnection(String DBUrl, String DBName, String DBUser, String DBPassword)
+    public synchronized Connection testConnection(String dburl, String dbname, String dbuser, String dbpassword)
             throws SQLException {
         loadConfig();
         // "jdbc:sqlserver://20.1.1.194:1433;DatabaseName=AIS20151221115438;"
-        connection = DriverManager.getConnection("jdbc:sqlserver://" + DBUrl + ";DatabaseName=" + DBName, DBUser,
-                DBPassword);
+        connection = DriverManager.getConnection("jdbc:sqlserver://" + dburl + ";DatabaseName=" + dbname, dbuser,
+                dbpassword);
         // 把事务提交方式改为手工提交
         connection.setAutoCommit(false);
 
@@ -168,7 +167,7 @@ public class DbUtilSQLServer {
     private synchronized void getStatement() throws SQLException {
         getConnection();
         // 仅当statement失效时才重新创建
-        if (statement == null || statement.isClosed() == true) {
+        if (statement == null || statement.isClosed()) {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         }
     }
@@ -202,7 +201,7 @@ public class DbUtilSQLServer {
      */
     public synchronized ResultSet executeQuery(String sql) throws SQLException {
         getStatement();
-        if (resultSet != null && resultSet.isClosed() == false) {
+        if (resultSet != null && !resultSet.isClosed()) {
             resultSet.close();
         }
         resultSet = null;

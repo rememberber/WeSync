@@ -23,7 +23,6 @@ public class AppMainWindow {
 
     private JFrame frame;
 
-    private static JPanel mainPanel;
     public static JPanel mainPanelCenter;
 
     public static StatusPanel statusPanel;
@@ -77,7 +76,7 @@ public class AppMainWindow {
         frame.setTitle(ConstantsUI.APP_NAME);
         frame.setIconImage(ConstantsUI.IMAGE_ICON);
         frame.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        mainPanel = new JPanel(true);
+        JPanel mainPanel = new JPanel(true);
         mainPanel.setBackground(Color.white);
         mainPanel.setLayout(new BorderLayout());
 

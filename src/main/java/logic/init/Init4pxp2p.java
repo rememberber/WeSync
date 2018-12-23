@@ -16,7 +16,7 @@ public class Init4pxp2p {
 
         boolean isSuccess = true;
         DbUtilMySQL mySql = DbUtilMySQL.getInstance();
-        DbUtilSQLServer SQLServer = DbUtilSQLServer.getInstance();
+        DbUtilSQLServer sqlserver = DbUtilSQLServer.getInstance();
         CSVWriter csvWriterRole = null;
         CSVWriter csvWriterUser = null;
         File snapsDir = null;

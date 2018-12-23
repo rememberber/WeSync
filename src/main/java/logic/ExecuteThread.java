@@ -126,7 +126,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
             tableFieldDir = new File(ConstantsLogic.TABLE_FIELD_DIR);
         }
 
-        File tableFieldFiles[] = tableFieldDir.listFiles();
+        File[] tableFieldFiles = tableFieldDir.listFiles();
         ArrayList<String> list;
 
         StatusPanel.progressCurrent.setMaximum(tableFieldFiles.length);
@@ -139,7 +139,6 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
             if (!fileName.endsWith(".sql")) {
                 progressValue++;
                 StatusPanel.progressCurrent.setValue(progressValue);
-                continue;
             } else {
                 try {
                     // 读取解析表-字段配置sql文件
@@ -170,19 +169,18 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                 lineTxt = lineTxt.trim();
                 if ("".equals(lineTxt) || lineTxt.startsWith("//")) {
                     // 跳过注释和空行
-                    continue;
                 } else {
                     if (lineTxt.contains("//")) {
                         // 去掉注释
                         lineTxt = lineTxt.substring(0, lineTxt.indexOf("//")).trim();
                     }
                     // 用]=<分隔比用=分隔准确，因为其他条件里也可能会有=
-                    String arr[] = lineTxt.split("\\]=\\<");
+                    String[] arr = lineTxt.split("\\]=\\<");
                     // 补上被split掉的"]"
                     arr[0] = arr[0] + "]";
                     // 取来源表名和目标表名
                     String snapName = arr[0].substring(0, arr[0].indexOf(":"));
-                    String tarTableNames[] = new String[arr.length - 1];
+                    String[] tarTableNames = new String[arr.length - 1];
 
                     // 获取来源表map<快照名,(表名,主键,字段,其他条件或保留)>
                     Table tableOri = new Table();
@@ -251,10 +249,6 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
 
             }
 
-        } catch (FileNotFoundException e) {
-            isAnalyseSuccess = false;
-            StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.AnalyseTriggerFail") + e.toString(), LogLevel.ERROR);
-            e.printStackTrace();
         } catch (IOException e) {
             isAnalyseSuccess = false;
             StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.AnalyseTriggerFail") + e.toString(), LogLevel.ERROR);
@@ -378,7 +372,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                         }
                     }
 
-                    String sqls[] = sqlBuff.toString().split(";");
+                    String[] sqls = sqlBuff.toString().split(";");
 
                     StatusPanel.progressCurrent.setMaximum(sqls.length);
 
@@ -404,7 +398,7 @@ public class ExecuteThread extends Thread implements ExecuteThreadInterface {
                     Writer writer = new FileWriter(logSqlFile, true);
                     csvWriter = new CSVWriter(writer, ',');
                     // log_sql第一列:系统时间,第二列:本次所有要执行的sql,第三列:执行结果受影响的总行数,第四列:是否成功
-                    String logLine[] = new String[4];
+                    String[] logLine = new String[4];
                     // log_sql第一列，系统时间
                     logLine[0] = Utils.getCurrentTime();
                     // log_sql第二列，本次所有要执行的sql

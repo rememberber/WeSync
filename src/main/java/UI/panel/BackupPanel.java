@@ -9,8 +9,6 @@ import tools.PropertyUtil;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
@@ -160,11 +158,11 @@ public class BackupPanel extends JPanel {
         if (!bakupFilesDir.exists()) {
             bakupFilesDir.mkdirs();
         }
-        File bakupFiles[] = bakupFilesDir.listFiles();
+        File[] bakupFiles = bakupFilesDir.listFiles();
         tableDatas = new Object[bakupFiles.length][3];
         for (int i = 0; i < bakupFiles.length; i++) {
             tableDatas[i] = new Object[]{i + 1, bakupFiles[i].getName(),
-                    FileUtils.FormetFileSize(bakupFiles[i].length())};
+                    FileUtils.formetfilesize(bakupFiles[i].length())};
         }
     }
 

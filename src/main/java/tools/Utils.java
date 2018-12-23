@@ -83,7 +83,7 @@ public class Utils {
      * @param key
      * @return 返回某字符串在字符串数组中的index，若找不到返回-1
      */
-    public static int getStrArrIndex(String arr[], String key) {
+    public static int getStrArrIndex(String[] arr, String key) {
 
         for (int i = 0; i < arr.length; i++) {
             if (key.equals(arr[i])) {

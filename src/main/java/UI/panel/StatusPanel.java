@@ -300,25 +300,25 @@ public class StatusPanel extends JPanel {
             service = Executors.newSingleThreadScheduledExecutor();
             // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
             String scheduleConf = ConstantsTools.CONFIGER.getSchedule();
-            if (scheduleConf.equals("true,false,false,false,false,false,false")) {
+            if ("true,false,false,false,false,false,false".equals(scheduleConf)) {
                 service.scheduleAtFixedRate(syncThread, 0, 5, TimeUnit.MINUTES);
 
-            } else if (scheduleConf.equals("false,true,false,false,false,false,false")) {
+            } else if ("false,true,false,false,false,false,false".equals(scheduleConf)) {
                 service.scheduleAtFixedRate(syncThread, 0, 15, TimeUnit.MINUTES);
 
-            } else if (scheduleConf.equals("false,false,true,false,false,false,false")) {
+            } else if ("false,false,true,false,false,false,false".equals(scheduleConf)) {
                 service.scheduleAtFixedRate(syncThread, 0, 30, TimeUnit.MINUTES);
 
-            } else if (scheduleConf.equals("false,false,false,true,false,false,false")) {
+            } else if ("false,false,false,true,false,false,false".equals(scheduleConf)) {
                 service.scheduleAtFixedRate(syncThread, 0, 1, TimeUnit.HOURS);
 
-            } else if (scheduleConf.equals("false,false,false,false,true,false,false")) {
+            } else if ("false,false,false,false,true,false,false".equals(scheduleConf)) {
                 service.scheduleAtFixedRate(syncThread, 0, 1, TimeUnit.DAYS);
 
-            } else if (scheduleConf.equals("false,false,false,false,false,true,false")) {
+            } else if ("false,false,false,false,false,true,false".equals(scheduleConf)) {
                 service.scheduleAtFixedRate(syncThread, 0, 7, TimeUnit.DAYS);
 
-            } else if (scheduleConf.equals("false,false,false,false,false,false,true")) {
+            } else if ("false,false,false,false,false,false,true".equals(scheduleConf)) {
                 long oneDay = 24 * 60 * 60 * 1000;
                 long initDelay = getTimeMillis(ConstantsTools.CONFIGER.getScheduleFixTime().trim())
                         - System.currentTimeMillis();

@@ -130,10 +130,7 @@ public class SnapManage {
                         csvWriter.writeNext(arr2);
                     }
 
-                } catch (IOException e) {
-                    StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.newSnapFileFail") + e.toString(), LogLevel.ERROR);
-                    e.printStackTrace();
-                } catch (SQLException e) {
+                } catch (IOException | SQLException e) {
                     StatusLog.setStatusDetail(PropertyUtil.getProperty("ds.logic.newSnapFileFail") + e.toString(), LogLevel.ERROR);
                     e.printStackTrace();
                 } finally {
@@ -269,8 +266,8 @@ public class SnapManage {
         String snapName = snapNow.getName().substring(0, snapNow.getName().indexOf(".csv"));
 
         // 获取表头
-        String headerBefore[];
-        String headerNow[] = snapNowList.get(0);
+        String[] headerBefore;
+        String[] headerNow = snapNowList.get(0);
         if (snapBeforeList.size() == 0) {
             // 如果原快照是空的，说明是第一次进行快照，所以将原快照加一个新快照表头即可
             headerBefore = headerNow;
@@ -288,10 +285,10 @@ public class SnapManage {
 
         // 获取主键
         String primKeys = ExecuteThread.originalTablesMap.get(snapName).getPrimKey();
-        String primKeysArr[] = primKeys.split(",");
+        String[] primKeysArr = primKeys.split(",");
 
         // 获取主键index
-        int prinKeyIndex[] = new int[primKeysArr.length];
+        int[] prinKeyIndex = new int[primKeysArr.length];
         for (int i = 0; i < primKeysArr.length; i++) {
             prinKeyIndex[i] = Utils.getStrArrIndex(headerNow, primKeysArr[i]);
         }
@@ -302,7 +299,7 @@ public class SnapManage {
         LinkedHashSet<String> primKeyValuesSetBefore = new LinkedHashSet<String>();
         LinkedHashSet<String> primKeyValuesSetNow = new LinkedHashSet<String>();
         for (int i = 0; i < snapBeforeList.size(); i++) {
-            String recordsLineBefore[] = snapBeforeList.get(i);
+            String[] recordsLineBefore = snapBeforeList.get(i);
             StringBuffer keyValues = new StringBuffer();
             for (int j = 0; j < primKeysArr.length; j++) {
                 keyValues.append(recordsLineBefore[prinKeyIndex[j]]);
@@ -313,7 +310,7 @@ public class SnapManage {
             primKeyValuesSetBefore.add(keyValues.toString());
         }
         for (int i = 0; i < snapNowList.size(); i++) {
-            String recordsLineNow[] = snapNowList.get(i);
+            String[] recordsLineNow = snapNowList.get(i);
             StringBuffer keyValues = new StringBuffer();
             for (int j = 0; j < primKeysArr.length; j++) {
                 keyValues.append(recordsLineNow[prinKeyIndex[j]]);
@@ -335,7 +332,7 @@ public class SnapManage {
 
             if (!(snapNowList.size() > flagNow)) {
                 // 说明新快照到了结尾，后面没有内容了
-                String recordsLineBefore[] = snapBeforeList.get(flagBefore);
+                String[] recordsLineBefore = snapBeforeList.get(flagBefore);
 
                 // 生成原快照该条记录主键map，key:主键名，value:主键值
                 Map<String, String> primKeyAndValueMapBefore = new LinkedHashMap<>();
@@ -371,7 +368,7 @@ public class SnapManage {
                 flagBefore++;
             } else if (!(snapBeforeList.size() > flagBefore)) {
                 // 说明原快照到了结尾，后面没有内容了
-                String recordsLineNow[] = snapNowList.get(flagNow);
+                String[] recordsLineNow = snapNowList.get(flagNow);
                 // 生成新快照该条记录主键map，key:主键名，value:主键值
                 Map<String, String> primKeyAndValueMapNow = new LinkedHashMap<>();
                 for (int j = 0; j < primKeysArr.length; j++) {
@@ -404,8 +401,8 @@ public class SnapManage {
                 flagNow++;
             } else {
 
-                String recordsLineBefore[] = snapBeforeList.get(flagBefore);
-                String recordsLineNow[] = snapNowList.get(flagNow);
+                String[] recordsLineBefore = snapBeforeList.get(flagBefore);
+                String[] recordsLineNow = snapNowList.get(flagNow);
 
                 // 生成原快照该条记录主键map，key:主键名，value:主键值
                 Map<String, String> primKeyAndValueMapBefore = new LinkedHashMap<>();
@@ -469,7 +466,7 @@ public class SnapManage {
                             StatusLog.setStatusDetail(sql, LogLevel.DEBUG);
 
                             // 左边
-                            String recordsLineNowTemp[] = snapNowList.get(
+                            String[] recordsLineNowTemp = snapNowList.get(
                                     Utils.getIndexInLinkedHashSet(primKeyValuesSetNow, primKeyValuesBefore.toString()));
                             if (!Arrays.equals(recordsLineNowTemp, recordsLineBefore)) {
                                 // 若不完全一致，则Update
@@ -489,7 +486,7 @@ public class SnapManage {
                             StatusLog.setStatusDetail(sql, LogLevel.DEBUG);
 
                             // 右边
-                            String recordsLineBeforeTemp[] = snapBeforeList.get(
+                            String[] recordsLineBeforeTemp = snapBeforeList.get(
                                     Utils.getIndexInLinkedHashSet(primKeyValuesSetBefore, primKeyValuesNow.toString()));
                             if (!Arrays.equals(recordsLineNow, recordsLineBeforeTemp)) {
                                 // 若不完全一致，则Update
@@ -504,7 +501,7 @@ public class SnapManage {
                             // 说明该两条记录都有可能被更新了，还要继续拿出来比较一下
 
                             // 左边
-                            String recordsLineNowTemp[] = snapNowList.get(
+                            String[] recordsLineNowTemp = snapNowList.get(
                                     Utils.getIndexInLinkedHashSet(primKeyValuesSetNow, primKeyValuesBefore.toString()));
                             if (!Arrays.equals(recordsLineNowTemp, recordsLineBefore)) {
                                 // 若不完全一致，则Update
@@ -518,7 +515,7 @@ public class SnapManage {
                             }
 
                             // 右边
-                            String recordsLineBeforeTemp[] = snapBeforeList.get(
+                            String[] recordsLineBeforeTemp = snapBeforeList.get(
                                     Utils.getIndexInLinkedHashSet(primKeyValuesSetBefore, primKeyValuesNow.toString()));
                             if (!Arrays.equals(recordsLineNow, recordsLineBeforeTemp)) {
                                 // 若不完全一致，则Update

@@ -12,7 +12,7 @@ public class ScheduleExecuteThread extends ExecuteThread {
 
     @Override
     public void run() {
-        if (StatusPanel.isRunning == false) {
+        if (!StatusPanel.isRunning) {
             StatusPanel.isRunning = true;
             this.setName("ScheduleExecuteThread");
             StatusPanel.buttonStartNow.setEnabled(false);

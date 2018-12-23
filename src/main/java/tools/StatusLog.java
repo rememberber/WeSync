@@ -32,18 +32,18 @@ public class StatusLog {
         StatusPanel.labelStatusDetail.setText(PropertyUtil.getProperty("ds.tool.detail") + statusDetail);
         if ("true".equals(ConstantsTools.CONFIGER.getDebugMode())) {
 
-            if (level.toString().equals("INFO")) {
+            if ("INFO".equals(level.toString())) {
                 logger.info(statusDetail);
-            } else if (level.toString().equals("DEBUG")) {
+            } else if ("DEBUG".equals(level.toString())) {
                 logger.debug(statusDetail);
             }
 
         }
-        if (level.toString().equals("WARN")) {
+        if ("WARN".equals(level.toString())) {
             logger.warn(statusDetail);
-        } else if (level.toString().equals("ERROR")) {
+        } else if ("ERROR".equals(level.toString())) {
             logger.error(statusDetail);
-        } else if (level.toString().equals("FATAL")) {
+        } else if ("FATAL".equals(level.toString())) {
             logger.error(statusDetail);
         }
     }

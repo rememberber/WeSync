@@ -11,9 +11,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import com.opencsv.CSVReader;
 
@@ -97,7 +99,7 @@ public class FileUtils {
         }
         MessageDigest digest = null;
         FileInputStream in = null;
-        byte buffer[] = new byte[8192];
+        byte[] buffer = new byte[8192];
         int len;
         try {
             digest = MessageDigest.getInstance("MD5");
@@ -112,7 +114,9 @@ public class FileUtils {
             return null;
         } finally {
             try {
-                in.close();
+                if (in != null) {
+                    in.close();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -132,7 +136,7 @@ public class FileUtils {
         }
         MessageDigest digest = null;
         FileInputStream in = null;
-        byte buffer[] = new byte[8192];
+        byte[] buffer = new byte[8192];
         int len;
         try {
             digest = MessageDigest.getInstance("SHA-1");
@@ -147,7 +151,9 @@ public class FileUtils {
             return null;
         } finally {
             try {
-                in.close();
+                if (in != null) {
+                    in.close();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -161,7 +167,7 @@ public class FileUtils {
      */
     public static void clearDirectiory(String dir) {
         File dirFile = new File(dir);
-        for (File file : dirFile.listFiles()) {
+        for (File file : Objects.requireNonNull(dirFile.listFiles())) {
             file.delete();
         }
 
@@ -177,7 +183,7 @@ public class FileUtils {
     public static ArrayList<String[]> getCsvFileContentList(File csvFile) throws IOException {
         FileReader fReader = null;
         CSVReader csvReader = null;
-        ArrayList<String[]> list = new ArrayList<String[]>();
+        ArrayList<String[]> list;
 
         try {
             // 初始化reader
@@ -187,8 +193,6 @@ public class FileUtils {
             list = (ArrayList<String[]>) csvReader.readAll();
             return list;
 
-        } catch (FileNotFoundException e) {
-            throw e;
         } catch (IOException e) {
             throw e;
         } finally {
@@ -222,13 +226,12 @@ public class FileUtils {
         BufferedReader br = null;
         try {
             // 初始化reader
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(sqlFile), "UTF-8"));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(sqlFile), StandardCharsets.UTF_8));
             String lineTxt = null;
             while ((lineTxt = br.readLine()) != null) {
                 lineTxt = lineTxt.trim();
                 if ("".equals(lineTxt) || lineTxt.startsWith("//")) {
                     // 跳过注释和空行
-                    continue;
                 } else {
                     if (lineTxt.contains("//")) {
                         // 去掉注释
@@ -239,8 +242,6 @@ public class FileUtils {
             }
             return list;
 
-        } catch (FileNotFoundException e) {
-            throw e;
         } catch (IOException e) {
             throw e;
         } finally {
@@ -260,7 +261,7 @@ public class FileUtils {
      * @param fileS
      * @return
      */
-    public static String FormetFileSize(long fileS) {
+    public static String formetfilesize(long fileS) {
         DecimalFormat df = new DecimalFormat("#.00");
         String fileSizeString = "";
         if (fileS < 1024) {

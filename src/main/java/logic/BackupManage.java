@@ -150,14 +150,10 @@ public class BackupManage {
             }
             mySql.getConnection().commit();
             isSuccess = true;
-        } catch (IOException e1) {
+        } catch (IOException | SQLException e1) {
             isSuccess = false;
             e1.printStackTrace();
             StatusLog.setStatusDetail(e1.toString(), LogLevel.ERROR);
-        } catch (SQLException e) {
-            isSuccess = false;
-            e.printStackTrace();
-            StatusLog.setStatusDetail(e.toString(), LogLevel.ERROR);
         }
 
         return isSuccess;

@@ -211,11 +211,11 @@ public class DatabasePanelTo extends JPanel {
 
             try {
                 DbUtilMySQL dbMySQL = DbUtilMySQL.getInstance();
-                String DBUrl = textFieldDatabaseHost.getText();
-                String DBName = textFieldDatabaseName.getText();
-                String DBUser = textFieldDatabaseUser.getText();
-                String DBPassword = new String(passwordFieldDatabasePassword.getPassword());
-                Connection conn = dbMySQL.testConnection(DBUrl, DBName, DBUser, DBPassword);
+                String dburl = textFieldDatabaseHost.getText();
+                String dbname = textFieldDatabaseName.getText();
+                String dbuser = textFieldDatabaseUser.getText();
+                String dbpassword = new String(passwordFieldDatabasePassword.getPassword());
+                Connection conn = dbMySQL.testConnection(dburl, dbname, dbuser, dbpassword);
                 if (conn == null) {
                     JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail"), PropertyUtil.getProperty("ds.ui.tips"),
                             JOptionPane.ERROR_MESSAGE);

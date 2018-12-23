@@ -14,6 +14,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author bob
+ */
 public class TriggerManage {
     public static DbUtilSQLServer SQLServer;
     public static DbUtilMySQL MySQL;
@@ -36,7 +39,7 @@ public class TriggerManage {
         }
 
         // 触发的目标表
-        String targetTables[] = ExecuteThread.triggerMap.get(snapName);
+        String[] targetTables = ExecuteThread.triggerMap.get(snapName);
         for (String targetTable : targetTables) {
             ArrayList<String> list = ExecuteThread.tableFieldMap.get(targetTable + ".UPDATE");
             for (String string : list) {
@@ -65,7 +68,7 @@ public class TriggerManage {
         }
 
         // 触发的目标表
-        String targetTables[] = ExecuteThread.triggerMap.get(snapName);
+        String[] targetTables = ExecuteThread.triggerMap.get(snapName);
         for (String targetTable : targetTables) {
             ArrayList<String> list = null;
             list = ExecuteThread.tableFieldMap.get(targetTable + ".INSERT");
@@ -86,7 +89,7 @@ public class TriggerManage {
             recordBeforeMap.put(headerNow[i], recordsLineBefore[i]);
         }
         // 触发的目标表
-        String targetTables[] = ExecuteThread.triggerMap.get(snapName);
+        String[] targetTables = ExecuteThread.triggerMap.get(snapName);
         for (String targetTable : targetTables) {
             ArrayList<String> list = ExecuteThread.tableFieldMap.get(targetTable + ".DELETE");
             for (String string : list) {
@@ -191,13 +194,13 @@ public class TriggerManage {
                         para = matcher.group(1);
                     }
                     if ("POSITION_CODE".equals(para)) {
-                        String position_code = ConstantsTools.CONFIGER.getPositionCode();// 从config文件取出持久化的参数值
+                        String positionCode = ConstantsTools.CONFIGER.getPositionCode();// 从config文件取出持久化的参数值
 
-                        string = string.replace(str, String.format("%04d", Integer.parseInt(position_code))); // 不足4位在前面补0
+                        string = string.replace(str, String.format("%04d", Integer.parseInt(positionCode))); // 不足4位在前面补0
 
-                        int p_code = Integer.parseInt(position_code) + 1;// 加1之后进行持久化
+                        int pCode = Integer.parseInt(positionCode) + 1;// 加1之后进行持久化
                         try {
-                            ConstantsTools.CONFIGER.setPositionCode(String.valueOf(p_code));
+                            ConstantsTools.CONFIGER.setPositionCode(String.valueOf(pCode));
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -225,7 +228,7 @@ public class TriggerManage {
             for (String str : strs) {
                 if (str.startsWith("@SUB")) {
                     // 先获取要截取的index和字符串内容
-                    String indexs[] = null;
+                    String[] indexs = null;
                     String strContent = "";
                     p = Pattern.compile("\\(([^()]+)\\)");
                     matcher = p.matcher(str);
@@ -277,7 +280,7 @@ public class TriggerManage {
             for (String str : strs) {
                 if (str.startsWith("#REPLACE")) {
                     // 先获取要替换的新旧字符串和内容
-                    String indexs[] = null;
+                    String[] indexs = null;
                     String strContent = "";
                     p = Pattern.compile("\\(([^()]+)\\)");
                     matcher = p.matcher(str);
@@ -299,12 +302,12 @@ public class TriggerManage {
                     string = string.replace(str, temp);
                 } else if (str.startsWith("#CASE")) {
 
-                    String key_value[] = null;
+                    String[] keyValue = null;
                     String strContent = "";
                     p = Pattern.compile("\\(([^()]+)\\)");
                     matcher = p.matcher(str);
                     while (matcher.find()) {
-                        key_value = matcher.group(1).split(",");
+                        keyValue = matcher.group(1).split(",");
                     }
                     p = Pattern.compile("\\{([^{}]+)\\}");
                     matcher = p.matcher(str);
@@ -313,8 +316,8 @@ public class TriggerManage {
                     }
 
                     HashMap<String, String> map = new HashMap<String, String>();
-                    for (String k_v : key_value) {
-                        String temp[] = k_v.split("=");
+                    for (String kV : keyValue) {
+                        String[] temp = kV.split("=");
                         map.put(temp[0], temp[1]);
                     }
 

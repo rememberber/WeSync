@@ -3,6 +3,7 @@ package tools;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -71,7 +72,7 @@ public class ConfigManager {
         // 创建XMLWriter对象,指定了写出文件及编码格式
         XMLWriter writer = null;
         writer = new XMLWriter(
-                new OutputStreamWriter(new FileOutputStream(new File(ConstantsTools.PATH_CONFIG)), "UTF-8"), format);
+                new OutputStreamWriter(new FileOutputStream(new File(ConstantsTools.PATH_CONFIG)), StandardCharsets.UTF_8), format);
 
         // 写入
         writer.write(document);

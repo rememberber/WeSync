@@ -32,8 +32,6 @@ public class SettingPanelOption extends JPanel {
 
     private static MyIconButton buttionClearLogs;
 
-    private static MyIconButton buttionClearBaks;
-
     private static JCheckBox checkBoxAutoBak;
 
     private static JCheckBox checkBoxDebug;
@@ -122,7 +120,7 @@ public class SettingPanelOption extends JPanel {
                 ConstantsUI.ICON_CLEAR_LOG_DISABLE, "");
         panelItem2.add(buttionClearLogs);
 
-        buttionClearBaks = new MyIconButton(ConstantsUI.ICON_CLEAR_ALL_BAKS, ConstantsUI.ICON_CLEAR_ALL_BAKS_ENABLE,
+        MyIconButton buttionClearBaks = new MyIconButton(ConstantsUI.ICON_CLEAR_ALL_BAKS, ConstantsUI.ICON_CLEAR_ALL_BAKS_ENABLE,
                 ConstantsUI.ICON_CLEAR_ALL_BAKS_DISABLE, "");
         panelItem3.add(buttionClearBaks);
 

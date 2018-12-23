@@ -15,7 +15,6 @@ public class DbUtilMySQL {
     private Connection connection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
-    private static String DBClassName = null;
     private static String DBUrl = null;
     private static String DBName = null;
     private static String DBUser = null;
@@ -50,13 +49,13 @@ public class DbUtilMySQL {
      */
     private void loadConfig() {
         try {
-            DBClassName = "com.mysql.jdbc.Driver";
+            String dbclassname = "com.mysql.jdbc.Driver";
             DBUrl = ConstantsTools.CONFIGER.getHostTo();
             DBName = ConstantsTools.CONFIGER.getNameTo();
             DBUser = ConstantsTools.CONFIGER.getUserTo();
             DBPassword = ConstantsTools.CONFIGER.getPasswordTo();
 
-            Class.forName(DBClassName);
+            Class.forName(dbclassname);
         } catch (Exception e) {
 
             logger.error(e.toString());
@@ -94,7 +93,7 @@ public class DbUtilMySQL {
         }
 
         // 当connection失效时重新获取
-        if (connection == null || connection.isValid(10) == false) {
+        if (connection == null || !connection.isValid(10)) {
             // "jdbc:mysql://localhost/pxp2p_branch"
             connection = DriverManager.getConnection(
                     "jdbc:mysql://" + DBUrl + "/" + DBName + "?useUnicode=true&characterEncoding=utf8", user, password);
@@ -143,11 +142,11 @@ public class DbUtilMySQL {
      * @return
      * @throws SQLException
      */
-    public synchronized Connection testConnection(String DBUrl, String DBName, String DBUser, String DBPassword)
+    public synchronized Connection testConnection(String dburl, String dbname, String dbuser, String dbpassword)
             throws SQLException {
         loadConfig();
         // "jdbc:mysql://localhost/pxp2p_branch"
-        connection = DriverManager.getConnection("jdbc:mysql://" + DBUrl + "/" + DBName, DBUser, DBPassword);
+        connection = DriverManager.getConnection("jdbc:mysql://" + dburl + "/" + dbname, dbuser, dbpassword);
         // 把事务提交方式改为手工提交
         connection.setAutoCommit(false);
 
@@ -165,7 +164,7 @@ public class DbUtilMySQL {
     private synchronized void getStatement() throws SQLException {
         getConnection();
         // 仅当statement失效时才重新创建
-        if (statement == null || statement.isClosed() == true) {
+        if (statement == null || statement.isClosed()) {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         }
     }
@@ -199,7 +198,7 @@ public class DbUtilMySQL {
      */
     public synchronized ResultSet executeQuery(String sql) throws SQLException {
         getStatement();
-        if (resultSet != null && resultSet.isClosed() == false) {
+        if (resultSet != null && !resultSet.isClosed()) {
             resultSet.close();
         }
         resultSet = null;

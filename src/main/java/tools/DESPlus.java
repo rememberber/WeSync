@@ -100,11 +100,11 @@ public class DESPlus {
             DESPlus des1 = new DESPlus();
             System.out.println("解密后的字符：" + des1.decrypt(miwen));
 
-            String password_miwen = des.encrypt(password);
-            System.out.println("密码加密后的字符：" + password_miwen);
+            String passwordMiwen = des.encrypt(password);
+            System.out.println("密码加密后的字符：" + passwordMiwen);
 
-            DESPlus password_des1 = new DESPlus();
-            System.out.println("密码解密后的字符：" + password_des1.decrypt("asdfasdfasdf"));
+            DESPlus passwordDes1 = new DESPlus();
+            System.out.println("密码解密后的字符：" + passwordDes1.decrypt("asdfasdfasdf"));
         } catch (Exception e) {
             e.printStackTrace();
         }
