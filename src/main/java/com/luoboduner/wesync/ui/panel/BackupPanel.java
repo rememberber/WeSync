@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.ui.panel;
 
 import com.luoboduner.wesync.App;
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.ui.component.MyIconButton;
 import com.luoboduner.wesync.logic.ConstantsLogic;
 import com.luoboduner.wesync.tools.FileUtils;
@@ -40,7 +40,7 @@ public class BackupPanel extends JPanel {
      * 初始化面板
      */
     private void initialize() {
-        this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        this.setBackground(UiConsts.MAIN_BACK_COLOR);
         this.setLayout(new BorderLayout());
     }
 
@@ -60,12 +60,12 @@ public class BackupPanel extends JPanel {
      */
     private JPanel getUpPanel() {
         JPanel panelUp = new JPanel();
-        panelUp.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 5));
+        panelUp.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 5));
 
         JLabel labelTitle = new JLabel(PropertyUtil.getProperty("ds.ui.backup.title"));
-        labelTitle.setFont(ConstantsUI.FONT_TITLE);
-        labelTitle.setForeground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        labelTitle.setFont(UiConsts.FONT_TITLE);
+        labelTitle.setForeground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelUp.add(labelTitle);
 
         return panelUp;
@@ -79,7 +79,7 @@ public class BackupPanel extends JPanel {
     private JPanel getCenterPanel() {
         // 中间面板
         JPanel panelCenter = new JPanel();
-        panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelCenter.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(1, 1));
 
         panelCenter.add(getPanelGridBakFrom());
@@ -95,7 +95,7 @@ public class BackupPanel extends JPanel {
     private JPanel getPanelGridBakFrom() {
         // 来源备份Grid
         JPanel panelGridBakFrom = new JPanel();
-        panelGridBakFrom.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelGridBakFrom.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelGridBakFrom.setLayout(new BorderLayout());
 
         JPanel panelFromControl = new JPanel();
@@ -105,23 +105,23 @@ public class BackupPanel extends JPanel {
 
         // 初始化控制组件
         JPanel panelFromControlLeft = new JPanel();
-        panelFromControlLeft.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 5));
-        panelFromControlLeft.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelFromControlLeft.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 5));
+        panelFromControlLeft.setBackground(UiConsts.MAIN_BACK_COLOR);
         JPanel panelFromControlRight = new JPanel();
-        panelFromControlRight.setLayout(new FlowLayout(FlowLayout.RIGHT, ConstantsUI.MAIN_H_GAP, 5));
-        panelFromControlRight.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelFromControlRight.setLayout(new FlowLayout(FlowLayout.RIGHT, UiConsts.MAIN_H_GAP, 5));
+        panelFromControlRight.setBackground(UiConsts.MAIN_BACK_COLOR);
 
         JLabel labelFrom = new JLabel(PropertyUtil.getProperty("ds.ui.database.label.to"));
         labelFrom.setFont(new Font(PropertyUtil.getProperty("ds.ui.font.family"), 0, 18));
         labelFrom.setForeground(Color.gray);
         panelFromControlLeft.add(labelFrom);
 
-        buttonNewBakFrom = new MyIconButton(ConstantsUI.ICON_NEW_BAK, ConstantsUI.ICON_NEW_BAK_ENABLE,
-                ConstantsUI.ICON_NEW_BAK_DISABLE, "");
-        MyIconButton buttonRecvBakFrom = new MyIconButton(ConstantsUI.ICON_RECOVER_BAK,
-                ConstantsUI.ICON_RECOVER_BAK_ENABLE, ConstantsUI.ICON_RECOVER_BAK_DISABLE, "");
-        MyIconButton buttonDelBakFrom = new MyIconButton(ConstantsUI.ICON_DEL_BAK, ConstantsUI.ICON_DEL_BAK_ENABLE,
-                ConstantsUI.ICON_DEL_BAK_DISABLE, "");
+        buttonNewBakFrom = new MyIconButton(UiConsts.ICON_NEW_BAK, UiConsts.ICON_NEW_BAK_ENABLE,
+                UiConsts.ICON_NEW_BAK_DISABLE, "");
+        MyIconButton buttonRecvBakFrom = new MyIconButton(UiConsts.ICON_RECOVER_BAK,
+                UiConsts.ICON_RECOVER_BAK_ENABLE, UiConsts.ICON_RECOVER_BAK_DISABLE, "");
+        MyIconButton buttonDelBakFrom = new MyIconButton(UiConsts.ICON_DEL_BAK, UiConsts.ICON_DEL_BAK_ENABLE,
+                UiConsts.ICON_DEL_BAK_DISABLE, "");
         panelFromControlRight.add(buttonNewBakFrom);
         panelFromControlRight.add(buttonRecvBakFrom);
         panelFromControlRight.add(buttonDelBakFrom);
@@ -134,12 +134,12 @@ public class BackupPanel extends JPanel {
         // 初始化表格组件
 
         tableFrom = new JTable(tableDatas, new String[]{PropertyUtil.getProperty("ds.ui.backup.table.head0"), PropertyUtil.getProperty("ds.ui.backup.table.head1"), PropertyUtil.getProperty("ds.ui.backup.table.head2")});
-        tableFrom.setFont(ConstantsUI.FONT_NORMAL);
-        tableFrom.getTableHeader().setFont(ConstantsUI.FONT_NORMAL);
-        tableFrom.getTableHeader().setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        tableFrom.setFont(UiConsts.FONT_NORMAL);
+        tableFrom.getTableHeader().setFont(UiConsts.FONT_NORMAL);
+        tableFrom.getTableHeader().setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
         tableFrom.setRowHeight(31);
-        tableFrom.setGridColor(ConstantsUI.TABLE_LINE_COLOR);
-        tableFrom.setSelectionBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        tableFrom.setGridColor(UiConsts.TABLE_LINE_COLOR);
+        tableFrom.setSelectionBackground(UiConsts.TOOL_BAR_BACK_COLOR);
         // 设置列宽
         tableFrom.getColumnModel().getColumn(0).setPreferredWidth(50);
         tableFrom.getColumnModel().getColumn(0).setMaxWidth(50);
@@ -147,7 +147,7 @@ public class BackupPanel extends JPanel {
         tableFrom.getColumnModel().getColumn(2).setMaxWidth(150);
 
         JScrollPane panelScroll = new JScrollPane(tableFrom);
-        panelScroll.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelScroll.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelGridBakFrom.add(panelScroll, BorderLayout.CENTER);
 
         return panelGridBakFrom;

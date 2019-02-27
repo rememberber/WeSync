@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.ui.panel;
 
 import com.luoboduner.wesync.App;
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.ui.component.MyIconButton;
 import com.luoboduner.wesync.logic.ConstantsLogic;
 import org.slf4j.Logger;
@@ -54,7 +54,7 @@ public class SettingPanelOption extends JPanel {
      * 初始化
      */
     private void initialize() {
-        this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        this.setBackground(UiConsts.MAIN_BACK_COLOR);
         this.setLayout(new BorderLayout());
     }
 
@@ -76,75 +76,75 @@ public class SettingPanelOption extends JPanel {
     private JPanel getCenterPanel() {
         // 中间面板
         JPanel panelCenter = new JPanel();
-        panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelCenter.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(1, 1));
 
         // 设置Grid
         JPanel panelGridOption = new JPanel();
-        panelGridOption.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGridOption.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
+        panelGridOption.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGridOption.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
         // 初始化组件
-        JPanel panelItem1 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
-        JPanel panelItem2 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
-        JPanel panelItem3 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
-        JPanel panelItem4 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
-        JPanel panelItem5 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
-        JPanel panelItem6 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
-        JPanel panelItem7 = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
+        JPanel panelItem1 = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
+        JPanel panelItem2 = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
+        JPanel panelItem3 = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
+        JPanel panelItem4 = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
+        JPanel panelItem5 = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
+        JPanel panelItem6 = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
+        JPanel panelItem7 = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
-        panelItem1.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelItem2.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelItem3.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelItem4.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelItem5.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelItem6.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelItem7.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelItem1.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelItem2.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelItem3.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelItem4.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelItem5.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelItem6.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelItem7.setBackground(UiConsts.MAIN_BACK_COLOR);
 
-        panelItem1.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
-        panelItem2.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
-        panelItem3.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
-        panelItem4.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
-        panelItem5.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
-        panelItem6.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
-        panelItem7.setPreferredSize(ConstantsUI.PANEL_ITEM_SIZE);
+        panelItem1.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
+        panelItem2.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
+        panelItem3.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
+        panelItem4.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
+        panelItem5.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
+        panelItem6.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
+        panelItem7.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
 
         // 各Item
-        buttionTableFiled = new MyIconButton(ConstantsUI.ICON_TABLE_FIELD, ConstantsUI.ICON_TABLE_FIELD_ENABLE,
-                ConstantsUI.ICON_TABLE_FIELD_DISABLE, "");
+        buttionTableFiled = new MyIconButton(UiConsts.ICON_TABLE_FIELD, UiConsts.ICON_TABLE_FIELD_ENABLE,
+                UiConsts.ICON_TABLE_FIELD_DISABLE, "");
         panelItem1.add(buttionTableFiled);
 
-        buttionClearLogs = new MyIconButton(ConstantsUI.ICON_CLEAR_LOG, ConstantsUI.ICON_CLEAR_LOG_ENABLE,
-                ConstantsUI.ICON_CLEAR_LOG_DISABLE, "");
+        buttionClearLogs = new MyIconButton(UiConsts.ICON_CLEAR_LOG, UiConsts.ICON_CLEAR_LOG_ENABLE,
+                UiConsts.ICON_CLEAR_LOG_DISABLE, "");
         panelItem2.add(buttionClearLogs);
 
-        MyIconButton buttionClearBaks = new MyIconButton(ConstantsUI.ICON_CLEAR_ALL_BAKS, ConstantsUI.ICON_CLEAR_ALL_BAKS_ENABLE,
-                ConstantsUI.ICON_CLEAR_ALL_BAKS_DISABLE, "");
+        MyIconButton buttionClearBaks = new MyIconButton(UiConsts.ICON_CLEAR_ALL_BAKS, UiConsts.ICON_CLEAR_ALL_BAKS_ENABLE,
+                UiConsts.ICON_CLEAR_ALL_BAKS_DISABLE, "");
         panelItem3.add(buttionClearBaks);
 
         checkBoxAutoBak = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.autoBackUp"));
-        checkBoxAutoBak.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        checkBoxAutoBak.setFont(ConstantsUI.FONT_RADIO);
+        checkBoxAutoBak.setBackground(UiConsts.MAIN_BACK_COLOR);
+        checkBoxAutoBak.setFont(UiConsts.FONT_RADIO);
         panelItem4.add(checkBoxAutoBak);
 
         JLabel label = new JLabel(PropertyUtil.getProperty("ds.ui.setting.mysqlPath"));
         textField = new JTextField();
-        label.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        label.setFont(ConstantsUI.FONT_RADIO);
-        textField.setFont(ConstantsUI.FONT_RADIO);
+        label.setBackground(UiConsts.MAIN_BACK_COLOR);
+        label.setFont(UiConsts.FONT_RADIO);
+        textField.setFont(UiConsts.FONT_RADIO);
         Dimension dm = new Dimension(334, 26);
         textField.setPreferredSize(dm);
         panelItem5.add(label);
         panelItem5.add(textField);
 
         checkBoxStrict = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.strict"));
-        checkBoxStrict.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        checkBoxStrict.setFont(ConstantsUI.FONT_RADIO);
+        checkBoxStrict.setBackground(UiConsts.MAIN_BACK_COLOR);
+        checkBoxStrict.setFont(UiConsts.FONT_RADIO);
         panelItem6.add(checkBoxStrict);
 
         checkBoxDebug = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.debugMode"));
-        checkBoxDebug.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        checkBoxDebug.setFont(ConstantsUI.FONT_RADIO);
+        checkBoxDebug.setBackground(UiConsts.MAIN_BACK_COLOR);
+        checkBoxDebug.setFont(UiConsts.FONT_RADIO);
         panelItem7.add(checkBoxDebug);
 
         // 组合元素
@@ -167,11 +167,11 @@ public class SettingPanelOption extends JPanel {
      */
     private JPanel getDownPanel() {
         JPanel panelDown = new JPanel();
-        panelDown.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelDown.setLayout(new FlowLayout(FlowLayout.RIGHT, ConstantsUI.MAIN_H_GAP, 15));
+        panelDown.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelDown.setLayout(new FlowLayout(FlowLayout.RIGHT, UiConsts.MAIN_H_GAP, 15));
 
-        buttonSave = new MyIconButton(ConstantsUI.ICON_SAVE, ConstantsUI.ICON_SAVE_ENABLE,
-                ConstantsUI.ICON_SAVE_DISABLE, "");
+        buttonSave = new MyIconButton(UiConsts.ICON_SAVE, UiConsts.ICON_SAVE_ENABLE,
+                UiConsts.ICON_SAVE_DISABLE, "");
         panelDown.add(buttonSave);
 
         return panelDown;

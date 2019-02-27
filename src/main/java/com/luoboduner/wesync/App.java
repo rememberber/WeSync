@@ -1,6 +1,6 @@
 package com.luoboduner.wesync;
 
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.ui.panel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,11 +69,11 @@ public class App {
 
         // 初始化主窗口
         frame = new JFrame();
-        frame.setBounds(ConstantsUI.MAIN_WINDOW_X, ConstantsUI.MAIN_WINDOW_Y, ConstantsUI.MAIN_WINDOW_WIDTH,
-                ConstantsUI.MAIN_WINDOW_HEIGHT);
-        frame.setTitle(ConstantsUI.APP_NAME);
-        frame.setIconImage(ConstantsUI.IMAGE_ICON);
-        frame.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        frame.setBounds(UiConsts.MAIN_WINDOW_X, UiConsts.MAIN_WINDOW_Y, UiConsts.MAIN_WINDOW_WIDTH,
+                UiConsts.MAIN_WINDOW_HEIGHT);
+        frame.setTitle(UiConsts.APP_NAME);
+        frame.setIconImage(UiConsts.IMAGE_ICON);
+        frame.setBackground(UiConsts.MAIN_BACK_COLOR);
         JPanel mainPanel = new JPanel(true);
         mainPanel.setBackground(Color.white);
         mainPanel.setLayout(new BorderLayout());
@@ -157,8 +157,8 @@ public class App {
         dialog = new JDialog(frame, PropertyUtil.getProperty("ds.ui.mainwindow.dialog.newBackUp"), true);
         dialog.setBounds(460, 220, 400, 250);
         JPanel panelDialog = new JPanel(new BorderLayout());
-        panelDialog.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        JPanel panelDialogCenter = new JPanel(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 10));
+        panelDialog.setBackground(UiConsts.MAIN_BACK_COLOR);
+        JPanel panelDialogCenter = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 10));
         JPanel panelDialogDown = new JPanel(new GridLayout(1, 2));
         JPanel grid1 = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 20));
         JPanel grid2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
@@ -172,11 +172,11 @@ public class App {
         JTextField textFieldComment = new JTextField();
         JProgressBar progressbar = new JProgressBar();
 
-        labelType.setFont(ConstantsUI.FONT_NORMAL);
-        labelComment.setFont(ConstantsUI.FONT_NORMAL);
-        labelProgress.setFont(ConstantsUI.FONT_NORMAL);
-        comboxType.setFont(ConstantsUI.FONT_NORMAL);
-        textFieldComment.setFont(ConstantsUI.FONT_NORMAL);
+        labelType.setFont(UiConsts.FONT_NORMAL);
+        labelComment.setFont(UiConsts.FONT_NORMAL);
+        labelProgress.setFont(UiConsts.FONT_NORMAL);
+        comboxType.setFont(UiConsts.FONT_NORMAL);
+        textFieldComment.setFont(UiConsts.FONT_NORMAL);
 
         Dimension preferredSize = new Dimension(250, 30);
         comboxType.setPreferredSize(preferredSize);
@@ -192,8 +192,8 @@ public class App {
 
         JButton buttonSure = new JButton(PropertyUtil.getProperty("ds.ui.sure"));
         JButton buttonCancel = new JButton(PropertyUtil.getProperty("ds.ui.cancel"));
-        buttonSure.setFont(ConstantsUI.FONT_NORMAL);
-        buttonCancel.setFont(ConstantsUI.FONT_NORMAL);
+        buttonSure.setFont(UiConsts.FONT_NORMAL);
+        buttonCancel.setFont(UiConsts.FONT_NORMAL);
 
         grid1.add(buttonSure);
         grid2.add(buttonCancel);

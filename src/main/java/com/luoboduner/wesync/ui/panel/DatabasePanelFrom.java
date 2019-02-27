@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.ui.panel;
 
 import com.luoboduner.wesync.App;
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.ui.component.MyIconButton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +46,7 @@ public class DatabasePanelFrom extends JPanel {
      * 初始化
      */
     private void initialize() {
-        this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        this.setBackground(UiConsts.MAIN_BACK_COLOR);
         this.setLayout(new BorderLayout());
     }
 
@@ -68,13 +68,13 @@ public class DatabasePanelFrom extends JPanel {
     private JPanel getCenterPanel() {
         // 中间面板
         JPanel panelCenter = new JPanel();
-        panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelCenter.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(2, 1));
 
         // 设置Grid
         JPanel panelGridSetting = new JPanel();
-        panelGridSetting.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGridSetting.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
+        panelGridSetting.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGridSetting.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
         // 初始化组件
         JLabel labelDatabaseType = new JLabel(PropertyUtil.getProperty("ds.ui.database.type"));
@@ -91,28 +91,28 @@ public class DatabasePanelFrom extends JPanel {
         passwordFieldDatabasePassword = new JPasswordField();
 
         // 字体
-        labelDatabaseType.setFont(ConstantsUI.FONT_NORMAL);
-        labelDatabaseHost.setFont(ConstantsUI.FONT_NORMAL);
-        labelDatabaseName.setFont(ConstantsUI.FONT_NORMAL);
-        labelDatabaseUser.setFont(ConstantsUI.FONT_NORMAL);
-        labelDatabasePassword.setFont(ConstantsUI.FONT_NORMAL);
-        comboxDatabaseType.setFont(ConstantsUI.FONT_NORMAL);
-        textFieldDatabaseHost.setFont(ConstantsUI.FONT_NORMAL);
-        textFieldDatabaseName.setFont(ConstantsUI.FONT_NORMAL);
-        textFieldDatabaseUser.setFont(ConstantsUI.FONT_NORMAL);
-        passwordFieldDatabasePassword.setFont(ConstantsUI.FONT_NORMAL);
+        labelDatabaseType.setFont(UiConsts.FONT_NORMAL);
+        labelDatabaseHost.setFont(UiConsts.FONT_NORMAL);
+        labelDatabaseName.setFont(UiConsts.FONT_NORMAL);
+        labelDatabaseUser.setFont(UiConsts.FONT_NORMAL);
+        labelDatabasePassword.setFont(UiConsts.FONT_NORMAL);
+        comboxDatabaseType.setFont(UiConsts.FONT_NORMAL);
+        textFieldDatabaseHost.setFont(UiConsts.FONT_NORMAL);
+        textFieldDatabaseName.setFont(UiConsts.FONT_NORMAL);
+        textFieldDatabaseUser.setFont(UiConsts.FONT_NORMAL);
+        passwordFieldDatabasePassword.setFont(UiConsts.FONT_NORMAL);
 
         // 大小
-        labelDatabaseType.setPreferredSize(ConstantsUI.LABLE_SIZE_ITEM);
-        labelDatabaseHost.setPreferredSize(ConstantsUI.LABLE_SIZE_ITEM);
-        labelDatabaseName.setPreferredSize(ConstantsUI.LABLE_SIZE_ITEM);
-        labelDatabaseUser.setPreferredSize(ConstantsUI.LABLE_SIZE_ITEM);
-        labelDatabasePassword.setPreferredSize(ConstantsUI.LABLE_SIZE_ITEM);
-        comboxDatabaseType.setPreferredSize(ConstantsUI.TEXT_FIELD_SIZE_ITEM);
-        textFieldDatabaseHost.setPreferredSize(ConstantsUI.TEXT_FIELD_SIZE_ITEM);
-        textFieldDatabaseName.setPreferredSize(ConstantsUI.TEXT_FIELD_SIZE_ITEM);
-        textFieldDatabaseUser.setPreferredSize(ConstantsUI.TEXT_FIELD_SIZE_ITEM);
-        passwordFieldDatabasePassword.setPreferredSize(ConstantsUI.TEXT_FIELD_SIZE_ITEM);
+        labelDatabaseType.setPreferredSize(UiConsts.LABLE_SIZE_ITEM);
+        labelDatabaseHost.setPreferredSize(UiConsts.LABLE_SIZE_ITEM);
+        labelDatabaseName.setPreferredSize(UiConsts.LABLE_SIZE_ITEM);
+        labelDatabaseUser.setPreferredSize(UiConsts.LABLE_SIZE_ITEM);
+        labelDatabasePassword.setPreferredSize(UiConsts.LABLE_SIZE_ITEM);
+        comboxDatabaseType.setPreferredSize(UiConsts.TEXT_FIELD_SIZE_ITEM);
+        textFieldDatabaseHost.setPreferredSize(UiConsts.TEXT_FIELD_SIZE_ITEM);
+        textFieldDatabaseName.setPreferredSize(UiConsts.TEXT_FIELD_SIZE_ITEM);
+        textFieldDatabaseUser.setPreferredSize(UiConsts.TEXT_FIELD_SIZE_ITEM);
+        passwordFieldDatabasePassword.setPreferredSize(UiConsts.TEXT_FIELD_SIZE_ITEM);
 
         // 组合元素
         panelGridSetting.add(labelDatabaseType);
@@ -137,13 +137,13 @@ public class DatabasePanelFrom extends JPanel {
      */
     private JPanel getDownPanel() {
         JPanel panelDown = new JPanel();
-        panelDown.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelDown.setLayout(new FlowLayout(FlowLayout.RIGHT, ConstantsUI.MAIN_H_GAP, 15));
+        panelDown.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelDown.setLayout(new FlowLayout(FlowLayout.RIGHT, UiConsts.MAIN_H_GAP, 15));
 
-        buttonTestLink = new MyIconButton(ConstantsUI.ICON_TEST_LINK, ConstantsUI.ICON_TEST_LINK_ENABLE,
-                ConstantsUI.ICON_TEST_LINK_DISABLE, "");
-        buttonSave = new MyIconButton(ConstantsUI.ICON_SAVE, ConstantsUI.ICON_SAVE_ENABLE,
-                ConstantsUI.ICON_SAVE_DISABLE, "");
+        buttonTestLink = new MyIconButton(UiConsts.ICON_TEST_LINK, UiConsts.ICON_TEST_LINK_ENABLE,
+                UiConsts.ICON_TEST_LINK_DISABLE, "");
+        buttonSave = new MyIconButton(UiConsts.ICON_SAVE, UiConsts.ICON_SAVE_ENABLE,
+                UiConsts.ICON_SAVE_DISABLE, "");
         panelDown.add(buttonTestLink);
         panelDown.add(buttonSave);
 

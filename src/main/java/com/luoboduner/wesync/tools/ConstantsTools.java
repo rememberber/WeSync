@@ -1,6 +1,6 @@
 package com.luoboduner.wesync.tools;
 
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 
 import java.io.File;
 
@@ -15,13 +15,13 @@ public class ConstantsTools {
     /**
      * 配置文件 路径
      */
-    public final static String PATH_CONFIG = ConstantsUI.CURRENT_DIR + File.separator + "config" + File.separator
+    public final static String PATH_CONFIG = UiConsts.CURRENT_DIR + File.separator + "config" + File.separator
             + "config.xml";
 
     /**
      * properties路径
      */
-    public final static String PATH_PROPERTY = ConstantsUI.CURRENT_DIR + File.separator + "config" + File.separator
+    public final static String PATH_PROPERTY = UiConsts.CURRENT_DIR + File.separator + "config" + File.separator
             + "zh-cn.properties";
     /**
      * 配置文件dom实例
@@ -61,5 +61,5 @@ public class ConstantsTools {
     /**
      * 日志文件 路径
      */
-    public final static String PATH_LOG = ConstantsUI.CURRENT_DIR + File.separator + "log" + File.separator + "log.log";
+    public final static String PATH_LOG = UiConsts.CURRENT_DIR + File.separator + "log" + File.separator + "log.log";
 }

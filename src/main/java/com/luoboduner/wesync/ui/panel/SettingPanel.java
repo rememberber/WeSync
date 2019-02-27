@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.ui.panel;
 
 import com.luoboduner.wesync.App;
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
 import javax.swing.*;
@@ -37,7 +37,7 @@ public class SettingPanel extends JPanel {
      * 初始化
      */
     private void initialize() {
-        this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        this.setBackground(UiConsts.MAIN_BACK_COLOR);
         this.setLayout(new BorderLayout());
         settingPanelOption = new SettingPanelOption();
         settingPanelAbout = new SettingPanelAbout();
@@ -60,12 +60,12 @@ public class SettingPanel extends JPanel {
      */
     private JPanel getUpPanel() {
         JPanel panelUp = new JPanel();
-        panelUp.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 5));
+        panelUp.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 5));
 
         JLabel labelTitle = new JLabel(PropertyUtil.getProperty("ds.ui.setting.title"));
-        labelTitle.setFont(ConstantsUI.FONT_TITLE);
-        labelTitle.setForeground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        labelTitle.setFont(UiConsts.FONT_TITLE);
+        labelTitle.setForeground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelUp.add(labelTitle);
 
         return panelUp;
@@ -79,12 +79,12 @@ public class SettingPanel extends JPanel {
     private JPanel getCenterPanel() {
         // 中间面板
         JPanel panelCenter = new JPanel();
-        panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelCenter.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelCenter.setLayout(new BorderLayout());
 
         // 列表Panel
         JPanel panelList = new JPanel();
-        Dimension preferredSize = new Dimension(245, ConstantsUI.MAIN_WINDOW_HEIGHT);
+        Dimension preferredSize = new Dimension(245, UiConsts.MAIN_WINDOW_HEIGHT);
         panelList.setPreferredSize(preferredSize);
         panelList.setBackground(new Color(62, 62, 62));
         panelList.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
@@ -95,7 +95,7 @@ public class SettingPanel extends JPanel {
         Dimension preferredSizeListItem = new Dimension(245, 48);
         panelOption.setPreferredSize(preferredSizeListItem);
         panelAbout = new JPanel();
-        panelAbout.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        panelAbout.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelAbout.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 13));
         panelAbout.setPreferredSize(preferredSizeListItem);
 
@@ -114,7 +114,7 @@ public class SettingPanel extends JPanel {
 
         // 设置Panel
         settingPanelMain = new JPanel();
-        settingPanelMain.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        settingPanelMain.setBackground(UiConsts.MAIN_BACK_COLOR);
         settingPanelMain.setLayout(new BorderLayout());
         settingPanelMain.add(settingPanelOption);
 
@@ -156,7 +156,7 @@ public class SettingPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 panelOption.setBackground(new Color(69, 186, 121));
-                panelAbout.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+                panelAbout.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
 
                 SettingPanel.settingPanelMain.removeAll();
                 SettingPanelOption.setCurrentOption();
@@ -194,7 +194,7 @@ public class SettingPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 panelAbout.setBackground(new Color(69, 186, 121));
-                panelOption.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+                panelOption.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
 
                 SettingPanel.settingPanelMain.removeAll();
                 SettingPanel.settingPanelMain.add(settingPanelAbout);

@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.ui.panel;
 
 import com.luoboduner.wesync.App;
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
 import javax.swing.*;
@@ -37,7 +37,7 @@ public class DatabasePanel extends JPanel {
      * 初始化面板
      */
     private void initialize() {
-        this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        this.setBackground(UiConsts.MAIN_BACK_COLOR);
         this.setLayout(new BorderLayout());
         databaseSettingPanelFrom = new DatabasePanelFrom();
         databaseSettingPanelTo = new DatabasePanelTo();
@@ -60,12 +60,12 @@ public class DatabasePanel extends JPanel {
      */
     private JPanel getUpPanel() {
         JPanel panelUp = new JPanel();
-        panelUp.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 5));
+        panelUp.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 5));
 
         JLabel labelTitle = new JLabel(PropertyUtil.getProperty("ds.ui.database.title"));
-        labelTitle.setFont(ConstantsUI.FONT_TITLE);
-        labelTitle.setForeground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        labelTitle.setFont(UiConsts.FONT_TITLE);
+        labelTitle.setForeground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelUp.add(labelTitle);
 
         return panelUp;
@@ -79,12 +79,12 @@ public class DatabasePanel extends JPanel {
     private JPanel getCenterPanel() {
         // 中间面板
         JPanel panelCenter = new JPanel();
-        panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelCenter.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelCenter.setLayout(new BorderLayout());
 
         // 数据库列表Panel
         JPanel panelList = new JPanel();
-        Dimension preferredSize = new Dimension(245, ConstantsUI.MAIN_WINDOW_HEIGHT);
+        Dimension preferredSize = new Dimension(245, UiConsts.MAIN_WINDOW_HEIGHT);
         panelList.setPreferredSize(preferredSize);
         panelList.setBackground(new Color(62, 62, 62));
         panelList.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
@@ -95,7 +95,7 @@ public class DatabasePanel extends JPanel {
         Dimension preferredSizeListItem = new Dimension(245, 48);
         panelFrom.setPreferredSize(preferredSizeListItem);
         panelTo = new JPanel();
-        panelTo.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        panelTo.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelTo.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 13));
         panelTo.setPreferredSize(preferredSizeListItem);
 
@@ -115,7 +115,7 @@ public class DatabasePanel extends JPanel {
         // 数据库设置Panel
 
         databaseSettingPanel = new JPanel();
-        databaseSettingPanel.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        databaseSettingPanel.setBackground(UiConsts.MAIN_BACK_COLOR);
         databaseSettingPanel.setLayout(new BorderLayout());
         databaseSettingPanel.add(databaseSettingPanelFrom);
 
@@ -157,7 +157,7 @@ public class DatabasePanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 panelFrom.setBackground(new Color(69, 186, 121));
-                panelTo.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+                panelTo.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
 
                 DatabasePanel.databaseSettingPanel.removeAll();
                 DatabasePanelFrom.setContent();
@@ -195,7 +195,7 @@ public class DatabasePanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 panelTo.setBackground(new Color(69, 186, 121));
-                panelFrom.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+                panelFrom.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
 
                 DatabasePanel.databaseSettingPanel.removeAll();
                 DatabasePanelTo.setContent();

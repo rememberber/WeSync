@@ -1,6 +1,6 @@
 package com.luoboduner.wesync.ui.panel;
 
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.ui.component.MyIconButton;
 import com.luoboduner.wesync.logic.ExecuteThread;
 import com.luoboduner.wesync.logic.ScheduleExecuteThread;
@@ -71,7 +71,7 @@ public class StatusPanel extends JPanel {
      * 初始化
      */
     private void initialize() {
-        this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        this.setBackground(UiConsts.MAIN_BACK_COLOR);
         this.setLayout(new BorderLayout());
     }
 
@@ -93,12 +93,12 @@ public class StatusPanel extends JPanel {
      */
     private JPanel getUpPanel() {
         JPanel panelUp = new JPanel();
-        panelUp.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 5));
+        panelUp.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 5));
 
         JLabel labelTitle = new JLabel(PropertyUtil.getProperty("ds.ui.status.title"));
-        labelTitle.setFont(ConstantsUI.FONT_TITLE);
-        labelTitle.setForeground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        labelTitle.setFont(UiConsts.FONT_TITLE);
+        labelTitle.setForeground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelUp.add(labelTitle);
 
         return panelUp;
@@ -112,44 +112,44 @@ public class StatusPanel extends JPanel {
     private JPanel getCenterPanel() {
         // 中间面板
         JPanel panelCenter = new JPanel();
-        panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelCenter.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(4, 1));
 
         // 状态Grid
         JPanel panelGridStatus = new JPanel();
-        panelGridStatus.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGridStatus.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
+        panelGridStatus.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGridStatus.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
         labelStatus = new JLabel(PropertyUtil.getProperty("ds.ui.status.ready"));
         labelStatusDetail = new JLabel(PropertyUtil.getProperty("ds.ui.status.detail"));
         labelStatus.setFont(new Font(PropertyUtil.getProperty("ds.ui.font.family"), 1, 15));
-        labelStatusDetail.setFont(ConstantsUI.FONT_NORMAL);
+        labelStatusDetail.setFont(UiConsts.FONT_NORMAL);
 
-        labelStatus.setPreferredSize(ConstantsUI.LABLE_SIZE);
-        labelStatusDetail.setPreferredSize(ConstantsUI.LABLE_SIZE);
+        labelStatus.setPreferredSize(UiConsts.LABLE_SIZE);
+        labelStatusDetail.setPreferredSize(UiConsts.LABLE_SIZE);
 
         panelGridStatus.add(labelStatus);
         panelGridStatus.add(labelStatusDetail);
 
         // 来源/目标 Grid
         JPanel panelGridFromTo = new JPanel();
-        panelGridFromTo.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGridFromTo.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
+        panelGridFromTo.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGridFromTo.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
         labelFrom = new JLabel();
         labelTo = new JLabel();
-        labelFrom.setFont(ConstantsUI.FONT_NORMAL);
-        labelTo.setFont(ConstantsUI.FONT_NORMAL);
-        labelFrom.setPreferredSize(ConstantsUI.LABLE_SIZE);
-        labelTo.setPreferredSize(ConstantsUI.LABLE_SIZE);
+        labelFrom.setFont(UiConsts.FONT_NORMAL);
+        labelTo.setFont(UiConsts.FONT_NORMAL);
+        labelFrom.setPreferredSize(UiConsts.LABLE_SIZE);
+        labelTo.setPreferredSize(UiConsts.LABLE_SIZE);
 
         panelGridFromTo.add(labelFrom);
         panelGridFromTo.add(labelTo);
 
         // 详情Grid
         JPanel panelGridDetail = new JPanel();
-        panelGridDetail.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGridDetail.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
+        panelGridDetail.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGridDetail.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
         labelLastTime = new JLabel();
         labelKeepTime = new JLabel();
@@ -159,19 +159,19 @@ public class StatusPanel extends JPanel {
         labelFail = new JLabel();
         labelLog = new JLabel(PropertyUtil.getProperty("ds.ui.status.logDetail"));
 
-        labelLastTime.setFont(ConstantsUI.FONT_NORMAL);
-        labelKeepTime.setFont(ConstantsUI.FONT_NORMAL);
-        labelNextTime.setFont(ConstantsUI.FONT_NORMAL);
-        labelSuccess.setFont(ConstantsUI.FONT_NORMAL);
-        labelFail.setFont(ConstantsUI.FONT_NORMAL);
-        labelLog.setFont(ConstantsUI.FONT_NORMAL);
+        labelLastTime.setFont(UiConsts.FONT_NORMAL);
+        labelKeepTime.setFont(UiConsts.FONT_NORMAL);
+        labelNextTime.setFont(UiConsts.FONT_NORMAL);
+        labelSuccess.setFont(UiConsts.FONT_NORMAL);
+        labelFail.setFont(UiConsts.FONT_NORMAL);
+        labelLog.setFont(UiConsts.FONT_NORMAL);
         labelLastTime.setPreferredSize(new Dimension(240, 30));
         labelKeepTime.setPreferredSize(new Dimension(300, 30));
-        labelNextTime.setPreferredSize(ConstantsUI.LABLE_SIZE);
+        labelNextTime.setPreferredSize(UiConsts.LABLE_SIZE);
         labelSuccess.setPreferredSize(new Dimension(240, 30));
         labelFail.setPreferredSize(new Dimension(236, 30));
-        labelLog.setPreferredSize(ConstantsUI.LABLE_SIZE);
-        labelLog.setForeground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        labelLog.setPreferredSize(UiConsts.LABLE_SIZE);
+        labelLog.setForeground(UiConsts.TOOL_BAR_BACK_COLOR);
 
         panelGridDetail.add(labelLastTime);
         panelGridDetail.add(labelKeepTime);
@@ -182,19 +182,19 @@ public class StatusPanel extends JPanel {
 
         // 进度Grid
         JPanel panelGridProgress = new JPanel();
-        panelGridProgress.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGridProgress.setLayout(new GridLayout(2, 1, ConstantsUI.MAIN_H_GAP, 0));
+        panelGridProgress.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGridProgress.setLayout(new GridLayout(2, 1, UiConsts.MAIN_H_GAP, 0));
         JPanel panelCurrentProgress = new JPanel();
-        panelCurrentProgress.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelCurrentProgress.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 20));
+        panelCurrentProgress.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelCurrentProgress.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 20));
         JPanel panelTotalProgress = new JPanel();
-        panelTotalProgress.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelTotalProgress.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
+        panelTotalProgress.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelTotalProgress.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
         JLabel labelCurrent = new JLabel(PropertyUtil.getProperty("ds.ui.status.progress.current"));
         JLabel labelTotal = new JLabel(PropertyUtil.getProperty("ds.ui.status.progress.total"));
-        labelCurrent.setFont(ConstantsUI.FONT_NORMAL);
-        labelTotal.setFont(ConstantsUI.FONT_NORMAL);
+        labelCurrent.setFont(UiConsts.FONT_NORMAL);
+        labelTotal.setFont(UiConsts.FONT_NORMAL);
         progressCurrent = new JProgressBar();
         progressTotal = new JProgressBar();
 
@@ -228,22 +228,22 @@ public class StatusPanel extends JPanel {
      */
     private JPanel getDownPanel() {
         JPanel panelDown = new JPanel();
-        panelDown.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelDown.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelDown.setLayout(new GridLayout(1, 2));
         JPanel panelGrid1 = new JPanel();
-        panelGrid1.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGrid1.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 15));
+        panelGrid1.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGrid1.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 15));
         JPanel panelGrid2 = new JPanel();
-        panelGrid2.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGrid2.setLayout(new FlowLayout(FlowLayout.RIGHT, ConstantsUI.MAIN_H_GAP, 15));
+        panelGrid2.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGrid2.setLayout(new FlowLayout(FlowLayout.RIGHT, UiConsts.MAIN_H_GAP, 15));
 
-        buttonStartSchedule = new MyIconButton(ConstantsUI.ICON_START_SCHEDULE, ConstantsUI.ICON_START_SCHEDULE_ENABLE,
-                ConstantsUI.ICON_START_SCHEDULE_DISABLE, "");
-        buttonStop = new MyIconButton(ConstantsUI.ICON_STOP, ConstantsUI.ICON_STOP_ENABLE,
-                ConstantsUI.ICON_STOP_DISABLE, "");
+        buttonStartSchedule = new MyIconButton(UiConsts.ICON_START_SCHEDULE, UiConsts.ICON_START_SCHEDULE_ENABLE,
+                UiConsts.ICON_START_SCHEDULE_DISABLE, "");
+        buttonStop = new MyIconButton(UiConsts.ICON_STOP, UiConsts.ICON_STOP_ENABLE,
+                UiConsts.ICON_STOP_DISABLE, "");
         buttonStop.setEnabled(false);
-        buttonStartNow = new MyIconButton(ConstantsUI.ICON_SYNC_NOW, ConstantsUI.ICON_SYNC_NOW_ENABLE,
-                ConstantsUI.ICON_SYNC_NOW_DISABLE, "");
+        buttonStartNow = new MyIconButton(UiConsts.ICON_SYNC_NOW, UiConsts.ICON_SYNC_NOW_ENABLE,
+                UiConsts.ICON_SYNC_NOW_DISABLE, "");
         panelGrid1.add(buttonStartSchedule);
         panelGrid1.add(buttonStop);
         panelGrid2.add(buttonStartNow);
@@ -361,7 +361,7 @@ public class StatusPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().open(new File(ConstantsUI.CURRENT_DIR + File.separator + "log"));
+                    Desktop.getDesktop().open(new File(UiConsts.CURRENT_DIR + File.separator + "log"));
                 } catch (IOException e1) {
                     // TODO Auto-generated catch block
                     logger.error(e1.toString());

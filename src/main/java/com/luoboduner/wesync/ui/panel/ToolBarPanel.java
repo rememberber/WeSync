@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.ui.panel;
 
 import com.luoboduner.wesync.App;
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.ui.component.MyIconButton;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
@@ -36,11 +36,11 @@ public class ToolBarPanel extends JPanel {
      * 初始化
      */
     private void initialize() {
-        Dimension preferredSize = new Dimension(48, ConstantsUI.MAIN_WINDOW_HEIGHT);
+        Dimension preferredSize = new Dimension(48, UiConsts.MAIN_WINDOW_HEIGHT);
         this.setPreferredSize(preferredSize);
         this.setMaximumSize(preferredSize);
         this.setMinimumSize(preferredSize);
-        this.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        this.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
         this.setLayout(new GridLayout(2, 1));
     }
 
@@ -50,22 +50,22 @@ public class ToolBarPanel extends JPanel {
     private void addButtion() {
 
         JPanel panelUp = new JPanel();
-        panelUp.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        panelUp.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelUp.setLayout(new FlowLayout(-2, -2, -4));
         JPanel panelDown = new JPanel();
-        panelDown.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        panelDown.setBackground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelDown.setLayout(new BorderLayout(0, 0));
 
-        buttonStatus = new MyIconButton(ConstantsUI.ICON_STATUS_ENABLE, ConstantsUI.ICON_STATUS_ENABLE,
-                ConstantsUI.ICON_STATUS, PropertyUtil.getProperty("ds.ui.status.title"));
-        buttonDatabase = new MyIconButton(ConstantsUI.ICON_DATABASE, ConstantsUI.ICON_DATABASE_ENABLE,
-                ConstantsUI.ICON_DATABASE, PropertyUtil.getProperty("ds.ui.database.title"));
-        buttonSchedule = new MyIconButton(ConstantsUI.ICON_SCHEDULE, ConstantsUI.ICON_SCHEDULE_ENABLE,
-                ConstantsUI.ICON_SCHEDULE, PropertyUtil.getProperty("ds.ui.schedule.title"));
-        buttonBackup = new MyIconButton(ConstantsUI.ICON_BACKUP, ConstantsUI.ICON_BACKUP_ENABLE,
-                ConstantsUI.ICON_BACKUP, PropertyUtil.getProperty("ds.ui.backup.title"));
-        buttonSetting = new MyIconButton(ConstantsUI.ICON_SETTING, ConstantsUI.ICON_SETTING_ENABLE,
-                ConstantsUI.ICON_SETTING, PropertyUtil.getProperty("ds.ui.setting.title"));
+        buttonStatus = new MyIconButton(UiConsts.ICON_STATUS_ENABLE, UiConsts.ICON_STATUS_ENABLE,
+                UiConsts.ICON_STATUS, PropertyUtil.getProperty("ds.ui.status.title"));
+        buttonDatabase = new MyIconButton(UiConsts.ICON_DATABASE, UiConsts.ICON_DATABASE_ENABLE,
+                UiConsts.ICON_DATABASE, PropertyUtil.getProperty("ds.ui.database.title"));
+        buttonSchedule = new MyIconButton(UiConsts.ICON_SCHEDULE, UiConsts.ICON_SCHEDULE_ENABLE,
+                UiConsts.ICON_SCHEDULE, PropertyUtil.getProperty("ds.ui.schedule.title"));
+        buttonBackup = new MyIconButton(UiConsts.ICON_BACKUP, UiConsts.ICON_BACKUP_ENABLE,
+                UiConsts.ICON_BACKUP, PropertyUtil.getProperty("ds.ui.backup.title"));
+        buttonSetting = new MyIconButton(UiConsts.ICON_SETTING, UiConsts.ICON_SETTING_ENABLE,
+                UiConsts.ICON_SETTING, PropertyUtil.getProperty("ds.ui.setting.title"));
 
         panelUp.add(buttonStatus);
         panelUp.add(buttonDatabase);
@@ -84,11 +84,11 @@ public class ToolBarPanel extends JPanel {
     private void addListener() {
         buttonStatus.addActionListener(e -> {
 
-            buttonStatus.setIcon(ConstantsUI.ICON_STATUS_ENABLE);
-            buttonDatabase.setIcon(ConstantsUI.ICON_DATABASE);
-            buttonSchedule.setIcon(ConstantsUI.ICON_SCHEDULE);
-            buttonBackup.setIcon(ConstantsUI.ICON_BACKUP);
-            buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
+            buttonStatus.setIcon(UiConsts.ICON_STATUS_ENABLE);
+            buttonDatabase.setIcon(UiConsts.ICON_DATABASE);
+            buttonSchedule.setIcon(UiConsts.ICON_SCHEDULE);
+            buttonBackup.setIcon(UiConsts.ICON_BACKUP);
+            buttonSetting.setIcon(UiConsts.ICON_SETTING);
 
             App.mainPanelCenter.removeAll();
             StatusPanel.setContent();
@@ -100,11 +100,11 @@ public class ToolBarPanel extends JPanel {
 
         buttonDatabase.addActionListener(e -> {
 
-            buttonStatus.setIcon(ConstantsUI.ICON_STATUS);
-            buttonDatabase.setIcon(ConstantsUI.ICON_DATABASE_ENABLE);
-            buttonSchedule.setIcon(ConstantsUI.ICON_SCHEDULE);
-            buttonBackup.setIcon(ConstantsUI.ICON_BACKUP);
-            buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
+            buttonStatus.setIcon(UiConsts.ICON_STATUS);
+            buttonDatabase.setIcon(UiConsts.ICON_DATABASE_ENABLE);
+            buttonSchedule.setIcon(UiConsts.ICON_SCHEDULE);
+            buttonBackup.setIcon(UiConsts.ICON_BACKUP);
+            buttonSetting.setIcon(UiConsts.ICON_SETTING);
 
             App.mainPanelCenter.removeAll();
             DatabasePanelFrom.setContent();
@@ -117,11 +117,11 @@ public class ToolBarPanel extends JPanel {
 
         buttonSchedule.addActionListener(e -> {
 
-            buttonStatus.setIcon(ConstantsUI.ICON_STATUS);
-            buttonDatabase.setIcon(ConstantsUI.ICON_DATABASE);
-            buttonSchedule.setIcon(ConstantsUI.ICON_SCHEDULE_ENABLE);
-            buttonBackup.setIcon(ConstantsUI.ICON_BACKUP);
-            buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
+            buttonStatus.setIcon(UiConsts.ICON_STATUS);
+            buttonDatabase.setIcon(UiConsts.ICON_DATABASE);
+            buttonSchedule.setIcon(UiConsts.ICON_SCHEDULE_ENABLE);
+            buttonBackup.setIcon(UiConsts.ICON_BACKUP);
+            buttonSetting.setIcon(UiConsts.ICON_SETTING);
 
             App.mainPanelCenter.removeAll();
             App.schedulePanel.setCurrentSchedule();
@@ -133,11 +133,11 @@ public class ToolBarPanel extends JPanel {
 
         buttonBackup.addActionListener(e -> {
 
-            buttonStatus.setIcon(ConstantsUI.ICON_STATUS);
-            buttonDatabase.setIcon(ConstantsUI.ICON_DATABASE);
-            buttonSchedule.setIcon(ConstantsUI.ICON_SCHEDULE);
-            buttonBackup.setIcon(ConstantsUI.ICON_BACKUP_ENABLE);
-            buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
+            buttonStatus.setIcon(UiConsts.ICON_STATUS);
+            buttonDatabase.setIcon(UiConsts.ICON_DATABASE);
+            buttonSchedule.setIcon(UiConsts.ICON_SCHEDULE);
+            buttonBackup.setIcon(UiConsts.ICON_BACKUP_ENABLE);
+            buttonSetting.setIcon(UiConsts.ICON_SETTING);
 
             BackupPanel.initTableData();
             BackupPanel.tableFrom.validate();
@@ -151,11 +151,11 @@ public class ToolBarPanel extends JPanel {
 
         buttonSetting.addActionListener(e -> {
 
-            buttonStatus.setIcon(ConstantsUI.ICON_STATUS);
-            buttonDatabase.setIcon(ConstantsUI.ICON_DATABASE);
-            buttonSchedule.setIcon(ConstantsUI.ICON_SCHEDULE);
-            buttonBackup.setIcon(ConstantsUI.ICON_BACKUP);
-            buttonSetting.setIcon(ConstantsUI.ICON_SETTING_ENABLE);
+            buttonStatus.setIcon(UiConsts.ICON_STATUS);
+            buttonDatabase.setIcon(UiConsts.ICON_DATABASE);
+            buttonSchedule.setIcon(UiConsts.ICON_SCHEDULE);
+            buttonBackup.setIcon(UiConsts.ICON_BACKUP);
+            buttonSetting.setIcon(UiConsts.ICON_SETTING_ENABLE);
 
             App.mainPanelCenter.removeAll();
             SettingPanelOption.setCurrentOption();

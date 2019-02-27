@@ -11,7 +11,7 @@ import java.awt.*;
  *
  * @author Bob
  */
-public class ConstantsUI {
+public class UiConsts {
 
     /**
      * 软件名称,版本

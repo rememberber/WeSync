@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.ui.panel;
 
 import com.luoboduner.wesync.App;
-import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.ui.component.MyIconButton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +44,7 @@ public class SchedulePanel extends JPanel {
      * 初始化
      */
     private void initialize() {
-        this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        this.setBackground(UiConsts.MAIN_BACK_COLOR);
         this.setLayout(new BorderLayout());
     }
 
@@ -65,12 +65,12 @@ public class SchedulePanel extends JPanel {
      */
     private JPanel getUpPanel() {
         JPanel panelUp = new JPanel();
-        panelUp.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 5));
+        panelUp.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 5));
 
         JLabel labelTitle = new JLabel(PropertyUtil.getProperty("ds.ui.schedule.title"));
-        labelTitle.setFont(ConstantsUI.FONT_TITLE);
-        labelTitle.setForeground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        labelTitle.setFont(UiConsts.FONT_TITLE);
+        labelTitle.setForeground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelUp.add(labelTitle);
 
         return panelUp;
@@ -84,13 +84,13 @@ public class SchedulePanel extends JPanel {
     private JPanel getCenterPanel() {
         // 中间面板
         JPanel panelCenter = new JPanel();
-        panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        panelCenter.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelCenter.setLayout(new GridLayout(1, 1));
 
         // 计划时间Grid
         JPanel panelGridSchedule = new JPanel();
-        panelGridSchedule.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelGridSchedule.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 0));
+        panelGridSchedule.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelGridSchedule.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
         // 初始化组件
         radio5Min = new JRadioButton(PropertyUtil.getProperty("ds.ui.schedule.radio1"));
@@ -103,33 +103,33 @@ public class SchedulePanel extends JPanel {
         fixedTime = new JTextField();
 
         // 字体
-        radio5Min.setFont(ConstantsUI.FONT_RADIO);
-        radio15Min.setFont(ConstantsUI.FONT_RADIO);
-        radio30Min.setFont(ConstantsUI.FONT_RADIO);
-        radioPerHour.setFont(ConstantsUI.FONT_RADIO);
-        radioPerDay.setFont(ConstantsUI.FONT_RADIO);
-        radioPerWeek.setFont(ConstantsUI.FONT_RADIO);
-        radioEveryDay.setFont(ConstantsUI.FONT_RADIO);
-        fixedTime.setFont(ConstantsUI.FONT_RADIO);
+        radio5Min.setFont(UiConsts.FONT_RADIO);
+        radio15Min.setFont(UiConsts.FONT_RADIO);
+        radio30Min.setFont(UiConsts.FONT_RADIO);
+        radioPerHour.setFont(UiConsts.FONT_RADIO);
+        radioPerDay.setFont(UiConsts.FONT_RADIO);
+        radioPerWeek.setFont(UiConsts.FONT_RADIO);
+        radioEveryDay.setFont(UiConsts.FONT_RADIO);
+        fixedTime.setFont(UiConsts.FONT_RADIO);
 
         // 颜色
-        radio5Min.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        radio15Min.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        radio30Min.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        radioPerHour.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        radioPerDay.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        radioPerWeek.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        radioEveryDay.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        fixedTime.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        radio5Min.setBackground(UiConsts.MAIN_BACK_COLOR);
+        radio15Min.setBackground(UiConsts.MAIN_BACK_COLOR);
+        radio30Min.setBackground(UiConsts.MAIN_BACK_COLOR);
+        radioPerHour.setBackground(UiConsts.MAIN_BACK_COLOR);
+        radioPerDay.setBackground(UiConsts.MAIN_BACK_COLOR);
+        radioPerWeek.setBackground(UiConsts.MAIN_BACK_COLOR);
+        radioEveryDay.setBackground(UiConsts.MAIN_BACK_COLOR);
+        fixedTime.setBackground(UiConsts.MAIN_BACK_COLOR);
 
         // 大小
-        radio5Min.setMinimumSize(ConstantsUI.RADIO_SIZE);
-        radio15Min.setPreferredSize(ConstantsUI.RADIO_SIZE);
-        radio30Min.setMinimumSize(ConstantsUI.RADIO_SIZE);
-        radioPerHour.setPreferredSize(ConstantsUI.RADIO_SIZE);
-        radioPerDay.setMinimumSize(ConstantsUI.RADIO_SIZE);
-        radioPerWeek.setPreferredSize(ConstantsUI.RADIO_SIZE);
-        radioEveryDay.setMinimumSize(ConstantsUI.RADIO_SIZE);
+        radio5Min.setMinimumSize(UiConsts.RADIO_SIZE);
+        radio15Min.setPreferredSize(UiConsts.RADIO_SIZE);
+        radio30Min.setMinimumSize(UiConsts.RADIO_SIZE);
+        radioPerHour.setPreferredSize(UiConsts.RADIO_SIZE);
+        radioPerDay.setMinimumSize(UiConsts.RADIO_SIZE);
+        radioPerWeek.setPreferredSize(UiConsts.RADIO_SIZE);
+        radioEveryDay.setMinimumSize(UiConsts.RADIO_SIZE);
         Dimension preferredSize = new Dimension(130, 26);
         fixedTime.setPreferredSize(preferredSize);
 
@@ -155,11 +155,11 @@ public class SchedulePanel extends JPanel {
      */
     private JPanel getDownPanel() {
         JPanel panelDown = new JPanel();
-        panelDown.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        panelDown.setLayout(new FlowLayout(FlowLayout.RIGHT, ConstantsUI.MAIN_H_GAP, 15));
+        panelDown.setBackground(UiConsts.MAIN_BACK_COLOR);
+        panelDown.setLayout(new FlowLayout(FlowLayout.RIGHT, UiConsts.MAIN_H_GAP, 15));
 
-        buttonSave = new MyIconButton(ConstantsUI.ICON_SAVE, ConstantsUI.ICON_SAVE_ENABLE,
-                ConstantsUI.ICON_SAVE_DISABLE, "");
+        buttonSave = new MyIconButton(UiConsts.ICON_SAVE, UiConsts.ICON_SAVE_ENABLE,
+                UiConsts.ICON_SAVE_DISABLE, "");
         panelDown.add(buttonSave);
 
         return panelDown;
