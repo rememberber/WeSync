@@ -12,15 +12,15 @@
       <type>SQL Server</type>  
       <host>127.0.0.1</host>  
       <name>TEST_2017</name>  
-      <user>97da459ae523ae80</user>  
-      <password>1ca6dbffc8f125b4</password> 
+      <user></user>
+      <password></password>
     </from>  
     <to> 
       <type>MySQL</type>  
       <host>localhost</host>  
       <name>TEST_2017_M</name>  
-      <user>9bc42c9884cdbe3e</user>  
-      <password>1ca6dbffc8f125b4</password> 
+      <user></user>
+      <password></password>
     </to> 
   </database>  
   <schedule> 
