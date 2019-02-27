@@ -167,7 +167,7 @@ public class BackupPanel extends JPanel {
     }
 
     private void addListener() {
-        buttonNewBakFrom.addActionListener(e -> App.dialog.setVisible(true));
+        buttonNewBakFrom.addActionListener(e -> App.dbBackUpCreateDialog.setVisible(true));
     }
 
 }

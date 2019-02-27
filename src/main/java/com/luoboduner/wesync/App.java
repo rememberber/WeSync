@@ -1,6 +1,7 @@
 package com.luoboduner.wesync;
 
 import com.luoboduner.wesync.ui.UiConsts;
+import com.luoboduner.wesync.ui.dialog.DbBackUpCreateDialog;
 import com.luoboduner.wesync.ui.panel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,8 +29,10 @@ public class App {
     public static SchedulePanel schedulePanel;
     public static BackupPanel backupPanel;
     public static SettingPanel settingPanel;
-    // 新建备份dialog
-    public static JDialog dialog;
+    /**
+     * 新建备份dialog
+     */
+    public static DbBackUpCreateDialog dbBackUpCreateDialog;
 
     /**
      * 程序入口main
@@ -154,58 +157,8 @@ public class App {
      */
     private void addDialog() {
         // 数据库备份对话框
-        dialog = new JDialog(frame, PropertyUtil.getProperty("ds.ui.mainwindow.dialog.newBackUp"), true);
-        dialog.setBounds(460, 220, 400, 250);
-        JPanel panelDialog = new JPanel(new BorderLayout());
-        panelDialog.setBackground(UiConsts.MAIN_BACK_COLOR);
-        JPanel panelDialogCenter = new JPanel(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 10));
-        JPanel panelDialogDown = new JPanel(new GridLayout(1, 2));
-        JPanel grid1 = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 20));
-        JPanel grid2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
-
-        JLabel labelType = new JLabel(PropertyUtil.getProperty("ds.ui.mainwindow.dialog.type"));
-        JLabel labelComment = new JLabel(PropertyUtil.getProperty("ds.ui.mainwindow.dialog.remarks"));
-        JLabel labelProgress = new JLabel(PropertyUtil.getProperty("ds.ui.mainwindow.dialog.progress"));
-        JComboBox<String> comboxType = new JComboBox<>(new String[]{PropertyUtil.getProperty("ds.ui.mainwindow.dialog.comboxType0"),
-                PropertyUtil.getProperty("ds.ui.mainwindow.dialog.comboxType1"), PropertyUtil.getProperty("ds.ui.mainwindow.dialog.comboxType2"),
-                PropertyUtil.getProperty("ds.ui.mainwindow.dialog.comboxType3")});
-        JTextField textFieldComment = new JTextField();
-        JProgressBar progressbar = new JProgressBar();
-
-        labelType.setFont(UiConsts.FONT_NORMAL);
-        labelComment.setFont(UiConsts.FONT_NORMAL);
-        labelProgress.setFont(UiConsts.FONT_NORMAL);
-        comboxType.setFont(UiConsts.FONT_NORMAL);
-        textFieldComment.setFont(UiConsts.FONT_NORMAL);
-
-        Dimension preferredSize = new Dimension(250, 30);
-        comboxType.setPreferredSize(preferredSize);
-        textFieldComment.setPreferredSize(preferredSize);
-        progressbar.setPreferredSize(preferredSize);
-
-        panelDialogCenter.add(labelType);
-        panelDialogCenter.add(comboxType);
-        panelDialogCenter.add(labelComment);
-        panelDialogCenter.add(textFieldComment);
-        panelDialogCenter.add(labelProgress);
-        panelDialogCenter.add(progressbar);
-
-        JButton buttonSure = new JButton(PropertyUtil.getProperty("ds.ui.sure"));
-        JButton buttonCancel = new JButton(PropertyUtil.getProperty("ds.ui.cancel"));
-        buttonSure.setFont(UiConsts.FONT_NORMAL);
-        buttonCancel.setFont(UiConsts.FONT_NORMAL);
-
-        grid1.add(buttonSure);
-        grid2.add(buttonCancel);
-        panelDialogDown.add(grid1);
-        panelDialogDown.add(grid2);
-
-        panelDialog.add(panelDialogCenter, BorderLayout.CENTER);
-        panelDialog.add(panelDialogDown, BorderLayout.SOUTH);
-
-        dialog.add(panelDialog);
-
-        buttonCancel.addActionListener(e -> dialog.setVisible(false));
+        dbBackUpCreateDialog = new DbBackUpCreateDialog(frame, PropertyUtil.getProperty("ds.ui.mainwindow.dialog.newBackUp"), true);
+        dbBackUpCreateDialog.init();
     }
 
 }
