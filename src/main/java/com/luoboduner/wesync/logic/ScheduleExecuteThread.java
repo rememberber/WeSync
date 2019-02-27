@@ -1,6 +1,6 @@
 package com.luoboduner.wesync.logic;
 
-import com.luoboduner.wesync.UI.panel.StatusPanel;
+import com.luoboduner.wesync.ui.panel.StatusPanel;
 import com.luoboduner.wesync.tools.*;
 
 /**

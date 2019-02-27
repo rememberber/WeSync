@@ -2,7 +2,7 @@ package com.luoboduner.wesync.logic;
 
 import java.io.File;
 
-import com.luoboduner.wesync.UI.ConstantsUI;
+import com.luoboduner.wesync.ui.ConstantsUI;
 
 /**
  * Logic层的常量类

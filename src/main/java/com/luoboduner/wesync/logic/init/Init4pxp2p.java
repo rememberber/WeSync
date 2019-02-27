@@ -1,6 +1,6 @@
 package com.luoboduner.wesync.logic.init;
 
-import com.luoboduner.wesync.UI.panel.StatusPanel;
+import com.luoboduner.wesync.ui.panel.StatusPanel;
 import com.opencsv.CSVWriter;
 import com.luoboduner.wesync.tools.DbUtilMySQL;
 import com.luoboduner.wesync.tools.DbUtilSQLServer;

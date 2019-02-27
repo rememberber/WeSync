@@ -7,7 +7,7 @@
 WeSync [![Build Status](https://travis-ci.org/rememberber/WeSync.svg?branch=master)](https://travis-ci.org/rememberber/WeSync)
 ============
 
-com.luoboduner.wesync.UI
+com.luoboduner.wesync.ui
 -------
 >Java Swing  
 >some icons

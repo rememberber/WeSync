@@ -1,4 +1,4 @@
-package com.luoboduner.wesync.ui;
+package com.luoboduner.wesync.UI;
 
 import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.tools.PropertyUtil;

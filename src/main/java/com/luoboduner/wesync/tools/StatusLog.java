@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.tools;
 
 
-import com.luoboduner.wesync.UI.panel.StatusPanel;
+import com.luoboduner.wesync.ui.panel.StatusPanel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

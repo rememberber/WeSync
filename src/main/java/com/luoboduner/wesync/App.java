@@ -1,7 +1,7 @@
 package com.luoboduner.wesync;
 
-import com.luoboduner.wesync.UI.ConstantsUI;
-import com.luoboduner.wesync.UI.panel.*;
+import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.panel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.luoboduner.wesync.tools.PropertyUtil;

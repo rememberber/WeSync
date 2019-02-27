@@ -1,6 +1,6 @@
 package com.luoboduner.wesync.logic;
 
-import com.luoboduner.wesync.UI.panel.StatusPanel;
+import com.luoboduner.wesync.ui.panel.StatusPanel;
 import com.opencsv.CSVWriter;
 import com.luoboduner.wesync.logic.bean.Table;
 import org.slf4j.Logger;

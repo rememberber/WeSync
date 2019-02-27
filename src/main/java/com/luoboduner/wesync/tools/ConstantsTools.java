@@ -1,6 +1,6 @@
 package com.luoboduner.wesync.tools;
 
-import com.luoboduner.wesync.UI.ConstantsUI;
+import com.luoboduner.wesync.ui.ConstantsUI;
 
 import java.io.File;
 

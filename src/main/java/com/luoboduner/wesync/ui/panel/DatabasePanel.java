@@ -10,41 +10,41 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * 设置面板
+ * 数据库设置面板
  *
  * @author Bob
  */
-public class SettingPanel extends JPanel {
+public class DatabasePanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private static JPanel panelOption;
-    private static JPanel panelAbout;
-    public static JPanel settingPanelMain;
-    private static JPanel settingPanelOption;
-    private static JPanel settingPanelAbout;
+    public static JPanel panelFrom;
+    public static JPanel panelTo;
+    public static JPanel databaseSettingPanel;
+    private static JPanel databaseSettingPanelFrom;
+    private static JPanel databaseSettingPanelTo;
 
     /**
      * 构造
      */
-    public SettingPanel() {
+    public DatabasePanel() {
         initialize();
         addComponent();
         addListener();
     }
 
     /**
-     * 初始化
+     * 初始化面板
      */
     private void initialize() {
         this.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         this.setLayout(new BorderLayout());
-        settingPanelOption = new SettingPanelOption();
-        settingPanelAbout = new SettingPanelAbout();
+        databaseSettingPanelFrom = new DatabasePanelFrom();
+        databaseSettingPanelTo = new DatabasePanelTo();
     }
 
     /**
-     * 添加组件
+     * 为面板添加组件
      */
     private void addComponent() {
 
@@ -54,7 +54,7 @@ public class SettingPanel extends JPanel {
     }
 
     /**
-     * 上部面板
+     * 面板上部
      *
      * @return
      */
@@ -63,7 +63,7 @@ public class SettingPanel extends JPanel {
         panelUp.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, ConstantsUI.MAIN_H_GAP, 5));
 
-        JLabel labelTitle = new JLabel(PropertyUtil.getProperty("ds.ui.setting.title"));
+        JLabel labelTitle = new JLabel(PropertyUtil.getProperty("ds.ui.database.title"));
         labelTitle.setFont(ConstantsUI.FONT_TITLE);
         labelTitle.setForeground(ConstantsUI.TOOL_BAR_BACK_COLOR);
         panelUp.add(labelTitle);
@@ -72,7 +72,7 @@ public class SettingPanel extends JPanel {
     }
 
     /**
-     * 中部面板
+     * 面板中部
      *
      * @return
      */
@@ -82,53 +82,54 @@ public class SettingPanel extends JPanel {
         panelCenter.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         panelCenter.setLayout(new BorderLayout());
 
-        // 列表Panel
+        // 数据库列表Panel
         JPanel panelList = new JPanel();
         Dimension preferredSize = new Dimension(245, ConstantsUI.MAIN_WINDOW_HEIGHT);
         panelList.setPreferredSize(preferredSize);
         panelList.setBackground(new Color(62, 62, 62));
         panelList.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
-        panelOption = new JPanel();
-        panelOption.setBackground(new Color(69, 186, 121));
-        panelOption.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 13));
+        panelFrom = new JPanel();
+        panelFrom.setBackground(new Color(69, 186, 121));
+        panelFrom.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 13));
         Dimension preferredSizeListItem = new Dimension(245, 48);
-        panelOption.setPreferredSize(preferredSizeListItem);
-        panelAbout = new JPanel();
-        panelAbout.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
-        panelAbout.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 13));
-        panelAbout.setPreferredSize(preferredSizeListItem);
+        panelFrom.setPreferredSize(preferredSizeListItem);
+        panelTo = new JPanel();
+        panelTo.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+        panelTo.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 13));
+        panelTo.setPreferredSize(preferredSizeListItem);
 
-        JLabel labelOption = new JLabel(PropertyUtil.getProperty("ds.ui.setting.option"));
-        JLabel labelAbout = new JLabel(PropertyUtil.getProperty("ds.ui.setting.about"));
+        JLabel labelFrom = new JLabel(PropertyUtil.getProperty("ds.ui.database.label.from"));
+        JLabel labelTo = new JLabel(PropertyUtil.getProperty("ds.ui.database.label.to"));
         Font fontListItem = new Font(PropertyUtil.getProperty("ds.ui.font.family"), 0, 15);
-        labelOption.setFont(fontListItem);
-        labelAbout.setFont(fontListItem);
-        labelOption.setForeground(Color.white);
-        labelAbout.setForeground(Color.white);
-        panelOption.add(labelOption);
-        panelAbout.add(labelAbout);
+        labelFrom.setFont(fontListItem);
+        labelTo.setFont(fontListItem);
+        labelFrom.setForeground(Color.white);
+        labelTo.setForeground(Color.white);
+        panelFrom.add(labelFrom);
+        panelTo.add(labelTo);
 
-        panelList.add(panelOption);
-        panelList.add(panelAbout);
+        panelList.add(panelFrom);
+        panelList.add(panelTo);
 
-        // 设置Panel
-        settingPanelMain = new JPanel();
-        settingPanelMain.setBackground(ConstantsUI.MAIN_BACK_COLOR);
-        settingPanelMain.setLayout(new BorderLayout());
-        settingPanelMain.add(settingPanelOption);
+        // 数据库设置Panel
+
+        databaseSettingPanel = new JPanel();
+        databaseSettingPanel.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        databaseSettingPanel.setLayout(new BorderLayout());
+        databaseSettingPanel.add(databaseSettingPanelFrom);
 
         panelCenter.add(panelList, BorderLayout.WEST);
-        panelCenter.add(settingPanelMain, BorderLayout.CENTER);
+        panelCenter.add(databaseSettingPanel, BorderLayout.CENTER);
 
         return panelCenter;
     }
 
     /**
-     * 为相关组件添加事件监听
+     * 添加相关组件的事件监听
      */
     private void addListener() {
-        panelOption.addMouseListener(new MouseListener() {
+        panelFrom.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -155,18 +156,18 @@ public class SettingPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                panelOption.setBackground(new Color(69, 186, 121));
-                panelAbout.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+                panelFrom.setBackground(new Color(69, 186, 121));
+                panelTo.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
 
-                SettingPanel.settingPanelMain.removeAll();
-                SettingPanelOption.setCurrentOption();
-                SettingPanel.settingPanelMain.add(settingPanelOption);
-                App.settingPanel.updateUI();
+                DatabasePanel.databaseSettingPanel.removeAll();
+                DatabasePanelFrom.setContent();
+                DatabasePanel.databaseSettingPanel.add(databaseSettingPanelFrom);
+                App.databasePanel.updateUI();
 
             }
         });
 
-        panelAbout.addMouseListener(new MouseListener() {
+        panelTo.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -193,12 +194,13 @@ public class SettingPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                panelAbout.setBackground(new Color(69, 186, 121));
-                panelOption.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
+                panelTo.setBackground(new Color(69, 186, 121));
+                panelFrom.setBackground(ConstantsUI.TOOL_BAR_BACK_COLOR);
 
-                SettingPanel.settingPanelMain.removeAll();
-                SettingPanel.settingPanelMain.add(settingPanelAbout);
-                App.settingPanel.updateUI();
+                DatabasePanel.databaseSettingPanel.removeAll();
+                DatabasePanelTo.setContent();
+                DatabasePanel.databaseSettingPanel.add(databaseSettingPanelTo);
+                App.databasePanel.updateUI();
 
             }
         });
