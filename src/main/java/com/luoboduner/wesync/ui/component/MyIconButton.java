@@ -1,4 +1,4 @@
-package com.luoboduner.wesync.UI.component;
+package com.luoboduner.wesync.ui.component;
 
 import java.awt.Insets;
 

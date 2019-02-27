@@ -1,7 +1,7 @@
-package com.luoboduner.wesync.UI.panel;
+package com.luoboduner.wesync.ui.panel;
 
 import com.luoboduner.wesync.App;
-import com.luoboduner.wesync.UI.ConstantsUI;
+import com.luoboduner.wesync.ui.ConstantsUI;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
 import javax.swing.*;

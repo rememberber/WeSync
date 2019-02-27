@@ -1,7 +1,7 @@
-package com.luoboduner.wesync.UI.panel;
+package com.luoboduner.wesync.ui.panel;
 
-import com.luoboduner.wesync.UI.ConstantsUI;
-import com.luoboduner.wesync.UI.component.MyIconButton;
+import com.luoboduner.wesync.ui.ConstantsUI;
+import com.luoboduner.wesync.ui.component.MyIconButton;
 import com.luoboduner.wesync.logic.ExecuteThread;
 import com.luoboduner.wesync.logic.ScheduleExecuteThread;
 import org.slf4j.Logger;
