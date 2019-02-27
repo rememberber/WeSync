@@ -1,6 +1,6 @@
 package com.luoboduner.wesync.UI.panel;
 
-import com.luoboduner.wesync.UI.AppMainWindow;
+import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.UI.ConstantsUI;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
@@ -161,7 +161,7 @@ public class SettingPanel extends JPanel {
                 SettingPanel.settingPanelMain.removeAll();
                 SettingPanelOption.setCurrentOption();
                 SettingPanel.settingPanelMain.add(settingPanelOption);
-                AppMainWindow.settingPanel.updateUI();
+                App.settingPanel.updateUI();
 
             }
         });
@@ -198,7 +198,7 @@ public class SettingPanel extends JPanel {
 
                 SettingPanel.settingPanelMain.removeAll();
                 SettingPanel.settingPanelMain.add(settingPanelAbout);
-                AppMainWindow.settingPanel.updateUI();
+                App.settingPanel.updateUI();
 
             }
         });

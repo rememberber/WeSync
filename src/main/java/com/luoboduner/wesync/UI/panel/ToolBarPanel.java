@@ -1,8 +1,8 @@
 package com.luoboduner.wesync.UI.panel;
 
-import com.luoboduner.wesync.UI.AppMainWindow;
+import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.UI.ConstantsUI;
-import com.luoboduner.wesync.UI.MyIconButton;
+import com.luoboduner.wesync.UI.component.MyIconButton;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
 import javax.swing.*;
@@ -90,11 +90,11 @@ public class ToolBarPanel extends JPanel {
             buttonBackup.setIcon(ConstantsUI.ICON_BACKUP);
             buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
 
-            AppMainWindow.mainPanelCenter.removeAll();
+            App.mainPanelCenter.removeAll();
             StatusPanel.setContent();
-            AppMainWindow.mainPanelCenter.add(AppMainWindow.statusPanel, BorderLayout.CENTER);
+            App.mainPanelCenter.add(App.statusPanel, BorderLayout.CENTER);
 
-            AppMainWindow.mainPanelCenter.updateUI();
+            App.mainPanelCenter.updateUI();
 
         });
 
@@ -106,12 +106,12 @@ public class ToolBarPanel extends JPanel {
             buttonBackup.setIcon(ConstantsUI.ICON_BACKUP);
             buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
 
-            AppMainWindow.mainPanelCenter.removeAll();
+            App.mainPanelCenter.removeAll();
             DatabasePanelFrom.setContent();
             DatabasePanelTo.setContent();
-            AppMainWindow.mainPanelCenter.add(AppMainWindow.databasePanel, BorderLayout.CENTER);
+            App.mainPanelCenter.add(App.databasePanel, BorderLayout.CENTER);
 
-            AppMainWindow.mainPanelCenter.updateUI();
+            App.mainPanelCenter.updateUI();
 
         });
 
@@ -123,11 +123,11 @@ public class ToolBarPanel extends JPanel {
             buttonBackup.setIcon(ConstantsUI.ICON_BACKUP);
             buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
 
-            AppMainWindow.mainPanelCenter.removeAll();
-            AppMainWindow.schedulePanel.setCurrentSchedule();
-            AppMainWindow.mainPanelCenter.add(AppMainWindow.schedulePanel, BorderLayout.CENTER);
+            App.mainPanelCenter.removeAll();
+            App.schedulePanel.setCurrentSchedule();
+            App.mainPanelCenter.add(App.schedulePanel, BorderLayout.CENTER);
 
-            AppMainWindow.mainPanelCenter.updateUI();
+            App.mainPanelCenter.updateUI();
 
         });
 
@@ -142,10 +142,10 @@ public class ToolBarPanel extends JPanel {
             BackupPanel.initTableData();
             BackupPanel.tableFrom.validate();
 
-            AppMainWindow.mainPanelCenter.removeAll();
-            AppMainWindow.mainPanelCenter.add(AppMainWindow.backupPanel, BorderLayout.CENTER);
+            App.mainPanelCenter.removeAll();
+            App.mainPanelCenter.add(App.backupPanel, BorderLayout.CENTER);
 
-            AppMainWindow.mainPanelCenter.updateUI();
+            App.mainPanelCenter.updateUI();
 
         });
 
@@ -157,11 +157,11 @@ public class ToolBarPanel extends JPanel {
             buttonBackup.setIcon(ConstantsUI.ICON_BACKUP);
             buttonSetting.setIcon(ConstantsUI.ICON_SETTING_ENABLE);
 
-            AppMainWindow.mainPanelCenter.removeAll();
+            App.mainPanelCenter.removeAll();
             SettingPanelOption.setCurrentOption();
-            AppMainWindow.mainPanelCenter.add(AppMainWindow.settingPanel, BorderLayout.CENTER);
+            App.mainPanelCenter.add(App.settingPanel, BorderLayout.CENTER);
 
-            AppMainWindow.mainPanelCenter.updateUI();
+            App.mainPanelCenter.updateUI();
 
         });
     }

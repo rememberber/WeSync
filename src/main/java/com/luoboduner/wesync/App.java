@@ -1,5 +1,6 @@
-package com.luoboduner.wesync.UI;
+package com.luoboduner.wesync;
 
+import com.luoboduner.wesync.UI.ConstantsUI;
 import com.luoboduner.wesync.UI.panel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,8 @@ import java.awt.event.WindowListener;
  *
  * @author Bob
  */
-public class AppMainWindow {
-    private static final Logger logger = LoggerFactory.getLogger(AppMainWindow.class);
+public class App {
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     private JFrame frame;
 
@@ -36,7 +37,7 @@ public class AppMainWindow {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
-                AppMainWindow window = new AppMainWindow();
+                App window = new App();
                 window.frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -47,7 +48,7 @@ public class AppMainWindow {
     /**
      * 构造，创建APP
      */
-    public AppMainWindow() {
+    public App() {
         initialize();
         StatusPanel.buttonStartSchedule.doClick();
     }
@@ -126,7 +127,7 @@ public class AppMainWindow {
             @Override
             public void windowClosing(WindowEvent e) {
                 if (!StatusPanel.buttonStartSchedule.isEnabled()) {
-                    JOptionPane.showMessageDialog(AppMainWindow.statusPanel,
+                    JOptionPane.showMessageDialog(App.statusPanel,
                             PropertyUtil.getProperty("ds.ui.mainwindow.exitconfirm"), "Sorry~", JOptionPane.WARNING_MESSAGE);
                 } else {
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -103,7 +103,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.luoboduner.wesync.UI.AppMainWindow</mainClass>
+                            <mainClass>com.luoboduner.wesync.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

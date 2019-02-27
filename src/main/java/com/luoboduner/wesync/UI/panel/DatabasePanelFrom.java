@@ -1,8 +1,8 @@
 package com.luoboduner.wesync.UI.panel;
 
-import com.luoboduner.wesync.UI.AppMainWindow;
+import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.UI.ConstantsUI;
-import com.luoboduner.wesync.UI.MyIconButton;
+import com.luoboduner.wesync.UI.component.MyIconButton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.luoboduner.wesync.tools.ConstantsTools;
@@ -195,11 +195,11 @@ public class DatabasePanelFrom extends JPanel {
                 ConstantsTools.CONFIGER.setUserFrom(user);
                 ConstantsTools.CONFIGER.setPasswordFrom(password);
 
-                JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.save.success"), PropertyUtil.getProperty("ds.ui.tips"),
+                JOptionPane.showMessageDialog(App.databasePanel, PropertyUtil.getProperty("ds.ui.save.success"), PropertyUtil.getProperty("ds.ui.tips"),
                         JOptionPane.PLAIN_MESSAGE);
 
             } catch (Exception e1) {
-                JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
+                JOptionPane.showMessageDialog(App.databasePanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
                         JOptionPane.ERROR_MESSAGE);
                 logger.error("Write to xml file error" + e1.toString());
             }
@@ -216,15 +216,15 @@ public class DatabasePanelFrom extends JPanel {
                 String dbpassword = new String(passwordFieldDatabasePassword.getPassword());
                 Connection conn = dbSQLServer.testConnection(dburl, dbname, dbuser, dbpassword);
                 if (conn == null) {
-                    JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail"), PropertyUtil.getProperty("ds.ui.tips"),
+                    JOptionPane.showMessageDialog(App.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail"), PropertyUtil.getProperty("ds.ui.tips"),
                             JOptionPane.ERROR_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.success"), PropertyUtil.getProperty("ds.ui.tips"),
+                    JOptionPane.showMessageDialog(App.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.success"), PropertyUtil.getProperty("ds.ui.tips"),
                             JOptionPane.PLAIN_MESSAGE);
                 }
 
             } catch (Exception e1) {
-                JOptionPane.showMessageDialog(AppMainWindow.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail") + "\n" + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
+                JOptionPane.showMessageDialog(App.databasePanel, PropertyUtil.getProperty("ds.ui.database.err.link.fail") + "\n" + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
                         JOptionPane.ERROR_MESSAGE);
             }
 

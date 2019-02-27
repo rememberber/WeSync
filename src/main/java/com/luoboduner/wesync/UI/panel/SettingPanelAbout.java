@@ -1,7 +1,7 @@
 package com.luoboduner.wesync.UI.panel;
 
 import com.luoboduner.wesync.UI.ConstantsUI;
-import com.luoboduner.wesync.UI.MyIconButton;
+import com.luoboduner.wesync.UI.component.MyIconButton;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
 import javax.swing.*;

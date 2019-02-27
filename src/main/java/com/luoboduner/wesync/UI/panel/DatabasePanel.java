@@ -1,6 +1,6 @@
 package com.luoboduner.wesync.UI.panel;
 
-import com.luoboduner.wesync.UI.AppMainWindow;
+import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.UI.ConstantsUI;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
@@ -162,7 +162,7 @@ public class DatabasePanel extends JPanel {
                 DatabasePanel.databaseSettingPanel.removeAll();
                 DatabasePanelFrom.setContent();
                 DatabasePanel.databaseSettingPanel.add(databaseSettingPanelFrom);
-                AppMainWindow.databasePanel.updateUI();
+                App.databasePanel.updateUI();
 
             }
         });
@@ -200,7 +200,7 @@ public class DatabasePanel extends JPanel {
                 DatabasePanel.databaseSettingPanel.removeAll();
                 DatabasePanelTo.setContent();
                 DatabasePanel.databaseSettingPanel.add(databaseSettingPanelTo);
-                AppMainWindow.databasePanel.updateUI();
+                App.databasePanel.updateUI();
 
             }
         });

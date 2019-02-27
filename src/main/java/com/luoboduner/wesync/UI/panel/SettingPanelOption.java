@@ -1,8 +1,8 @@
 package com.luoboduner.wesync.UI.panel;
 
-import com.luoboduner.wesync.UI.AppMainWindow;
+import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.UI.ConstantsUI;
-import com.luoboduner.wesync.UI.MyIconButton;
+import com.luoboduner.wesync.UI.component.MyIconButton;
 import com.luoboduner.wesync.logic.ConstantsLogic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -198,10 +198,10 @@ public class SettingPanelOption extends JPanel {
                 ConstantsTools.CONFIGER.setDebugMode(String.valueOf(checkBoxDebug.isSelected()));
                 ConstantsTools.CONFIGER.setStrictMode(String.valueOf(checkBoxStrict.isSelected()));
                 ConstantsTools.CONFIGER.setMysqlPath(textField.getText());
-                JOptionPane.showMessageDialog(AppMainWindow.settingPanel, PropertyUtil.getProperty("ds.ui.save.success"),
+                JOptionPane.showMessageDialog(App.settingPanel, PropertyUtil.getProperty("ds.ui.save.success"),
                         PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
             } catch (Exception e1) {
-                JOptionPane.showMessageDialog(AppMainWindow.settingPanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(),
+                JOptionPane.showMessageDialog(App.settingPanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(),
                         PropertyUtil.getProperty("ds.ui.tips"),
                         JOptionPane.ERROR_MESSAGE);
                 logger.error("Write to xml file error" + e1.toString());
@@ -221,7 +221,7 @@ public class SettingPanelOption extends JPanel {
 
         buttionClearLogs.addActionListener(e -> {
 
-            int answer = JOptionPane.showConfirmDialog(AppMainWindow.settingPanel,
+            int answer = JOptionPane.showConfirmDialog(App.settingPanel,
                     PropertyUtil.getProperty("ds.ui.setting.clean.makeSure"),
                     PropertyUtil.getProperty("ds.ui.tips"), 2);
 
@@ -231,12 +231,12 @@ public class SettingPanelOption extends JPanel {
                     testfile = new FileOutputStream(ConstantsTools.PATH_LOG);
                     testfile.write(new String("").getBytes());
                     testfile.flush();
-                    JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
+                    JOptionPane.showMessageDialog(App.settingPanel,
                             PropertyUtil.getProperty("ds.ui.setting.clean.success"),
                             PropertyUtil.getProperty("ds.ui.tips"),
                             JOptionPane.PLAIN_MESSAGE);
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
+                    JOptionPane.showMessageDialog(App.settingPanel,
                             PropertyUtil.getProperty("ds.ui.setting.clean.fail") + e1.getMessage(),
                             PropertyUtil.getProperty("ds.ui.tips"),
                             JOptionPane.ERROR_MESSAGE);
@@ -246,7 +246,7 @@ public class SettingPanelOption extends JPanel {
                         try {
                             testfile.close();
                         } catch (IOException e1) {
-                            JOptionPane.showMessageDialog(AppMainWindow.settingPanel,
+                            JOptionPane.showMessageDialog(App.settingPanel,
                                     PropertyUtil.getProperty("ds.ui.setting.clean.fail") + e1.getMessage(),
                                     PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.ERROR_MESSAGE);
                             e1.printStackTrace();

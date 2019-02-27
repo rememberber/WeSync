@@ -1,8 +1,8 @@
 package com.luoboduner.wesync.UI.panel;
 
-import com.luoboduner.wesync.UI.AppMainWindow;
+import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.UI.ConstantsUI;
-import com.luoboduner.wesync.UI.MyIconButton;
+import com.luoboduner.wesync.UI.component.MyIconButton;
 import com.luoboduner.wesync.logic.ConstantsLogic;
 import com.luoboduner.wesync.tools.FileUtils;
 import com.luoboduner.wesync.tools.PropertyUtil;
@@ -167,7 +167,7 @@ public class BackupPanel extends JPanel {
     }
 
     private void addListener() {
-        buttonNewBakFrom.addActionListener(e -> AppMainWindow.dialog.setVisible(true));
+        buttonNewBakFrom.addActionListener(e -> App.dialog.setVisible(true));
     }
 
 }

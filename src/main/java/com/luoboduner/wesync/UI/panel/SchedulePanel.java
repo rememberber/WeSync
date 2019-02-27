@@ -1,8 +1,8 @@
 package com.luoboduner.wesync.UI.panel;
 
-import com.luoboduner.wesync.UI.AppMainWindow;
+import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.UI.ConstantsUI;
-import com.luoboduner.wesync.UI.MyIconButton;
+import com.luoboduner.wesync.UI.component.MyIconButton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.luoboduner.wesync.tools.ConstantsTools;
@@ -196,7 +196,7 @@ public class SchedulePanel extends JPanel {
             radioPerWeek.setSelected(false);
             radioEveryDay.setSelected(false);
 
-            AppMainWindow.schedulePanel.updateUI();
+            App.schedulePanel.updateUI();
 
         });
 
@@ -210,7 +210,7 @@ public class SchedulePanel extends JPanel {
             radioPerWeek.setSelected(false);
             radioEveryDay.setSelected(false);
 
-            AppMainWindow.schedulePanel.updateUI();
+            App.schedulePanel.updateUI();
 
         });
 
@@ -224,7 +224,7 @@ public class SchedulePanel extends JPanel {
             radioPerWeek.setSelected(false);
             radioEveryDay.setSelected(false);
 
-            AppMainWindow.schedulePanel.updateUI();
+            App.schedulePanel.updateUI();
 
         });
 
@@ -238,7 +238,7 @@ public class SchedulePanel extends JPanel {
             radioPerWeek.setSelected(false);
             radioEveryDay.setSelected(false);
 
-            AppMainWindow.schedulePanel.updateUI();
+            App.schedulePanel.updateUI();
 
         });
 
@@ -252,7 +252,7 @@ public class SchedulePanel extends JPanel {
             radioPerWeek.setSelected(false);
             radioEveryDay.setSelected(false);
 
-            AppMainWindow.schedulePanel.updateUI();
+            App.schedulePanel.updateUI();
 
         });
 
@@ -266,7 +266,7 @@ public class SchedulePanel extends JPanel {
             radioPerWeek.setSelected(true);
             radioEveryDay.setSelected(false);
 
-            AppMainWindow.schedulePanel.updateUI();
+            App.schedulePanel.updateUI();
 
         });
 
@@ -279,7 +279,7 @@ public class SchedulePanel extends JPanel {
             radioPerWeek.setSelected(false);
             radioEveryDay.setSelected(true);
 
-            AppMainWindow.schedulePanel.updateUI();
+            App.schedulePanel.updateUI();
 
         });
 
@@ -298,7 +298,7 @@ public class SchedulePanel extends JPanel {
             try {
                 ConstantsTools.CONFIGER.setSchedule(index.toString());
                 ConstantsTools.CONFIGER.setScheduleFixTime(fixedTime.getText());
-                JOptionPane.showMessageDialog(AppMainWindow.schedulePanel,
+                JOptionPane.showMessageDialog(App.schedulePanel,
                         PropertyUtil.getProperty("ds.ui.schedule.saveTips"), PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
                 if (!StatusPanel.buttonStartSchedule.isEnabled()) {
                     // 设置显示下一次执行时间
@@ -306,7 +306,7 @@ public class SchedulePanel extends JPanel {
                 }
 
             } catch (Exception e1) {
-                JOptionPane.showMessageDialog(AppMainWindow.schedulePanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
+                JOptionPane.showMessageDialog(App.schedulePanel, PropertyUtil.getProperty("ds.ui.save.fail") + e1.getMessage(), PropertyUtil.getProperty("ds.ui.tips"),
                         JOptionPane.ERROR_MESSAGE);
                 logger.error("Write to xml file error" + e1.toString());
             }

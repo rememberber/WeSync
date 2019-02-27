@@ -1,5 +1,6 @@
 package com.luoboduner.wesync.UI;
 
+import com.luoboduner.wesync.App;
 import com.luoboduner.wesync.tools.PropertyUtil;
 
 import javax.swing.*;
@@ -35,7 +36,7 @@ public class ConstantsUI {
      * 主窗口图标
      */
     public final static Image IMAGE_ICON = Toolkit.getDefaultToolkit()
-            .getImage(AppMainWindow.class.getResource("/icon/WeSync.png"));
+            .getImage(App.class.getResource("/icon/WeSync.png"));
 
     /**
      * 主窗口背景色
@@ -69,227 +70,227 @@ public class ConstantsUI {
      * 主图标
      */
     public final static ImageIcon ICON_DATA_SYNC = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/WeSync.png"));
+            App.class.getResource("/icon/WeSync.png"));
     // 工具栏图标
     /**
      * 状态 默认
      */
     public final static ImageIcon ICON_STATUS = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/status.png"));
+            App.class.getResource("/icon/status.png"));
     /**
      * 状态 激活
      */
     public final static ImageIcon ICON_STATUS_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/statusEnable.png"));
+            App.class.getResource("/icon/statusEnable.png"));
     /**
      * 数据库 默认
      */
     public final static ImageIcon ICON_DATABASE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/database.png"));
+            App.class.getResource("/icon/database.png"));
     /**
      * 数据库 激活
      */
     public final static ImageIcon ICON_DATABASE_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/databaseEnable.png"));
+            App.class.getResource("/icon/databaseEnable.png"));
     /**
      * 执行计划 默认
      */
     public final static ImageIcon ICON_SCHEDULE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/schedule.png"));
+            App.class.getResource("/icon/schedule.png"));
     /**
      * 执行计划 激活
      */
     public final static ImageIcon ICON_SCHEDULE_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/scheduleEnable.png"));
+            App.class.getResource("/icon/scheduleEnable.png"));
     /**
      * 设置 默认
      */
     public final static ImageIcon ICON_SETTING = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/setting.png"));
+            App.class.getResource("/icon/setting.png"));
     /**
      * 设置 激活
      */
     public final static ImageIcon ICON_SETTING_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/settingEnable.png"));
+            App.class.getResource("/icon/settingEnable.png"));
     /**
      * 备份 默认
      */
     public final static ImageIcon ICON_BACKUP = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/backup.png"));
+            App.class.getResource("/icon/backup.png"));
     /**
      * 备份 激活
      */
     public final static ImageIcon ICON_BACKUP_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/backupEnable.png"));
+            App.class.getResource("/icon/backupEnable.png"));
 
     // 按钮 图标
     /**
      * 按计划执行 默认
      */
     public final static ImageIcon ICON_START_SCHEDULE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/startSchedule.png"));
+            App.class.getResource("/icon/startSchedule.png"));
     /**
      * 按计划执行 激活
      */
     public final static ImageIcon ICON_START_SCHEDULE_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/startScheduleEnable.png"));
+            App.class.getResource("/icon/startScheduleEnable.png"));
     /**
      * 按计划执行 失效
      */
     public final static ImageIcon ICON_START_SCHEDULE_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/startScheduleDisable.png"));
+            App.class.getResource("/icon/startScheduleDisable.png"));
     /**
      * 停止 默认
      */
     public final static ImageIcon ICON_STOP = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/stop.png"));
+            App.class.getResource("/icon/stop.png"));
     /**
      * 停止 激活
      */
     public final static ImageIcon ICON_STOP_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/stopEnable.png"));
+            App.class.getResource("/icon/stopEnable.png"));
     /**
      * 停止 失效
      */
     public final static ImageIcon ICON_STOP_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/stopDisable.png"));
+            App.class.getResource("/icon/stopDisable.png"));
     /**
      * 立即同步 默认
      */
     public final static ImageIcon ICON_SYNC_NOW = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/syncNow.png"));
+            App.class.getResource("/icon/syncNow.png"));
     /**
      * 立即同步 激活
      */
     public final static ImageIcon ICON_SYNC_NOW_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/syncNowEnable.png"));
+            App.class.getResource("/icon/syncNowEnable.png"));
     /**
      * 立即同步 失效
      */
     public final static ImageIcon ICON_SYNC_NOW_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/syncNowDisable.png"));
+            App.class.getResource("/icon/syncNowDisable.png"));
     /**
      * 测试连接 默认
      */
     public final static ImageIcon ICON_TEST_LINK = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/testLinkButton.png"));
+            App.class.getResource("/icon/testLinkButton.png"));
     /**
      * 测试连接 激活
      */
     public final static ImageIcon ICON_TEST_LINK_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/testLinkButtonEnable.png"));
+            App.class.getResource("/icon/testLinkButtonEnable.png"));
     /**
      * 测试连接 失效
      */
     public final static ImageIcon ICON_TEST_LINK_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/testLinkButtonDisable.png"));
+            App.class.getResource("/icon/testLinkButtonDisable.png"));
     /**
      * 保存 默认
      */
     public final static ImageIcon ICON_SAVE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/saveButton.png"));
+            App.class.getResource("/icon/saveButton.png"));
     /**
      * 保存 激活
      */
     public final static ImageIcon ICON_SAVE_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/saveButtonEnable.png"));
+            App.class.getResource("/icon/saveButtonEnable.png"));
     /**
      * 保存 失效
      */
     public final static ImageIcon ICON_SAVE_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/saveButtonDisable.png"));
+            App.class.getResource("/icon/saveButtonDisable.png"));
     /**
      * 新建备份 默认
      */
     public final static ImageIcon ICON_NEW_BAK = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/newBak.png"));
+            App.class.getResource("/icon/newBak.png"));
     /**
      * 新建备份 激活
      */
     public final static ImageIcon ICON_NEW_BAK_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/newBakEnable.png"));
+            App.class.getResource("/icon/newBakEnable.png"));
     /**
      * 新建备份 失效
      */
     public final static ImageIcon ICON_NEW_BAK_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/newBakDisable.png"));
+            App.class.getResource("/icon/newBakDisable.png"));
     /**
      * 删除备份 默认
      */
     public final static ImageIcon ICON_DEL_BAK = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/deleteBak.png"));
+            App.class.getResource("/icon/deleteBak.png"));
     /**
      * 删除备份 激活
      */
     public final static ImageIcon ICON_DEL_BAK_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/deleteBakEnable.png"));
+            App.class.getResource("/icon/deleteBakEnable.png"));
     /**
      * 删除备份 失效
      */
     public final static ImageIcon ICON_DEL_BAK_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/deleteBakDisable.png"));
+            App.class.getResource("/icon/deleteBakDisable.png"));
     /**
      * 还原备份 默认
      */
     public final static ImageIcon ICON_RECOVER_BAK = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/recoverBak.png"));
+            App.class.getResource("/icon/recoverBak.png"));
     /**
      * 还原备份 激活
      */
     public final static ImageIcon ICON_RECOVER_BAK_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/recoverBakEnable.png"));
+            App.class.getResource("/icon/recoverBakEnable.png"));
     /**
      * 还原备份 失效
      */
     public final static ImageIcon ICON_RECOVER_BAK_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/recoverBakDisable.png"));
+            App.class.getResource("/icon/recoverBakDisable.png"));
 
     /**
      * 清空所有备份 默认
      */
     public final static ImageIcon ICON_CLEAR_ALL_BAKS = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/clearAllBaks.png"));
+            App.class.getResource("/icon/clearAllBaks.png"));
     /**
      * 清空所有备份 激活
      */
     public final static ImageIcon ICON_CLEAR_ALL_BAKS_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/clearAllBaksEnable.png"));
+            App.class.getResource("/icon/clearAllBaksEnable.png"));
     /**
      * 清空所有备份 失效
      */
     public final static ImageIcon ICON_CLEAR_ALL_BAKS_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/clearAllBaksDisable.png"));
+            App.class.getResource("/icon/clearAllBaksDisable.png"));
 
     /**
      * 表字段对应关系 默认
      */
     public final static ImageIcon ICON_TABLE_FIELD = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/tableFiled.png"));
+            App.class.getResource("/icon/tableFiled.png"));
     /**
      * 表字段对应关系 激活
      */
     public final static ImageIcon ICON_TABLE_FIELD_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/tableFiledEnable.png"));
+            App.class.getResource("/icon/tableFiledEnable.png"));
     /**
      * 表字段对应关系 失效
      */
     public final static ImageIcon ICON_TABLE_FIELD_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/tableFiledDisable.png"));
+            App.class.getResource("/icon/tableFiledDisable.png"));
     /**
      * 清空Log 默认
      */
     public final static ImageIcon ICON_CLEAR_LOG = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/clearLog.png"));
+            App.class.getResource("/icon/clearLog.png"));
     /**
      * 清空Log 激活
      */
     public final static ImageIcon ICON_CLEAR_LOG_ENABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/clearLogEnable.png"));
+            App.class.getResource("/icon/clearLogEnable.png"));
     /**
      * 清空Log 失效
      */
     public final static ImageIcon ICON_CLEAR_LOG_DISABLE = new ImageIcon(
-            AppMainWindow.class.getResource("/icon/clearLogDisable.png"));
+            App.class.getResource("/icon/clearLogDisable.png"));
 
     // 样式布局相关
     /**
