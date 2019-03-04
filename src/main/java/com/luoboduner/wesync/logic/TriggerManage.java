@@ -21,6 +21,15 @@ public class TriggerManage {
     public static DbUtilSQLServer SQLServer;
     public static DbUtilMySQL MySQL;
 
+    private static final Pattern THIS_PATTERN = Pattern.compile("this\\.[.\\w]+");
+    private static final Pattern BEFORE_PATTERN = Pattern.compile("before\\.[.\\w]+");
+    private static final Pattern EXPRESSION_PATTERN = Pattern.compile("\\$([^$]+)\\$");
+    private static final Pattern BRACE_PATTERN = Pattern.compile("\\{([^{}]+)\\}");
+    private static final Pattern AT_SYMBOL_PATTERN = Pattern.compile("\\@([^@]+)\\@");
+    private static final Pattern BRACKET_PATTERN = Pattern.compile("\\(([^()]+)\\)");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("[0-9]*");
+    private static final Pattern HASH_MARK_PATTERN = Pattern.compile("\\#([^#]+)\\#");
+
     public static String getSqlUpdate(String snapName, Map<String, String> primKeyAndValueMap, String[] headerNow,
                                       String[] recordsLineBefore, String[] recordsLineNow) throws SQLException {
 
@@ -117,8 +126,8 @@ public class TriggerManage {
             // 第一级别公式：替换this.的内容
             // this.***：取当前快照该条记录的某字段值
             // before.***：取原快照该条记录的某字段值（仅UPDATE和DELETE时会用到）
-            Pattern p = Pattern.compile("this\\.[.\\w]+");
-            Matcher matcher = p.matcher(string);
+
+            Matcher matcher = THIS_PATTERN.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
             while (matcher.find()) {
                 strs.add(matcher.group(0));
@@ -134,8 +143,7 @@ public class TriggerManage {
             // 第一级别公式：替换before.的内容
             // this.***：取当前快照该条记录的某字段值
             // before.***：取原快照该条记录的某字段值（仅UPDATE和DELETE时会用到）
-            Pattern p = Pattern.compile("before\\.[.\\w]+");
-            Matcher matcher = p.matcher(string);
+            Matcher matcher = BEFORE_PATTERN.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
             while (matcher.find()) {
                 strs.add(matcher.group(0));
@@ -153,22 +161,19 @@ public class TriggerManage {
             // $PINYIN{}$：将大括号内的汉字转为拼音
             // $SYS_DATE_TIME$：系统日期+时间（2016-01-19 17:57:49）
             // $SQL{}$：执行大括号内的子查询sql，返回对应的查询结果（仅限一个）
-            Pattern p = Pattern.compile("\\$([^$]+)\\$");
-            Matcher matcher = p.matcher(string);
+            Matcher matcher = EXPRESSION_PATTERN.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
             while (matcher.find()) {
                 strs.add(matcher.group(0));
             }
             for (String str : strs) {
                 if (str.startsWith("$PINYIN")) {
-                    p = Pattern.compile("\\{([^{}]+)\\}");
-                    matcher = p.matcher(str);
+                    matcher = BRACE_PATTERN.matcher(str);
                     while (matcher.find()) {
                         string = string.replace(str, Utils.getPingYin(matcher.group(1).trim()));
                     }
                 } else if (str.startsWith("$SQL")) {
-                    p = Pattern.compile("\\{([^{}]+)\\}");
-                    matcher = p.matcher(str);
+                    matcher = BRACE_PATTERN.matcher(str);
                     while (matcher.find()) {
                         String tempSql = matcher.group(1);
                         ResultSet rs = SQLServer.executeQuery(tempSql);
@@ -187,8 +192,7 @@ public class TriggerManage {
                 } else if (str.startsWith("$SYS_DATE_TIME")) {
                     string = string.replace(str, Utils.getCurrentTime());
                 } else if (str.startsWith("$INCREASE")) {
-                    p = Pattern.compile("\\{([^{}]+)\\}");
-                    matcher = p.matcher(str);
+                    matcher = BRACE_PATTERN.matcher(str);
                     String para = "";
                     while (matcher.find()) {
                         para = matcher.group(1);
@@ -219,8 +223,7 @@ public class TriggerManage {
             // @SUB(5,END){}@：将大括号内的字符串从第5个字符截取到最后
             // @SUB(0,LAST"."){}@：将大括号内的字符串从第0个字符截取到最后一个"."
             // @SUB("a",LAST"a"){}@：将大括号内的字符串从第1个"a"截取到最后一个"a"（不含左,不含右）
-            Pattern p = Pattern.compile("\\@([^@]+)\\@");
-            Matcher matcher = p.matcher(string);
+            Matcher matcher = AT_SYMBOL_PATTERN.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
             while (matcher.find()) {
                 strs.add(matcher.group(0));
@@ -230,27 +233,24 @@ public class TriggerManage {
                     // 先获取要截取的index和字符串内容
                     String[] indexs = null;
                     String strContent = "";
-                    p = Pattern.compile("\\(([^()]+)\\)");
-                    matcher = p.matcher(str);
+                    matcher = BRACKET_PATTERN.matcher(str);
                     while (matcher.find()) {
                         indexs = matcher.group(1).split(",");
                     }
-                    p = Pattern.compile("\\{([^{}]+)\\}");
-                    matcher = p.matcher(str);
+                    matcher = BRACE_PATTERN.matcher(str);
                     while (matcher.find()) {
                         strContent = matcher.group(1);
                     }
                     int beginIndex = 0;
                     int endIndex = 0;
 
-                    p = Pattern.compile("[0-9]*");
-                    if (p.matcher(indexs[0]).matches()) {
+                    if (NUMBER_PATTERN.matcher(indexs[0]).matches()) {
                         beginIndex = Integer.parseInt(indexs[0]);
                     } else {
                         beginIndex = strContent.indexOf(indexs[0].replaceAll("\"", "")) + 1;
                     }
 
-                    if (p.matcher(indexs[1]).matches()) {
+                    if (NUMBER_PATTERN.matcher(indexs[1]).matches()) {
                         endIndex = Integer.parseInt(indexs[1]);
                     } else if ("END".equals(indexs[1])) {
                         endIndex = strContent.length();
@@ -271,8 +271,7 @@ public class TriggerManage {
             // 第四级别公式：
             // #REPLACE("a","b"){}#将大括号内容中所有的"a"替换为"b"
             // #CASE(a=b,c=d,e=f){}#：如果大括号里边的内容是a，则替换为b；如果为c，则替换为d...
-            Pattern p = Pattern.compile("\\#([^#]+)\\#");
-            Matcher matcher = p.matcher(string);
+            Matcher matcher = HASH_MARK_PATTERN.matcher(string);
             ArrayList<String> strs = new ArrayList<String>();
             while (matcher.find()) {
                 strs.add(matcher.group(0));
@@ -282,13 +281,11 @@ public class TriggerManage {
                     // 先获取要替换的新旧字符串和内容
                     String[] indexs = null;
                     String strContent = "";
-                    p = Pattern.compile("\\(([^()]+)\\)");
-                    matcher = p.matcher(str);
+                    matcher = BRACKET_PATTERN.matcher(str);
                     while (matcher.find()) {
                         indexs = matcher.group(1).split(",");
                     }
-                    p = Pattern.compile("\\{([^{}]+)\\}");
-                    matcher = p.matcher(str);
+                    matcher = BRACE_PATTERN.matcher(str);
                     while (matcher.find()) {
                         strContent = matcher.group(1);
                     }
@@ -304,13 +301,11 @@ public class TriggerManage {
 
                     String[] keyValue = null;
                     String strContent = "";
-                    p = Pattern.compile("\\(([^()]+)\\)");
-                    matcher = p.matcher(str);
+                    matcher = BRACKET_PATTERN.matcher(str);
                     while (matcher.find()) {
                         keyValue = matcher.group(1).split(",");
                     }
-                    p = Pattern.compile("\\{([^{}]+)\\}");
-                    matcher = p.matcher(str);
+                    matcher = BRACE_PATTERN.matcher(str);
                     while (matcher.find()) {
                         strContent = matcher.group(1);
                     }
@@ -330,8 +325,7 @@ public class TriggerManage {
                 } else if (str.startsWith("#MD5PE")) {
                     String strContent = "";
 
-                    p = Pattern.compile("\\{([^{}]+)\\}");
-                    matcher = p.matcher(str);
+                    matcher = BRACE_PATTERN.matcher(str);
                     while (matcher.find()) {
                         strContent = matcher.group(1);
                     }
