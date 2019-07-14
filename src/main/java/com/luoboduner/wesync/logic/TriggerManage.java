@@ -1,10 +1,11 @@
 package com.luoboduner.wesync.logic;
 
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import com.luoboduner.wesync.tools.ConstantsTools;
 import com.luoboduner.wesync.tools.DbUtilMySQL;
 import com.luoboduner.wesync.tools.DbUtilSQLServer;
 import com.luoboduner.wesync.tools.Utils;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -329,7 +330,8 @@ public class TriggerManage {
                     while (matcher.find()) {
                         strContent = matcher.group(1);
                     }
-                    string = string.replace(str, new Md5PasswordEncoder().encodePassword(strContent, null));
+                    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+                    string = string.replace(str, bCryptPasswordEncoder.encode(strContent));
                 }
             }
         }

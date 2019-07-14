@@ -1,7 +1,9 @@
 package com.luoboduner.wesync.tools;
 
 import com.sun.crypto.provider.SunJCE;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.MessageDigestPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -109,10 +111,9 @@ public class DESPlus {
             e.printStackTrace();
         }
 
-        Md5PasswordEncoder mp = new Md5PasswordEncoder();
-
-        mp.encodePassword("000000", null);
-        System.out.println(mp.encodePassword("111111", null));
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        bCryptPasswordEncoder.encode("000000");
+        System.out.println(bCryptPasswordEncoder.encode("111111"));
 
     }
 }
