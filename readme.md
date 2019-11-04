@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/rememberber/WeSync">
-   <img alt="WeSync-Logo" src="https://github.com/rememberber/WeSync/blob/master/src/main/resources/icon/WeSync.png?raw=true">
+   <img alt="WeSync-Logo" src="http://download.zhoubochina.com/weSync/img/WeSync.png">
   </a>
 </p>
 
@@ -25,33 +25,33 @@ com.luoboduner.wesync.ui
 速览
 -----
 <p align="center">
-  <a href="https://github.com/rememberber/WeSync">
-   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20030.png?raw=true">
+  <a href="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20030.png">
+   <img alt="WeSync" src="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20030.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/WeSync">
-   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20031.png?raw=true">
+  <a href="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20031.png">
+   <img alt="WeSync" src="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20031.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/WeSync">
-   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20032.png?raw=true">
+  <a href="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20032.png">
+   <img alt="WeSync" src="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20032.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/WeSync">
-   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20033.png?raw=true">
+  <a href="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20033.png">
+   <img alt="WeSync" src="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20033.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/WeSync">
-   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20034.png?raw=true">
+  <a href="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20034.png">
+   <img alt="WeSync" src="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20034.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/rememberber/WeSync">
-   <img alt="WeSync" src="https://github.com/rememberber/WeSync/blob/master/screen_shot/%E5%9B%BE%E5%83%8F%20035.png?raw=true">
+  <a href="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20035.png">
+   <img alt="WeSync" src="http://download.zhoubochina.com/weSync/img/%E5%9B%BE%E5%83%8F%20035.png">
   </a>
 </p>
 
