@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/rememberber/WeSync">
-   <img alt="WeSync-Logo" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/WeSync.png">
+   <img alt="WeSync-Logo" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/WeSync.png">
   </a>
 </p>
 
@@ -25,33 +25,33 @@ com.luoboduner.wesync.ui
 速览
 -----
 <p align="center">
-  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20030.png">
-   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20030.png">
+  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20030.png">
+   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20030.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20031.png">
-   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20031.png">
+  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20031.png">
+   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20031.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20032.png">
-   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20032.png">
+  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20032.png">
+   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20032.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20033.png">
-   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20033.png">
+  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20033.png">
+   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20033.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20034.png">
-   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20034.png">
+  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20034.png">
+   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20034.png">
   </a>
 </p>
 <p align="center">
-  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20035.png">
-   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shoot/%E5%9B%BE%E5%83%8F%20035.png">
+  <a href="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20035.png">
+   <img alt="WeSync" src="https://gitee.com/zhoubochina/WeSync/raw/master/screen_shot/%E5%9B%BE%E5%83%8F%20035.png">
   </a>
 </p>
 
