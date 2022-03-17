@@ -9,6 +9,8 @@ import com.luoboduner.wesync.tools.PropertyUtil;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -38,16 +40,37 @@ public class App {
      * 程序入口main
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
+//        EventQueue.invokeLater(() -> {
             try {
+
                 App window = new App();
+                window.initialize();
+                StatusPanel.buttonStartSchedule.doClick();
                 window.frame.setVisible(true);
+
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
+//        });
     }
 
+    public static void test(){
+        JButton jButton = new JButton("a");
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        JButton jButton2 = new JButton("a");
+        jButton2.addActionListener( (e)-> {
+            System.out.println("asasas");
+        });
+
+
+    }
     /**
      * 构造，创建APP
      */
@@ -83,9 +106,9 @@ public class App {
 
         ToolBarPanel toolbar = new ToolBarPanel();
         statusPanel = new StatusPanel();
-        databasePanel = new DatabasePanel();
-        schedulePanel = new SchedulePanel();
-        backupPanel = new BackupPanel();
+//        databasePanel = new DatabasePanel();
+//        schedulePanel = new SchedulePanel();
+//        backupPanel = new BackupPanel();
         settingPanel = new SettingPanel();
 
         mainPanel.add(toolbar, BorderLayout.WEST);

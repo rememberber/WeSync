@@ -58,6 +58,5 @@ public class MyIconButton extends JButton {
         if (!tip.equals("")) {
             this.setToolTipText(tip);
         }
-
     }
 }
