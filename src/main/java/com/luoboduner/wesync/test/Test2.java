@@ -13,55 +13,117 @@ public class Test2 {
 
     public static void main(String[] args) {
 
-//        for(int i=10;i<40;i++){
-//            for(int j=1;j<5;j++){
-//                if(i>20){
-//                    break;
-//                }
-//                System.out.println("jjjjjjjjjjjjjjj_____"+j);
-//            }
-//            System.out.println("i____"+i);
-//        }
 
-        String str="(h)  Confidential Confidential a Confidential s Information shall  mean all information designated by a Party as confidential " +
-                "and which is disclosed by UIH Confidential to the Distributor, is disclosed by the Distributor to UIH, or is embodied " +
-                "in the Products, regardless of the form in which it is disclosed, relating to markets, customers, products, " +
-                "patents, inventions, procedures which, methods, designs, strategies, plans, assets, liabilities, prices, costs, " +
-                "revenues, profits, organizations, employees, agents, or, in the case of UIH’s information, the algorithms, " +
-                "programs, user interfaces, source and object codes and organization of the Products.";
-
-        // 单词索引
-        Map<String, Map<String,String>> wordIndex = new LinkedHashMap<>();
-
-        Map<String, String> wordcontent1 = new HashMap<>();
-        wordcontent1.put("products","");
-        wordcontent1.put("procedures","");
-
-        Map<String, String> wordcontent2 = new HashMap<>();
-        wordcontent2.put("information designated","");
-        wordcontent2.put("inventions","");
-
-        wordIndex.put("p",wordcontent1);
-        wordIndex.put("i",wordcontent2);
-
-        String strs[]=str.split(" ");
-
-//        for (String s : strs) {
-//            if(s.trim().)
-//        }
-        List<String> list = new ArrayList<>();
-        list.add("a Confidential");
-        list.add("information");
-        list.add("which");
+        String str="(h) Confidential Confidential a Confidential s information shall  mean all " +
+                "and which is which by UIH Confidential to which xxx";
+        List<TranslationContent> resultList = new ArrayList<>();
 
         //index,length
+        // 关键词 init
+        List<String> keywordlist = new ArrayList<>();
+        List<String> result;
+        keywordlist.add("a Confidential");
+        keywordlist.add("information");
+        keywordlist.add("which");
+
+        resultList=splitTranslationContent(str,keywordlist);
+        for (TranslationContent translationContent : resultList) {
+            System.out.println(translationContent);
+        }
+    }
+
+    /**
+     * 根据关键词 确定文本区域 并区分关键词与普通文本
+     * @param str 待查询的文本
+     * @param keywordlist 待匹配的关键词列表
+     * return 按原字符返回有序的划分后的文本集合
+     */
+    public static List<TranslationContent> splitTranslationContent(String str,List<String> keywordlist) {
+        List<TranslationContent> resultList = new ArrayList<>();
         Map<Integer,Integer> indexMap = new HashMap<>();
-        for (String keyword : list) {
+        Map<Integer, Integer> linkeMap;
+//        Map<Integer, Integer> splitIndexMap = new LinkedHashMap<>();
+
+        for (String keyword : keywordlist) {
             findStrIndexOf(str,keyword,indexMap);
         }
 
-        //TODO 根据已知的 索引
+        //如果有搜索到关键词则 进行排序及连续区间的校验
+        if (indexMap.size()>0){
+            //对已检测到的关键词索引升序 并转换为有序的HashMap
+            linkeMap=mapConvertDescLinkedMap(indexMap);
 
+            /**
+             * TODO 存在的隐患,后续与业务人员确定后再优化
+             * 暂时不考虑区间重叠的特殊情况,因为当前的向后检索方式不会出现区间重叠问题.
+             * 但是有可能因关键词之间出现包含关系并且在搜索的文本内,无法判定以哪个关键词进行断句
+             * 如 an hour,hour 同时出现在关键词列表,又出现在待检索的文章内
+             */
+            //确定文本区域划分的坐标
+            splitIndexTextMap(linkeMap, resultList, str);
+        }else {
+            //TODO 继续其它节点检查
+            System.out.println("继续其它节点检查");
+        }
+
+        return resultList;
+    }
+
+    private static void splitIndexTextMap(Map<Integer, Integer> linkeMap, List<TranslationContent> translationContentList, String str) {
+        int i=0;
+        //上一个元素的 key
+        int currentKey=0;
+        int previousKeyIndeEnd=0;
+        for (Map.Entry<Integer, Integer> entry : linkeMap.entrySet()) {
+            currentKey=entry.getKey();
+            //首元素的特殊情况处理
+            if(i==0){
+                if(currentKey==0){
+//                    System.out.println("["+0+","+(currentKey+entry.getValue())+")");
+                    translationContentList.add(new TranslationContent(
+                            str.substring(0,currentKey+entry.getValue()),
+                            ContentEnum.KEYWORD,0,currentKey+entry.getValue()));
+                }else{
+//                    System.out.println("[0,"+currentKey+")");
+//                    System.out.println("["+currentKey+","+(currentKey+entry.getValue())+")");
+                    translationContentList.add(new TranslationContent(
+                            str.substring(0,currentKey),
+                            ContentEnum.PLAIN_TEXT,0,currentKey));
+                    translationContentList.add(new TranslationContent(
+                            str.substring(currentKey,currentKey+entry.getValue()),
+                            ContentEnum.KEYWORD,currentKey,currentKey+entry.getValue()));
+                }
+                //检查是否为末尾词汇..., 如果不是末尾词汇则补全后续索引区间
+                if(i== linkeMap.size()-1 && (currentKey+entry.getValue())< str.length()){
+//                    System.out.println("["+(currentKey+entry.getValue())+","+ str.length()+")");
+                    translationContentList.add(new TranslationContent(
+                            str.substring(currentKey+entry.getValue(), str.length()),
+                            ContentEnum.PLAIN_TEXT,currentKey+entry.getValue(), str.length()));
+                }
+                i++;
+                previousKeyIndeEnd=currentKey+entry.getValue();
+                continue;
+            }
+
+            //TODO 中间元素的处理
+            translationContentList.add(new TranslationContent(
+                    str.substring(previousKeyIndeEnd,currentKey),
+                    ContentEnum.PLAIN_TEXT,previousKeyIndeEnd,currentKey));
+            translationContentList.add(new TranslationContent(
+                    str.substring(currentKey,currentKey+entry.getValue()),
+                    ContentEnum.KEYWORD,currentKey,currentKey+entry.getValue()));
+            //TODO 最后一个元素的处理
+            //检查是否为末尾词汇..., 如果不是末尾词汇则补全后续索引区间
+            if(i== linkeMap.size()-1 && (currentKey+entry.getValue())< str.length()){
+//                System.out.println("["+(currentKey+entry.getValue())+","+ str.length()+")");
+                translationContentList.add(new TranslationContent(
+                        str.substring(currentKey+entry.getValue(), str.length()),
+                        ContentEnum.PLAIN_TEXT,currentKey+entry.getValue(), str.length()));
+            }
+
+            i++;
+            previousKeyIndeEnd=currentKey+entry.getValue();
+        }
     }
 
     /**
@@ -90,7 +152,7 @@ public class Test2 {
                 //如果下一个字符不是字母 则认为当前匹配的 关键词为完整单词
                 if(!checkNextCharIsEn(str, keyword)){
                     indexMap.put(realIndex,keyword.length());
-                    System.out.println("keyword:"+keyword+"出现位置："+realIndex);
+                    System.out.println("keyword:"+keyword+"出现位置："+realIndex +",length:"+keyword.length());
                 }
             }else{
                 //首次匹配关键词
@@ -99,7 +161,7 @@ public class Test2 {
                 //如果下一个字符不是字母 则认为当前匹配的 关键词为完整单词
                 if(!checkNextCharIsEn(str, keyword)){
                     indexMap.put(keywordIndex,keyword.length());
-                    System.out.println("keyword:"+keyword+"出现位置："+realIndex);
+                    System.out.println("keyword:"+keyword+"出现位置："+realIndex+",length:"+keyword.length());
                 }
             }
             //递归调用该方法 获取该文本的其它位置
@@ -128,4 +190,24 @@ public class Test2 {
         }
     }
 
+    /**
+     * map转linkedHashMap 并排序
+     * @param map
+     * @return linkedHashMap
+     */
+    private static LinkedHashMap<Integer,Integer> mapConvertDescLinkedMap(Map<Integer, Integer> map) {
+        ArrayList<Map.Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
+        LinkedHashMap<Integer, Integer> linkedMap=new LinkedHashMap<>();
+        //从小到大排序（从大到小将o1与o2交换即可）
+        Collections.sort(list, (p1, p2) -> p1.getKey()-p2.getKey());
+        //new LinkedHashMap，把排序后的List放入
+        for (Map.Entry<Integer, Integer> entry : list) {
+            linkedMap.put(entry.getKey(), entry.getValue());
+        }
+        //遍历输出
+//        for (Map.Entry<Integer, Integer> entry : linkedMap.entrySet()) {
+//            System.out.println(entry.getKey() + ":" + entry.getValue());
+//        }
+        return linkedMap;
+    }
 }

@@ -31,12 +31,22 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.giffing.easyxml</groupId>
             <artifactId>easyxml-jdom2</artifactId>
             <version>0.0.7</version>
         </dependency>
-
+         <dependency>
+                 <groupId>org.apache.poi</groupId>
+                 <artifactId>poi-ooxml</artifactId>
+                 <version>3.8</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.apache.poi</groupId>
+                 <artifactId>poi-scratchpad</artifactId>
+                <version>3.8</version>
+             </dependency>
         <dependency>
             <groupId>com.vdurmont</groupId>
             <artifactId>emoji-java</artifactId>
