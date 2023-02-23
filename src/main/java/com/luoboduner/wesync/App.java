@@ -83,7 +83,7 @@ public class App {
      * 初始化frame内容
      */
     private void initialize() {
-        logger.info("==================AppInitStart");
+        logger.info("==================AppInitStart lwqtest1"); 
         // 设置系统默认样式
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
