@@ -3,7 +3,7 @@ package com.luoboduner.wesync.logic;
 /**
  * 执行器的接口
  *
- * @author Bob
+ * @author lwq
  */
 public interface ExecuteThreadInterface {
     /**

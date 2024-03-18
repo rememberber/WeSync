@@ -7,7 +7,7 @@ import java.io.File;
 /**
  * 工具层相关的常量
  *
- * @author Bob
+ * @author lwq
  */
 public class ConstantsTools {
 

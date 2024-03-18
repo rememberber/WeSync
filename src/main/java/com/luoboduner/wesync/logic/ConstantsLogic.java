@@ -7,7 +7,7 @@ import com.luoboduner.wesync.ui.UiConsts;
 /**
  * Logic层的常量类
  *
- * @author Bob
+ * @author lwq
  */
 public class ConstantsLogic {
 

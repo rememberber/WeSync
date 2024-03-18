@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * 小工具类
  *
- * @author Bob
+ * @author lwq
  */
 public class Utils {
 

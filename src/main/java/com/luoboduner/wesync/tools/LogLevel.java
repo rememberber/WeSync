@@ -3,7 +3,7 @@ package com.luoboduner.wesync.tools;
 /**
  * 日志级别枚举
  *
- * @author Bob
+ * @author lwq
  */
 public enum LogLevel {
 

@@ -3,7 +3,7 @@ package com.luoboduner.wesync.logic.bean;
 /**
  * 表object类
  *
- * @author Bob
+ * @author lwq
  */
 public class Table {
     /**

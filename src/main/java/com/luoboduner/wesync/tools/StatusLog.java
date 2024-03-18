@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 日志封装类，控制系统信息（界面和log文件）的记录
  *
- * @author Bob
+ * @author lwq
  */
 public class StatusLog {
     private static final Logger logger = LoggerFactory.getLogger(StatusLog.class);
@@ -54,7 +54,7 @@ public class StatusLog {
      * @param lastTime
      */
     public static void setLastTime(String lastTime) {
-        StatusPanel.labelLastTime.setText(PropertyUtil.getProperty("ds.ui.status.lastSync") + lastTime);
+//        StatusPanel.labelLastTime.setText(PropertyUtil.getProperty("ds.ui.status.lastSync") + lastTime);
         try {
             ConstantsTools.CONFIGER.setLastSyncTime(lastTime);
         } catch (Exception e) {
@@ -85,7 +85,7 @@ public class StatusLog {
      * @param nextTime
      */
     public static void setNextTime(String nextTime) {
-        StatusPanel.labelNextTime.setText(PropertyUtil.getProperty("ds.ui.schedule.nextTime") + nextTime);
+//        StatusPanel.labelNextTime.setText(PropertyUtil.getProperty("ds.ui.schedule.nextTime") + nextTime);
     }
 
     /**
@@ -94,13 +94,13 @@ public class StatusLog {
      * @param success
      */
     public static void setSuccess(String success) {
-        StatusPanel.labelSuccess.setText(PropertyUtil.getProperty("ds.ui.status.successTimes") + success);
-        try {
-            ConstantsTools.CONFIGER.setSuccessTime(success);
-        } catch (Exception e) {
-            logger.error(e.toString());
-            e.printStackTrace();
-        }
+//        StatusPanel.labelSuccess.setText(PropertyUtil.getProperty("ds.ui.status.successTimes") + success);
+//        try {
+//            ConstantsTools.CONFIGER.setSuccessTime(success);
+//        } catch (Exception e) {
+//            logger.error(e.toString());
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -109,12 +109,12 @@ public class StatusLog {
      * @param fail
      */
     public static void setFail(String fail) {
-        StatusPanel.labelFail.setText(PropertyUtil.getProperty("ds.ui.status.failTimes") + fail);
-        try {
-            ConstantsTools.CONFIGER.setFailTime(fail);
-        } catch (Exception e) {
-            logger.error(e.toString());
-            e.printStackTrace();
-        }
+//        StatusPanel.labelFail.setText(PropertyUtil.getProperty("ds.ui.status.failTimes") + fail);
+//        try {
+//            ConstantsTools.CONFIGER.setFailTime(fail);
+//        } catch (Exception e) {
+//            logger.error(e.toString());
+//            e.printStackTrace();
+//        }
     }
 }
