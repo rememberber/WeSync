@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 配置文件管理 单例
  *
- * @author Bob
+ * @author lwq
  */
 public class ConfigManager {
     private volatile static ConfigManager confManager;

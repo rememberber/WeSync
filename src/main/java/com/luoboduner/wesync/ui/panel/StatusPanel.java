@@ -1,17 +1,20 @@
 package com.luoboduner.wesync.ui.panel;
 
+import com.luoboduner.wesync.App;
+import com.luoboduner.wesync.tools.ConstantsTools;
 import com.luoboduner.wesync.ui.UiConsts;
 import com.luoboduner.wesync.ui.component.MyIconButton;
 import com.luoboduner.wesync.logic.ExecuteThread;
-import com.luoboduner.wesync.logic.ScheduleExecuteThread;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.luoboduner.wesync.tools.ConstantsTools;
 import com.luoboduner.wesync.tools.PropertyUtil;
-import com.luoboduner.wesync.tools.StatusLog;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -20,14 +23,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 状态面板
  *
- * @author Bob
+ * @author lwq
  */
 public class StatusPanel extends JPanel {
 
@@ -38,18 +39,26 @@ public class StatusPanel extends JPanel {
     public static MyIconButton buttonStop;
     public static MyIconButton buttonStartNow;
 
-    public static JProgressBar progressTotal;
+//    public static JProgressBar progressTotal;
     public static JProgressBar progressCurrent;
 
     public static JLabel labelStatus;
     public static JLabel labelStatusDetail;
     public static JLabel labelFrom;
+    //trados 报告log 存放目录
+    public static JTextField textFieldLogForder;
+    //trados 报告log 汇总输出位置
+    public static JTextField textFieldLogForderOutput;
+    //区分线下 线上report
+    public static ButtonGroup buttonGroup;
+    public static int buttonSelectValue;
+
     public static JLabel labelTo;
-    public static JLabel labelLastTime;
+//    public static JLabel labelLastTime;
     public static JLabel labelKeepTime;
-    public static JLabel labelNextTime;
-    public static JLabel labelSuccess;
-    public static JLabel labelFail;
+//    public static JLabel labelNextTime;
+//    public static JLabel labelSuccess;
+//    public static JLabel labelFail;
     private static JLabel labelLog;
 
     private static ScheduledExecutorService service;
@@ -83,7 +92,6 @@ public class StatusPanel extends JPanel {
         this.add(getUpPanel(), BorderLayout.NORTH);
         this.add(getCenterPanel(), BorderLayout.CENTER);
         this.add(getDownPanel(), BorderLayout.SOUTH);
-
     }
 
     /**
@@ -96,7 +104,7 @@ public class StatusPanel extends JPanel {
         panelUp.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelUp.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 5));
 
-        JLabel labelTitle = new JLabel(PropertyUtil.getProperty("ds.ui.status.title"));
+        JLabel labelTitle = new JLabel("Vivo log 汇总");
         labelTitle.setFont(UiConsts.FONT_TITLE);
         labelTitle.setForeground(UiConsts.TOOL_BAR_BACK_COLOR);
         panelUp.add(labelTitle);
@@ -113,15 +121,15 @@ public class StatusPanel extends JPanel {
         // 中间面板
         JPanel panelCenter = new JPanel();
         panelCenter.setBackground(UiConsts.MAIN_BACK_COLOR);
-        panelCenter.setLayout(new GridLayout(4, 1));
+        panelCenter.setLayout(new GridLayout(5, 1));
 
         // 状态Grid
         JPanel panelGridStatus = new JPanel();
         panelGridStatus.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelGridStatus.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
-        labelStatus = new JLabel(PropertyUtil.getProperty("ds.ui.status.ready"));
-        labelStatusDetail = new JLabel(PropertyUtil.getProperty("ds.ui.status.detail"));
+        labelStatus = new JLabel("执行结果");
+        labelStatusDetail = new JLabel("详情：暂无生成记录");
         labelStatus.setFont(new Font(PropertyUtil.getProperty("ds.ui.font.family"), 1, 15));
         labelStatusDetail.setFont(UiConsts.FONT_NORMAL);
 
@@ -134,50 +142,104 @@ public class StatusPanel extends JPanel {
         // 来源/目标 Grid
         JPanel panelGridFromTo = new JPanel();
         panelGridFromTo.setBackground(UiConsts.MAIN_BACK_COLOR);
-        panelGridFromTo.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
+        panelGridFromTo.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP_15, 0));
 
         labelFrom = new JLabel();
         labelTo = new JLabel();
         labelFrom.setFont(UiConsts.FONT_NORMAL);
         labelTo.setFont(UiConsts.FONT_NORMAL);
-        labelFrom.setPreferredSize(UiConsts.LABLE_SIZE);
-        labelTo.setPreferredSize(UiConsts.LABLE_SIZE);
+//        labelFrom.setPreferredSize(UiConsts.LABLE_SIZE);
+//        labelTo.setPreferredSize(UiConsts.LABLE_SIZE);
+        labelFrom.setPreferredSize(UiConsts.LABLE_SIZE_ITEM2);
+        labelTo.setPreferredSize(UiConsts.LABLE_SIZE_ITEM2);
+
+        textFieldLogForder= new JTextField(80);
+        textFieldLogForder.setPreferredSize(UiConsts.LABLE_SIZE);
+
+        textFieldLogForderOutput = new JTextField(80);
+        textFieldLogForderOutput.setPreferredSize(UiConsts.LABLE_SIZE);
+
+        //如果设置了 使用默认生成位置 读取配置
+        if("true".equals(ConstantsTools.CONFIGER.getAutoBak())){
+            textFieldLogForderOutput.setText(ConstantsTools.CONFIGER.getMysqlPath());
+        }
+
+
+        //TODO 文件夹选择器 start
+        //选择 Log 所在文件夹
+        JButton openButton = new JButton("选择");
+        openButton.setPreferredSize(UiConsts.LABLE_SIZE_ITEM);
+        openButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int returnValue = fileChooser.showOpenDialog(null);
+
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    String filePath = selectedFile.getAbsolutePath();
+                    String fileName = selectedFile.getName();
+                    System.out.println("Selected File Path: " + filePath);
+                    System.out.println("Selected File Name: " + fileName);
+
+                    textFieldLogForder.setText(filePath);
+//                    System.exit(0); // 退出程序
+                } else {
+                    System.out.println("No file selected.");
+                }
+            }
+        });
+
+        JButton openButtonOutput = new JButton("选择");
+        openButtonOutput.setPreferredSize(UiConsts.LABLE_SIZE_ITEM);
+        openButtonOutput.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int returnValue = fileChooser.showOpenDialog(null);
+
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    String filePath = selectedFile.getAbsolutePath();
+                    textFieldLogForderOutput.setText(filePath);
+//                    System.exit(0); // 退出程序
+                } else {
+                    System.out.println("No file selected.");
+                }
+            }
+        });
+        //TODO 文件夹选择器 end
 
         panelGridFromTo.add(labelFrom);
+        panelGridFromTo.add(textFieldLogForder);
+        panelGridFromTo.add(openButton);
+
         panelGridFromTo.add(labelTo);
+        panelGridFromTo.add(textFieldLogForderOutput);
+        panelGridFromTo.add(openButtonOutput);
+
+        //
 
         // 详情Grid
         JPanel panelGridDetail = new JPanel();
         panelGridDetail.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelGridDetail.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
-        labelLastTime = new JLabel();
-        labelKeepTime = new JLabel();
-        labelNextTime = new JLabel();
-        labelNextTime.setText(PropertyUtil.getProperty("ds.ui.schedule.nextTime"));
-        labelSuccess = new JLabel();
-        labelFail = new JLabel();
+//        labelKeepTime = new JLabel();
         labelLog = new JLabel(PropertyUtil.getProperty("ds.ui.status.logDetail"));
-
-        labelLastTime.setFont(UiConsts.FONT_NORMAL);
-        labelKeepTime.setFont(UiConsts.FONT_NORMAL);
-        labelNextTime.setFont(UiConsts.FONT_NORMAL);
-        labelSuccess.setFont(UiConsts.FONT_NORMAL);
-        labelFail.setFont(UiConsts.FONT_NORMAL);
+//        labelKeepTime.setFont(UiConsts.FONT_NORMAL);
         labelLog.setFont(UiConsts.FONT_NORMAL);
-        labelLastTime.setPreferredSize(new Dimension(240, 30));
-        labelKeepTime.setPreferredSize(new Dimension(300, 30));
-        labelNextTime.setPreferredSize(UiConsts.LABLE_SIZE);
-        labelSuccess.setPreferredSize(new Dimension(240, 30));
-        labelFail.setPreferredSize(new Dimension(236, 30));
+//        labelKeepTime.setPreferredSize(new Dimension(300, 30));
         labelLog.setPreferredSize(UiConsts.LABLE_SIZE);
         labelLog.setForeground(UiConsts.TOOL_BAR_BACK_COLOR);
 
-        panelGridDetail.add(labelLastTime);
-        panelGridDetail.add(labelKeepTime);
-        panelGridDetail.add(labelNextTime);
-        panelGridDetail.add(labelSuccess);
-        panelGridDetail.add(labelFail);
+//        panelGridDetail.add(labelKeepTime);
+//        panelGridDetail.add(labelSuccess);
+//        panelGridDetail.add(labelFail);
+
+        //查看日志详情
         panelGridDetail.add(labelLog);
 
         // 进度Grid
@@ -192,23 +254,23 @@ public class StatusPanel extends JPanel {
         panelTotalProgress.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 0));
 
         JLabel labelCurrent = new JLabel(PropertyUtil.getProperty("ds.ui.status.progress.current"));
-        JLabel labelTotal = new JLabel(PropertyUtil.getProperty("ds.ui.status.progress.total"));
+//        JLabel labelTotal = new JLabel(PropertyUtil.getProperty("ds.ui.status.progress.total"));
         labelCurrent.setFont(UiConsts.FONT_NORMAL);
-        labelTotal.setFont(UiConsts.FONT_NORMAL);
+//        labelTotal.setFont(UiConsts.FONT_NORMAL);
         progressCurrent = new JProgressBar();
-        progressTotal = new JProgressBar();
+//        progressTotal = new JProgressBar();
 
         Dimension preferredSizeLabel = new Dimension(80, 30);
         labelCurrent.setPreferredSize(preferredSizeLabel);
-        labelTotal.setPreferredSize(preferredSizeLabel);
+//        labelTotal.setPreferredSize(preferredSizeLabel);
         Dimension preferredSizeProgressbar = new Dimension(640, 20);
         progressCurrent.setPreferredSize(preferredSizeProgressbar);
-        progressTotal.setPreferredSize(preferredSizeProgressbar);
+//        progressTotal.setPreferredSize(preferredSizeProgressbar);
 
         panelCurrentProgress.add(labelCurrent);
         panelCurrentProgress.add(progressCurrent);
-        panelTotalProgress.add(labelTotal);
-        panelTotalProgress.add(progressTotal);
+//        panelTotalProgress.add(labelTotal);
+//        panelTotalProgress.add(progressTotal);
 
         panelGridProgress.add(panelCurrentProgress);
         panelGridProgress.add(panelTotalProgress);
@@ -237,18 +299,31 @@ public class StatusPanel extends JPanel {
         panelGrid2.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelGrid2.setLayout(new FlowLayout(FlowLayout.RIGHT, UiConsts.MAIN_H_GAP, 15));
 
-        buttonStartSchedule = new MyIconButton(UiConsts.ICON_START_SCHEDULE, UiConsts.ICON_START_SCHEDULE_ENABLE,
-                UiConsts.ICON_START_SCHEDULE_DISABLE, "");
-        buttonStop = new MyIconButton(UiConsts.ICON_STOP, UiConsts.ICON_STOP_ENABLE,
-                UiConsts.ICON_STOP_DISABLE, "");
-        buttonStop.setEnabled(false);
-        buttonStartNow = new MyIconButton(UiConsts.ICON_SYNC_NOW, UiConsts.ICON_SYNC_NOW_ENABLE,
-                UiConsts.ICON_SYNC_NOW_DISABLE, "");
-        panelGrid1.add(buttonStartSchedule);
-        panelGrid1.add(buttonStop);
-        panelGrid2.add(buttonStartNow);
+//        buttonStartSchedule = new MyIconButton(UiConsts.ICON_START_SCHEDULE, UiConsts.ICON_START_SCHEDULE_ENABLE,
+//                UiConsts.ICON_START_SCHEDULE_DISABLE, "");
+//        buttonStop = new MyIconButton(UiConsts.ICON_STOP, UiConsts.ICON_STOP_ENABLE,
+//                UiConsts.ICON_STOP_DISABLE, "");
+//        buttonStop.setEnabled(false);
+//        buttonStartNow = new MyIconButton(UiConsts.ICON_SYNC_NOW, UiConsts.ICON_SYNC_NOW_ENABLE,
+//                UiConsts.ICON_SYNC_NOW_DISABLE, "");
 
-        panelDown.add(panelGrid1);
+        //增加线上 线下选择按钮 start
+        //end
+        buttonStartNow = new MyIconButton(UiConsts.ICON_MAIN_START, UiConsts.ICON_MAIN_START_ENABLE, UiConsts.ICON_MAIN_START_DISABLE,"点击开始汇总您的Log文件");
+
+//        panelGrid1.add(buttonStartSchedule);
+//        panelGrid1.add(buttonStop);
+
+        JPanel radioButtonPanel = new JPanel();
+        radioButtonPanel.setBackground(UiConsts.MAIN_BACK_COLOR);
+        radioButtonPanel.setPreferredSize(new Dimension(70, 5));
+        radioButtonPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        buttonGroup=new ButtonGroup();
+        addRadioButton("Vivo线上报告",0,radioButtonPanel);
+        addRadioButton("常规Trados报告",1,radioButtonPanel);
+
+        panelGrid2.add(buttonStartNow);
+        panelDown.add(radioButtonPanel);
         panelDown.add(panelGrid2);
         return panelDown;
     }
@@ -258,15 +333,14 @@ public class StatusPanel extends JPanel {
      */
     public static void setContent() {
 
-        labelFrom.setText(
-                PropertyUtil.getProperty("ds.ui.status.from") + ConstantsTools.CONFIGER.getHostFrom() + "/" + ConstantsTools.CONFIGER.getNameFrom());
-        labelTo.setText(PropertyUtil.getProperty("ds.ui.status.to") + ConstantsTools.CONFIGER.getHostTo() + "/" + ConstantsTools.CONFIGER.getNameTo());
-        labelLastTime.setText(PropertyUtil.getProperty("ds.ui.status.lastSync") + ConstantsTools.CONFIGER.getLastSyncTime());
-        labelKeepTime.setText(PropertyUtil.getProperty("ds.ui.status.keepTime") + ConstantsTools.CONFIGER.getLastKeepTime() + PropertyUtil.getProperty("ds.ui.status.second"));
+        String logforder="C:\\Users\\Administrator\\Desktop\\temp\\zhaoxiaoling\\vivo LogReport\\log";
+        String ouputforder="C:\\Users\\Administrator\\Desktop\\temp\\zhaoxiaoling\\vivo LogReport\\output";
+        labelFrom.setText("Trados报告文件夹:");
+        labelTo.setText("汇总文件存放位置: ");
 
-        labelSuccess.setText(PropertyUtil.getProperty("ds.ui.status.successTimes") + ConstantsTools.CONFIGER.getSuccessTime());
-        labelFail.setText(PropertyUtil.getProperty("ds.ui.status.failTimes") + ConstantsTools.CONFIGER.getFailTime());
-
+        //labelKeepTime.setText(PropertyUtil.getProperty("ds.ui.status.keepTime") + ConstantsTools.CONFIGER.getLastKeepTime() + PropertyUtil.getProperty("ds.ui.status.second"));
+//        labelSuccess.setText(PropertyUtil.getProperty("ds.ui.status.successTimes") + ConstantsTools.CONFIGER.getSuccessTime());
+//        labelFail.setText(PropertyUtil.getProperty("ds.ui.status.failTimes") + ConstantsTools.CONFIGER.getFailTime());
     }
 
     /**
@@ -276,63 +350,31 @@ public class StatusPanel extends JPanel {
         buttonStartNow.addActionListener(e -> {
             if (isRunning == false) {
                 buttonStartNow.setEnabled(false);
-                buttonStartSchedule.setEnabled(false);
+                //TODO 检查输入框位置是否为空
+                String logforder=StatusPanel.textFieldLogForder.getText().trim();
+                String outputforder=StatusPanel.textFieldLogForderOutput.getText().trim();
+                if(StringUtils.isEmpty(logforder)){
+                    JOptionPane.showMessageDialog(App.statusPanel, "请选择报告文件夹！", PropertyUtil.getProperty("ds.ui.tips"),
+                            JOptionPane.WARNING_MESSAGE);
+                    buttonStartNow.setEnabled(true);
+                    return;
+                }
+
+                if(StringUtils.isEmpty(outputforder)){
+                    JOptionPane.showMessageDialog(App.statusPanel, "请选择汇总文件存放位置！", PropertyUtil.getProperty("ds.ui.tips"),
+                            JOptionPane.WARNING_MESSAGE);
+                    buttonStartNow.setEnabled(true);
+                    return;
+                }
+
                 StatusPanel.setContent();
-                StatusPanel.progressTotal.setValue(0);
                 StatusPanel.progressCurrent.setValue(0);
-                labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.manu"));
+//                labelStatus.setText(PropertyUtil.getProperty("Trados 报告正在汇总......"));
                 ExecuteThread syncThread = new ExecuteThread();
                 syncThread.start();
             }
         });
-        buttonStartSchedule.addActionListener(e -> {
 
-            buttonStartSchedule.setEnabled(false);
-            buttonStop.setEnabled(true);
-            StatusPanel.setContent();
-
-            StatusPanel.progressTotal.setValue(0);
-            StatusPanel.progressCurrent.setValue(0);
-            labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.scheduledRunning"));
-            ScheduleExecuteThread syncThread = new ScheduleExecuteThread();
-            service = Executors.newSingleThreadScheduledExecutor();
-            // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
-            String scheduleConf = ConstantsTools.CONFIGER.getSchedule();
-            if ("true,false,false,false,false,false,false".equals(scheduleConf)) {
-                service.scheduleAtFixedRate(syncThread, 0, 5, TimeUnit.MINUTES);
-
-            } else if ("false,true,false,false,false,false,false".equals(scheduleConf)) {
-                service.scheduleAtFixedRate(syncThread, 0, 15, TimeUnit.MINUTES);
-
-            } else if ("false,false,true,false,false,false,false".equals(scheduleConf)) {
-                service.scheduleAtFixedRate(syncThread, 0, 30, TimeUnit.MINUTES);
-
-            } else if ("false,false,false,true,false,false,false".equals(scheduleConf)) {
-                service.scheduleAtFixedRate(syncThread, 0, 1, TimeUnit.HOURS);
-
-            } else if ("false,false,false,false,true,false,false".equals(scheduleConf)) {
-                service.scheduleAtFixedRate(syncThread, 0, 1, TimeUnit.DAYS);
-
-            } else if ("false,false,false,false,false,true,false".equals(scheduleConf)) {
-                service.scheduleAtFixedRate(syncThread, 0, 7, TimeUnit.DAYS);
-
-            } else if ("false,false,false,false,false,false,true".equals(scheduleConf)) {
-                long oneDay = 24 * 60 * 60 * 1000;
-                long initDelay = getTimeMillis(ConstantsTools.CONFIGER.getScheduleFixTime().trim())
-                        - System.currentTimeMillis();
-                initDelay = initDelay > 0 ? initDelay : oneDay + initDelay;
-                service.scheduleAtFixedRate(syncThread, initDelay, oneDay, TimeUnit.MILLISECONDS);
-            }
-
-        });
-        buttonStop.addActionListener(e -> {
-            buttonStartSchedule.setEnabled(true);
-            StatusPanel.buttonStartNow.setEnabled(true);
-            service.shutdown();
-            StatusLog.setNextTime("");
-            labelStatus.setText(PropertyUtil.getProperty("ds.ui.status.ready"));
-            buttonStop.setEnabled(false);
-        });
         labelLog.addMouseListener(new MouseListener() {
 
             @Override
@@ -388,4 +430,22 @@ public class StatusPanel extends JPanel {
         return 0;
     }
 
+
+    public void addRadioButton(String name, final int size,JPanel panel) {
+        boolean selected=size==0;
+        JRadioButton radioButton = new JRadioButton(name, selected);
+        radioButton.setBackground(Color.WHITE);
+        buttonGroup.add(radioButton);
+        panel.add(radioButton);
+
+        ActionListener listener=new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                JOptionPane.showMessageDialog(App.statusPanel, "当前选择："+size, PropertyUtil.getProperty("ds.ui.tips"),
+//                        JOptionPane.PLAIN_MESSAGE);
+                buttonSelectValue=size;
+            }
+        };
+        radioButton.addActionListener(listener);
+    }
 }

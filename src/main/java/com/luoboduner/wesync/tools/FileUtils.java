@@ -21,7 +21,7 @@ import com.opencsv.CSVReader;
 /**
  * 文件工具类
  *
- * @author Bob
+ * @author lwq
  */
 public class FileUtils {
     /**

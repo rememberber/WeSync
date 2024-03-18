@@ -15,7 +15,7 @@ import java.awt.*;
 /**
  * 计划任务面板
  *
- * @author Bob
+ * @author lwq
  */
 public class SchedulePanel extends JPanel {
 
@@ -302,7 +302,6 @@ public class SchedulePanel extends JPanel {
                         PropertyUtil.getProperty("ds.ui.schedule.saveTips"), PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
                 if (!StatusPanel.buttonStartSchedule.isEnabled()) {
                     // 设置显示下一次执行时间
-                    StatusPanel.labelNextTime.setText(PropertyUtil.getProperty("ds.ui.schedule.nextTime") + Utils.getNextSyncTime());
                 }
 
             } catch (Exception e1) {

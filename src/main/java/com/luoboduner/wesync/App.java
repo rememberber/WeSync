@@ -9,13 +9,15 @@ import com.luoboduner.wesync.tools.PropertyUtil;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 /**
  * 程序入口，主窗口Frame
  *
- * @author Bob
+ * @author lwq
  */
 public class App {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
@@ -25,7 +27,6 @@ public class App {
     public static JPanel mainPanelCenter;
 
     public static StatusPanel statusPanel;
-    public static DatabasePanel databasePanel;
     public static SchedulePanel schedulePanel;
     public static BackupPanel backupPanel;
     public static SettingPanel settingPanel;
@@ -38,14 +39,33 @@ public class App {
      * 程序入口main
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
+//        EventQueue.invokeLater(() -> {
             try {
                 App window = new App();
+                window.initialize();
+//                StatusPanel.buttonStartSchedule.doClick();
                 window.frame.setVisible(true);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+//        });
+    }
+
+    public static void test(){
+        JButton jButton = new JButton("a");
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
         });
+        JButton jButton2 = new JButton("a");
+        jButton2.addActionListener( (e)-> {
+            System.out.println("asasas");
+        });
+
+
     }
 
     /**
@@ -53,14 +73,14 @@ public class App {
      */
     public App() {
         initialize();
-        StatusPanel.buttonStartSchedule.doClick();
+//        StatusPanel.buttonStartSchedule.doClick();
     }
 
     /**
      * 初始化frame内容
      */
     private void initialize() {
-        logger.info("==================AppInitStart");
+        logger.info("==================AppInitStart lwqtest1"); 
         // 设置系统默认样式
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -83,21 +103,20 @@ public class App {
 
         ToolBarPanel toolbar = new ToolBarPanel();
         statusPanel = new StatusPanel();
-        databasePanel = new DatabasePanel();
-        schedulePanel = new SchedulePanel();
-        backupPanel = new BackupPanel();
+
+
+
+//        databasePanel = new DatabasePanel();
+//        schedulePanel = new SchedulePanel();
+//        backupPanel = new BackupPanel();
         settingPanel = new SettingPanel();
 
         mainPanel.add(toolbar, BorderLayout.WEST);
-
         mainPanelCenter = new JPanel(true);
         mainPanelCenter.setLayout(new BorderLayout());
         mainPanelCenter.add(statusPanel, BorderLayout.CENTER);
 
         mainPanel.add(mainPanelCenter, BorderLayout.CENTER);
-
-        // 添加数据库备份对话框
-        addDialog();
 
         frame.add(mainPanel);
 
@@ -129,18 +148,16 @@ public class App {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                if (!StatusPanel.buttonStartSchedule.isEnabled()) {
+                if (StatusPanel.isRunning) {
                     JOptionPane.showMessageDialog(App.statusPanel,
-                            PropertyUtil.getProperty("ds.ui.mainwindow.exitconfirm"), "Sorry~", JOptionPane.WARNING_MESSAGE);
+                            "Log正在汇总请等待执行完成！", "友情提示!", JOptionPane.WARNING_MESSAGE);
                 } else {
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 }
-
             }
 
             @Override
             public void windowClosed(WindowEvent e) {
-
             }
 
             @Override

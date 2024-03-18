@@ -8,7 +8,7 @@ import javax.swing.JButton;
 /**
  * 自定义按钮类，支持自定义默认图标、激活图标、失效图标和tip提示
  *
- * @author Bob
+ * @author lwq
  */
 public class MyIconButton extends JButton {
 
@@ -58,6 +58,5 @@ public class MyIconButton extends JButton {
         if (!tip.equals("")) {
             this.setToolTipText(tip);
         }
-
     }
 }

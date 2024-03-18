@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * 高级选项面板
  *
- * @author Bob
+ * @author lwq
  */
 public class SettingPanelOption extends JPanel {
 
@@ -30,7 +30,7 @@ public class SettingPanelOption extends JPanel {
 
     private static MyIconButton buttionClearLogs;
 
-    private static JCheckBox checkBoxAutoBak;
+    public static JCheckBox checkBoxAutoBak;
 
     private static JCheckBox checkBoxDebug;
 
@@ -104,53 +104,58 @@ public class SettingPanelOption extends JPanel {
         panelItem1.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
         panelItem2.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
         panelItem3.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
+        Dimension p4style = new Dimension(1300, 70);
         panelItem4.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
-        panelItem5.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
+        panelItem5.setPreferredSize(p4style);
         panelItem6.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
         panelItem7.setPreferredSize(UiConsts.PANEL_ITEM_SIZE);
 
         // 各Item
-        buttionTableFiled = new MyIconButton(UiConsts.ICON_TABLE_FIELD, UiConsts.ICON_TABLE_FIELD_ENABLE,
-                UiConsts.ICON_TABLE_FIELD_DISABLE, "");
-        panelItem1.add(buttionTableFiled);
-
+//        buttionTableFiled = new MyIconButton(UiConsts.ICON_TABLE_FIELD, UiConsts.ICON_TABLE_FIELD_ENABLE,
+//                UiConsts.ICON_TABLE_FIELD_DISABLE, "");
+//        panelItem1.add(buttionTableFiled);
+//
         buttionClearLogs = new MyIconButton(UiConsts.ICON_CLEAR_LOG, UiConsts.ICON_CLEAR_LOG_ENABLE,
                 UiConsts.ICON_CLEAR_LOG_DISABLE, "");
         panelItem2.add(buttionClearLogs);
+//
+//        MyIconButton buttionClearBaks = new MyIconButton(UiConsts.ICON_CLEAR_ALL_BAKS, UiConsts.ICON_CLEAR_ALL_BAKS_ENABLE,
+//                UiConsts.ICON_CLEAR_ALL_BAKS_DISABLE, "");
+//        panelItem3.add(buttionClearBaks);
 
-        MyIconButton buttionClearBaks = new MyIconButton(UiConsts.ICON_CLEAR_ALL_BAKS, UiConsts.ICON_CLEAR_ALL_BAKS_ENABLE,
-                UiConsts.ICON_CLEAR_ALL_BAKS_DISABLE, "");
-        panelItem3.add(buttionClearBaks);
-
-        checkBoxAutoBak = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.autoBackUp"));
+//        checkBoxAutoBak = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.autoBackUp"));
+        checkBoxAutoBak = new JCheckBox("每次打开时默认使用该位置存放汇总文件");
         checkBoxAutoBak.setBackground(UiConsts.MAIN_BACK_COLOR);
         checkBoxAutoBak.setFont(UiConsts.FONT_RADIO);
         panelItem4.add(checkBoxAutoBak);
 
-        JLabel label = new JLabel(PropertyUtil.getProperty("ds.ui.setting.mysqlPath"));
+//        JLabel label = new JLabel(PropertyUtil.getProperty("ds.ui.setting.mysqlPath"));
+//        JLabel label = new JLabel("汇总文件存放位置:");
         textField = new JTextField();
-        label.setBackground(UiConsts.MAIN_BACK_COLOR);
-        label.setFont(UiConsts.FONT_RADIO);
+//        label.setPreferredSize(UiConsts.LABLE_SIZE);
+//        label.setBackground(UiConsts.MAIN_BACK_COLOR);
+//        label.setBackground(Color.RED);
+//        label.setFont(UiConsts.FONT_RADIO);
         textField.setFont(UiConsts.FONT_RADIO);
-        Dimension dm = new Dimension(334, 26);
+        Dimension dm = new Dimension(500, 26);
         textField.setPreferredSize(dm);
-        panelItem5.add(label);
+//        panelItem5.add(label);
         panelItem5.add(textField);
+//
+//        checkBoxStrict = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.strict"));
+//        checkBoxStrict.setBackground(UiConsts.MAIN_BACK_COLOR);
+//        checkBoxStrict.setFont(UiConsts.FONT_RADIO);
+//        panelItem6.add(checkBoxStrict);
 
-        checkBoxStrict = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.strict"));
-        checkBoxStrict.setBackground(UiConsts.MAIN_BACK_COLOR);
-        checkBoxStrict.setFont(UiConsts.FONT_RADIO);
-        panelItem6.add(checkBoxStrict);
-
-        checkBoxDebug = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.debugMode"));
-        checkBoxDebug.setBackground(UiConsts.MAIN_BACK_COLOR);
-        checkBoxDebug.setFont(UiConsts.FONT_RADIO);
-        panelItem7.add(checkBoxDebug);
+//        checkBoxDebug = new JCheckBox(PropertyUtil.getProperty("ds.ui.setting.debugMode"));
+//        checkBoxDebug.setBackground(UiConsts.MAIN_BACK_COLOR);
+//        checkBoxDebug.setFont(UiConsts.FONT_RADIO);
+//        panelItem7.add(checkBoxDebug);
 
         // 组合元素
-        panelGridOption.add(panelItem1);
+//        panelGridOption.add(panelItem1);
         panelGridOption.add(panelItem2);
-        panelGridOption.add(panelItem3);
+//        panelGridOption.add(panelItem3);
         panelGridOption.add(panelItem4);
         panelGridOption.add(panelItem5);
         panelGridOption.add(panelItem6);
@@ -182,8 +187,8 @@ public class SettingPanelOption extends JPanel {
      */
     public static void setCurrentOption() {
         checkBoxAutoBak.setSelected(Boolean.parseBoolean(ConstantsTools.CONFIGER.getAutoBak()));
-        checkBoxDebug.setSelected(Boolean.parseBoolean(ConstantsTools.CONFIGER.getDebugMode()));
-        checkBoxStrict.setSelected(Boolean.parseBoolean(ConstantsTools.CONFIGER.getStrictMode()));
+//        checkBoxDebug.setSelected(Boolean.parseBoolean(ConstantsTools.CONFIGER.getDebugMode()));
+//        checkBoxStrict.setSelected(Boolean.parseBoolean(ConstantsTools.CONFIGER.getStrictMode()));
         textField.setText(ConstantsTools.CONFIGER.getMysqlPath());
     }
 
@@ -195,8 +200,8 @@ public class SettingPanelOption extends JPanel {
 
             try {
                 ConstantsTools.CONFIGER.setAutoBak(String.valueOf(checkBoxAutoBak.isSelected()));
-                ConstantsTools.CONFIGER.setDebugMode(String.valueOf(checkBoxDebug.isSelected()));
-                ConstantsTools.CONFIGER.setStrictMode(String.valueOf(checkBoxStrict.isSelected()));
+//                ConstantsTools.CONFIGER.setDebugMode(String.valueOf(checkBoxDebug.isSelected()));
+//                ConstantsTools.CONFIGER.setStrictMode(String.valueOf(checkBoxStrict.isSelected()));
                 ConstantsTools.CONFIGER.setMysqlPath(textField.getText());
                 JOptionPane.showMessageDialog(App.settingPanel, PropertyUtil.getProperty("ds.ui.save.success"),
                         PropertyUtil.getProperty("ds.ui.tips"), JOptionPane.PLAIN_MESSAGE);
@@ -209,17 +214,20 @@ public class SettingPanelOption extends JPanel {
 
         });
 
-        buttionTableFiled.addActionListener(e -> {
-            try {
-                Desktop.getDesktop().open(new File(ConstantsLogic.TABLE_FIELD_DIR));
-            } catch (IOException e1) {
-                logger.error("open table_field file fail:" + e1.toString());
-                e1.printStackTrace();
-            }
-
-        });
+//        buttionTableFiled.addActionListener(e -> {
+//            try {
+//                Desktop.getDesktop().open(new File(ConstantsLogic.TABLE_FIELD_DIR));
+//            } catch (IOException e1) {
+//                logger.error("open table_field file fail:" + e1.toString());
+//                e1.printStackTrace();
+//            }
+//
+//        });
 
         buttionClearLogs.addActionListener(e -> {
+
+            JOptionPane.showMessageDialog(App.settingPanel,"暂未启用log功能");
+                    if(true)return;
 
             int answer = JOptionPane.showConfirmDialog(App.settingPanel,
                     PropertyUtil.getProperty("ds.ui.setting.clean.makeSure"),

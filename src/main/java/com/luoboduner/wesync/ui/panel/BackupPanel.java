@@ -14,7 +14,7 @@ import java.io.File;
 /**
  * 备份面板
  *
- * @author Bob
+ * @author lwq
  */
 public class BackupPanel extends JPanel {
 

@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * 关于面板
  *
- * @author Bob
+ * @author lwq
  */
 public class SettingPanelAbout extends JPanel {
 
@@ -114,7 +114,7 @@ public class SettingPanelAbout extends JPanel {
         panelDown.setBackground(UiConsts.MAIN_BACK_COLOR);
         panelDown.setLayout(new FlowLayout(FlowLayout.LEFT, UiConsts.MAIN_H_GAP, 15));
 
-        JLabel labelInfo = new JLabel(PropertyUtil.getProperty("ds.ui.app.info"));
+        JLabel labelInfo = new JLabel("Copyright 2023.11.27 | All Rights Reserved.LiWeiQing  | 预留网址");
         labelInfo.setFont(UiConsts.FONT_NORMAL);
         labelInfo.setForeground(Color.gray);
 

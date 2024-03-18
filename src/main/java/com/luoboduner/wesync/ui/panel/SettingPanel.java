@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
 /**
  * 设置面板
  *
- * @author Bob
+ * @author lwq
  */
 public class SettingPanel extends JPanel {
 

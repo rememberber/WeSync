@@ -9,15 +9,15 @@ import java.awt.*;
 /**
  * UI相关的常量
  *
- * @author Bob
+ * @author lwq
  */
 public class UiConsts {
 
     /**
      * 软件名称,版本
      */
-    public final static String APP_NAME = "WeSync";
-    public final static String APP_VERSION = "v_1.60_160511";
+    public final static String APP_NAME = "新宇tool";
+    public final static String APP_VERSION = "v_1.00_02";
 
     /**
      * 主窗口大小
@@ -292,11 +292,34 @@ public class UiConsts {
     public final static ImageIcon ICON_CLEAR_LOG_DISABLE = new ImageIcon(
             App.class.getResource("/icon/clearLogDisable.png"));
 
+    /**
+     * 主面板 开始按钮 默认
+     */
+    public final static ImageIcon ICON_MAIN_START = new ImageIcon(
+            App.class.getResource("/icon/start.png"));
+    /**
+     * 主面板 开始按钮 激活
+     */
+    public final static ImageIcon ICON_MAIN_START_ENABLE = new ImageIcon(
+            App.class.getResource("/icon/startEnable.png"));
+    /**
+     * 主面板 开始按钮 失效
+     */
+    public final static ImageIcon ICON_MAIN_START_DISABLE = new ImageIcon(
+            App.class.getResource("/icon/startDisable.png"));
+
+
+
     // 样式布局相关
     /**
      * 主面板水平间隔
      */
     public final static int MAIN_H_GAP = 25;
+
+    /**
+     * 主面板水平间隔
+     */
+    public final static int MAIN_H_GAP_15 = 15;
     /**
      * 主面板Label 大小
      */
@@ -305,6 +328,11 @@ public class UiConsts {
      * Item Label 大小
      */
     public final static Dimension LABLE_SIZE_ITEM = new Dimension(78, 30);
+
+    /**
+     * Item Label 大小
+     */
+    public final static Dimension LABLE_SIZE_ITEM2 = new Dimension(120, 40);
     /**
      * Item text field 大小
      */

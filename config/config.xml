@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<weSync>
+<weSync> 
   <status> 
     <lastSyncTime>2016-05-27 09:53:00</lastSyncTime>  
     <lastKeepTime>10.125</lastKeepTime>  
     <successTime>35</successTime>  
-    <failTime>9</failTime> 
+    <failTime>11</failTime> 
   </status>  
   <database> 
     <from> 
       <type>SQL Server</type>  
       <host>127.0.0.1</host>  
       <name>TEST_2017</name>  
-      <user></user>
-      <password></password>
+      <user/>  
+      <password/> 
     </from>  
     <to> 
       <type>MySQL</type>  
       <host>localhost</host>  
       <name>TEST_2017_M</name>  
-      <user></user>
-      <password></password>
+      <user/>  
+      <password/> 
     </to> 
   </database>  
   <schedule> 
@@ -32,10 +32,10 @@
     <autoBak>true</autoBak>  
     <debugMode>false</debugMode>  
     <strictMode>false</strictMode>  
-    <mysqlPath>D:\MySQL</mysqlPath>  
-    <productname>产品A,产品B</productname>
+    <mysqlPath>C:\Users\Administrator\Desktop\test5\</mysqlPath>  
+    <productname>产品A,产品B</productname> 
   </setting>  
   <increase> 
-    <POSITION_CODE>0</POSITION_CODE>
+    <POSITION_CODE>0</POSITION_CODE> 
   </increase> 
 </weSync>
